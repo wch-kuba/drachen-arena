@@ -32,7 +32,7 @@ export const EFFECTS: Record<string, Effect> = {
   // Frequent: soft.
   right: { prompt: `A single soft glassy chime, like a small crystal gently tapped, bright and short. ${SOFT}`, seconds: 1, lufs: -22 },
   gem: { prompt: `A small gem softly landing on a pile of gold coins, a light clink. ${SOFT}`, seconds: 0.6, lufs: -24 },
-  key: { prompt: `A very soft, tiny wooden tap, like a fingertip on a soft key. ${SOFT}`, seconds: 0.5, lufs: -30 },
+  // No key tick: tried and dropped (2026-11-04), too irritating on every letter.
   // Rare moments: cartoon.
   hint: { prompt: `A single round underwater bubble "blub", soft and funny. ${TOON}`, seconds: 0.8, lufs: -22 },
   round: { prompt: `A happy cascade of gold coins pouring onto a treasure pile, with a short rising slide whistle. ${TOON}`, seconds: 2.5, lufs: -20 },

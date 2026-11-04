@@ -3,10 +3,10 @@
 // iOS only lets audio start inside a tap, so the context is created and resumed on the
 // first touch or key. Effects are on by default; the Home ambience is off by default.
 
-export type Sfx = 'right' | 'gem' | 'key' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land'
+export type Sfx = 'right' | 'gem' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land'
 type Loop = 'grotto' | 'snore'
 
-const ALL: (Sfx | Loop)[] = ['right', 'gem', 'key', 'hint', 'round', 'wobble', 'hatch', 'land', 'grotto', 'snore']
+const ALL: (Sfx | Loop)[] = ['right', 'gem', 'hint', 'round', 'wobble', 'hatch', 'land', 'grotto', 'snore']
 
 let ctx: AudioContext | undefined
 const buffers = new Map<string, Promise<AudioBuffer | undefined>>()

@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'preact/hooks'
 import { UpdatePrompt } from './UpdatePrompt.tsx'
+import { LANDS } from './lands.ts'
 import { TEST_ITEMS } from './content/test-items.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
 import { Collection } from './screens/Collection.tsx'
 import { Home } from './screens/Home.tsx'
 import { Reward } from './screens/Reward.tsx'
 import { Session } from './screens/Session.tsx'
-import { ShortLong } from './screens/ShortLong.tsx'
-import { Sort } from './screens/Sort.tsx'
 
-// Home and the Mehrzahl round run on the engine (Part 3, test items until Part 5).
-// The other screens still show demo data until Parts 4 and 6.
+// Home and the five exercise rounds run on the engine (test items until Part 5).
+// Reward, hatching and the collection still show demo data until Part 6.
 // `#/vorschau` lists every key screen for the parent to review; `#/<screen>` opens one.
 
 const SCREENS = {
   home: 'Grotte',
-  mehrzahl: 'Mehrzahl + Tastatur',
-  laute: 'Laute sortieren',
+  laute: 'Laute',
+  mehrzahl: 'Mehrzahl',
+  luecke: 'Fehlende Buchstaben',
   kurzlang: 'Kurz oder lang',
+  ie: 'Wörter mit ie',
   belohnung: 'Belohnung',
   schluepfen: 'Ei schlüpft',
   drachen: 'Drachen',
@@ -46,8 +47,10 @@ function HomeScreen() {
     <Home
       name={profile.childName || undefined}
       crystals={profile.crystals}
-      unlocked={profile.unlockedWorlds.length}
+      // All five lands stay open until Part 6 adds unlocking by progress.
+      unlocked={LANDS.length}
       onStart={() => go('mehrzahl')}
+      onLand={go}
     />
   )
 }
@@ -56,12 +59,12 @@ function render(s: Screen) {
   switch (s) {
     case 'home':
       return <HomeScreen />
-    case 'mehrzahl':
-      return <Session type="mehrzahl" onExit={() => go('')} />
     case 'laute':
-      return <Sort onExit={() => go('')} />
+    case 'mehrzahl':
+    case 'luecke':
     case 'kurzlang':
-      return <ShortLong onExit={() => go('')} />
+    case 'ie':
+      return <Session key={s} type={s} onExit={() => go('')} />
     case 'belohnung':
       return (
         <Reward

@@ -2,13 +2,14 @@
 // so leaving mid-round never loses crystals already earned.
 
 import { crystalsFor, firstTry, startAttempt, submit, type Attempt } from './attempt.ts'
-import type { Item } from './types.ts'
+import type { Item, Mistake } from './types.ts'
 
 export interface Result {
   id: string
   firstTry: boolean
   crystals: number
   lastWrong?: string
+  mistakes: Mistake[]
 }
 
 export interface Round {
@@ -35,6 +36,7 @@ export function answer(r: Round, typed: string): { round: Round; finished?: Resu
     firstTry: firstTry(attempt),
     crystals: crystalsFor(attempt),
     lastWrong: attempt.lastWrong,
+    mistakes: attempt.mistakes,
   }
   return { round: { ...r, attempt, results: [...r.results, finished] }, finished }
 }

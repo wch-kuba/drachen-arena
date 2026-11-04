@@ -70,7 +70,8 @@ async function tts(text: string, voice: string): Promise<Buffer> {
       return Buffer.from(data, 'base64')
     }
     const msg = await res.text()
-    const retry = res.status === 429 || res.status >= 500
+    // The daily cap won't lift by waiting a few seconds: stop at once.
+    const retry = (res.status === 429 && !/per day/i.test(msg)) || res.status >= 500
     if (!retry || attempt >= 5) throw new Error(`Gemini ${res.status} for "${text}": ${msg.slice(0, 600)}`)
     // Honour "retry in Ns" from the rate-limit message, else back off.
     const wait = Number(msg.match(/retry in (\d+)s/i)?.[1] ?? 0) * 1000 || 5000 * attempt
@@ -139,10 +140,18 @@ async function generate() {
   }
   console.log(`${texts.length} texts, ${todo.length} to generate (voice ${VOICE}).`)
   let done = 0
-  await pool(todo, async (t) => {
-    toMp3(await tts(t, VOICE), join(OUT_DIR, clipName(t)))
-    console.log(`  ${++done}/${todo.length}  ${t}`)
-  })
+  let failure: unknown
+  try {
+    await pool(todo, async (t) => {
+      toMp3(await tts(t, VOICE), join(OUT_DIR, clipName(t)))
+      console.log(`  ${++done}/${todo.length}  ${t}`)
+    })
+  } catch (e) {
+    // E.g. the daily request cap: keep what was made, list it, and let the next run continue.
+    failure = e
+    for (const t of todo) if (!existsSync(join(OUT_DIR, clipName(t)))) delete clips[t]
+    console.error(`Stopped after ${done} of ${todo.length} clips. Run again later for the rest.`)
+  }
 
   const used = new Set(Object.values(clips).map((p) => p.slice('audio/'.length)))
   const stale = readdirSync(OUT_DIR).filter((f) => f.endsWith('.mp3') && !used.has(f))
@@ -154,6 +163,7 @@ async function generate() {
   const next = JSON.stringify(manifest, null, 2) + '\n'
   if (!existsSync(MANIFEST) || readFileSync(MANIFEST, 'utf8') !== next) writeFileSync(MANIFEST, next)
   console.log(`Manifest: ${Object.keys(sorted).length} clips → src/content/audio-manifest.json`)
+  if (failure) throw failure
 }
 
 await (process.argv.includes('--sample') ? samples() : generate())

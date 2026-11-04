@@ -72,7 +72,7 @@ describe('leitner', () => {
   })
 
   it('picks due items first, then low boxes, then new ones', () => {
-    const items = TEST_ITEMS
+    const items = TEST_ITEMS.filter((i) => i.type === 'mehrzahl')
     const progress: Record<string, Progress> = {}
     // 3 due (box 3, rested longer than 3 days), 2 low not due, 5 resting high.
     items.slice(0, 3).forEach((i) => (progress[i.id] = { box: 3, lastSeen: now - BOX_INTERVAL[3] - 1, correct: 1, wrong: 0 }))
@@ -116,7 +116,9 @@ describe('spoken texts', async () => {
     expect(texts).toContain('Schreib die Mehrzahl.')
     expect(texts).toContain('der Hut')
     expect(texts).toContain('Hüte')
-    expect(texts).toContain('Tipp: Aus u wird oft ü.')
+    expect(texts).toContain('Tipp: Aus u wird ü.')
+    expect(texts).toContain('Mütze')
+    expect(texts).not.toContain('Hut')
     expect(new Set(texts).size).toBe(texts.length)
     for (const p of askParts(TEST_ITEMS[0])) expect(texts).toContain(p)
   })

@@ -37,7 +37,8 @@ export const DEFAULT_HINT: Record<ExerciseType, string> = {
   mehrzahl: 'Wird aus a, o, u ein ä, ö, ü?',
   luecke: 'Sprich das Wort langsam und hör genau hin.',
   kurzlang: 'Sprich das Wort laut. Klingt der Selbstlaut kurz oder lang?',
-  ie: 'Es hat ein langes i. Das schreibt man ie.',
+  // The land mixes ie and short-i words, so the rule names both and gives neither away.
+  ie: 'Langes i schreibt man ie. Kurzes i schreibt man i.',
 }
 
 /** Spoken instruction per exercise (the read-aloud button on the task plaque). */

@@ -179,7 +179,7 @@ The five lands, one per exercise, are grotto chambers strung along one dotted go
 | Perlenriff | Einzahl und Mehrzahl | gold-300 |
 | Schiffswrack | Fehlende Buchstaben | tq-500 |
 | Echo-Grotte | Kurz oder lang? | gold-500 |
-| Tiefsee-Garten | Wörter mit ie | tq-100 |
+| Tiefsee-Garten | i oder ie? | tq-100 |
 
 **Key Characteristics:**
 - One world: a dragon's hoard in a sea grotto. The hoard grows with every correct answer.

@@ -14,9 +14,16 @@
 
 ### Eggs & dragons
 - [ ] Egg hatching moment (animation + sound).
+
+### Sound effects (decided 2026-11-04, via `/impeccable` when built)
+- [ ] Make the effects with ElevenLabs sound effects (`eleven_text_to_sound_v3`, ~10 credits per second) and bundle them as MP3 for offline. Demos in `audio-samples/sfx-*`.
+- [ ] Style is a mix: **soft** for frequent sounds (right-answer chime, gem landing on the hoard, key tick), **cartoon** for rare moments (hint bubble "blub", round-end coin cascade with slide whistle, egg wobble and hatch with baby-dragon hiccup, entering a land). Never a harsh sound for a mistake.
+- [ ] Mute toggle; ambient loops (grotto, dragon snore) only on Home, quiet, off by default.
+- [ ] Update DESIGN.md › Sound.
 - [ ] Child types a name for the new dragon (custom keyboard, capital first letter hint).
 - [ ] Dragon collection screen: hatched dragons with names, next eggs as silhouettes.
 - [ ] ~10–15 dragons in v1 (from the kid's favorites).
+- [ ] Dragon growth: a hatched dragon grows hatchling → young → grown as the child keeps playing (rule to decide, e.g. crystals earned after hatching). Never shrinks. Art from Part 7.
 
 ### Worlds
 - [ ] 5 lands, one per exercise, on a world map / home screen.

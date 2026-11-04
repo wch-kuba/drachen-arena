@@ -10,7 +10,7 @@
 - [x] All five lands open from Home (`#/laute`, `#/mehrzahl`, `#/luecke`, `#/kurzlang`, `#/ie`). Every land stays open until Part 6 adds unlocking by progress.
 - [x] Every hint pane has a speaker button.
 - [x] Test items: 12 Mehrzahl, 8 Laute (one sound) + 3 sentences, 8 Lücke, 8 Kurz/lang, 6 ie (`src/content/test-items.ts`).
-- [ ] Voice clips for the last 9 texts (Gemini Tier 1 has a cap of 100 requests per day, hit on 2026-11-04): run `npm run audio` again. Until then those texts use the device voice.
+- [x] Voice clips for the last 9 texts (Gemini Tier 1 caps at 100 requests a day, hit on 2026-11-04): made with `npm run audio -- --fill` on a second model; a later plain run remakes them with the main model.
 
 ## 1. Selbstlaute, Zwielaute, Umlaute (choice)
 - [x] **Mode A:** show one letter or group (a, ei, ü, au, äu…) + audio → 3 big buttons: Selbstlaut (gelb) / Zwielaut (grün) / Umlaut (blau). The letters of each class show on the buttons only after a wrong try (rule hint); a right answer paints the tile in its legend color.
@@ -38,7 +38,7 @@
 ## 5. Wörter mit ie (typing)
 - [x] Picture only (+ optional audio after try 1 as a hint). Until Part 7 brings the pictures (decided 2026-11-04): a word without a picture is read aloud on open and a big speaker button replaces the picture.
 - [x] Child types the whole word.
-- [x] Hint flow: "Es hat ein langes i…" (+ speaker for the word) → first letter → answer.
+- [x] Hint flow: rule "Langes i schreibt man ie. Kurzes i schreibt man i." (changed in Part 5 for the short-i words; + speaker for the word) → first letter → answer.
 
 Checked in WebKit at iPhone (390×844), iPad portrait (820×1180) and iPad landscape (1180×820): every exercise with a wrong try, hints and a right answer.
 - [x] Checked on the real devices (parent, 2026-11-04, Safari, local preview): iPad portrait and landscape and iPhone, all five lands, keyboard, hints and voice. Found and fixed: a letter with a ring could not be seen as selected.

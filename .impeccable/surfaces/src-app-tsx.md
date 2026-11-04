@@ -29,4 +29,4 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 Signature interaction: a correct answer flings a gem/coin that arcs with weight onto the hoard; the pile grows. Motion has mass and settles with small overshoot; only a new egg ever blinks; sparkle only on correct answers.
 
 ## Unresolved
-- Real dragon, egg and word art comes in Part 7 (AI images, one style prompt). Until then drawn placeholders.
+- Resolved 2026-11-04 (Part 7): real dragon, egg, shell, land and word art is built in; see DESIGN.md › Drawn art and illustration.

@@ -1,9 +1,8 @@
 import { useEffect } from 'preact/hooks'
-import { dragonKind } from '../content/dragons.ts'
 import { play } from '../engine/sfx.ts'
 import type { Stage } from '../engine/rewards.ts'
 import { T } from '../strings.ts'
-import { Egg, Gem, GrownDragon, HoardLedge } from '../ui/art.tsx'
+import { DragonPic, EggPic, Gem, HoardLedge } from '../ui/art.tsx'
 
 // End of a round: the round's crystals drop onto the hoard, the egg shows how close it is to
 // hatching (one meter gem per 10 crystals), and the dragon of the day keeps the child company.
@@ -24,6 +23,8 @@ interface Props {
   crystals: number
   bonus: number
   egg: EggState
+  /** The dragon in the egg (eggKind), so the egg shows its colors. */
+  eggKind: string
   dragon?: { kind: string; name: string; stage: Stage }
   onAgain: () => void
   onHome: () => void
@@ -33,7 +34,7 @@ interface Props {
 const MAX_DROPS = 5
 const METER = 10
 
-export function Reward({ score, total, crystals, bonus, egg, dragon, onAgain, onHome, onHatch }: Props) {
+export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, onAgain, onHome, onHatch }: Props) {
   useEffect(() => play('round'), [])
   const drops = Math.min(MAX_DROPS, Math.ceil((crystals + bonus) / 3))
   const fill = egg.ready ? 1 : Math.min(1, egg.filled / egg.of)
@@ -51,7 +52,7 @@ export function Reward({ score, total, crystals, bonus, egg, dragon, onAgain, on
       <div class="reward-art">
         {/* The egg rests on the hoard; the round's crystals drop onto the pile around it. */}
         <div class="reward-egg">
-          <Egg crack={egg.ready ? 3 : Math.floor(fill * 3)} isNew={egg.ready} />
+          <EggPic kind={eggKind} isNew={egg.ready} />
         </div>
         <div class="reward-pile">
           {Array.from({ length: drops }, (_, i) => (
@@ -59,11 +60,9 @@ export function Reward({ score, total, crystals, bonus, egg, dragon, onAgain, on
               <Gem />
             </span>
           ))}
-          <HoardLedge gems={10} dragon={false} />
+          <HoardLedge gems={10} />
           {dragon && (
-            <svg class="reward-dragon" viewBox="-10 -10 280 205" role="img" aria-label={dragon.name}>
-              <GrownDragon kind={dragonKind(dragon.kind)} stage={dragon.stage} awake />
-            </svg>
+            <DragonPic class="reward-dragon" kind={dragon.kind} stage={dragon.stage} pose="happy" label={dragon.name} />
           )}
         </div>
       </div>

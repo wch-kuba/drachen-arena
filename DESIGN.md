@@ -215,11 +215,11 @@ The palette is cold, dark sea-teal rock lit by warm gold from below, with pale s
 ### Reserved: the school legend
 - **Gelb** (legend-gelb) = Selbstlaut, **Grün** (legend-gruen) = Zwielaut, **Blau** (legend-blau, white text) = Umlaut. These match the child's school test.
 
-**The Reserved Legend Rule.** Gelb, grün and blau are used only to mark Selbstlaut, Zwielaut and Umlaut: in the legend buttons and on painted letters. Never use them for decoration, status, a land, or a button. Test: if a yellow, green or blue pixel shows up anywhere other than the vowel exercise, it is a bug.
+**The Reserved Legend Rule.** Gelb, grün and blau are used only to mark Selbstlaut, Zwielaut and Umlaut: in the legend buttons and on painted letters. Never use them for decoration, status, a land, or a button. Test: if a yellow, green or blue UI color shows up anywhere other than the vowel exercise, it is a bug. The rule covers interface color. Illustrations are exempt: an object keeps its true color (a green pear, a red apple), and each dragon has its own colors (DESIGN.md › Drawn art), because the child asked for twelve clearly different dragons.
 
 **The Two Treasures Rule.** Gold and turquoise gems are the only bright materials in the world. Everything else is rock, sea-glass or ink.
 
-**The Never Red Rule.** Mistakes use coral. No red exists in this system.
+**The Never Red Rule.** Mistakes use coral. No red exists in the interface. Illustrations (a red apple, the red Koralle dragon) are not interface color.
 
 ## Typography
 
@@ -318,32 +318,43 @@ Legend tiles and the kurz/lang buttons share one state set. Pressed: down 2px, s
 - **Hint panes** carry a small round speaker at their end, so every hint can be heard.
 
 ### Navigation
-- **Lands path:** the five land mouths (4.9rem outlined arches in the land's color, with a small motif inside the dark mouth) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next says "Öffnet sich mit dem nächsten Ei". Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
+- **Lands path:** the five land mouths (4.9rem outlined arches in the land's color; an open mouth shows a peek of the land's chamber art, clipped to the arch) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next says "Öffnet sich mit dem nächsten Ei". Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
 - **Exercise bar:** a close button plus a track of 10 gem slots. Earned gems are faceted turquoise; empty slots are rock-colored outlines.
 
 ### Collection niches
 Rounded arches carved into rock (rock-3 with the Niche hollow shadow), in a grid, under a round back button and the "Deine Drachen" title. The newest dragon spans the full width. Each dragon shows its name (Title) and its stage plus how many rounds until it grows ("Junger Drache · Wächst in 7 Runden"). After the dragons comes the egg in progress with its fill caption, then one empty niche per dragon still to find: rock-2 with a dashed rock-4 border and a dashed egg silhouette carved into it. The child sees how many are left, never what they are.
 
-**Growth on placeholders:** a dragon is drawn at 0.5 (Drachenbaby), 0.75 (Junger Drache) or full size (Großer Drache), standing on the same ground line. Each dragon kind tints the placeholder's body, wing and belly from the world palette (turquoise and gold steps only). Part 7 replaces both with real stage art.
+**Growth:** every dragon has its own picture per stage (baby proportions, slim young dragon, grown hero). Every picture fills the same canvas, so the stage is also shown by size: 0.5 (Drachenbaby), 0.75 (Junger Drache) or full size (Großer Drache), scaled from one ground line (`STAGE_SCALE` in art.tsx, `data-stage` on `.dragon-pic`). The newest dragon spans the full width; the picture sits on the niche floor (`object-position: bottom`).
 
 ### Name entry
 Used twice: the child's own name on first start ("Wie heißt du?") and a new dragon's name after hatching. A plaque holds the question with its read-aloud button and a foam name line (2.2rem, 700) with a still gold-600 caret (the caret never blinks: only a new egg may). Below it, the built-in keyboard; shift is on for the first letter, because names start with a capital. Up to 12 letters. The Fertig button stays disabled until there is a letter. On iPad landscape the name entry is the right pane.
 
 ### Reward and egg
-- **Round summary:** score headline, the round's crystals including the bonus, then the bonus line in gold-300 ("+10 extra für die ganze Runde!"). The egg sits on the hoard; the dragon of the day lies on the pile beside it.
+- **Round summary:** score headline, the round's crystals including the bonus, then the bonus line in gold-300 ("+10 extra für die ganze Runde!"). The egg sits on the hoard in its dragon's colors; the dragon of the day cheers on the pile beside it (happy pose).
 - **Egg meter:** ten gem slots, one per 10 crystals of the 100 an egg needs, with "Noch 36 Kristalle, dann schlüpft dein Ei." under it. The dragon of the day gets its own line on iPad; on phones the dragon on the pile is enough.
 - **Egg ready:** the meter is full, the egg is new (blinks) and the one gold button is "Zum Ei!". No second way out: the ready egg also waits on Home.
 
 ### Hatching
-Three beats on one screen. **Egg:** "Dein Ei wackelt! Gleich schlüpft es." over the wobbling, blinking egg; "Tipp auf das Ei!" in gold-300. Tapping it rocks it hard, swells it and fades it out (1.1s). **Name:** "Dein Ei ist geschlüpft!", the baby dragon rises in sitting in its shell halves (ease-settle), and the name entry below. **Hello:** "Hallo, Funkel!" over the dragon, then the newly opened land's cave mouth rising in with "Eine neue Grotte ist offen: Schiffswrack", and the gold "Zur Grotte". A ready egg is saved, so closing the app at any beat comes back to it.
+Three beats on one screen. **Egg:** "Dein Ei wackelt! Gleich schlüpft es." over the wobbling egg (in its dragon's colors); "Tipp auf das Ei!" in gold-300. Tapping it swaps the egg for its two cut shell halves, stacked so they still look whole: the egg rocks hard on its base, then the top half pops up and tumbles away (1.1s). **Name:** "Dein Ei ist geschlüpft!", the baby dragon rises out of the bottom shell (760ms, ease-settle) with the popped top lying tilted beside it, and the name entry below. **Hello:** "Hallo, Funkel!" over the baby in its happy pose, then the newly opened land's cave mouth (with its peek) rising in with "Eine neue Grotte ist offen: Schiffswrack", and the gold "Zur Grotte". A ready egg is saved, so closing the app at any beat comes back to it.
 
 ### Feedback lines
 A right answer shows one praise line from a short list, in turn, never the same twice in a row. The first hint after a wrong try leads with a warm line from a second list ("Noch nicht ganz.", "Gleich hast du es!") on its own line, then the rule. Both lines are read aloud with the hint.
 
 ### Drawn art and illustration
-The hoard scene, hoard ledge, mound, dragon, egg, shell halves, gems, coins, land motifs and word pictures are inline SVG in the world palette, with 3–5px ink outlines.
+Two kinds of art share one look (dark-teal ink outline, light from below):
+- **Drawn (inline SVG, `src/ui/art.tsx`):** the hoard pile and ledge, coins, gems, rock, cave mouths, the carved egg slots of dragons still to find, and the icons (one stroke family on a 24-unit grid, 2.6 stroke width, round caps and joins, `currentColor`).
+- **Generated (WebP in `public/img`, made by `npm run images`, looked up through `src/ui/images.ts`):** 112 word pictures, 12 dragons × 3 stages × 3 moods, 12 eggs, their cut shell halves, 5 land chambers and a world map. A test (`images.test.ts`) fails if any picture the app can ask for is missing. Provenance per file in `src/content/image-sources.json`; licenses in ASSETS.md.
 
-**Placeholders:** the dragon (12 tinted kinds, 3 growth sizes), the egg and the word pictures are drawn SVG placeholders until Part 7 replaces them with generated art. The icons stay drawn: one stroke family on a 24-unit grid, 2.6 stroke width, round caps and joins, `currentColor`.
+**Where each picture appears:**
+- **Word picture:** on the task plaque, square (6.5rem; 4.9rem on phones; 9.5rem on iPad portrait; 7.5rem on iPad landscape), with a soft drop shadow so it sits on the glass. Its alt text never gives the answer away ("Bild", except in Mehrzahl, where the word is shown anyway).
+- **Home:** the dragon of the day sleeps on the hoard (sleeping mood, sized by stage, breathing, "z z" near its head). Before the first hatch the egg lies there instead, and the caption says "Dein Ei liegt auf …". Welcome shows the child's first egg on a small hoard.
+- **Exercises:** no dragon. The screen belongs to the task; the gem flying onto the hoard is the reward for a right answer (decided 2026-11-04).
+- **Round summary:** the egg in its dragon's colors and the dragon of the day in its happy mood.
+- **Collection:** each dragon in idle mood at its stage; the egg in progress in its colors; the rest stay carved slots.
+- **Hatch:** egg, then the two shell halves, then the baby (idle while naming, happy when greeted).
+- **Lands:** each open cave mouth shows its chamber art.
+
+**Which egg:** the egg always shows the dragon that will hatch from it (`eggKind` in rewards.ts). Lands open in the same order as the dragon list, so this is the same whatever land is played; a test guards it.
 
 **Image style prompt (Part 7, reuse verbatim for every AI image):**
 
@@ -351,8 +362,8 @@ The hoard scene, hoard ledge, mound, dragon, egg, shell halves, gems, coins, lan
 
 Per-asset notes to add after the style block:
 - **Word pictures:** one object each.
-- **Dragons:** lying or sitting, big eyes, gold belly and spines, sea-fin ears.
-- **Eggs:** turquoise with gold spots.
+- **Dragons:** a powerful, majestic dragon, the hero of an adventure for a boy who loves dragons: horns, claws, wings, sea-fin ears, fierce determined eyes, a confident grin with small fangs. Never cute, chubby or toy-like; never gory. Every dragon has its own main color, build and one signature feature (`src/content/picture-prompts.ts` › DRAGON_LOOKS), so the twelve are told apart at a glance. For dragons the style block's palette line is replaced by the dragon's own colors, "Friendly, rounded shapes" becomes "Bold, dynamic shapes" and "Cute, calm, never scary" becomes "Heroic and exciting, never gory"; the dark-teal outline, gouache texture and warm light from below stay, so they read as one family. Only the hatchling stage may be baby-like.
+- **Eggs:** made from the dragon's reference picture, in that dragon's colors and pattern with a few gold spots. The shell halves are not generated: the build cuts the picked egg along an inked zigzag, so they always fit.
 
 ### Motion vocabulary
 Motion has weight and settles. Two easings: `ease-out` (cubic-bezier(0.16, 1, 0.3, 1)) for arrivals and presses, and `ease-settle` (cubic-bezier(0.34, 1.4, 0.64, 1)), which overshoots a little before settling.
@@ -360,8 +371,8 @@ Motion has weight and settles. Two easings: `ease-out` (cubic-bezier(0.16, 1, 0.
 - **Almost right** (for example a lowercase noun): the cells get a gentle sideways nudge (420ms, 8px), a coral "Fast!" pane rises in, and the offending cell is flagged.
 - **Wrong:** the same nudge, then graded hint panes, one more per attempt: the rule, then the start of the word revealed, then the full answer to copy.
 - **Reward:** the round's crystals drop one by one onto the pile (700ms each, 140ms apart).
-- **Egg:** a new egg is the only thing that blinks (stepped opacity, 1.6s). Before hatching, the egg wobbles (2.4s loop, rocking on its base). Hatching shows the dragon sitting in two shell halves.
-- **Idle:** the sleeping dragon breathes (4.2s, 2.5% vertical scale) and its "z z" drifts.
+- **Egg:** before hatching, the egg wobbles (2.4s loop, rocking on its base). On the tap it rocks hard and its top half pops off; the baby rises out of the bottom half. (The blink for a new egg is defined, `.egg-new`, but not used: the wobble already says "ready".)
+- **Idle:** the sleeping dragon on Home breathes (4.2s, 2.5% vertical scale, from its base) and its "z z" drifts.
 - **Reduced motion:** with `prefers-reduced-motion: reduce`, every animation and transition collapses to 1ms and runs once.
 
 **The One Blink Rule.** Only a new egg may blink. Nothing else flashes, pulses for attention or loops for emphasis.

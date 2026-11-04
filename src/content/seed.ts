@@ -76,12 +76,13 @@ const KEEP = 'Das Wort hat schon ä, ö oder ü. Das bleibt so.'
 
 const plural = (prompt: string, answer: string, extra: Partial<Item> = {}) => {
   const tags = [...(umlautChange(prompt, answer) ? ['umlaut-plural'] : []), ...(extra.tags ?? [])]
-  return make('mehrzahl', `mz-${slug(prompt.split(' ')[1])}`, prompt, answer, { ...extra, tags })
+  const noun = slug(prompt.split(' ')[1])
+  return make('mehrzahl', `mz-${noun}`, prompt, answer, { image: noun, ...extra, tags })
 }
 
 const MEHRZAHL: Item[] = [
   // Wrong on the school test (the child wrote Hauten, Lausen, Korben, Wanden).
-  plural('der Hut', 'Hüte', { image: 'hat', tags: [MISSED] }),
+  plural('der Hut', 'Hüte', { tags: [MISSED] }),
   plural('die Laus', 'Läuse', { tags: [MISSED] }),
   plural('der Korb', 'Körbe', { tags: [MISSED] }),
   plural('die Wand', 'Wände', { tags: [MISSED] }),
@@ -142,8 +143,10 @@ const MEHRZAHL: Item[] = [
 /** ai sounds like ei; the child has to know these words. */
 const AI = 'Ein Merkwort: Es klingt wie ei, aber man schreibt es anders.'
 
-const gap = (prompt: string, answer: string, extra: Partial<Item> = {}) =>
-  make('luecke', `lu-${slug(prompt.replace('_', answer))}`, prompt, answer, extra)
+const gap = (prompt: string, answer: string, extra: Partial<Item> = {}) => {
+  const word = slug(prompt.replace('_', answer))
+  return make('luecke', `lu-${word}`, prompt, answer, { image: word, ...extra })
+}
 
 const LUECKE: Item[] = [
   // Wrong on the school test.
@@ -257,8 +260,12 @@ const KURZLANG: Item[] = [
 // so the child has to choose: long i → ie, short i → i (decided 2026-11-04). Both share the
 // exercise's rule hint (strings.ts › DEFAULT_HINT.ie), which names both and gives neither away.
 
-const ie = (word: string) => make('ie', `ie-${slug(word)}`, word, word)
-const shortI = (word: string) => make('ie', `ie-${slug(word)}`, word, word, { tags: ['short-i'] })
+/** Words without a clear picture are listened to instead (Typed.tsx › listenFirst). */
+const NO_PICTURE = new Set(['vier'])
+const ieItem = (word: string, extra: Partial<Item> = {}) =>
+  make('ie', `ie-${slug(word)}`, word, word, { ...(NO_PICTURE.has(word) ? {} : { image: slug(word) }), ...extra })
+const ie = (word: string) => ieItem(word)
+const shortI = (word: string) => ieItem(word, { tags: ['short-i'] })
 
 const IE_WORDS: Item[] = [
   ...[

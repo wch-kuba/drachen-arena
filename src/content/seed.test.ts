@@ -2,6 +2,9 @@
 
 import { describe, expect, it } from 'vitest'
 import { SEED } from './seed.ts'
+import { DRAGON_LOOKS, LAND_PROMPTS, PICTURE_PROMPTS } from './picture-prompts.ts'
+import { DRAGONS } from './dragons.ts'
+import { LANDS } from '../lands.ts'
 import { gapParts, isSentence, lautOf, targetVowel, umlautChange, units } from '../engine/words.ts'
 import type { ExerciseType } from '../engine/types.ts'
 
@@ -73,5 +76,16 @@ describe('seed', () => {
     expect(missed.sort()).toEqual(
       ['mz-hut', 'mz-laus', 'mz-korb', 'mz-wand', 'lu-muetze', 'lu-birne', 'lu-kirsche', 'lu-koenig'].sort(),
     )
+  })
+
+  it('gives every picture word a picture description, and no extras', () => {
+    const keys = new Set(SEED.flatMap((i) => (i.image ? [i.image] : [])))
+    for (const t of ['mehrzahl', 'luecke'] as const) expect(of(t).every((i) => i.image)).toBe(true)
+    expect([...keys].sort()).toEqual(Object.keys(PICTURE_PROMPTS).sort())
+  })
+
+  it('describes every dragon and land for the art', () => {
+    expect(Object.keys(DRAGON_LOOKS).sort()).toEqual(DRAGONS.map((d) => d.id).sort())
+    expect(Object.keys(LAND_PROMPTS).sort()).toEqual([...LANDS.map((l) => l.id), 'map'].sort())
   })
 })

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'preact/hooks'
 import { askOf, askParts, ruleOf } from '../../content/speech.ts'
 import { revealCount } from '../../engine/attempt.ts'
 import { speak } from '../../engine/audio.ts'
-import { gapParts, umlautChange, withoutArticle, wordOf } from '../../engine/words.ts'
+import { gapParts, indefinite, umlautChange, withoutArticle, wordOf } from '../../engine/words.ts'
 import { T } from '../../strings.ts'
 import { Keyboard } from '../../ui/Keyboard.tsx'
 import { Speak } from '../../ui/Speak.tsx'
@@ -126,12 +126,12 @@ export function Typed({ item, attempt: a, submit, next, anchor, ledge }: Play) {
             <Speak text={askParts(item)} />
             {askOf(item)}
           </div>
-          {listenFirst ? <Speak big text={[word]} label={T.listen} /> : <WordPicture image={item.image} />}
+          {listenFirst ? <Speak big text={[word]} label={T.listen} /> : <WordPicture image={item.image} label={item.type === 'mehrzahl' ? word : T.picture} />}
           {item.type === 'mehrzahl' && (
             <p class="ex-word">
-              {/* "ein Hut" stays on one line; "– viele …" may wrap below it. */}
+              {/* "eine Hand" stays on one line; "– viele …" may wrap below it. */}
               <span class="nw">
-                <small>ein</small>{' '}
+                <small>{indefinite(item.prompt)}</small>{' '}
                 {hl ? (
                   <>
                     {[...singular].slice(0, hl.at).join('')}

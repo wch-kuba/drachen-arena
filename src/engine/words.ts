@@ -91,6 +91,9 @@ export function wordOf(item: Item): string {
 /** "der Hut" → "Hut". */
 export const withoutArticle = (s: string) => normalize(s).replace(/^(der|die|das)\s+/i, '')
 
+/** The indefinite article for "der/die/das Nomen": eine for die, ein for der and das. */
+export const indefinite = (s: string) => (/^die\s/i.test(normalize(s)) ? 'eine' : 'ein')
+
 const PLAIN: Record<string, string> = { ä: 'a', ö: 'o', ü: 'u' }
 const plain = (s: string) => s.replace(/[äöü]/g, (c) => PLAIN[c]).replace(/[ÄÖÜ]/g, (c) => PLAIN[c.toLowerCase()].toUpperCase())
 

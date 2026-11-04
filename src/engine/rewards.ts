@@ -29,6 +29,14 @@ export function pickDragon(p: Profile, land: ExerciseType): string | undefined {
   return (own ?? DRAGONS.find((d) => !found.has(d.id)))?.id
 }
 
+/**
+ * The dragon in the egg being filled now, so the egg can show its colors before it hatches.
+ * Lands open in DRAGONS order, so pickDragon gives the same dragon whatever land is played.
+ * With every dragon found, the full egg shows the last one.
+ */
+export const eggKind = (p: Profile): string =>
+  p.pendingHatch ?? pickDragon(p, p.lastLand ?? UNLOCK_ORDER[0]) ?? DRAGONS[DRAGONS.length - 1].id
+
 /** After a finished round: bonus, round count, and a ready egg if it is full. */
 export function endRound(p: Profile, land: ExerciseType): Profile {
   let q: Profile = { ...addCrystals(p, ROUND_BONUS), rounds: p.rounds + 1, lastLand: land }

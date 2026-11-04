@@ -62,14 +62,14 @@ Five exercise types:
 - **Audio:** every spoken text is an **AI-generated clip** from **ElevenLabs** (`eleven_v3`, German, speed 0.85), generated at build time on the parent's Mac and bundled as MP3, so it plays offline. The child's app never calls ElevenLabs. Voices from the ElevenLabs voice library, chosen by the parent (2026-11-04): **Knurps** (playful chipmunk) narrates every instruction, tip and feedback line in three tones (cheerful, playful, warm; eleven_v3 audio tags); every word, plural, sound and sentence is made in four voices (**Kermy**, **Hopsi**, **Emmy**, **Knurps**) and the app picks a random clip (voice or tone) each time a text is spoken. `src/content/audio-sources.json` records the voice of every clip. The device's own voice (`speechSynthesis`, de-DE) is only a fallback for text without a clip (e.g. parent-added words until their clips are generated, see Part 14).
   - Why not Gemini TTS any more: Tier 1 caps at 100 requests per model per day, so the seed would have taken a week; Google Cloud TTS (Chirp 3 HD) had no cap but less warmth. ElevenLabs Starter: 40,000 credits a month, enough to make every clip in one run.
   - Terms: ElevenLabs paid plans include commercial use of the generated audio; library voices may be used under the plan. The ElevenLabs account belongs to the parent (adult); no child data is sent, only our own word lists. **Before any commercial release:** re-check the ElevenLabs terms for library voices in a children's product.
-- Word pictures: **AI-generated illustrations** in one consistent style, bundled with the app for the seed content. A fallback for parent-added words (emoji or photo) is still to be decided.
+- Word pictures: **AI-generated illustrations** (OpenAI GPT Image, via a build-time batch script; free library assets where one set fits the style) in one consistent style, bundled with the app for the seed content. A fallback for parent-added words (emoji or photo) is still to be decided.
 - Seed content: about 150–200 Klasse 2 words across the five exercises, written by us and reviewed by the parent.
 
 **Release plan**
 - v1: five exercises, seed content, rewards loop, offline install.
 - v2: parent panel (add words/questions, Excel/CSV import via bundled SheetJS with a template file, progress and problem-word view, backup).
 
-**Open decisions:** where generated images come from (tool/pipeline), image fallback for parent-added words, parent-gate mechanism (proposed: long-press + an adult-level sum). Production domain: https://drachen.webchefs.software.
+**Open decisions:** image fallback for parent-added words, parent-gate mechanism (proposed: long-press + an adult-level sum). Production domain: https://drachen.webchefs.software.
 
 **Future (not a goal now):** the app may be commercialized later. The main goal stays the personal game. Avoid choices that would block a later release (asset licenses, publisher content, personal data in the bundle), but don't build for it.
 

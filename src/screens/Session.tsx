@@ -2,7 +2,7 @@ import { useEffect, useState } from 'preact/hooks'
 import { play } from '../engine/sfx.ts'
 import { useGame } from '../engine/game.tsx'
 import { pickRound } from '../engine/leitner.ts'
-import { dragonOfTheDay, EGG_COST, ROUND_BONUS, stageOf } from '../engine/rewards.ts'
+import { dragonOfTheDay, EGG_COST, eggKind, ROUND_BONUS, stageOf } from '../engine/rewards.ts'
 import { roundCrystals, roundFirstTries, type Round } from '../engine/round.ts'
 import type { ExerciseType } from '../engine/types.ts'
 import { RoundPlayer } from './Exercise.tsx'
@@ -19,9 +19,11 @@ export function Session({ type, onExit }: { type: ExerciseType; onExit: () => vo
   const [done, setDone] = useState<Round | null>(null)
   useEffect(() => play('land'), [])
 
+  const p = data.profile
+  const friend = dragonOfTheDay(p, Date.now())
+  const buddy = friend && { kind: friend.kind, name: friend.name, stage: stageOf(friend, p.rounds) }
+
   if (done) {
-    const p = data.profile
-    const friend = dragonOfTheDay(p, Date.now())
     return (
       <Reward
         score={roundFirstTries(done)}
@@ -29,7 +31,8 @@ export function Session({ type, onExit }: { type: ExerciseType; onExit: () => vo
         crystals={roundCrystals(done)}
         bonus={done.results.length ? ROUND_BONUS : 0}
         egg={{ filled: p.eggCrystals, of: EGG_COST, ready: !!p.pendingHatch }}
-        dragon={friend && { kind: friend.kind, name: friend.name, stage: stageOf(friend, p.rounds) }}
+        eggKind={eggKind(p)}
+        dragon={buddy}
         onHome={onExit}
         onHatch={onExit}
         onAgain={() => {

@@ -3,7 +3,7 @@ import { UpdatePrompt } from './UpdatePrompt.tsx'
 import { LANDS, type LandId } from './lands.ts'
 import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
-import { isUnlocked, nextLand, UNLOCK_ORDER } from './engine/rewards.ts'
+import { dragonOfTheDay, eggKind, isUnlocked, nextLand, stageOf, UNLOCK_ORDER } from './engine/rewards.ts'
 import { setAmbient } from './engine/sfx.ts'
 import { emptyProfile } from './engine/storage.ts'
 import type { Profile } from './engine/types.ts'
@@ -80,10 +80,13 @@ function HomeScreen() {
     )
   }
   const last = p.lastLand && isUnlocked(p, p.lastLand) ? p.lastLand : UNLOCK_ORDER[0]
+  // The dragon of the day sleeps on the hoard: the same companion as in the lands and rewards.
+  const friend = dragonOfTheDay(p, Date.now())
   return (
     <Home
       name={p.childName}
       crystals={p.crystals}
+      on={friend ? { dragon: { kind: friend.kind, name: friend.name, stage: stageOf(friend, p.rounds) } } : { egg: eggKind(p) }}
       isOpen={(l) => isUnlocked(p, l)}
       next={nextLand(p)}
       onStart={() => go(last)}
@@ -147,6 +150,7 @@ function render(s: Screen) {
           crystals={26}
           bonus={10}
           egg={{ filled: s === 'belohnung' ? 64 : 0, of: 100, ready: s === 'belohnung-ei' }}
+          eggKind="tang"
           dragon={{ kind: 'wrack', name: 'Funkel', stage: 'young' }}
           onAgain={noop}
           onHome={noop}

@@ -1,14 +1,12 @@
-import { PictureHat } from './art.tsx'
+import { wordPic } from './images.ts'
 
-// Drawn word pictures by key. Part 7 swaps these for generated art; until then an item
-// without a drawing simply shows no picture (no emoji stand-ins).
-const PICTURES: Record<string, () => preact.JSX.Element> = {
-  hut: PictureHat,
+// The word picture on a task plaque (Part 7 art). An item without a picture shows none:
+// no emoji stand-ins. Wörter mit ie then lets the child listen instead (Typed.tsx).
+
+export function WordPicture({ image, label }: { image?: string; label: string }) {
+  const p = wordPic(image)
+  if (!p) return null
+  return <img class="ex-picture" src={p.src} width={p.w} height={p.h} alt={label} decoding="async" draggable={false} />
 }
 
-export function WordPicture({ image }: { image?: string }) {
-  const P = image ? PICTURES[image] : undefined
-  return P ? <P /> : null
-}
-
-export const hasPicture = (image?: string) => !!image && image in PICTURES
+export const hasPicture = (image?: string) => !!wordPic(image)

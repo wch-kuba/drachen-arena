@@ -32,7 +32,12 @@ export const T = {
   hello: (name: string) => (name ? `Hallo, ${name}!` : 'Hallo!'),
   askName: 'Wie heißt du?',
   start: 'Los geht’s!',
-  sleepsOn: 'Dein Drache schläft auf',
+  /** Home caption: "Funkel schläft auf 412 Kristallen." */
+  sleepsOn: (name: string) => `${name} schläft auf`,
+  /** Home caption before the first dragon: the egg lies on the hoard. */
+  eggLiesOn: 'Dein Ei liegt auf',
+  /** Alt text of a word picture that must not give the answer away. */
+  picture: 'Bild',
   crystalsWord: (n: number) => (n === 1 ? 'Kristall' : 'Kristallen'),
   myDragons: 'Deine Drachen',
   locked: 'Noch verschlossen',

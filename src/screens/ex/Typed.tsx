@@ -126,7 +126,7 @@ export function Typed({ item, attempt: a, submit, next, anchor, ledge }: Play) {
             <Speak text={askParts(item)} />
             {askOf(item)}
           </div>
-          {listenFirst ? <Speak big text={[word]} label={T.listen} /> : <WordPicture image={item.image} />}
+          {listenFirst ? <Speak big text={[word]} label={T.listen} /> : <WordPicture image={item.image} label={item.type === 'mehrzahl' ? word : T.picture} />}
           {item.type === 'mehrzahl' && (
             <p class="ex-word">
               {/* "ein Hut" stays on one line; "– viele …" may wrap below it. */}

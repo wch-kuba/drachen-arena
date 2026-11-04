@@ -1,8 +1,8 @@
-import { DRAGONS, dragonKind } from '../content/dragons.ts'
-import { EGG_COST, roundsToGrow, stageOf } from '../engine/rewards.ts'
+import { DRAGONS } from '../content/dragons.ts'
+import { EGG_COST, eggKind, roundsToGrow, stageOf } from '../engine/rewards.ts'
 import type { Profile } from '../engine/types.ts'
 import { T } from '../strings.ts'
-import { Egg, GrownDragon, IconBack, Mound } from '../ui/art.tsx'
+import { DragonPic, EggPic, EggSlot, IconBack } from '../ui/art.tsx'
 
 // The dragon collection: each hatched dragon rests on its own small hoard in a niche of the
 // grotto, newest first and biggest. Then the egg in progress, then the eggs still to find as
@@ -12,7 +12,6 @@ export function Collection({ profile, onBack }: { profile: Profile; onBack: () =
   const dragons = [...profile.dragons].reverse()
   const ready = !!profile.pendingHatch
   const left = DRAGONS.length - profile.dragons.length - 1
-  const fill = ready ? 1 : profile.eggCrystals / EGG_COST
 
   return (
     <div class="collection grotto">
@@ -29,13 +28,8 @@ export function Collection({ profile, onBack }: { profile: Profile; onBack: () =
           const grow = roundsToGrow(d, profile.rounds)
           return (
             <div class="niche">
-              <div class="niche-arch">
-                <svg viewBox="-10 -10 280 205" role="img" aria-label={`${d.name}, ${T.stage[stage]}`}>
-                  <Mound />
-                  <g transform="translate(0 4)">
-                    <GrownDragon kind={dragonKind(d.kind)} stage={stage} />
-                  </g>
-                </svg>
+              <div class="niche-arch" data-stage={stage}>
+                <DragonPic kind={d.kind} stage={stage} label={`${d.name}, ${T.stage[stage]}`} />
               </div>
               <span class="niche-name">{d.name}</span>
               <span class="niche-meta">
@@ -48,7 +42,7 @@ export function Collection({ profile, onBack }: { profile: Profile; onBack: () =
         {left >= 0 && (
           <div class="niche">
             <div class="niche-arch niche-egg">
-              <Egg crack={ready ? 3 : Math.floor(fill * 3)} isNew={ready} />
+              <EggPic kind={eggKind(profile)} isNew={ready} />
             </div>
             <span class="niche-name">{T.egg}</span>
             <span class="niche-meta">
@@ -59,7 +53,7 @@ export function Collection({ profile, onBack }: { profile: Profile; onBack: () =
         {Array.from({ length: Math.max(0, left) }, () => (
           <div class="niche" data-empty="">
             <div class="niche-arch niche-egg">
-              <Egg silhouette />
+              <EggSlot />
             </div>
           </div>
         ))}

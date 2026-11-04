@@ -558,8 +558,12 @@ p {
 }
 
 .ex-picture {
-  width: 6rem;
-  height: 4.7rem;
+  display: block;
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: contain;
+  /* The art is lit from below; let it sit on the plaque like an object on glass. */
+  filter: drop-shadow(0 4px 6px rgb(5 38 44 / 0.25));
 }
 
 .ex-word {
@@ -795,8 +799,8 @@ p {
   }
 
   .ex-picture {
-    width: 4.6rem;
-    height: 3.6rem;
+    width: 4.9rem;
+    height: 4.9rem;
   }
 
   .ex-word {
@@ -1390,9 +1394,8 @@ b.hl {
   margin-bottom: -2.2rem;
 }
 
-.reward-egg svg {
-  width: min(42vw, 11rem, 22dvh);
-  height: auto;
+.reward-egg .egg-pic {
+  width: min(46vw, 12rem, 24dvh);
 }
 
 .inline-gem {
@@ -1409,6 +1412,10 @@ b.hl {
 .niche-egg svg {
   width: 3.6rem;
   height: auto;
+}
+
+.niche-egg .egg-pic {
+  width: 5rem;
 }
 
 .reward h1 {
@@ -1591,6 +1598,12 @@ b.hl {
   margin-inline: auto;
 }
 
+.welcome-ledge svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Hatch: the full egg, tapped to crack it open. */
 .welcome .name-entry,
 .hatch .name-entry,
@@ -1608,10 +1621,8 @@ b.hl {
   touch-action: manipulation;
 }
 
-.hatch-egg svg {
-  display: block;
-  width: min(60vw, 15rem, 40dvh);
-  height: auto;
+.hatch-egg .egg-pic {
+  width: min(66vw, 17rem, 42dvh);
 }
 
 .hatch-tip {
@@ -1619,29 +1630,53 @@ b.hl {
   font-weight: 700;
 }
 
-.hatch[data-beat='crack'] .hatch-egg svg {
-  animation: crack-open 1.1s var(--ease-out) both;
+/* The tap: the egg rocks hard on its base, then its cut top half pops off and tumbles away. */
+.hatch[data-beat='crack'] .hatch-shells {
+  transform-origin: 50% 95%;
+  animation: crack-rock 1.1s var(--ease-out) both;
 }
 
-@keyframes crack-open {
+.hatch-shells {
+  position: relative;
+}
+
+.hatch-shells .shell-top {
+  position: absolute;
+  inset: 0;
+  transform-origin: 30% 55%;
+  animation: crack-pop 1.1s cubic-bezier(0.3, 0, 0.6, 1) both;
+}
+
+@keyframes crack-rock {
   0% {
     transform: rotate(0);
   }
-  15% {
+  12% {
     transform: rotate(-9deg);
   }
-  30% {
+  24% {
     transform: rotate(8deg);
   }
-  45% {
+  36% {
     transform: rotate(-5deg) scale(1.04);
   }
-  70% {
-    transform: scale(1.12);
+  48%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes crack-pop {
+  0%,
+  44% {
+    transform: none;
     opacity: 1;
   }
+  62% {
+    transform: translate(-6%, -34%) rotate(-24deg);
+  }
   100% {
-    transform: scale(1.3);
+    transform: translate(-38%, 20%) rotate(-70deg);
     opacity: 0;
   }
 }
@@ -1651,9 +1686,44 @@ b.hl {
   animation: rise 520ms var(--ease-settle) both;
 }
 
-.hatch-art svg {
-  width: min(70vw, 20rem, 34dvh);
+/* The baby in its bottom shell, the popped-off top lying beside it. */
+.hatch-nest {
+  position: relative;
+  width: min(72vw, 21rem, 36dvh);
+  aspect-ratio: 1;
+}
+
+.hatch-nest > img {
+  position: absolute;
+  display: block;
   height: auto;
+}
+
+.nest-dragon {
+  left: 8%;
+  bottom: 9%;
+  width: 84%;
+  animation: hatch-rise 760ms var(--ease-settle) 120ms both;
+}
+
+.nest-bottom {
+  left: 22%;
+  bottom: 0;
+  width: 56%;
+}
+
+.nest-top {
+  left: -2%;
+  bottom: 1%;
+  width: 34%;
+  transform: rotate(-32deg);
+}
+
+@keyframes hatch-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26%) scale(0.92);
+  }
 }
 
 .hatch[data-beat='name'] {
@@ -1665,8 +1735,8 @@ b.hl {
   font-size: 2rem;
 }
 
-.hatch[data-beat='name'] .hatch-art svg {
-  width: min(40vw, 10rem, 17dvh);
+.hatch[data-beat='name'] .hatch-nest {
+  width: min(44vw, 11rem, 19dvh);
 }
 
 .hatch-land {
@@ -1806,9 +1876,17 @@ b.hl {
   aspect-ratio: 1 / 0.6;
 }
 
-.niche-arch svg {
-  width: 100%;
-  height: auto;
+.niche-arch {
+  position: relative;
+}
+
+.niche-arch .dragon-pic {
+  position: absolute;
+  inset: 8% 6% 3%;
+  width: 88%;
+  height: 89%;
+  object-fit: contain;
+  object-position: 50% 100%;
 }
 
 .niche-name {
@@ -1888,8 +1966,8 @@ b.hl {
   }
 
   .ex-picture {
-    width: 9rem;
-    height: 7rem;
+    width: 9.5rem;
+    height: 9.5rem;
   }
 
   .home-stage {
@@ -1968,6 +2046,12 @@ b.hl {
     grid-column: 1 / -1;
   }
 
+  /* Landscape is short: the picture gives room to the hoard ledge below the card. */
+  .ex-picture {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
   .ex-left,
   .ex-right {
     display: flex;
@@ -1996,7 +2080,7 @@ b.hl {
     grid-area: art;
   }
 
-  .hatch[data-beat='name'] .hatch-art svg {
+  .hatch[data-beat='name'] .hatch-nest {
     width: min(100%, 20rem);
   }
 
@@ -2038,4 +2122,48 @@ b.hl {
   width: auto;
   min-height: 52px;
   font-size: 1.05rem;
+}
+
+/* ---------- Generated art (Part 7) ---------- */
+
+.dragon-pic,
+.egg-pic img {
+  display: block;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Growth: every stage picture fills the same canvas; size tells the stage, from one ground line. */
+.dragon-pic[data-stage='hatchling'] {
+  scale: 0.5;
+  transform-origin: 50% 100%;
+}
+
+.dragon-pic[data-stage='young'] {
+  scale: 0.75;
+  transform-origin: 50% 100%;
+}
+
+/* The hatch nest is drawn for a hatchling at full size. */
+.hatch-nest .dragon-pic {
+  scale: none;
+}
+
+.egg-pic {
+  display: inline-block;
+}
+
+.egg-pic img {
+  width: 100%;
+  height: auto;
+}
+
+.egg-pic.egg-wobble {
+  transform-origin: 50% 95%;
+}
+
+/* The dragon of the day cheers next to the egg on the reward pile. */
+img.reward-dragon {
+  width: 46%;
 }

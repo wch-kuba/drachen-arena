@@ -7,6 +7,7 @@ import {
   UNLOCK_ORDER,
   addCrystals,
   dragonOfTheDay,
+  eggKind,
   endRound,
   hatch,
   roundsToGrow,
@@ -104,5 +105,19 @@ describe('dragonOfTheDay', () => {
     const p = hatch(endRound({ ...emptyProfile(), eggCrystals: EGG_COST }, 'mehrzahl'), 'A', 0)
     expect(dragonOfTheDay(emptyProfile(), 0)).toBeUndefined()
     expect(dragonOfTheDay(p, 5 * 86_400_000)?.name).toBe('A')
+  })
+
+  it('shows the egg as the dragon that will hatch, whatever open land is played', () => {
+    let p = emptyProfile()
+    for (let n = 0; n < DRAGONS.length; n++) {
+      const shown = eggKind(p)
+      for (const land of p.unlockedWorlds) {
+        let q = p
+        while (!q.pendingHatch) q = play(q, 3, land)
+        expect(q.pendingHatch).toBe(shown)
+      }
+      while (!p.pendingHatch) p = play(p, 3, p.unlockedWorlds.at(-1))
+      p = hatch(p, `D${n}`, n)
+    }
   })
 })

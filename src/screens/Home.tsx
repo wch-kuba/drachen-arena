@@ -1,10 +1,12 @@
 import { LANDS, type LandId } from '../lands.ts'
 import { T } from '../strings.ts'
-import { CaveMouth, Gem, HoardScene, IconSoundOff, IconSpeaker, IconWaves, LandMotif } from '../ui/art.tsx'
+import { CaveMouth, Gem, HoardScene, IconSoundOff, IconSpeaker, IconWaves, type OnHoard } from '../ui/art.tsx'
 
 interface Props {
   name: string
   crystals: number
+  /** The dragon of the day asleep on the hoard, or the egg before the first one hatches. */
+  on: OnHoard
   isOpen: (land: LandId) => boolean
   /** The land that opens with the next egg. */
   next?: LandId
@@ -17,7 +19,7 @@ interface Props {
   onAmbient: (on: boolean) => void
 }
 
-export function Home({ name, crystals, isOpen, next, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
+export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
@@ -40,11 +42,11 @@ export function Home({ name, crystals, isOpen, next, onStart, onLand, onDragons,
         </header>
 
         <div class="hoard-scene">
-          <HoardScene size={Math.min(1, crystals / 1000)} />
+          <HoardScene size={Math.min(1, crystals / 1000)} on={on} />
         </div>
 
         <p class="home-caption">
-          {T.sleepsOn}{' '}
+          {'dragon' in on ? T.sleepsOn(on.dragon.name) : T.eggLiesOn}{' '}
           <b>
             {crystals} {T.crystalsWord(crystals)}
           </b>
@@ -85,9 +87,7 @@ export function Home({ name, crystals, isOpen, next, onStart, onLand, onDragons,
                 disabled={locked}
                 onClick={() => onLand(land.id)}
               >
-                <CaveMouth hue={land.hue} locked={locked}>
-                  {!locked && <LandMotif land={land.id} />}
-                </CaveMouth>
+                <CaveMouth hue={land.hue} land={land.id} locked={locked} />
                 <span>
                   <span class="land-name">{land.name}</span>
                   <span class="land-what">{locked ? (land.id === next ? T.nextEgg : T.locked) : land.what}</span>

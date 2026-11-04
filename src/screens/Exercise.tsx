@@ -138,7 +138,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
         anchor={anchor}
         ledge={
           <div class="ledge" ref={ledgeRef}>
-            <HoardLedge gems={landed} dragon={false} />
+            <HoardLedge gems={landed} />
           </div>
         }
       />

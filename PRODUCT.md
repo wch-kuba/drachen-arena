@@ -63,6 +63,8 @@ Five exercise types:
 
 **Open decisions:** where generated images come from (tool/pipeline), image fallback for parent-added words, parent-gate mechanism (proposed: long-press + an adult-level sum). Production domain: https://drachen.webchefs.software.
 
+**Future (not a goal now):** the app may be commercialized later. The main goal stays the personal game. Avoid choices that would block a later release (asset licenses, publisher content, personal data in the bundle), but don't build for it.
+
 ## Brand Commitments
 
 - Name: **Drachen-Arena**. Tagline: "Deutsch lernen, Drachen sammeln und Abenteuer erleben!"

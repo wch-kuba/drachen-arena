@@ -31,6 +31,15 @@ Forge Quick Deploy builds every push to `main` at https://drachen.webchefs.softw
 - Don't do design work ad hoc, even small tweaks. Use impeccable's matching mode (shape, critique, polish, colorize, animate, …).
 - Design decisions live in DESIGN.md (Part 2), and PRODUCT.md stays the product source impeccable reads.
 
+## Possible commercialization later (secondary)
+
+The main goal is a great game for one child. It *might* be sold later, so keep that door open when it costs little, but never let it slow down or shape v1/v2 work:
+- **Licenses:** only use dependencies, fonts, sounds and icons that allow commercial use (MIT/Apache/OFL or similar). Record the source and license of every asset you add. AI images must come from a tool whose terms allow commercial use.
+- **Content:** words and exercises are our own. Mirror school-test *formats*, but never copy text, images or layouts from Klett or other publishers' materials.
+- **Personal data:** nothing personal in the code or the bundle. Child data stays on the device. Don't add anything that would make GDPR/DSGVO or children's-privacy compliance harder later (no accounts, tracking or third-party calls without a decision).
+- **No single-child assumptions:** names and settings come from data, not from code. Keep child-facing strings in one place so they can be translated later.
+- Don't add multi-user, payments, accounts or i18n infrastructure now. Flag it when a decision would make commercialization noticeably harder.
+
 ## Language
 
 - UI text (child-facing) is German, short, warm, readable by a 7–8-year-old. Code, comments, commits, docs: English.

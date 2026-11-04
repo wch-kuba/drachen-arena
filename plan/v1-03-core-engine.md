@@ -61,7 +61,7 @@ Gemini TTS (`gemini-3.8-flash-tts`), **paid tier**, called only at build time fr
 - [x] Player: `speak()` plays the clip(s) in order; text without a clip falls back to the device voice; no clip and no voice → quiet speaker button.
 - [x] Clips for the 12 test items and all instructions generated (43 clips, 716 KB) and committed. A full listen-through of every clip is part of the parent's content review in Part 5.
 - [x] Heard on the iPad (Safari, local preview): speaker plays the Sulafat clips in order (parent, 2026-11-04).
-- [ ] Offline on the installed app: after this lands on `main`, airplane mode → speaker still plays. (Service workers need HTTPS, so the LAN preview can't test this.)
+- [x] Offline on the installed app: airplane mode → speaker still plays, crystals kept after closing the app (parent, iPad, 2026-11-04).
 
 
 ### Custom keyboard

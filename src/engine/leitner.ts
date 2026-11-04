@@ -1,6 +1,6 @@
 // Spaced repetition with five Leitner boxes. Wrong words come back often; known words rest.
 
-import type { Box, ExerciseType, Item, Progress } from './types.ts'
+import type { Box, ExerciseType, Item, Mistake, Progress } from './types.ts'
 
 export const ROUND_SIZE = 10
 
@@ -11,14 +11,23 @@ export const BOX_INTERVAL: Record<Box, number> = { 1: 0, 2: DAY, 3: 3 * DAY, 4: 
 export const newProgress = (): Progress => ({ box: 1, lastSeen: 0, correct: 0, wrong: 0 })
 
 /** Right on the first try → up one box. Any wrong try → back to box 1. */
-export function record(p: Progress | undefined, firstTry: boolean, now: number, lastWrong?: string): Progress {
+export function record(
+  p: Progress | undefined,
+  firstTry: boolean,
+  now: number,
+  lastWrong?: string,
+  mistakes: Mistake[] = [],
+): Progress {
   const cur = p ?? newProgress()
+  const counts = { ...cur.mistakes }
+  for (const m of mistakes) counts[m] = (counts[m] ?? 0) + 1
   return {
     box: firstTry ? (Math.min(5, cur.box + 1) as Box) : 1,
     lastSeen: now,
     correct: cur.correct + (firstTry ? 1 : 0),
     wrong: cur.wrong + (firstTry ? 0 : 1),
     lastWrong: firstTry ? cur.lastWrong : (lastWrong ?? cur.lastWrong),
+    ...(mistakes.length || cur.mistakes ? { mistakes: counts } : {}),
   }
 }
 

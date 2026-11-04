@@ -14,6 +14,8 @@ export interface Item {
   image?: string
   /** Rule hint, e.g. "Aus u wird oft ü." Falls back to the type default. */
   hint?: string
+  /** Kurz oder lang: index of the target vowel in `prompt`. Default: the first vowel. */
+  at?: number
   /** E.g. ["umlaut-plural"]. */
   tags?: string[]
   source: 'seed' | 'parent'
@@ -31,7 +33,12 @@ export interface Progress {
   wrong: number
   /** Last wrong answer the child typed (for the parent's problem-word view). */
   lastWrong?: string
+  /** Wrong tries by kind of mistake (Mehrzahl for now), for the parent's v2 stats. */
+  mistakes?: Partial<Record<Mistake, number>>
 }
+
+/** Mehrzahl: vowel change missing (Hute), wrong ending (Hüten), or both (Hauten). */
+export type Mistake = 'umlaut' | 'ending' | 'both'
 
 export interface Dragon {
   id: string

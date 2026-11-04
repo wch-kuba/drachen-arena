@@ -4,7 +4,8 @@
 //   try 3 wrong → full answer shown, child copies it once, item goes back to box 1
 
 import { check, normalize, type Verdict } from './check.ts'
-import type { Item } from './types.ts'
+import type { Item, Mistake } from './types.ts'
+import { pluralMistake } from './words.ts'
 
 export type HintLevel = 0 | 1 | 2 | 3
 
@@ -15,10 +16,12 @@ export interface Attempt {
   last?: Verdict
   /** Last wrong answer typed (stored in Progress for the parent). */
   lastWrong?: string
+  /** Kind of each wrong try (Mehrzahl only), for the parent's stats. */
+  mistakes: Mistake[]
   done: boolean
 }
 
-export const startAttempt = (): Attempt => ({ wrongs: 0, hint: 0, done: false })
+export const startAttempt = (): Attempt => ({ wrongs: 0, hint: 0, mistakes: [], done: false })
 
 export function submit(a: Attempt, item: Item, typed: string): Attempt {
   if (a.done) return a
@@ -33,6 +36,7 @@ export function submit(a: Attempt, item: Item, typed: string): Attempt {
     wrongs,
     hint: Math.min(3, wrongs) as HintLevel,
     lastWrong: normalize(typed),
+    mistakes: item.type === 'mehrzahl' ? [...a.mistakes, pluralMistake(typed, item.answer)] : a.mistakes,
   }
 }
 
@@ -46,11 +50,16 @@ export function crystalsFor(a: Attempt): number {
 }
 
 /**
- * How many leading letters the partial-reveal hint shows (hint level 2).
- * Shows the start of the word up to and including the first letter that differs from the
+ * How many leading letters the partial-reveal hint shows (hint level 2). 0 = no letter reveal.
+ * Wörter mit ie: the first letter. Fehlende Buchstaben: the first letter of a two-letter gap.
+ * Mehrzahl: the start of the word up to and including the first letter that differs from the
  * prompt word (Hut → "Hü"te, Korb → "Kö"rbe), capped at half the answer.
  */
 export function revealCount(item: Item): number {
+  const len = [...normalize(item.answer)].length
+  if (item.type === 'ie') return len > 1 ? 1 : 0
+  if (item.type === 'luecke') return len > 1 ? 1 : 0
+  if (item.type !== 'mehrzahl') return 0
   const answer = [...normalize(item.answer)]
   const cap = Math.floor(answer.length / 2)
   if (cap === 0) return 0

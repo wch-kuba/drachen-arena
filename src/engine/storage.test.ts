@@ -12,7 +12,8 @@ describe('mergeSeed', () => {
   it('updates seed items, keeps the active switch and parent items', () => {
     const stored = [{ ...TEST_ITEMS[0], active: false, hint: 'old' }, parent]
     const merged = mergeSeed(stored, TEST_ITEMS)
-    expect(merged.find((i) => i.id === TEST_ITEMS[0].id)).toMatchObject({ active: false, hint: TEST_ITEMS[0].hint })
+    expect(merged.find((i) => i.id === TEST_ITEMS[0].id)).toMatchObject({ active: false, prompt: TEST_ITEMS[0].prompt })
+    expect(merged.find((i) => i.id === TEST_ITEMS[0].id)?.hint).toBe(TEST_ITEMS[0].hint)
     expect(merged.find((i) => i.id === 'p1')).toBeTruthy()
     expect(merged).toHaveLength(TEST_ITEMS.length + 1)
   })

@@ -39,7 +39,7 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
 
   const finishItem = (r: Result) => {
     const d = latest.current!
-    const progress = record(d.progress[r.id], r.firstTry, Date.now(), r.lastWrong)
+    const progress = record(d.progress[r.id], r.firstTry, Date.now(), r.lastWrong, r.mistakes)
     const profile = { ...d.profile, crystals: d.profile.crystals + r.crystals }
     latest.current = { ...d, progress: { ...d.progress, [r.id]: progress }, profile }
     setData(latest.current)

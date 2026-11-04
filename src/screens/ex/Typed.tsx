@@ -7,7 +7,7 @@ import { T } from '../../strings.ts'
 import { Keyboard } from '../../ui/Keyboard.tsx'
 import { Speak } from '../../ui/Speak.tsx'
 import { hasPicture, WordPicture } from '../../ui/WordPicture.tsx'
-import { Feedback, NextButton, type Play } from '../Exercise.tsx'
+import { Feedback, HintFeedback, NextButton, RightFeedback, type Play } from '../Exercise.tsx'
 
 // The typed exercises: Einzahl und Mehrzahl (2), Fehlende Buchstaben (3), Wörter mit ie (5).
 // The child builds the answer in letter cells on the custom keyboard. Feedback: right,
@@ -97,14 +97,12 @@ export function Typed({ item, attempt: a, submit, next, anchor, ledge }: Play) {
   const ruleSay = [T.hintRule(ruleOf(item))]
 
   let feedback = null
-  if (right) feedback = <Feedback tone="right">{T.right}</Feedback>
+  if (right) feedback = <RightFeedback />
   else if (showVerdict && verdict.kind === 'almost')
     feedback = <Feedback tone="almost">{verdict.reason === 'noun-case' ? T.almostNoun : T.almostCase}</Feedback>
   else if (a.hint === 1)
     feedback = (
-      <Feedback tone="almost" say={item.type === 'ie' ? [word] : ruleSay}>
-        {rule}
-      </Feedback>
+      <HintFeedback say={item.type === 'ie' ? [word] : ruleSay}>{rule}</HintFeedback>
     )
   else if (a.hint === 2)
     feedback =

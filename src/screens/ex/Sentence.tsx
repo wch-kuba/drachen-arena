@@ -5,7 +5,7 @@ import { encode, units, type Laut, type Unit } from '../../engine/words.ts'
 import { T } from '../../strings.ts'
 import { Speak } from '../../ui/Speak.tsx'
 import { COLOR, EXAMPLES } from './Choice.tsx'
-import { Feedback, NextButton, type Play } from '../Exercise.tsx'
+import { Feedback, NextButton, type Play, RightFeedback } from '../Exercise.tsx'
 
 // Laute, sentence mode (1B), like the school test: tap a letter, then its color.
 // gelb = Selbstlaut, grün = Zwielaut, blau = Umlaut. These three colors appear nowhere else.
@@ -80,7 +80,7 @@ export function Sentence({ item, attempt: a, submit, next, anchor, ledge }: Play
   }
 
   const feedback = a.done ? (
-    <Feedback tone="right">{T.right}</Feedback>
+    <RightFeedback />
   ) : a.hint === 1 ? (
     <Feedback tone="almost" say={[T.satzMissed]}>
       {T.satzMissed}

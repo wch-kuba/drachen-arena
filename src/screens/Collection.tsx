@@ -1,44 +1,66 @@
-import { Dragon, Egg, Mound } from '../ui/art.tsx'
+import { DRAGONS, dragonKind } from '../content/dragons.ts'
+import { EGG_COST, roundsToGrow, stageOf } from '../engine/rewards.ts'
+import type { Profile } from '../engine/types.ts'
+import { T } from '../strings.ts'
+import { Egg, GrownDragon, IconBack, Mound } from '../ui/art.tsx'
 
-// The dragon collection: each hatched dragon rests on its own small hoard in a niche of the grotto.
-// Demo names; real ones are typed by the child when an egg hatches.
+// The dragon collection: each hatched dragon rests on its own small hoard in a niche of the
+// grotto, newest first and biggest. Then the egg in progress, then the eggs still to find as
+// dashed shapes carved into the rock: the child sees how many there are, never what they are.
 
-const DEMO = [
-  { name: 'Funkel', since: 'seit Montag', awake: true },
-  { name: 'Perla', since: 'seit Oktober', awake: false },
-]
+export function Collection({ profile, onBack }: { profile: Profile; onBack: () => void }) {
+  const dragons = [...profile.dragons].reverse()
+  const ready = !!profile.pendingHatch
+  const left = DRAGONS.length - profile.dragons.length - 1
+  const fill = ready ? 1 : profile.eggCrystals / EGG_COST
 
-export function Collection() {
   return (
     <div class="collection grotto">
-      <h1>Deine Drachen</h1>
-      <p class="collection-sub">2 Drachen · 1 Ei wartet</p>
+      <header class="collection-top">
+        <button type="button" class="btn-round" aria-label={T.toGrotto} onClick={onBack}>
+          <IconBack />
+        </button>
+        <h1>{T.myDragons}</h1>
+      </header>
+      <p class="collection-sub">{dragons.length ? T.dragonCount(dragons.length) : T.noDragons}</p>
       <div class="niches">
-        {DEMO.map((d) => (
-          <div class="niche">
-            <div class="niche-arch">
-              <svg viewBox="-10 -10 280 205" role="img" aria-label={d.name}>
-                <Mound />
-                <g transform="translate(0 4)">
-                  <Dragon awake={d.awake} />
-                </g>
-              </svg>
+        {dragons.map((d) => {
+          const stage = stageOf(d, profile.rounds)
+          const grow = roundsToGrow(d, profile.rounds)
+          return (
+            <div class="niche">
+              <div class="niche-arch">
+                <svg viewBox="-10 -10 280 205" role="img" aria-label={`${d.name}, ${T.stage[stage]}`}>
+                  <Mound />
+                  <g transform="translate(0 4)">
+                    <GrownDragon kind={dragonKind(d.kind)} stage={stage} />
+                  </g>
+                </svg>
+              </div>
+              <span class="niche-name">{d.name}</span>
+              <span class="niche-meta">
+                {T.stage[stage]}
+                {grow !== undefined && <> · {T.growsIn(grow)}</>}
+              </span>
             </div>
-            <span class="niche-name">{d.name}</span>
-            <span class="niche-meta">{d.since}</span>
+          )
+        })}
+        {left >= 0 && (
+          <div class="niche">
+            <div class="niche-arch niche-egg">
+              <Egg crack={ready ? 3 : Math.floor(fill * 3)} isNew={ready} />
+            </div>
+            <span class="niche-name">{T.egg}</span>
+            <span class="niche-meta">
+              {ready ? T.eggReady : T.eggLeft(EGG_COST - profile.eggCrystals)}
+            </span>
           </div>
-        ))}
-        <div class="niche">
-          <div class="niche-arch niche-egg">
-            <Egg crack={2} />
-          </div>
-          <span class="niche-name">Ei</span>
-          <span class="niche-meta">schlüpft bald</span>
-        </div>
-        {[0, 1].map(() => (
+        )}
+        {Array.from({ length: Math.max(0, left) }, () => (
           <div class="niche" data-empty="">
-            <div class="niche-arch" />
-            <span class="niche-meta">Noch leer</span>
+            <div class="niche-arch niche-egg">
+              <Egg silhouette />
+            </div>
           </div>
         ))}
       </div>

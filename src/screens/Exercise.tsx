@@ -4,7 +4,7 @@ import type { Attempt } from '../engine/attempt.ts'
 import { answer, current, isOver, next, startRound, type Result, type Round } from '../engine/round.ts'
 import type { Item } from '../engine/types.ts'
 import { isSentence } from '../engine/words.ts'
-import { T } from '../strings.ts'
+import { GENTLE, PRAISE, pick, T } from '../strings.ts'
 import { Gem, HoardLedge, IconClose, IconLight } from '../ui/art.tsx'
 import { Speak } from '../ui/Speak.tsx'
 import { LautChoice, ShortLong } from './ex/Choice.tsx'
@@ -155,6 +155,22 @@ export function Feedback({ tone, say, children }: { tone: 'right' | 'almost'; sa
       <span class="feedback-text">{children}</span>
       {say && <Speak text={say} />}
     </div>
+  )
+}
+
+/** Right answer: a praise line, in turn, picked once when the pane appears. */
+export function RightFeedback() {
+  const [line] = useState(() => pick(PRAISE))
+  return <Feedback tone="right">{line}</Feedback>
+}
+
+/** First hint after a wrong try: a warm line first, then the help. Both are read aloud. */
+export function HintFeedback({ say, children }: { say?: string[]; children: ComponentChildren }) {
+  const [lead] = useState(() => pick(GENTLE))
+  return (
+    <Feedback tone="almost" say={say && [lead, ...say]}>
+      <span class="feedback-lead">{lead}</span> {children}
+    </Feedback>
   )
 }
 

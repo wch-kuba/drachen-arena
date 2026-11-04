@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from 'preact/hooks'
-import { play } from '../engine/sfx.ts'
 import { T } from '../strings.ts'
 import { IconBackspace } from './art.tsx'
 
@@ -31,7 +30,6 @@ export function Keyboard({ upper, onKey, onBackspace, onShift, onDone, canSubmit
   const [down, setDown] = useState<string | null>(null)
   const timer = useRef<number>(undefined)
   const flash = (k: string) => {
-    play('key')
     setDown(k)
     clearTimeout(timer.current)
     timer.current = window.setTimeout(() => setDown(null), FLASH_MS)

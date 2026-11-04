@@ -6,7 +6,7 @@ Source and license of every bundled asset (see CLAUDE.md › Possible commercial
 
 | File | Source | License |
 |---|---|---|
-| right, gem, key, hint, round, wobble, hatch, land, grotto, snore (`.mp3`) | Generated 2026-11-04 with ElevenLabs sound effects (`eleven_text_to_sound_v3`) by `scripts/gen-sfx.ts`; prompts in that file | ElevenLabs paid plan: commercial use of generated audio allowed. Re-check the terms before a commercial release. |
+| right, gem, hint, round, wobble, hatch, land, grotto, snore (`.mp3`) | Generated 2026-11-04 with ElevenLabs sound effects (`eleven_text_to_sound_v3`) by `scripts/gen-sfx.ts`; prompts in that file | ElevenLabs paid plan: commercial use of generated audio allowed. Re-check the terms before a commercial release. |
 
 ## Voice clips (`public/audio/`)
 

@@ -4,7 +4,7 @@ import { LANDS, type LandId } from './lands.ts'
 import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
 import { dragonOfTheDay, eggKind, isUnlocked, nextLand, stageOf, UNLOCK_ORDER } from './engine/rewards.ts'
-import { setAmbient } from './engine/sfx.ts'
+import { atmosphereHere } from './engine/sfx.ts'
 import { emptyProfile } from './engine/storage.ts'
 import type { Profile } from './engine/types.ts'
 import { Collection } from './screens/Collection.tsx'
@@ -56,12 +56,9 @@ function HomeScreen() {
   const p = data.profile
   // Keeps the hatch open for its last beat ("Hallo, Funkel!") after the egg is saved as a dragon.
   const [hatching, setHatching] = useState<string>()
-  // The grotto ambience plays only while Home is open.
+  // The atmosphere (music + water) plays on Home, not over the welcome or the hatch.
   const home = !!p.childName && !p.pendingHatch && !hatching
-  useEffect(() => {
-    setAmbient(home && p.ambient)
-    return () => setAmbient(false)
-  }, [home, p.ambient])
+  useEffect(() => (home ? atmosphereHere() : undefined), [home])
   if (!p.childName) return <Welcome onName={setChildName} />
   const kind = p.pendingHatch ?? hatching
   if (kind) {

@@ -3,7 +3,7 @@
 import { createContext, type ComponentChildren } from 'preact'
 import { useContext, useEffect, useRef, useState } from 'preact/hooks'
 import { initVoice } from './audio.ts'
-import { initSfx, setSound } from './sfx.ts'
+import { initSfx, setAmbient, setSound } from './sfx.ts'
 import { record } from './leitner.ts'
 import { addCrystals, endRound, hatch } from './rewards.ts'
 import type { Result } from './round.ts'
@@ -46,6 +46,8 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
 
   const sound = data?.profile.sound ?? true
   useEffect(() => setSound(sound), [sound])
+  const ambient = data?.profile.ambient ?? false
+  useEffect(() => setAmbient(ambient), [ambient])
 
   if (failed) throw new Error('Storage unavailable')
   if (!data) return null

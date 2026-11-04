@@ -4,6 +4,7 @@
 
 import manifest from '../content/audio-manifest.json'
 import { speechKey } from '../content/speech.ts'
+import { duck } from './sfx.ts'
 
 /** Text → its clips. Words have one clip per voice; a random one plays each time. */
 const CLIPS: Record<string, string[]> = manifest.clips
@@ -104,12 +105,15 @@ export function speak(text: string | string[]): boolean {
   const token = ++run
   player?.pause()
   synth()?.cancel()
+  // The background music steps back while the voice talks.
+  duck(true)
   void (async () => {
     for (const part of parts) {
       if (token !== run) return
       const clip = clipFor(part)
       await (clip ? playClip(clip, token) : sayDevice(part, token))
     }
+    if (token === run) duck(false)
   })()
   return true
 }

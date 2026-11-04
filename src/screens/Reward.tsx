@@ -1,5 +1,5 @@
 import { useEffect } from 'preact/hooks'
-import { play } from '../engine/sfx.ts'
+import { atmosphereHere, play } from '../engine/sfx.ts'
 import type { Stage } from '../engine/rewards.ts'
 import { T } from '../strings.ts'
 import { DragonPic, EggPic, Gem, GemPic, HoardLedge } from '../ui/art.tsx'
@@ -36,6 +36,8 @@ const METER = 10
 
 export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, onAgain, onHome, onHatch }: Props) {
   useEffect(() => play('round'), [])
+  // The round's end is a Home-like moment: the atmosphere may play again.
+  useEffect(() => atmosphereHere(), [])
   const drops = Math.min(MAX_DROPS, Math.ceil((crystals + bonus) / 3))
   const fill = egg.ready ? 1 : Math.min(1, egg.filled / egg.of)
   const lit = egg.ready ? METER : Math.floor(fill * METER)

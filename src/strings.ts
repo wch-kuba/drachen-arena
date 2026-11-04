@@ -58,7 +58,7 @@ export const T = {
   growsIn: (n: number) => (n === 1 ? 'Wächst nach der nächsten Runde' : `Wächst in ${n} Runden`),
   egg: 'Dein Ei',
   sounds: 'Töne',
-  seaSound: 'Meeresrauschen',
+  music: 'Musik',
   noDragons: 'Noch kein Drache. Spiel Runden, dann schlüpft dein Ei!',
 } as const
 

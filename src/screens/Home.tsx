@@ -1,6 +1,6 @@
 import { LANDS, type LandId } from '../lands.ts'
 import { T } from '../strings.ts'
-import { CaveMouth, GemPic, HoardScene, IconSoundOff, IconSpeaker, IconWaves, type OnHoard } from '../ui/art.tsx'
+import { CaveMouth, GemPic, HoardScene, IconMusic, IconSoundOff, IconSpeaker, type OnHoard } from '../ui/art.tsx'
 
 interface Props {
   name: string
@@ -34,8 +34,8 @@ export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDrag
               {sound ? <IconSpeaker /> : <IconSoundOff />}
             </button>
             {sound && (
-              <button type="button" class="btn-round sound-toggle" aria-label={T.seaSound} aria-pressed={ambient} onClick={() => onAmbient(!ambient)}>
-                <IconWaves />
+              <button type="button" class="btn-round sound-toggle" aria-label={T.music} aria-pressed={ambient} onClick={() => onAmbient(!ambient)}>
+                <IconMusic />
               </button>
             )}
           </div>

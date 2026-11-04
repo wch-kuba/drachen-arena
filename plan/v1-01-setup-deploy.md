@@ -7,14 +7,14 @@
 ## Tasks
 
 ### Project
-- [ ] `git init`, create the repo (GitHub), push.
-- [ ] Scaffold Vite + Preact + TypeScript (`npm create vite@latest -- --template preact-ts`).
-- [ ] Add `vite-plugin-pwa` (`registerType: 'prompt'`, precache all assets).
-- [ ] Web manifest: name "Drachen-Arena", short_name "Drachen", `display: standalone`, `orientation: portrait`, `lang: de`, theme/background color (placeholder).
-- [ ] iOS meta tags: `apple-mobile-web-app-capable`, status-bar style, `apple-touch-icon` (180×180 placeholder).
-- [ ] `viewport-fit=cover` and safe-area padding (notch / home indicator).
-- [ ] Disable zoom-on-double-tap and text selection on game UI.
-- [ ] "Neue Version verfügbar" prompt wired to the service worker update event.
+- [x] `git init`, create the repo (GitHub), push.
+- [x] Scaffold Vite + Preact + TypeScript (`npm create vite@latest -- --template preact-ts`).
+- [x] Add `vite-plugin-pwa` (`registerType: 'prompt'`, precache all assets).
+- [x] Web manifest: name "Drachen-Arena", short_name "Drachen", `display: standalone`, `orientation: portrait`, `lang: de`, theme/background color (placeholder).
+- [x] iOS meta tags: `apple-mobile-web-app-capable`, status-bar style, `apple-touch-icon` (180×180 placeholder).
+- [x] `viewport-fit=cover` and safe-area padding (notch / home indicator).
+- [x] Disable zoom-on-double-tap and text selection on game UI.
+- [x] "Neue Version verfügbar" prompt wired to the service worker update event.
 
 ### Forge
 - [ ] Decide the domain/subdomain and point DNS at the Forge server.

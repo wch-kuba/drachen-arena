@@ -6,16 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "audio": "node --env-file-if-exists=.env.local scripts/gen-audio.ts"
   },
   "dependencies": {
+    "idb-keyval": "^6.3.0",
     "preact": "^11.0.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",
     "@types/node": "^24.19.2",
+    "fake-indexeddb": "^6.2.7",
     "typescript": "~7.0.2",
     "vite": "^8.3.5",
-    "vite-plugin-pwa": "^2.0.0"
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0"
   }
 }

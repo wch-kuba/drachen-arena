@@ -11,7 +11,7 @@
 
 ## Architecture
 - [ ] The API key **never** goes into the PWA. Add a small endpoint on Forge (Laravel or plain PHP) with the key in `.env`.
-- [ ] Endpoints: `POST /api/ai/extract` (photo → items), `POST /api/ai/suggest` (word → filled fields), `POST /api/ai/generate` (topic → items), `POST /api/ai/image` (word → picture).
+- [ ] Endpoints: `POST /api/ai/extract` (photo → items), `POST /api/ai/suggest` (word → filled fields), `POST /api/ai/generate` (topic → items), `POST /api/ai/image` (word → picture), `POST /api/ai/speech` (text → voice clip).
 - [ ] Protect the endpoints with a parent token set in parent mode, plus a rate limit and a daily cap.
 - [ ] Use structured outputs (`output_config.format` with a JSON schema that matches the `Item` type) so responses always parse.
 - [ ] The app stays fully offline for the child. AI features show "Nur mit Internet" when offline.
@@ -21,6 +21,7 @@
 - [ ] **Auto-fill:** the parent types "der Korb" and AI suggests the plural "Körbe", a hint ("Aus o wird ö"), the gap letters, vowel length and the ie-check.
 - [ ] **Topic → 10 items:** e.g. "Wörter mit ie, Tiere", or "Umlaut-Plural, Schule".
 - [ ] **Picture for a new word** via the image API, in the locked style prompt from DESIGN.md.
+- [ ] **Voice clip for a new word:** when the parent saves a word, parent mode calls `POST /api/ai/speech` (Gemini TTS, same voice and style as `scripts/gen-audio.ts`). The parent listens before approving; the clip is stored on the device with the item. Generation is always triggered by the parent, never by a child's tap (Gemini terms, offline-first, review before the child hears it). Until a clip exists the word falls back to the device voice.
 
 ## Safety & quality
 - [ ] Everything AI makes goes into a **review queue**. The parent approves, edits or rejects it. Nothing goes live automatically.

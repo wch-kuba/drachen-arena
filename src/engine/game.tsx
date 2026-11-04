@@ -3,15 +3,24 @@
 import { createContext, type ComponentChildren } from 'preact'
 import { useContext, useEffect, useRef, useState } from 'preact/hooks'
 import { initVoice } from './audio.ts'
+import { initSfx, setSound } from './sfx.ts'
 import { record } from './leitner.ts'
+import { addCrystals, endRound, hatch } from './rewards.ts'
 import type { Result } from './round.ts'
 import { load, requestPersist, saveProfile, saveProgress, type Data } from './storage.ts'
-import type { Item } from './types.ts'
+import type { ExerciseType, Item, Profile } from './types.ts'
 
 interface Game {
   data: Data
   /** Save one finished item: progress box and crystals, right away. */
   finishItem: (r: Result) => void
+  /** Round bonus and round count; a full egg becomes ready to hatch. */
+  finishRound: (land: ExerciseType) => void
+  /** The child named the dragon in the ready egg. */
+  hatchDragon: (name: string) => void
+  setChildName: (name: string) => void
+  setSound: (on: boolean) => void
+  setAmbient: (on: boolean) => void
 }
 
 const Ctx = createContext<Game | null>(null)
@@ -25,6 +34,7 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
   useEffect(() => {
     void requestPersist()
     void initVoice()
+    initSfx()
     load(seed).then((d) => {
       latest.current = d
       setData(d)
@@ -34,20 +44,41 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
     })
   }, [seed])
 
+  const sound = data?.profile.sound ?? true
+  useEffect(() => setSound(sound), [sound])
+
   if (failed) throw new Error('Storage unavailable')
   if (!data) return null
 
   const finishItem = (r: Result) => {
     const d = latest.current!
     const progress = record(d.progress[r.id], r.firstTry, Date.now(), r.lastWrong, r.mistakes)
-    const profile = { ...d.profile, crystals: d.profile.crystals + r.crystals }
+    const profile = addCrystals(d.profile, r.crystals)
     latest.current = { ...d, progress: { ...d.progress, [r.id]: progress }, profile }
     setData(latest.current)
     void saveProgress(r.id, progress)
     void saveProfile(profile)
   }
 
-  return <Ctx.Provider value={{ data, finishItem }}>{children}</Ctx.Provider>
+  const changeProfile = (f: (p: Profile) => Profile) => {
+    const d = latest.current!
+    const profile = f(d.profile)
+    latest.current = { ...d, profile }
+    setData(latest.current)
+    void saveProfile(profile)
+  }
+
+  const game: Game = {
+    data,
+    finishItem,
+    finishRound: (land) => changeProfile((p) => endRound(p, land)),
+    hatchDragon: (name) => changeProfile((p) => hatch(p, name, Date.now())),
+    setChildName: (name) => changeProfile((p) => ({ ...p, childName: name.trim() })),
+    setSound: (on) => changeProfile((p) => ({ ...p, sound: on })),
+    setAmbient: (on) => changeProfile((p) => ({ ...p, ambient: on })),
+  }
+
+  return <Ctx.Provider value={game}>{children}</Ctx.Provider>
 }
 
 export function useGame(): Game {

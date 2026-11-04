@@ -4,7 +4,7 @@
 import { normalize } from '../engine/check.ts'
 import type { Item } from '../engine/types.ts'
 import { isSentence, umlautChange, wordOf } from '../engine/words.ts'
-import { ASK, ASK_GROUP, ASK_SATZ, DEFAULT_HINT, T } from '../strings.ts'
+import { ASK, ASK_GROUP, ASK_SATZ, DEFAULT_HINT, T, GENTLE, PRAISE } from '../strings.ts'
 
 /** Clip lookup key: same text → same clip, regardless of stray spaces or Unicode form. */
 export const speechKey = (text: string) => normalize(text)
@@ -42,7 +42,11 @@ export function spokenRoles(items: Item[]): { narrator: string[]; words: string[
     ...Object.values(ASK),
     ASK_SATZ,
     ASK_GROUP,
-    T.right,
+    ...PRAISE,
+    ...GENTLE,
+    T.askName,
+    T.askDragonName,
+    T.tapEgg,
     T.almostNoun,
     T.almostCase,
     T.hintStart,

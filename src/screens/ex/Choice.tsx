@@ -5,7 +5,7 @@ import { LAUTE, targetVowel, type Laut } from '../../engine/words.ts'
 import { T } from '../../strings.ts'
 import { MarkLong, MarkShort } from '../../ui/art.tsx'
 import { Speak } from '../../ui/Speak.tsx'
-import { Feedback, NextButton, type Play } from '../Exercise.tsx'
+import { Feedback, HintFeedback, NextButton, RightFeedback, type Play } from '../Exercise.tsx'
 
 // The choice exercises: Laute with one sound (1, mode A) and Kurz oder lang (4).
 // A wrong option nudges and goes quiet; the rule hint follows. When one option is left,
@@ -24,13 +24,11 @@ function useChoice({ item, attempt: a, submit }: Play, options: string[]) {
   const left = options.filter((o) => !wrong.includes(o))
   const lastOne = !a.done && wrong.length > 0 && left.length === 1 ? left[0] : undefined
   const feedback = a.done ? (
-    <Feedback tone="right">{T.right}</Feedback>
+    <RightFeedback />
   ) : lastOne ? (
     <Feedback tone="almost">{T.hintChoice}</Feedback>
   ) : wrong.length ? (
-    <Feedback tone="almost" say={[T.hintRule(ruleOf(item))]}>
-      {T.hintRule(ruleOf(item))}
-    </Feedback>
+    <HintFeedback say={[T.hintRule(ruleOf(item))]}>{T.hintRule(ruleOf(item))}</HintFeedback>
   ) : null
   return { wrong, nudge, pick, lastOne, feedback }
 }

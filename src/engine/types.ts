@@ -42,19 +42,32 @@ export type Mistake = 'umlaut' | 'ending' | 'both'
 
 export interface Dragon {
   id: string
+  /** Dragon kind from `content/dragons.ts` (look and home land). */
+  kind: string
+  /** Typed by the child when the egg hatched. */
   name: string
   hatchedAt: number
+  /** `Profile.rounds` at hatch time; growth counts rounds since then. */
+  roundsAtHatch: number
 }
 
 export interface Profile {
-  /** Set by the parent in the app. Never hard-coded. */
+  /** Set on first start (v1) or by the parent (v2). Never hard-coded. */
   childName: string
+  /** All crystals ever earned. Only ever goes up. */
   crystals: number
-  points: number
-  /** Eggs owned but not hatched yet. */
-  eggs: number
-  /** Rounds put into the current egg (Part 6 decides how many hatch it). */
-  eggProgress: number
+  /** Crystals in the current egg (0 … EGG_COST). */
+  eggCrystals: number
+  /** Finished rounds, all lands. */
+  rounds: number
+  /** Dragon kind of an egg that is ready but not named yet; survives an app restart. */
+  pendingHatch?: string
+  /** Land of the last round, for the start button. */
+  lastLand?: ExerciseType
   dragons: Dragon[]
   unlockedWorlds: ExerciseType[]
+  /** Sound effects on (the child's mute toggle on Home). */
+  sound: boolean
+  /** Grotto ambience on Home. Off by default. */
+  ambient: boolean
 }

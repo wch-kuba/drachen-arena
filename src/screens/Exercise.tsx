@@ -1,10 +1,11 @@
 import type { ComponentChildren, JSX } from 'preact'
-import { useLayoutEffect, useRef, useState } from 'preact/hooks'
+import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks'
+import { play } from '../engine/sfx.ts'
 import type { Attempt } from '../engine/attempt.ts'
 import { answer, current, isOver, next, startRound, type Result, type Round } from '../engine/round.ts'
 import type { Item } from '../engine/types.ts'
 import { isSentence } from '../engine/words.ts'
-import { T } from '../strings.ts'
+import { GENTLE, PRAISE, pick, T } from '../strings.ts'
 import { Gem, HoardLedge, IconClose, IconLight } from '../ui/art.tsx'
 import { Speak } from '../ui/Speak.tsx'
 import { LautChoice, ShortLong } from './ex/Choice.tsx'
@@ -73,7 +74,10 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
   const flyGem = () => {
     const from = anchorEl.current?.getBoundingClientRect()
     const slot = ledgeRef.current?.getBoundingClientRect()
-    if (!from || !slot) return setLanded((g) => g + 1)
+    if (!from || !slot) {
+      play('gem')
+      return setLanded((g) => g + 1)
+    }
     const sx = from.left + from.width / 2 - 22
     const sy = from.top + from.height / 2 - 22
     const ex = slot.left + slot.width / 2 - 22
@@ -81,6 +85,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
     // Arc up and over: a gem has weight.
     setFlight(`path("M${sx} ${sy} Q${(sx + ex) / 2} ${Math.min(sy, ey) - 140} ${ex} ${ey}")`)
     window.setTimeout(() => {
+      play('gem')
       setFlight(null)
       setLanded((g) => g + 1)
     }, 900)
@@ -155,6 +160,24 @@ export function Feedback({ tone, say, children }: { tone: 'right' | 'almost'; sa
       <span class="feedback-text">{children}</span>
       {say && <Speak text={say} />}
     </div>
+  )
+}
+
+/** Right answer: a praise line, in turn, picked once when the pane appears. */
+export function RightFeedback() {
+  const [line] = useState(() => pick(PRAISE))
+  useEffect(() => play('right'), [])
+  return <Feedback tone="right">{line}</Feedback>
+}
+
+/** First hint after a wrong try: a warm line first, then the help. Both are read aloud. */
+export function HintFeedback({ say, children }: { say?: string[]; children: ComponentChildren }) {
+  const [lead] = useState(() => pick(GENTLE))
+  useEffect(() => play('hint'), [])
+  return (
+    <Feedback tone="almost" say={say && [lead, ...say]}>
+      <span class="feedback-lead">{lead}</span> {children}
+    </Feedback>
   )
 }
 

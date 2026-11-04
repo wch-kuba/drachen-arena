@@ -318,16 +318,32 @@ Legend tiles and the kurz/lang buttons share one state set. Pressed: down 2px, s
 - **Hint panes** carry a small round speaker at their end, so every hint can be heard.
 
 ### Navigation
-- **Lands path:** the five land mouths (4.9rem outlined arches in the land's color, with a small motif inside the dark mouth) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen". Pressed: the mouth scales to 0.96.
+- **Lands path:** the five land mouths (4.9rem outlined arches in the land's color, with a small motif inside the dark mouth) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next says "Öffnet sich mit dem nächsten Ei". Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
 - **Exercise bar:** a close button plus a track of 10 gem slots. Earned gems are faceted turquoise; empty slots are rock-colored outlines.
 
 ### Collection niches
-Rounded arches carved into rock (rock-3 with the Niche hollow shadow), in a grid. The newest dragon spans the full width. Empty niches are rock-2 with a dashed rock-4 border.
+Rounded arches carved into rock (rock-3 with the Niche hollow shadow), in a grid, under a round back button and the "Deine Drachen" title. The newest dragon spans the full width. Each dragon shows its name (Title) and its stage plus how many rounds until it grows ("Junger Drache · Wächst in 7 Runden"). After the dragons comes the egg in progress with its fill caption, then one empty niche per dragon still to find: rock-2 with a dashed rock-4 border and a dashed egg silhouette carved into it. The child sees how many are left, never what they are.
+
+**Growth on placeholders:** a dragon is drawn at 0.5 (Drachenbaby), 0.75 (Junger Drache) or full size (Großer Drache), standing on the same ground line. Each dragon kind tints the placeholder's body, wing and belly from the world palette (turquoise and gold steps only). Part 7 replaces both with real stage art.
+
+### Name entry
+Used twice: the child's own name on first start ("Wie heißt du?") and a new dragon's name after hatching. A plaque holds the question with its read-aloud button and a foam name line (2.2rem, 700) with a still gold-600 caret (the caret never blinks: only a new egg may). Below it, the built-in keyboard; shift is on for the first letter, because names start with a capital. Up to 12 letters. The Fertig button stays disabled until there is a letter. On iPad landscape the name entry is the right pane.
+
+### Reward and egg
+- **Round summary:** score headline, the round's crystals including the bonus, then the bonus line in gold-300 ("+10 extra für die ganze Runde!"). The egg sits on the hoard; the dragon of the day lies on the pile beside it.
+- **Egg meter:** ten gem slots, one per 10 crystals of the 100 an egg needs, with "Noch 36 Kristalle, dann schlüpft dein Ei." under it. The dragon of the day gets its own line on iPad; on phones the dragon on the pile is enough.
+- **Egg ready:** the meter is full, the egg is new (blinks) and the one gold button is "Zum Ei!". No second way out: the ready egg also waits on Home.
+
+### Hatching
+Three beats on one screen. **Egg:** "Dein Ei wackelt! Gleich schlüpft es." over the wobbling, blinking egg; "Tipp auf das Ei!" in gold-300. Tapping it rocks it hard, swells it and fades it out (1.1s). **Name:** "Dein Ei ist geschlüpft!", the baby dragon rises in sitting in its shell halves (ease-settle), and the name entry below. **Hello:** "Hallo, Funkel!" over the dragon, then the newly opened land's cave mouth rising in with "Eine neue Grotte ist offen: Schiffswrack", and the gold "Zur Grotte". A ready egg is saved, so closing the app at any beat comes back to it.
+
+### Feedback lines
+A right answer shows one praise line from a short list, in turn, never the same twice in a row. The first hint after a wrong try leads with a warm line from a second list ("Noch nicht ganz.", "Gleich hast du es!") on its own line, then the rule. Both lines are read aloud with the hint.
 
 ### Drawn art and illustration
 The hoard scene, hoard ledge, mound, dragon, egg, shell halves, gems, coins, land motifs and word pictures are inline SVG in the world palette, with 3–5px ink outlines.
 
-**Placeholders:** the dragon, the egg and the word pictures are drawn SVG placeholders until Part 7 replaces them with generated art. The icons stay drawn: one stroke family on a 24-unit grid, 2.6 stroke width, round caps and joins, `currentColor`.
+**Placeholders:** the dragon (12 tinted kinds, 3 growth sizes), the egg and the word pictures are drawn SVG placeholders until Part 7 replaces them with generated art. The icons stay drawn: one stroke family on a 24-unit grid, 2.6 stroke width, round caps and joins, `currentColor`.
 
 **Image style prompt (Part 7, reuse verbatim for every AI image):**
 
@@ -351,7 +367,12 @@ Motion has weight and settles. Two easings: `ease-out` (cubic-bezier(0.16, 1, 0.
 **The One Blink Rule.** Only a new egg may blink. Nothing else flashes, pulses for attention or loops for emphasis.
 
 ### Sound
-Planned, not built yet (deferred to Part 6): short optional effects with a mute toggle. Right answer = a soft glassy chime. A wrong answer never gets a harsh sound.
+Short effects made with ElevenLabs sound effects (`npm run sfx`, prompts in `scripts/gen-sfx.ts`), bundled as mono MP3 in `public/sfx/` and played with Web Audio, so they start at once and work offline. Loudness is normalized per effect: frequent sounds sit low, ambience lowest.
+- **Soft, for frequent moments:** a glassy chime on a right answer, a light clink when the gem lands on the hoard, a tiny tap on every key.
+- **Cartoon, for rare moments:** a round "blub" with the first hint, a coin cascade with a slide whistle at the round summary, a knock on every second rock of the ready egg, an eggshell crack with a baby-dragon hiccup on the hatch tap, a sparkling whoosh when entering a land.
+- **Ambience:** the grotto's water and the dragon's snore, looped quietly, only on Home, off by default.
+- **Switches:** two round buttons next to the crystal counter on Home: Töne (speaker; crossed speaker when off) and Meeresrauschen (waves, shown only while Töne is on). Off is clouded glass with soft ink. The voice is never muted by them.
+- A wrong answer never gets a harsh sound; only the hint's "blub".
 
 ## Do's and Don'ts
 

@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "audio": "node --env-file=.env.local scripts/gen-audio.ts",
-    "seed:table": "node scripts/seed-table.ts"
+    "seed:table": "node scripts/seed-table.ts",
+    "sfx": "node --env-file-if-exists=.env.local scripts/gen-sfx.ts"
   },
   "dependencies": {
     "idb-keyval": "^6.3.0",

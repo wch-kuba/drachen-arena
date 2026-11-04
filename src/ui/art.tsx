@@ -2,6 +2,9 @@
 // Part 7 replaces the dragon, egg and word pictures with generated illustrations
 // in the same style: thick dark-teal outline, turquoise scales, gold belly and spines.
 
+import type { DragonKind } from '../content/dragons.ts'
+import type { Stage } from '../engine/rewards.ts'
+
 const INK = 'var(--ink)'
 
 export function Gem({ filled = true, class: cls }: { filled?: boolean; class?: string }) {
@@ -36,7 +39,7 @@ export function Coin({ class: cls }: { class?: string }) {
 }
 
 /** The hoard heap with the dragon asleep on it. `size` 0..1 sets how high the pile is. */
-export function HoardScene({ size = 0.6, awake = false }: { size?: number; awake?: boolean }) {
+export function HoardScene({ size = 0.6, awake = false, kind }: { size?: number; awake?: boolean; kind?: DragonKind }) {
   const top = 300 - 120 * size // y of the pile's crest
   return (
     <svg viewBox="0 20 400 340" role="img" aria-label="Dein Drache liegt auf seinem Schatz">
@@ -78,7 +81,7 @@ export function HoardScene({ size = 0.6, awake = false }: { size?: number; awake
 
       {/* Dragon, lying on the crest */}
       <g transform={`translate(70 ${top - 150})`}>
-        <Dragon awake={awake} />
+        <Dragon awake={awake} kind={kind} />
       </g>
     </svg>
   )
@@ -212,36 +215,37 @@ export function LandMotif({ land }: { land: string }) {
 }
 
 /** A friendly sea dragon lying down, head on its front paws. viewBox 260x190 units. */
-export function Dragon({ awake = false }: { awake?: boolean }) {
+export function Dragon({ awake = false, kind }: { awake?: boolean; kind?: DragonKind }) {
+  const style = kind ? { '--d-body': kind.body, '--d-wing': kind.wing, '--d-belly': kind.belly } : undefined
   return (
-    <g stroke={INK} stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <g class="dragon" style={style} stroke={INK} stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
       {/* Tail curling around the front */}
-      <path d="M40 150 C0 150 -6 112 24 104 C10 128 30 140 70 140" fill="var(--tq-500)" />
+      <path d="M40 150 C0 150 -6 112 24 104 C10 128 30 140 70 140" fill="var(--d-body, var(--tq-500))" />
       <path d="M22 106 l-14 -16 l22 4z" fill="var(--gold-300)" />
       <g class="dragon-breathe">
         {/* Back spines */}
         <path d="M70 72 l8 -22 l12 18 l10 -24 l12 22 l12 -22 l10 24 l12 -16 l4 20" fill="var(--gold-300)" />
         {/* Body */}
-        <path d="M44 150 C30 92 80 60 140 62 C188 64 214 96 210 150 Z" fill="var(--tq-500)" />
+        <path d="M44 150 C30 92 80 60 140 62 C188 64 214 96 210 150 Z" fill="var(--d-body, var(--tq-500))" />
         {/* Folded wing */}
-        <path d="M96 84 C120 58 160 58 176 82 C160 80 150 92 146 104 C134 92 116 90 96 84 Z" fill="var(--tq-300)" />
+        <path d="M96 84 C120 58 160 58 176 82 C160 80 150 92 146 104 C134 92 116 90 96 84 Z" fill="var(--d-wing, var(--tq-300))" />
         <path d="M118 74 l12 22 M146 70 l2 30" fill="none" stroke-width="3" />
         {/* Belly scales */}
-        <path d="M70 150 C76 124 96 112 122 112 C110 128 108 140 112 150 Z" fill="var(--gold-300)" />
+        <path d="M70 150 C76 124 96 112 122 112 C110 128 108 140 112 150 Z" fill="var(--d-belly, var(--gold-300))" />
         <path d="M80 136 h26 M88 124 h22" fill="none" stroke-width="3" />
       </g>
       {/* Front paws */}
-      <path d="M150 150 c-2 -16 10 -22 22 -20 c4 6 4 14 0 20z" fill="var(--tq-500)" />
-      <path d="M196 150 c-2 -16 10 -22 22 -20 c4 6 4 14 0 20z" fill="var(--tq-500)" />
+      <path d="M150 150 c-2 -16 10 -22 22 -20 c4 6 4 14 0 20z" fill="var(--d-body, var(--tq-500))" />
+      <path d="M196 150 c-2 -16 10 -22 22 -20 c4 6 4 14 0 20z" fill="var(--d-body, var(--tq-500))" />
       {/* Head resting on paws */}
-      <path d="M168 132 C160 100 176 80 206 80 C236 80 254 100 252 122 C250 140 232 146 206 146 C186 146 172 142 168 132 Z" fill="var(--tq-500)" />
+      <path d="M168 132 C160 100 176 80 206 80 C236 80 254 100 252 122 C250 140 232 146 206 146 C186 146 172 142 168 132 Z" fill="var(--d-body, var(--tq-500))" />
       {/* Snout */}
       <path d="M226 120 c14 -6 26 0 26 10" fill="none" stroke-width="4" />
       <circle cx="238" cy="112" r="2.5" fill={INK} stroke="none" />
       {/* Horns and fin ears */}
       <path d="M186 86 l-10 -26 l20 18z" fill="var(--gold-300)" />
       <path d="M210 82 l2 -28 l14 24z" fill="var(--gold-300)" />
-      <path d="M176 104 c-22 -6 -30 6 -26 16 c8 -6 16 -6 26 -4z" fill="var(--tq-300)" />
+      <path d="M176 104 c-22 -6 -30 6 -26 16 c8 -6 16 -6 26 -4z" fill="var(--d-wing, var(--tq-300))" />
       {/* Eye */}
       {awake ? (
         <>
@@ -263,8 +267,34 @@ export function Dragon({ awake = false }: { awake?: boolean }) {
   )
 }
 
+const STAGE_SCALE: Record<Stage, number> = { hatchling: 0.5, young: 0.75, grown: 1 }
+
+/** A dragon of a kind at its growth stage, standing on the same ground line (viewBox 260x190). */
+export function GrownDragon({ kind, stage = 'grown', awake }: { kind?: DragonKind; stage?: Stage; awake?: boolean }) {
+  const k = STAGE_SCALE[stage]
+  return (
+    <g transform={`translate(130 152) scale(${k}) translate(-130 -152)`}>
+      <Dragon awake={awake} kind={kind} />
+    </g>
+  )
+}
+
 /** Dragon egg: turquoise shell with gold spots. `crack` 0..3 draws hatch progress. */
-export function Egg({ crack = 0, isNew = false }: { crack?: number; isNew?: boolean }) {
+export function Egg({ crack = 0, isNew = false, silhouette = false }: { crack?: number; isNew?: boolean; silhouette?: boolean }) {
+  if (silhouette) {
+    // An egg still to find: only its shape, carved into the rock.
+    return (
+      <svg viewBox="0 0 200 240" aria-hidden="true">
+        <path
+          d="M100 12 C150 12 186 104 186 150 C186 200 148 228 100 228 C52 228 14 200 14 150 C14 104 50 12 100 12 Z"
+          fill="var(--rock-1)"
+          stroke="var(--rock-4)"
+          stroke-width="6"
+          stroke-dasharray="14 12"
+        />
+      </svg>
+    )
+  }
   return (
     <svg viewBox="0 0 200 240" role="img" aria-label="Drachen-Ei">
       <g class={isNew ? 'egg-wobble' : undefined}>
@@ -323,6 +353,21 @@ export const IconSpeaker = () => (
   <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
     <path d="M4 9h4l5-4v14l-5-4H4z" />
     <path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" />
+  </svg>
+)
+
+/** Sound effects off: the speaker with a soft cross instead of waves. */
+export const IconSoundOff = () => (
+  <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
+    <path d="M4 9h4l5-4v14l-5-4H4z" />
+    <path d="M16.5 9.5l5 5M21.5 9.5l-5 5" />
+  </svg>
+)
+
+/** Grotto ambience: three gentle sea waves. */
+export const IconWaves = () => (
+  <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
+    <path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
   </svg>
 )
 

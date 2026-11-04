@@ -139,7 +139,7 @@ describe('spoken texts', async () => {
     const { narrator, words } = spokenRoles(TEST_ITEMS)
     expect(narrator).toContain('Schreib die Mehrzahl.')
     expect(narrator).toContain('Tipp: Aus u wird ü.')
-    expect(narrator).toContain('Super! Ein Kristall für deinen Schatz.')
+    expect(narrator).toContain('Stark gemacht!')
     expect(words).toContain('der Hut')
     expect(words).toContain('Hüte')
     expect(words).toContain('Mütze')

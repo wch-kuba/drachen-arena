@@ -1,36 +1,62 @@
 import { LANDS, type LandId } from '../lands.ts'
-import { CaveMouth, Gem, HoardScene, LandMotif } from '../ui/art.tsx'
+import { T } from '../strings.ts'
+import { CaveMouth, Gem, HoardScene, IconSoundOff, IconSpeaker, IconWaves, LandMotif } from '../ui/art.tsx'
 
 interface Props {
-  name?: string
+  name: string
   crystals: number
-  unlocked: number
+  isOpen: (land: LandId) => boolean
+  /** The land that opens with the next egg. */
+  next?: LandId
   onStart: () => void
   onLand: (id: LandId) => void
+  onDragons: () => void
+  sound: boolean
+  ambient: boolean
+  onSound: (on: boolean) => void
+  onAmbient: (on: boolean) => void
 }
 
-export function Home({ name, crystals, unlocked, onStart, onLand }: Props) {
+export function Home({ name, crystals, isOpen, next, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
         <header class="home-top">
-          <h1 class="home-hello">{name ? `Hallo, ${name}!` : 'Hallo!'}</h1>
-          <span class="plaque counter" aria-label={`${crystals} Kristalle`}>
-            <Gem />
-            {crystals}
-          </span>
+          <h1 class="home-hello">{T.hello(name)}</h1>
+          <div class="home-tools">
+            <span class="plaque counter" aria-label={`${crystals} ${T.crystalsWord(crystals)}`}>
+              <Gem />
+              {crystals}
+            </span>
+            <button type="button" class="btn-round sound-toggle" aria-label={T.sounds} aria-pressed={sound} onClick={() => onSound(!sound)}>
+              {sound ? <IconSpeaker /> : <IconSoundOff />}
+            </button>
+            {sound && (
+              <button type="button" class="btn-round sound-toggle" aria-label={T.seaSound} aria-pressed={ambient} onClick={() => onAmbient(!ambient)}>
+                <IconWaves />
+              </button>
+            )}
+          </div>
         </header>
 
         <div class="hoard-scene">
-          <HoardScene size={Math.min(1, crystals / 200)} />
+          <HoardScene size={Math.min(1, crystals / 1000)} />
         </div>
 
         <p class="home-caption">
-          Dein Drache schläft auf <b>{crystals} Kristallen</b>.
+          {T.sleepsOn}{' '}
+          <b>
+            {crystals} {T.crystalsWord(crystals)}
+          </b>
+          .
         </p>
 
+        <button type="button" class="reward-home home-dragons" onClick={onDragons}>
+          {T.myDragons}
+        </button>
+
         <button type="button" class="btn-gold home-cta" onClick={onStart}>
-          Los geht’s!
+          {T.start}
         </button>
       </section>
 
@@ -49,8 +75,8 @@ export function Home({ name, crystals, unlocked, onStart, onLand }: Props) {
               vector-effect="non-scaling-stroke"
             />
           </svg>
-          {LANDS.map((land, i) => {
-            const locked = i >= unlocked
+          {LANDS.map((land) => {
+            const locked = !isOpen(land.id)
             return (
               <button
                 type="button"
@@ -64,7 +90,7 @@ export function Home({ name, crystals, unlocked, onStart, onLand }: Props) {
                 </CaveMouth>
                 <span>
                   <span class="land-name">{land.name}</span>
-                  <span class="land-what">{locked ? 'Noch verschlossen' : land.what}</span>
+                  <span class="land-what">{locked ? (land.id === next ? T.nextEgg : T.locked) : land.what}</span>
                 </span>
               </button>
             )

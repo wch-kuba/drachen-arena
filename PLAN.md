@@ -17,7 +17,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
   All five exercise screens working with test words.
 - [ ] **Part 5 – Seed content** → [plan/v1-05-content.md](plan/v1-05-content.md)
   ~150–200 Klasse 2 words, reviewed by parent.
-- [ ] **Part 6 – Rewards & worlds** → [plan/v1-06-rewards.md](plan/v1-06-rewards.md)
+- [x] **Part 6 – Rewards & worlds** → [plan/v1-06-rewards.md](plan/v1-06-rewards.md)
   Crystals, eggs, dragons, worlds, naming, greeting.
 - [ ] **Part 7 – Images** → [plan/v1-07-images.md](plan/v1-07-images.md)
   AI-generated word pictures, dragons (poses + growth), eggs, worlds, app icon, free library assets; art built into the screens, critique + polish.

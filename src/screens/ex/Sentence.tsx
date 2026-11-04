@@ -117,8 +117,9 @@ export function Sentence({ item, attempt: a, submit, next, anchor, ledge }: Play
                       class="l"
                       data-c={marks[u.at] ? COLOR[marks[u.at]] : undefined}
                       data-sel={selected ? '' : undefined}
-                      data-miss={need && a.hint === 1 ? '' : undefined}
-                      data-want={need && a.hint >= 2 ? COLOR[need] : undefined}
+                      // While picked, the selection look wins over the ring, so the tap shows.
+                      data-miss={need && !selected && a.hint === 1 ? '' : undefined}
+                      data-want={need && !selected && a.hint >= 2 ? COLOR[need] : undefined}
                       aria-pressed={selected}
                       onClick={() => tap(u)}
                     >

@@ -70,6 +70,7 @@ Gemini TTS (`gemini-3.8-flash-tts`), **paid tier**, called only at build time fr
 - [x] Backspace, OK/check key.
 - [x] Key press feedback (scale). Tick sound moves to Part 6 with the other sound effects (DESIGN.md › Sound). Hardware keyboard also types (iPad keyboard case).
 - [x] No system keyboard ever opens (no real `<input>` focus; render the typed text yourself).
+- [ ] iPhone: keys wide enough to hit, letters fit inside the keys, no dead gaps between keys (keyboard edge to edge, keycap inside a gapless tap area).
 
 ### Session shell
 - [x] Round = 10 items → summary screen (crystals won).

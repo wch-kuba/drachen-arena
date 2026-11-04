@@ -824,23 +824,6 @@ p {
     height: 2.9rem;
     font-size: 2.2rem;
   }
-
-  .kb {
-    gap: 6px;
-    padding-top: 2px;
-  }
-
-  .key {
-    height: 2.2rem;
-  }
-
-  .kb-row[data-umlauts] .key {
-    height: 2rem;
-  }
-
-  .kb-done {
-    min-height: 2.5rem;
-  }
 }
 
 .gem-landed {
@@ -857,60 +840,84 @@ p {
 
 /* ---------- Keyboard ---------- */
 
+/* Each .key is a gapless hit area; the keycap (.cap) is drawn inside it with half the
+   visual gap on each side. A tap between two caps still hits a key. */
 .kb {
+  --kx: 2.5px; /* half the gap between keys */
+  --ky: 3.5px; /* half the gap between rows */
+  --key-w: 2.6rem;
+  --key-h: 2.5rem;
+  --key-umlaut-w: 4.2rem;
+  --key-border: 3px;
+  --key-fs: 1.35rem;
   display: grid;
-  gap: 7px;
-  padding: 8px 4px 2px;
+  padding: 4px 4px 2px;
 }
 
 .kb-row {
   display: flex;
   justify-content: center;
-  gap: 5px;
 }
 
 .key {
   flex: 1 1 0;
-  max-width: 2.6rem;
-  height: 2.5rem;
-  padding: 0;
-  border: 3px solid var(--ink);
+  min-width: 0;
+  max-width: calc(var(--key-w) + 2 * var(--kx));
+  height: calc(var(--key-h) + 2 * var(--ky));
+  padding: var(--ky) var(--kx);
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: var(--key-fs);
+  font-weight: 700;
+  line-height: 1;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cap {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: var(--key-border) solid var(--ink);
   border-radius: var(--radius-key);
   background: var(--glass);
-  color: var(--ink);
-  font-size: 1.35rem;
-  font-weight: 700;
   /* Soft keycap: blurred inner shade, never a hard stripe. */
   box-shadow:
     inset 0 -3px 5px rgb(5 38 44 / 0.18),
     0 3px 6px rgb(0 0 0 / 0.35);
+  transition: transform 160ms var(--ease-settle);
 }
 
-.key[data-umlaut] {
+.key[data-umlaut] .cap {
   background: var(--tq-100);
 }
 
 .kb-row[data-umlauts] .key {
-  max-width: 4.2rem;
+  max-width: calc(var(--key-umlaut-w) + 2 * var(--kx));
 }
 
-.key:active,
-.key[data-down] {
+.key:active .cap,
+.key[data-down] .cap {
   transform: translateY(2px) scale(0.94);
   box-shadow: none;
   transition: transform 60ms var(--ease-out);
 }
 
-.key {
-  transition: transform 160ms var(--ease-settle);
-  touch-action: manipulation;
+/* The focus ring sits on the keycap, not the wider hit area. */
+.key:focus-visible {
+  outline: none;
+}
+
+.key:focus-visible .cap {
+  outline: 4px solid var(--gold-300);
+  outline-offset: 2px;
 }
 
 .key-wide {
   max-width: none;
   flex: 1.6 1 0;
-  display: grid;
-  place-items: center;
 }
 
 .key-wide svg {
@@ -922,6 +929,44 @@ p {
   min-height: 2.8rem;
   font-size: 1.25rem;
   margin-top: 4px;
+}
+
+/* Phones: rules after the base keyboard, so they win. */
+@media (max-width: 699px) {
+  /* Keys get the full screen width: the keyboard bleeds into the screen padding
+     and stops 4px from the edge. Row height stays as before (cap + gap). */
+  .kb {
+    --kx: 2px;
+    --ky: 3px;
+    --key-w: 3rem;
+    --key-h: 2.2rem;
+    --key-border: 2px;
+    --key-fs: 1.1rem;
+    padding: 0;
+  }
+
+  .ex .kb {
+    --bleed: calc(1rem - 4px);
+  }
+
+  .name-entry .kb {
+    --bleed: calc(0.75rem - 4px);
+  }
+
+  .kb {
+    margin-inline: calc(-1 * var(--bleed, 0px));
+  }
+
+  .kb-row[data-umlauts] .key {
+    height: calc(2rem + 2 * var(--ky));
+  }
+
+  /* Fertig keeps the screen padding; only the keys bleed. */
+  .kb-done {
+    min-height: 2.5rem;
+    width: auto;
+    margin-inline: var(--bleed, 0px);
+  }
 }
 
 /* ---------- Sort exercise (school legend) ---------- */
@@ -1871,10 +1916,10 @@ b.hl {
 }
 
 @media (min-width: 700px) {
-  .key {
-    max-width: 3.3rem;
-    height: 3rem;
-    font-size: 1.5rem;
+  .kb {
+    --key-w: 3.3rem;
+    --key-h: 3rem;
+    --key-fs: 1.5rem;
   }
 
   .cell {

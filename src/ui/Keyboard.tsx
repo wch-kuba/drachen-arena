@@ -4,6 +4,8 @@ import { IconBackspace } from './art.tsx'
 
 // German layout (QWERTZ), Ä Ö Ü ß always visible. No autocorrect, no system keyboard.
 // Umlauts get their own row so letter keys stay wide enough for small fingers on a phone.
+// Each button is a gapless hit area; the visible keycap (.cap) sits inside it, so a tap
+// between two caps still lands on a key.
 // A hardware keyboard (iPad keyboard case, desktop) types into the same answer.
 const ROWS = [
   ['ä', 'ö', 'ü', 'ß'],
@@ -76,9 +78,11 @@ export function Keyboard({ upper, onKey, onBackspace, onShift, onDone, canSubmit
               data-umlaut={upper ? '' : undefined}
               onClick={onShift}
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 4l8 9h-4.5v7h-7v-7H4z" fill={upper ? 'currentColor' : 'none'} />
-              </svg>
+              <span class="cap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 4l8 9h-4.5v7h-7v-7H4z" fill={upper ? 'currentColor' : 'none'} />
+                </svg>
+              </span>
             </button>
           )}
           {row.map((k) => (
@@ -92,7 +96,7 @@ export function Keyboard({ upper, onKey, onBackspace, onShift, onDone, canSubmit
                 onKey(show(k))
               }}
             >
-              {show(k)}
+              <span class="cap">{show(k)}</span>
             </button>
           ))}
           {i === 3 && (
@@ -106,7 +110,9 @@ export function Keyboard({ upper, onKey, onBackspace, onShift, onDone, canSubmit
                 onBackspace()
               }}
             >
-              <IconBackspace />
+              <span class="cap">
+                <IconBackspace />
+              </span>
             </button>
           )}
         </div>

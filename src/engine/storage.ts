@@ -2,9 +2,10 @@
 // Keys: meta, items, progress, profile. All small enough to read and write whole.
 
 import { createStore, get, set, setMany, update, type UseStore } from 'idb-keyval'
-import type { Item, Profile, Progress } from './types.ts'
+import { EGG_COST, UNLOCK_ORDER } from './rewards.ts'
+import type { ExerciseType, Item, Profile, Progress } from './types.ts'
 
-export const SCHEMA = 1
+export const SCHEMA = 2
 
 interface Meta {
   schema: number
@@ -17,16 +18,37 @@ export interface Data {
 }
 
 /** Step n migrates schema n → n + 1. Add one here whenever a stored shape changes. */
-const MIGRATIONS: Record<number, (db: UseStore) => Promise<void>> = {}
+const MIGRATIONS: Record<number, (db: UseStore) => Promise<void>> = {
+  // 1 → 2 (Part 6): real rewards. Eggs fill with crystals, lands open one per hatch.
+  // Nothing is taken away: every land the child already played stays open.
+  1: async (s) => {
+    const old = await get<Record<string, unknown>>('profile', s)
+    if (!old) return
+    const [items, progress] = await Promise.all([
+      get<Item[]>('items', s),
+      get<Record<string, Progress>>('progress', s),
+    ])
+    const played = new Set((items ?? []).filter((i) => progress?.[i.id]?.lastSeen).map((i) => i.type))
+    const crystals = typeof old.crystals === 'number' ? old.crystals : 0
+    const profile: Profile = {
+      childName: typeof old.childName === 'string' ? old.childName : '',
+      crystals,
+      eggCrystals: crystals % EGG_COST,
+      rounds: 0,
+      dragons: [],
+      unlockedWorlds: UNLOCK_ORDER.filter((l) => l === UNLOCK_ORDER[0] || played.has(l)),
+    }
+    await set('profile', profile, s)
+  },
+}
 
 export const emptyProfile = (): Profile => ({
   childName: '',
   crystals: 0,
-  points: 0,
-  eggs: 0,
-  eggProgress: 0,
+  eggCrystals: 0,
+  rounds: 0,
   dragons: [],
-  unlockedWorlds: ['laute', 'mehrzahl', 'luecke'],
+  unlockedWorlds: [UNLOCK_ORDER[0]] as ExerciseType[],
 })
 
 let db: UseStore | undefined

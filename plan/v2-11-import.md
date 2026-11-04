@@ -15,11 +15,11 @@
   | ie | Biene | Biene | | 🐝 |
 
 - [ ] Bundle SheetJS (lazy-loaded, but in the precache) so import works offline.
-- [ ] File picker (`.xlsx`, `.csv`); works with Files app / iCloud Drive on the iPhone.
+- [ ] File picker (`.xlsx`, `.csv`); works with Files app / iCloud Drive on the iPad and iPhone.
 - [ ] Parse → validate → preview table: new / changed / duplicate / error (with reason).
 - [ ] Import only the valid rows; show the errors so the parent can fix them.
 - [ ] Imported items get `source: 'parent'` and an optional tag (e.g. the import date).
 - [ ] Also accept CSV with `;` separator (German Excel default).
 
 ## Done when
-The parent fills in the template on a phone or laptop, imports it on the iPhone, and the words appear in the game.
+The parent fills in the template on a phone or laptop, imports it on the iPad, and the words appear in the game.

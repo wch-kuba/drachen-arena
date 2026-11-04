@@ -1,12 +1,12 @@
 # Part 8 – Test & release v1
 
-**Goal:** v1 is solid on the kid's real iPhone and the first session goes well.
+**Goal:** v1 is solid on the kid's real iPad (main device) and iPhone and the first session goes well.
 
 ← [Back to plan](../PLAN.md)
 
 ## Tasks
 
-### Test on iPhone
+### Test on iPad and iPhone
 - [ ] Fresh install from Safari → home screen.
 - [ ] Airplane mode: full round in every exercise.
 - [ ] Audio works offline (German voice present).
@@ -15,6 +15,7 @@
 - [ ] Close the app mid-round → progress kept.
 - [ ] Deploy an update → prompt shows → update applies without losing progress.
 - [ ] Low Power Mode / small iPhone screen (SE size) look OK.
+- [ ] iPad portrait and landscape, incl. rotating mid-exercise; install PWA on the iPad.
 - [ ] Run `/impeccable audit` + `/impeccable polish` once.
 
 ### First session

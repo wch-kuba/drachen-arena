@@ -16,7 +16,7 @@ import { Feedback, NextButton, type Play, RightFeedback } from '../Exercise.tsx'
 
 const isLetter = (s: string) => /\p{L}/u.test(s)
 
-export function Sentence({ item, attempt: a, submit, next, anchor, ledge }: Play) {
+export function Sentence({ item, attempt: a, submit, next, anchor }: Play) {
   const chars = [...normalize(item.prompt)]
   const all = units(item.prompt)
   const [marks, setMarks] = useState<Record<number, Laut>>({})
@@ -135,7 +135,6 @@ export function Sentence({ item, attempt: a, submit, next, anchor, ledge }: Play
       </div>
 
       <div class="ex-right">
-        {ledge}
         <div class="legend">
           {(['Selbstlaut', 'Zwielaut', 'Umlaut'] as Laut[]).map((l) => (
             <button type="button" class={COLOR[l]} disabled={a.done} onClick={() => paint(l)}>

@@ -34,3 +34,4 @@ audio-samples/
 
 # Generated seed table for the parent review (npm run seed:table)
 seed-review.md
+art-raw/

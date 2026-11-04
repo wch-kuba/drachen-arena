@@ -39,7 +39,7 @@ Five exercise types:
 1. **Selbstlaute, Zwielaute, Umlaute**: choose the category (3 options) for a letter/letter group; plus a sentence mode mirroring the school test (tap letters in a sentence and sort them).
 2. **Einzahl und Mehrzahl**: see singular + picture, type the plural. Emphasis on umlaut plurals.
 3. **Fehlende Buchstaben**: type the missing letter(s) in a word.
-4. **Kurze und lange Selbstlaute**: choose short or long. Needs audio (German TTS via `speechSynthesis`, de-DE).
+4. **Kurze und lange Selbstlaute**: choose short or long. Needs audio (see Audio below).
 5. **Wörter mit ie**: see a picture, type the word.
 
 - Exercises 2, 3, 5 are typed; 1 and 4 are choice-based. Typing uses a **custom in-app keyboard** (large keys, Ä Ö Ü ß always visible, no autocorrect), not the iOS system keyboard.
@@ -54,6 +54,8 @@ Five exercise types:
 - Rewards: points and crystals for correct answers, eggs that hatch into collectible dragons, new worlds/levels unlocked by progress.
 - Progress stored locally on the device (IndexedDB, `navigator.storage.persist()`), with JSON backup export/import in the parent panel. Installed-PWA storage is separate from Safari's, so all parent work happens inside the installed app.
 - Works offline after first load. Internet only needed for first install and updates.
+- **Audio:** every spoken text is an **AI-generated clip** (Gemini TTS, `gemini-3.8-flash-tts`, one fixed German voice), generated at build time on the parent's Mac and bundled as MP3, so it plays offline. The device's own voice (`speechSynthesis`, de-DE) was too robotic on the iPad and is only a fallback for text without a clip (e.g. parent-added words until their clips are generated, see Part 14).
+  - Terms (checked 2026-11-04): Google claims no ownership of the output. Paid tier is required for EEA users and keeps prompts out of training. The Gemini API terms forbid API clients "directed towards or likely to be accessed by individuals under the age of 18"; our API client is the parent's build script and the child's app never calls Gemini, which we judge fine for personal use. **Before any commercial release:** get a legal read on this or regenerate the clips with a provider that allows children's apps (the pipeline is provider-independent).
 - Word pictures: **AI-generated illustrations** in one consistent style, bundled with the app for the seed content. A fallback for parent-added words (emoji or photo) is still to be decided.
 - Seed content: about 150–200 Klasse 2 words across the five exercises, written by us and reviewed by the parent.
 

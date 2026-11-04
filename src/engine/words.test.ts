@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { revealCount, startAttempt, submit } from './attempt.ts'
 import { record } from './leitner.ts'
 import type { Item } from './types.ts'
-import { gapParts, isSentence, lauteCode, lautOf, pluralMistake, targetVowel, umlautChange, units, wordOf } from './words.ts'
+import { gapParts, indefinite, isSentence, lauteCode, lautOf, pluralMistake, targetVowel, umlautChange, units, wordOf } from './words.ts'
 
 const item = (type: Item['type'], prompt: string, answer: string): Item => ({
   id: prompt,
@@ -38,6 +38,13 @@ describe('laute', () => {
 })
 
 describe('words', () => {
+  it('picks ein or eine from the article', () => {
+    expect(indefinite('der Hut')).toBe('ein')
+    expect(indefinite('das Haus')).toBe('ein')
+    expect(indefinite('die Hand')).toBe('eine')
+    expect(indefinite('Hand')).toBe('ein')
+  })
+
   it('finds the vowel to judge', () => {
     expect(targetVowel('Schaf')).toEqual({ at: 3, len: 1 })
     expect(targetVowel('Biene')).toEqual({ at: 1, len: 2 })

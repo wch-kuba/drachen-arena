@@ -1,0 +1,7 @@
+
+# <type>: <subject>   (≤ 50 chars, imperative, no period)
+# types: feat fix chore docs test refactor
+#
+# Why (optional, wrap at 72): what problem, what changed for the child/parent.
+#
+# Plan: plan/v1-0X-….md – task ticked? (yes / n/a)

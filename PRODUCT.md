@@ -61,7 +61,7 @@ Five exercise types:
 - v1: five exercises, seed content, rewards loop, offline install.
 - v2: parent panel (add words/questions, Excel/CSV import via bundled SheetJS with a template file, progress and problem-word view, backup).
 
-**Open decisions:** where generated images come from (tool/pipeline), image fallback for parent-added words, parent-gate mechanism (proposed: long-press + an adult-level sum), production domain on Forge.
+**Open decisions:** where generated images come from (tool/pipeline), image fallback for parent-added words, parent-gate mechanism (proposed: long-press + an adult-level sum). Production domain: https://drachen.webchefs.software.
 
 ## Brand Commitments
 

@@ -15,12 +15,18 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 - [x] No losing crystals, no streak punishment.
 
 ### Eggs & dragons
-- [x] Egg hatching moment: tap the wobbling egg, it cracks open, the baby sits in its shell halves. Sound moved to Part 7 (sound effects with the other assets).
+- [x] Egg hatching moment (animation + sound): tap the wobbling, knocking egg, it cracks open with a hiccup, the baby sits in its shell halves.
 - [x] Child types a name for the new dragon (custom keyboard, shift on for the first letter).
 - [x] Dragon collection screen: hatched dragons with names and growth, the egg in progress, eggs still to find as silhouettes.
 - [x] ~10–15 dragons in v1: 12 kinds, tinted placeholders until Part 7.
 - [x] Dragon growth: a hatched dragon grows hatchling → young → grown as the child keeps playing (rule to decide, e.g. crystals earned after hatching). Never shrinks. Art from Part 7.
   Rule: young after 10 finished rounds since hatching, grown after 25 ("Wächst in 7 Runden" in the collection).
+
+### Sound effects (decided 2026-11-04, via `/impeccable` when built)
+- [x] Make the effects with ElevenLabs sound effects (`eleven_text_to_sound_v3`, ~10 credits per second) and bundle them as MP3 for offline. Demos in `audio-samples/sfx-*`. → `npm run sfx` (`scripts/gen-sfx.ts`), 10 files in `public/sfx/`, ~310 credits, 380 KB.
+- [x] Style is a mix: **soft** for frequent sounds (right-answer chime, gem landing on the hoard, key tick), **cartoon** for rare moments (hint bubble "blub", round-end coin cascade with slide whistle, egg wobble and hatch with baby-dragon hiccup, entering a land). Never a harsh sound for a mistake.
+- [x] Mute toggle; ambient loops (grotto, dragon snore) only on Home, quiet, off by default. Both switches on Home, saved in the profile.
+- [x] Update DESIGN.md › Sound.
 
 ### Worlds
 - [x] 5 lands, one per exercise, on a world map / home screen.

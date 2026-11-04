@@ -367,7 +367,12 @@ Motion has weight and settles. Two easings: `ease-out` (cubic-bezier(0.16, 1, 0.
 **The One Blink Rule.** Only a new egg may blink. Nothing else flashes, pulses for attention or loops for emphasis.
 
 ### Sound
-Planned, not built yet (moved to Part 7 with the other assets): short optional effects with a mute toggle. Right answer = a soft glassy chime. A wrong answer never gets a harsh sound.
+Short effects made with ElevenLabs sound effects (`npm run sfx`, prompts in `scripts/gen-sfx.ts`), bundled as mono MP3 in `public/sfx/` and played with Web Audio, so they start at once and work offline. Loudness is normalized per effect: frequent sounds sit low, ambience lowest.
+- **Soft, for frequent moments:** a glassy chime on a right answer, a light clink when the gem lands on the hoard, a tiny tap on every key.
+- **Cartoon, for rare moments:** a round "blub" with the first hint, a coin cascade with a slide whistle at the round summary, a knock on every second rock of the ready egg, an eggshell crack with a baby-dragon hiccup on the hatch tap, a sparkling whoosh when entering a land.
+- **Ambience:** the grotto's water and the dragon's snore, looped quietly, only on Home, off by default.
+- **Switches:** two round buttons next to the crystal counter on Home: Töne (speaker; crossed speaker when off) and Meeresrauschen (waves, shown only while Töne is on). Off is clouded glass with soft ink. The voice is never muted by them.
+- A wrong answer never gets a harsh sound; only the hint's "blub".
 
 ## Do's and Don'ts
 

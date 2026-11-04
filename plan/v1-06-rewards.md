@@ -38,7 +38,7 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 - [x] A list of short German praise lines ("Super!", "Stark gemacht!", "Du bist ein Drachenprofi!"), rotating.
 - [x] Gentle wrong-answer lines, leading the first hint ("Noch nicht ganz.", "Gleich hast du es!").
 - [x] Round summary: crystals, egg progress, dragon of the day.
-- [ ] Voice clips for the new texts (praise, gentle lines, name questions): next `npm run audio` run (Part 5 quota). Until then the device voice reads them.
+- [ ] Voice clips for the new texts (praise, gentle lines, name questions): next `npm run audio` run (ElevenLabs, see PRODUCT.md › Audio). Until then the device voice reads them.
 
 ## Done when
 Playing 5 rounds hatches an egg, unlocks a land, and everything survives an app restart.

@@ -32,8 +32,13 @@ export function ruleOf(item: Item): string {
   return change ? T.umlautRule(change.from, change.to) : DEFAULT_HINT[item.type]
 }
 
-export function spokenTexts(items: Item[]): string[] {
-  const texts = [
+/**
+ * Every spoken text, by who says it. The narrator (one voice) reads instructions, tips and
+ * feedback; words, plurals, sounds and sentences come in several voices, picked at random
+ * each time (decided 2026-11-04, see PRODUCT.md › Audio).
+ */
+export function spokenRoles(items: Item[]): { narrator: string[]; words: string[] } {
+  const narrator = [
     ...Object.values(ASK),
     ASK_SATZ,
     ASK_GROUP,
@@ -52,12 +57,18 @@ export function spokenTexts(items: Item[]): string[] {
     T.satzColor,
     T.satzShow,
     ...Object.values(DEFAULT_HINT).map(T.hintRule),
-    ...items.flatMap((i) => [
-      ...askParts(i),
-      wordOf(i),
-      ...(i.type === 'mehrzahl' ? [i.answer] : []),
-      T.hintRule(ruleOf(i)),
-    ]),
+    ...items.flatMap((i) => [askOf(i), T.hintRule(ruleOf(i))]),
   ]
-  return [...new Set(texts.map(speechKey))].filter(Boolean)
+  const words = items.flatMap((i) => [wordOf(i), ...(i.type === 'mehrzahl' ? [i.answer] : [])])
+  const n = unique(narrator)
+  const said = new Set(n)
+  return { narrator: n, words: unique(words).filter((w) => !said.has(w)) }
 }
+
+/** All spoken texts, each once. */
+export function spokenTexts(items: Item[]): string[] {
+  const { narrator, words } = spokenRoles(items)
+  return [...narrator, ...words]
+}
+
+const unique = (texts: string[]) => [...new Set(texts.map(speechKey))].filter(Boolean)

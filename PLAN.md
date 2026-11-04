@@ -20,7 +20,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 - [x] **Part 6 – Rewards & worlds** → [plan/v1-06-rewards.md](plan/v1-06-rewards.md)
   Crystals, eggs, dragons, worlds, naming, greeting.
 - [ ] **Part 7 – Images** → [plan/v1-07-images.md](plan/v1-07-images.md)
-  AI-generated word pictures, dragons, eggs, worlds, app icon.
+  AI-generated word pictures, dragons (poses + growth), eggs, worlds, app icon, free library assets; art built into the screens, critique + polish.
 - [ ] **Part 8 – Test & release v1** → [plan/v1-08-release.md](plan/v1-08-release.md)
   Tested on the real iPad and iPhone, kid plays first session.
 

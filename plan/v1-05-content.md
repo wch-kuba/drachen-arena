@@ -18,7 +18,7 @@
 - [x] Independent review by a fresh agent (2026-11-04): no German errors. Applied: Lücke gaps that made another known word swapped (B_ch, M_s, T_r, Schw_n, B_r, Kr_z → Käfer, Kürbis, Geige, Zähne, Teufel, Zaun); Kurz/lang + ck, doubled vowel, Dehnungs-h (Jacke, Decke, Zoo, Haar, Bahn, Huhn); Mehrzahl + Männer, Dächer, Blätter and traps Bären, Türen (`umlaut-plural` now comes from the real vowel change); Igel sentence fixed. Skipped: "several consonants → kurz" hint (Mond, Obst break it), cutting classroom words like Radiergummi.
 - [x] ~~Parent reviews `seed-review.md`~~ The parent doesn't read German (decided 2026-11-04): the independent review above counts as the language check.
 - [ ] Parent sends photos of the current school worksheets / Wörterliste; compare topics and words with the seed and apply the fixes.
-- [ ] Voice clips for the seed (169 new texts; Gemini Tier 1 caps at 100 requests a day): run `npm run audio` on two days (or `-- --fill` with a second model). Until then the new texts use the device voice. Run it after the worksheet fixes, so few clips are wasted.
+- [ ] Voice clips for the seed with ElevenLabs (decided 2026-11-04, PRODUCT.md › Audio): Knurps narrates in 3 tones, every word in Kermy/Hopsi/Emmy/Knurps, random clip per play. Made 2026-11-04: 1,032 clips for 268 texts (4,648 credits). Word voices and the Knurps narration heard and approved on the iPad (parent, 2026-11-04). `npm run audio` makes only missing clips, so rerun it after the worksheet fixes. Parent listens through every voice before Part 5 is ticked.
 
 ## Done when
 The seed has passed the independent language review, and it has been compared with photos of the current school worksheets and the gaps fixed.

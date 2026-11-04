@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "audio": "node --env-file-if-exists=.env.local scripts/gen-audio.ts",
+    "audio": "node --env-file=.env.local scripts/gen-audio.ts",
     "seed:table": "node scripts/seed-table.ts",
     "sfx": "node --env-file-if-exists=.env.local scripts/gen-sfx.ts"
   },
@@ -17,6 +17,7 @@
     "preact": "^11.0.2"
   },
   "devDependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.76.0",
     "@preact/preset-vite": "^2.10.6",
     "@types/node": "^24.19.2",
     "fake-indexeddb": "^6.2.7",

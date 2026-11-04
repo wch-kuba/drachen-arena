@@ -133,4 +133,17 @@ describe('spoken texts', async () => {
     expect(new Set(texts).size).toBe(texts.length)
     for (const p of askParts(TEST_ITEMS[0])) expect(texts).toContain(p)
   })
+
+  it('splits narrator lines from words', async () => {
+    const { spokenRoles } = await import('../content/speech.ts')
+    const { narrator, words } = spokenRoles(TEST_ITEMS)
+    expect(narrator).toContain('Schreib die Mehrzahl.')
+    expect(narrator).toContain('Tipp: Aus u wird ü.')
+    expect(narrator).toContain('Stark gemacht!')
+    expect(words).toContain('der Hut')
+    expect(words).toContain('Hüte')
+    expect(words).toContain('Mütze')
+    expect(words).toContain('ei')
+    expect(words.some((w) => narrator.includes(w))).toBe(false)
+  })
 })

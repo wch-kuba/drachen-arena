@@ -39,9 +39,8 @@ export const EFFECTS: Record<string, Effect> = {
   wobble: { prompt: `An egg wobbling and rocking on coins, small wooden knocks and a curious little rattle. ${TOON}`, seconds: 1.6, lufs: -22 },
   hatch: { prompt: `An eggshell cracking open, then a tiny baby dragon’s cute hiccup. ${TOON}`, seconds: 2.5, lufs: -20 },
   land: { prompt: `Entering a magical underwater cave: a short sparkling whoosh with soft bubbles. ${TOON}`, seconds: 1.5, lufs: -22 },
-  // Ambience on Home only, off by default.
+  // Quiet water under the background music (Home and reward only, off by default).
   grotto: { prompt: 'Calm underwater sea grotto ambience: soft distant water, gentle drips, faint bubbles. Seamless, no music.', seconds: 12, loop: true, lufs: -34 },
-  snore: { prompt: 'A small cute dragon softly snoring and breathing while asleep, slow and peaceful, cartoon style.', seconds: 8, loop: true, lufs: -34 },
 }
 
 async function make(name: string, e: Effect, key: string) {

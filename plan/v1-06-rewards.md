@@ -29,6 +29,15 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 - [x] Update DESIGN.md › Sound.
 - [x] Key click (2026-11-05): the ElevenLabs tick (0.5 s of soft noise, no attack) was dropped 2026-11-04 as irritating. Brought back as a synthesized 45 ms click (`npm run click` → `public/sfx/key.wav`) with a small random pitch per press.
 
+### Background music (decided 2026-11-05, via `/impeccable` when built)
+- [x] Dragon music on **Home and the round reward only**; exercises stay quiet so the voice clips (Kurz/lang, Laute) are clear.
+- [x] Mood: lively dragon adventure, like an animated dragon-rider film theme. Not ambient (too sleepy for a kid), not cute. Heroic D-dorian theme lifting into a major chorus, ~105 BPM, galloping strings like wingbeats, big drums, horns and trombones on the tune, fiddle and whistle answering.
+- [x] Samples with ElevenLabs Music (`music_v1`, paid plan, commercial use): 4 rounds of 3 (calm grotto → epic → lively → dragon + lively), parent picked **music-j-ride** (2026-11-05). Prompt and loop points in `scripts/gen-music.ts` (`npm run music`; `--generate` makes a new take). Loop: cut at 72.0 s before the closing decay, last bar (2.3 s) crossfaded into the opening → 69.7 s seamless loop.
+- [x] Bundle the loop as MP3 for offline, loudness normalized to sit under the voice. → `public/sfx/music.mp3`, 837 KB, -27 LUFS (voice ≈ -21), precached.
+- [x] One atmosphere switch **Musik** replaces Meeresrauschen: music is the main layer, the water plays at half level underneath, the snore is dropped.
+- [x] Ducks under every voice clip, fades in/out, off by default, saved in the profile (`profile.ambient`). Checked in WebKit (iPad + iPhone viewports): starts on the switch, stops in a land, comes back on Home. Real-device listen still open.
+- [x] Update DESIGN.md › Sound.
+
 ### Worlds
 - [x] 5 lands, one per exercise, on a world map / home screen.
 - [x] Land 1 open at the start; the next one unlocks after N finished rounds or a set number of crystals. → Mehrzahl open at start; each hatch opens the next (Lücke → i/ie → Laute → Kurz/lang). Lands already played before this update stay open (storage schema 2).

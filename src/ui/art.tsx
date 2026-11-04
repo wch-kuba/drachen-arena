@@ -178,10 +178,13 @@ export const IconSoundOff = () => (
   </svg>
 )
 
-/** Grotto ambience: three gentle sea waves. */
-export const IconWaves = () => (
+/** The atmosphere switch (background music with quiet water): two beamed notes. */
+export const IconMusic = () => (
   <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
-    <path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+    <path d="M9 17.5V6l11-2.5V15" />
+    <path d="M9 9.5l11-2.5" />
+    <circle cx="6.5" cy="17.5" r="2.5" />
+    <circle cx="17.5" cy="15" r="2.5" />
   </svg>
 )
 

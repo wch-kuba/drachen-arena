@@ -31,3 +31,6 @@ dist-ssr
 .impeccable/config.local.json
 .impeccable/hook.cache.json
 audio-samples/
+
+# Generated seed table for the parent review (npm run seed:table)
+seed-review.md

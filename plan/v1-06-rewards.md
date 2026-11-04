@@ -24,9 +24,10 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 
 ### Sound effects (decided 2026-11-04, via `/impeccable` when built)
 - [x] Make the effects with ElevenLabs sound effects (`eleven_text_to_sound_v3`, ~10 credits per second) and bundle them as MP3 for offline. Demos in `audio-samples/sfx-*`. → `npm run sfx` (`scripts/gen-sfx.ts`), 10 files in `public/sfx/`, ~310 credits, 380 KB.
-- [x] Style is a mix: **soft** for frequent sounds (right-answer chime, gem landing on the hoard; the key tick was dropped 2026-11-04, too irritating), **cartoon** for rare moments (hint bubble "blub", round-end coin cascade with slide whistle, egg wobble and hatch with baby-dragon hiccup, entering a land). Never a harsh sound for a mistake.
+- [x] Style is a mix: **soft** for frequent sounds (right-answer chime, gem landing on the hoard, key click), **cartoon** for rare moments (hint bubble "blub", round-end coin cascade with slide whistle, egg wobble and hatch with baby-dragon hiccup, entering a land). Never a harsh sound for a mistake.
 - [x] Mute toggle; ambient loops (grotto, dragon snore) only on Home, quiet, off by default. Both switches on Home, saved in the profile.
 - [x] Update DESIGN.md › Sound.
+- [x] Key click (2026-11-05): the ElevenLabs tick (0.5 s of soft noise, no attack) was dropped 2026-11-04 as irritating. Brought back as a synthesized 45 ms click (`npm run click` → `public/sfx/key.wav`) with a small random pitch per press.
 
 ### Worlds
 - [x] 5 lands, one per exercise, on a world map / home screen.

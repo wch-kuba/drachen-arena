@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'preact/hooks'
 import { UpdatePrompt } from './UpdatePrompt.tsx'
 import { LANDS } from './lands.ts'
-import { TEST_ITEMS } from './content/test-items.ts'
+import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
 import { Collection } from './screens/Collection.tsx'
 import { Home } from './screens/Home.tsx'
 import { Reward } from './screens/Reward.tsx'
 import { Session } from './screens/Session.tsx'
 
-// Home and the five exercise rounds run on the engine (test items until Part 5).
+// Home and the five exercise rounds run on the engine with the seed content (Part 5).
 // Reward, hatching and the collection still show demo data until Part 6.
 // `#/vorschau` lists every key screen for the parent to review; `#/<screen>` opens one.
 
@@ -18,7 +18,7 @@ const SCREENS = {
   mehrzahl: 'Mehrzahl',
   luecke: 'Fehlende Buchstaben',
   kurzlang: 'Kurz oder lang',
-  ie: 'Wörter mit ie',
+  ie: 'i oder ie?',
   belohnung: 'Belohnung',
   schluepfen: 'Ei schlüpft',
   drachen: 'Drachen',
@@ -109,7 +109,7 @@ export function App() {
   }
 
   return (
-    <GameProvider seed={TEST_ITEMS}>
+    <GameProvider seed={SEED}>
       {body}
       <UpdatePrompt />
     </GameProvider>

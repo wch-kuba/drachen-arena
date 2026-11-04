@@ -1,5 +1,5 @@
-// Test items for the engine and the five exercise screens (Parts 3–4). Part 5 replaces these
-// with the reviewed seed. Words are our own picks of common Klasse 2 vocabulary.
+// Fixed test items for the engine tests (Parts 3–4). The app plays the seed (seed.ts); keep these
+// stable so the tests don't change with the content.
 
 import type { ExerciseType, Item } from '../engine/types.ts'
 import { lauteCode, lautOf } from '../engine/words.ts'

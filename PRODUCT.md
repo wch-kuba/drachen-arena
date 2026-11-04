@@ -40,13 +40,13 @@ Five exercise types:
 2. **Einzahl und Mehrzahl**: see singular + picture, type the plural. Emphasis on umlaut plurals.
 3. **Fehlende Buchstaben**: type the missing letter(s) in a word.
 4. **Kurze und lange Selbstlaute**: choose short or long. Needs audio (see Audio below).
-5. **Wörter mit ie**: see a picture, type the word.
+5. **Wörter mit ie**: see a picture, type the word. Short-i words (Fisch, Kissen) are mixed in, so the child chooses: long i → ie, short i → i. Land label: "i oder ie?".
 
 - Exercises 2, 3, 5 are typed; 1 and 4 are choice-based. Typing uses a **custom in-app keyboard** (large keys, Ä Ö Ü ß always visible, no autocorrect), not the iOS system keyboard.
 - **Answer strictness:** capitalization matters but is handled gently. A lowercase noun ("hüte") counts as almost right: "Fast! Nomen schreibt man groß." The child fixes it and still earns the reward. An article is never required.
 - **Exercise 1 has two modes:** (A) a single letter or letter group → pick 1 of 3 categories; (B) school-test style, where the child taps letters in a sentence and sorts them gelb (Selbstlaut) / grün (Zwielaut) / blau (Umlaut).
 - **Exercise 4 marks:** dot under a short vowel (•), line under a long vowel (–), as in Klett materials. The child taps • or –.
-- **Exercise 3 scope (v1):** the gap is a single vowel or umlaut, or a vowel group (ie, ei, au, eu, äu). No ck/tz/double-consonant gaps in v1.
+- **Exercise 3 scope (v1):** the gap is a single vowel or umlaut, or a vowel group (ie, ei, ai, au, eu, äu; ai added 2026-11-04 as Merkwörter: Kaiser, Hai). No ck/tz/double-consonant gaps in v1.
 - **Sessions:** 10 tasks per round, no timers, no daily cap. Every instruction has a speaker button.
 - **Personalization:** the parent sets the child's name in the app (never hard-coded) and the game greets the child by it. When an egg hatches, the child types a name for the dragon. The child's favorite colors, animals and themes, which the parent will supply, shape the dragons and worlds.
 - No syllable splitting (Silbentrennung). Explicitly out of scope.

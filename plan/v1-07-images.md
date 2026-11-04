@@ -33,10 +33,10 @@
 - [x] Map image files to item ids in the content. `image` keys come from the word in `seed.ts`; `src/content/image-manifest.json` maps keys to files.
 
 ### Put the art into the screens (via `/impeccable`)
-- [ ] Replace the SVG placeholders: hoard scene, hoard ledge, dragon niches (collection), egg + hatch screen, reward screen, land cards / world map, word pictures in all five exercises.
-- [ ] Adjust layout, sizes and cropping around the real art on iPhone, iPad portrait and iPad landscape.
-- [ ] Animate the hero: idle breathing/blink on home, happy pose on right answers and rewards, hatch sequence (respect `prefers-reduced-motion`).
-- [ ] Update DESIGN.md "Drawn art and illustration": placeholders gone, poses/growth/animation rules recorded.
+- [x] Replace the SVG placeholders: hoard scene, hoard ledge, dragon niches (collection), egg + hatch screen, reward screen, land cards / world map, word pictures in all five exercises.
+- [x] Adjust layout, sizes and cropping around the real art on iPhone, iPad portrait and iPad landscape. Checked in WebKit at 390×844, 820×1180 and 1180×820.
+- [x] Animate the hero: idle breathing/blink on home, happy pose on right answers and rewards, hatch sequence (respect `prefers-reduced-motion`). Decided 2026-11-04: no dragon on the exercise screens (it took task space and was tiny on the phone); the happy pose shows on the round summary and the hatch greeting.
+- [x] Update DESIGN.md "Drawn art and illustration": placeholders gone, poses/growth/animation rules recorded.
 
 ### Design review after the art is in
 - [ ] `/impeccable critique` of every screen with the real art (separate from the device tests in Part 8).

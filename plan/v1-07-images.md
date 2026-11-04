@@ -16,6 +16,7 @@
 - [ ] **Dragons:** 10–15 dragons + matching eggs.
 - [ ] **Worlds:** 5 land backgrounds + world map.
 - [ ] **App icon:** 1024 master → 180 apple-touch-icon, 192/512 manifest icons, plus splash.
+- [ ] **Sound effects** (moved from Part 6): soft glassy chime for a right answer, egg crack/hatch, with a mute toggle (DESIGN.md › Sound). CC0 or similar library sounds only; record them in `ASSETS.md`.
 - [ ] Convert to WebP (`cwebp`), sized ~512px for words. Keep the total bundle small (target < 15 MB).
 - [ ] Map image files to item ids in the content.
 

@@ -51,7 +51,12 @@ Five exercise types:
 - **Personalization:** the parent sets the child's name in the app (never hard-coded) and the game greets the child by it. When an egg hatches, the child types a name for the dragon. The child's favorite colors, animals and themes, which the parent will supply, shape the dragons and worlds.
 - No syllable splitting (Silbentrennung). Explicitly out of scope.
 - Wrong answers never punish: graded hints (rule hint → partial reveal → show answer and retype). Wrong words come back more often (per-word spaced repetition).
-- Rewards: points and crystals for correct answers, eggs that hatch into collectible dragons, new worlds/levels unlocked by progress.
+- Rewards: points and crystals for correct answers, eggs that hatch into collectible dragons that grow (hatchling → young → grown) and show moods (idle, happy, sleeping), new worlds/levels unlocked by progress. Rules (decided 2026-11-04):
+  - Crystals: 3 right on the first try, 2 after one hint, 1 after more help; +10 for every finished round. The crystal total is the score. Nothing is ever taken away.
+  - An egg needs 100 crystals: 3 rounds at best, 5 at worst. One egg at a time; extra crystals carry into the next.
+  - Each hatch opens the next land. Order: Mehrzahl (open at start, the biggest test gap) → Fehlende Buchstaben → i oder ie? → Laute → Kurz oder lang. Each land's egg first hatches that land's own dragon; 12 dragons in v1.
+  - A dragon grows young after 10 finished rounds since hatching, grown after 25. Never shrinks.
+  - The child types their own name on first start (v1); parent mode takes this over in v2.
 - Progress stored locally on the device (IndexedDB, `navigator.storage.persist()`), with JSON backup export/import in the parent panel. Installed-PWA storage is separate from Safari's, so all parent work happens inside the installed app.
 - Works offline after first load. Internet only needed for first install and updates.
 - **Audio:** every spoken text is an **AI-generated clip** (Gemini TTS, `gemini-3.8-flash-tts`, one fixed German voice), generated at build time on the parent's Mac and bundled as MP3, so it plays offline. The device's own voice (`speechSynthesis`, de-DE) was too robotic on the iPad and is only a fallback for text without a clip (e.g. parent-added words until their clips are generated, see Part 14).

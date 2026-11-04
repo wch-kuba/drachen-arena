@@ -38,7 +38,7 @@
 ## 5. Wörter mit ie (typing)
 - [x] Picture only (+ optional audio after try 1 as a hint). Until Part 7 brings the pictures (decided 2026-11-04): a word without a picture is read aloud on open and a big speaker button replaces the picture.
 - [x] Child types the whole word.
-- [x] Hint flow: "Es hat ein langes i…" (+ speaker for the word) → first letter → answer.
+- [x] Hint flow: rule "Langes i schreibt man ie. Kurzes i schreibt man i." (changed in Part 5 for the short-i words; + speaker for the word) → first letter → answer.
 
 Checked in WebKit at iPhone (390×844), iPad portrait (820×1180) and iPad landscape (1180×820): every exercise with a wrong try, hints and a right answer.
 - [x] Checked on the real devices (parent, 2026-11-04, Safari, local preview): iPad portrait and landscape and iPhone, all five lands, keyboard, hints and voice. Found and fixed: a letter with a ring could not be seen as selected.

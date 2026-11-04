@@ -23,6 +23,7 @@
 - [ ] Child types a name for the new dragon (custom keyboard, capital first letter hint).
 - [ ] Dragon collection screen: hatched dragons with names, next eggs as silhouettes.
 - [ ] ~10–15 dragons in v1 (from the kid's favorites).
+- [ ] Dragon growth: a hatched dragon grows hatchling → young → grown as the child keeps playing (rule to decide, e.g. crystals earned after hatching). Never shrinks. Art from Part 7.
 
 ### Worlds
 - [ ] 5 lands, one per exercise, on a world map / home screen.

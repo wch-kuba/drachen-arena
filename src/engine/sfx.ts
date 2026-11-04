@@ -1,12 +1,15 @@
-// Sound effects (plan/v1-06-rewards.md › Sound effects). Bundled MP3s from public/sfx/,
-// made by scripts/gen-sfx.ts. Web Audio, so short sounds start at once and can overlap.
+// Sound effects (plan/v1-06-rewards.md › Sound effects). Bundled from public/sfx/: MP3s made
+// by scripts/gen-sfx.ts, the key click a WAV made by scripts/gen-click.ts (no encoder delay). Web Audio, so short sounds start at once and can overlap.
 // iOS only lets audio start inside a tap, so the context is created and resumed on the
 // first touch or key. Effects are on by default; the Home ambience is off by default.
 
-export type Sfx = 'right' | 'gem' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land'
+export type Sfx = 'right' | 'gem' | 'key' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land'
 type Loop = 'grotto' | 'snore'
 
-const ALL: (Sfx | Loop)[] = ['right', 'gem', 'hint', 'round', 'wobble', 'hatch', 'land', 'grotto', 'snore']
+const ALL: (Sfx | Loop)[] = ['right', 'gem', 'key', 'hint', 'round', 'wobble', 'hatch', 'land', 'grotto', 'snore']
+const FILE: Partial<Record<Sfx | Loop, string>> = { key: 'key.wav' }
+/** Sounds repeated in quick runs get a small random pitch, so typing doesn't sound mechanical. */
+const VARY: Partial<Record<Sfx, number>> = { key: 0.06 }
 
 let ctx: AudioContext | undefined
 const buffers = new Map<string, Promise<AudioBuffer | undefined>>()
@@ -19,7 +22,7 @@ function load(name: string) {
   let b = buffers.get(name)
   if (!b) {
     const c = ctx
-    b = fetch(`${import.meta.env.BASE_URL}sfx/${name}.mp3`)
+    b = fetch(`${import.meta.env.BASE_URL}sfx/${FILE[name as Sfx | Loop] ?? `${name}.mp3`}`)
       .then((r) => r.arrayBuffer())
       .then((a) => c.decodeAudioData(a))
       .catch(() => undefined)
@@ -60,6 +63,8 @@ export function play(name: Sfx) {
     if (!buf || !on) return
     const src = c.createBufferSource()
     src.buffer = buf
+    const vary = VARY[name]
+    if (vary) src.playbackRate.value = 1 + (Math.random() * 2 - 1) * vary
     src.connect(c.destination)
     src.start()
   })

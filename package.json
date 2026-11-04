@@ -11,7 +11,8 @@
     "audio": "node --env-file=.env.local scripts/gen-audio.ts",
     "seed:table": "node scripts/seed-table.ts",
     "images": "node --env-file=.env.local scripts/gen-images.ts",
-    "sfx": "node --env-file-if-exists=.env.local scripts/gen-sfx.ts"
+    "sfx": "node --env-file-if-exists=.env.local scripts/gen-sfx.ts",
+    "click": "node scripts/gen-click.ts"
   },
   "dependencies": {
     "idb-keyval": "^6.3.0",

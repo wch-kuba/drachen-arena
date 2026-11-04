@@ -1,0 +1,1192 @@
+{
+  "img/dragon/echo-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9084dca847d6",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/echo-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "6d1624b7ccf2",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/koralle-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "b27a58a4b101",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/kristall-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "7949b5f3900a",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/lagune-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d6fda7d42598",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/muschel-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "5aa13282320e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/perle-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "78d4ecb19c53",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schatz-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "4ca5b2e80f55",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/schaum-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "f8a1edf16655",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tang-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27048d0f91bd",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/tiefsee-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "207fce072ad8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/welle-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c32f41b36605",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-04"
+  },
+  "img/dragon/wrack-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-04"
+  },
+  "img/egg/echo.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/koralle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/kristall.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/lagune.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/muschel.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/perle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/schatz.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/schaum.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/tang.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/tiefsee.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/welle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/egg/wrack.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-04"
+  },
+  "img/land/ie.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "4b16bc816798",
+    "made": "2026-11-04"
+  },
+  "img/land/kurzlang.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c3e7c86caf4d",
+    "made": "2026-11-04"
+  },
+  "img/land/laute.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "639709b88498",
+    "made": "2026-11-04"
+  },
+  "img/land/luecke.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "33fdfaecdc1f",
+    "made": "2026-11-04"
+  },
+  "img/land/map.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "589b9c4d756c",
+    "made": "2026-11-04"
+  },
+  "img/land/mehrzahl.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "b37a0873add2",
+    "made": "2026-11-04"
+  },
+  "img/word/apfel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "93e9ee7ddcbf",
+    "made": "2026-11-04"
+  },
+  "img/word/auto.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6f27d5a579e3",
+    "made": "2026-11-04"
+  },
+  "img/word/baer.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "075930dbcbba",
+    "made": "2026-11-04"
+  },
+  "img/word/baeume.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ba9793e7b0dd",
+    "made": "2026-11-04"
+  },
+  "img/word/ball.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "458638811375",
+    "made": "2026-11-04"
+  },
+  "img/word/bauch.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "0806dcfd463a",
+    "made": "2026-11-04"
+  },
+  "img/word/baum.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "b47e9c829cb9",
+    "made": "2026-11-04"
+  },
+  "img/word/bett.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "c913a790b379",
+    "made": "2026-11-04"
+  },
+  "img/word/biene.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "e2e4f611ea20",
+    "made": "2026-11-04"
+  },
+  "img/word/birne.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4e2c8dd7bee7",
+    "made": "2026-11-04"
+  },
+  "img/word/blatt.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "99194897db06",
+    "made": "2026-11-04"
+  },
+  "img/word/blume.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "85cba71ee560",
+    "made": "2026-11-04"
+  },
+  "img/word/brief.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "e4c49fb9d381",
+    "made": "2026-11-04"
+  },
+  "img/word/brille.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "dc12f6b9707f",
+    "made": "2026-11-04"
+  },
+  "img/word/broetchen.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "aff7924c8db6",
+    "made": "2026-11-04"
+  },
+  "img/word/bruecke.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "bd06f38bc471",
+    "made": "2026-11-04"
+  },
+  "img/word/buch.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "619d48df7309",
+    "made": "2026-11-04"
+  },
+  "img/word/buerste.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "78615ff85ff7",
+    "made": "2026-11-04"
+  },
+  "img/word/dach.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4ab4ed5f69a7",
+    "made": "2026-11-04"
+  },
+  "img/word/ei.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ae8f4cf353d8",
+    "made": "2026-11-04"
+  },
+  "img/word/feuer.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6f5629c860e9",
+    "made": "2026-11-04"
+  },
+  "img/word/finger.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "b6e23dd0a5cd",
+    "made": "2026-11-04"
+  },
+  "img/word/fisch.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "79e05ee4d2f9",
+    "made": "2026-11-04"
+  },
+  "img/word/fliege.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ae60c18da33e",
+    "made": "2026-11-04"
+  },
+  "img/word/fliegenpilz.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "878d1645cd9f",
+    "made": "2026-11-04"
+  },
+  "img/word/fluegel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "f67bca9c1dd5",
+    "made": "2026-11-04"
+  },
+  "img/word/freund.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "9e6e8061d51d",
+    "made": "2026-11-04"
+  },
+  "img/word/frosch.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4246c0e5f072",
+    "made": "2026-11-04"
+  },
+  "img/word/fuchs.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "758a5b859149",
+    "made": "2026-11-04"
+  },
+  "img/word/fuss.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "bf9dc1f940a3",
+    "made": "2026-11-04"
+  },
+  "img/word/gans.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ba26d2ad050f",
+    "made": "2026-11-04"
+  },
+  "img/word/geige.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "90ebb84241cf",
+    "made": "2026-11-04"
+  },
+  "img/word/gemuese.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "860ffc6bec14",
+    "made": "2026-11-04"
+  },
+  "img/word/giesskanne.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "84eea2e9d082",
+    "made": "2026-11-04"
+  },
+  "img/word/glas.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "c89f049bf959",
+    "made": "2026-11-04"
+  },
+  "img/word/haeuser.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "1e1cbc214eee",
+    "made": "2026-11-04"
+  },
+  "img/word/hai.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "36ab23cd59c2",
+    "made": "2026-11-04"
+  },
+  "img/word/hand.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "f7641f4d72b5",
+    "made": "2026-11-04"
+  },
+  "img/word/haus.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "7cb928dc187f",
+    "made": "2026-11-04"
+  },
+  "img/word/hose.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "be9711a0165b",
+    "made": "2026-11-04"
+  },
+  "img/word/hund.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "9765c8ce0e4b",
+    "made": "2026-11-04"
+  },
+  "img/word/hut.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "2a4ff8135ef1",
+    "made": "2026-11-04"
+  },
+  "img/word/insel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "8665bfde3564",
+    "made": "2026-11-04"
+  },
+  "img/word/kaefer.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "8939470a94b3",
+    "made": "2026-11-04"
+  },
+  "img/word/kaese.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4e83764f2cf8",
+    "made": "2026-11-04"
+  },
+  "img/word/kaiser.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6a3852446938",
+    "made": "2026-11-04"
+  },
+  "img/word/katze.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "aff9df4ba57e",
+    "made": "2026-11-04"
+  },
+  "img/word/kind.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ca46966bd602",
+    "made": "2026-11-04"
+  },
+  "img/word/kirsche.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "de99b4012933",
+    "made": "2026-11-04"
+  },
+  "img/word/kissen.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "c87a907f13fb",
+    "made": "2026-11-04"
+  },
+  "img/word/klavier.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "8394e9208d88",
+    "made": "2026-11-04"
+  },
+  "img/word/kleid.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "f0eb95ee2655",
+    "made": "2026-11-04"
+  },
+  "img/word/knie.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "3e8b4b36fb1c",
+    "made": "2026-11-04"
+  },
+  "img/word/koenig.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "b28b0fe76a4b",
+    "made": "2026-11-04"
+  },
+  "img/word/kopf.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "b4606a9e2c51",
+    "made": "2026-11-04"
+  },
+  "img/word/korb.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "de2f6be8ec80",
+    "made": "2026-11-04"
+  },
+  "img/word/kueche.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "684b566338ce",
+    "made": "2026-11-04"
+  },
+  "img/word/kuerbis.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "e11fe9686eb5",
+    "made": "2026-11-04"
+  },
+  "img/word/kuh.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "c7b208913bfe",
+    "made": "2026-11-04"
+  },
+  "img/word/laus.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6a400d789dcd",
+    "made": "2026-11-04"
+  },
+  "img/word/loeffel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "80fd0c432d4f",
+    "made": "2026-11-04"
+  },
+  "img/word/loewe.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "d23b03f01515",
+    "made": "2026-11-04"
+  },
+  "img/word/maedchen.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "8d36b46f962c",
+    "made": "2026-11-04"
+  },
+  "img/word/maeuse.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ff0311db5f0e",
+    "made": "2026-11-04"
+  },
+  "img/word/mann.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "79da915bea0d",
+    "made": "2026-11-04"
+  },
+  "img/word/maus.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "3b96aa569d01",
+    "made": "2026-11-04"
+  },
+  "img/word/milch.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "9c6fc07337ce",
+    "made": "2026-11-04"
+  },
+  "img/word/moehre.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "5148f3636087",
+    "made": "2026-11-04"
+  },
+  "img/word/moewe.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "86a8b71d7a3d",
+    "made": "2026-11-04"
+  },
+  "img/word/muecke.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "897f3183b3d8",
+    "made": "2026-11-04"
+  },
+  "img/word/muetze.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "1082ca46c744",
+    "made": "2026-11-04"
+  },
+  "img/word/nuss.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "21f6b2f7c222",
+    "made": "2026-11-04"
+  },
+  "img/word/papier.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4e49f7af7f73",
+    "made": "2026-11-04"
+  },
+  "img/word/pferd.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4e266cfc4837",
+    "made": "2026-11-04"
+  },
+  "img/word/pilz.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "a38c1f4a3735",
+    "made": "2026-11-04"
+  },
+  "img/word/pinsel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "dd172da7c369",
+    "made": "2026-11-04"
+  },
+  "img/word/rad.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "df251e961209",
+    "made": "2026-11-04"
+  },
+  "img/word/radiergummi.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6bbba042cf51",
+    "made": "2026-11-04"
+  },
+  "img/word/riese.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "360bf68d1594",
+    "made": "2026-11-04"
+  },
+  "img/word/riesenrad.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "9cb73fa635d3",
+    "made": "2026-11-04"
+  },
+  "img/word/ritter.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "5cf62425caff",
+    "made": "2026-11-04"
+  },
+  "img/word/schaf.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6b2c816025d8",
+    "made": "2026-11-04"
+  },
+  "img/word/schiff.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "529e41f4f440",
+    "made": "2026-11-04"
+  },
+  "img/word/schuessel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6d0e65df4dab",
+    "made": "2026-11-04"
+  },
+  "img/word/schuh.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "5eea8096b64f",
+    "made": "2026-11-04"
+  },
+  "img/word/seife.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "8a023362ea3c",
+    "made": "2026-11-04"
+  },
+  "img/word/sieb.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "9eb014f32129",
+    "made": "2026-11-04"
+  },
+  "img/word/spiegel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "2175d48c53ad",
+    "made": "2026-11-04"
+  },
+  "img/word/stiefel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "dac7dcecfb12",
+    "made": "2026-11-04"
+  },
+  "img/word/stier.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "aa1cff4ff6ef",
+    "made": "2026-11-04"
+  },
+  "img/word/stuhl.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "5e5fc32c4c74",
+    "made": "2026-11-04"
+  },
+  "img/word/teufel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "62540c396d59",
+    "made": "2026-11-04"
+  },
+  "img/word/tier.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "62c8add27bc5",
+    "made": "2026-11-04"
+  },
+  "img/word/tisch.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "484f5f560c44",
+    "made": "2026-11-04"
+  },
+  "img/word/topf.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "d583f94d19fb",
+    "made": "2026-11-04"
+  },
+  "img/word/tuer.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "359c9c743bb2",
+    "made": "2026-11-04"
+  },
+  "img/word/turm.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "148817dd19d3",
+    "made": "2026-11-04"
+  },
+  "img/word/uhr.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "59855bdb7d7d",
+    "made": "2026-11-04"
+  },
+  "img/word/voegel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6de5a1a4b8a1",
+    "made": "2026-11-04"
+  },
+  "img/word/vogel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "f8b056a8e42e",
+    "made": "2026-11-04"
+  },
+  "img/word/wand.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "fe6028ad9858",
+    "made": "2026-11-04"
+  },
+  "img/word/wiese.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "7f8fef3f1100",
+    "made": "2026-11-04"
+  },
+  "img/word/wolf.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "425ce5a98341",
+    "made": "2026-11-04"
+  },
+  "img/word/wurst.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "55f7253845a5",
+    "made": "2026-11-04"
+  },
+  "img/word/zaehne.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4d9f0f9fa278",
+    "made": "2026-11-04"
+  },
+  "img/word/zahn.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "308111bec956",
+    "made": "2026-11-04"
+  },
+  "img/word/zaun.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "5da7d70a9690",
+    "made": "2026-11-04"
+  },
+  "img/word/ziege.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "0ebac8ace040",
+    "made": "2026-11-04"
+  },
+  "img/word/zimmer.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "7f2eed1a5881",
+    "made": "2026-11-04"
+  },
+  "img/word/zirkus.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "3a3606ff50ec",
+    "made": "2026-11-04"
+  },
+  "img/word/zug.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "7b1d35c90fb3",
+    "made": "2026-11-04"
+  },
+  "img/word/zwiebel.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "c9ce109b186b",
+    "made": "2026-11-04"
+  }
+}

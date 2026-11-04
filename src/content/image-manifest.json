@@ -1,0 +1,1312 @@
+{
+  "dragon/echo-grown-happy": {
+    "src": "img/dragon/echo-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-grown-idle": {
+    "src": "img/dragon/echo-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-grown-sleeping": {
+    "src": "img/dragon/echo-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-hatchling-happy": {
+    "src": "img/dragon/echo-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-hatchling-idle": {
+    "src": "img/dragon/echo-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-hatchling-sleeping": {
+    "src": "img/dragon/echo-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-young-happy": {
+    "src": "img/dragon/echo-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-young-idle": {
+    "src": "img/dragon/echo-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/echo-young-sleeping": {
+    "src": "img/dragon/echo-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-grown-happy": {
+    "src": "img/dragon/koralle-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-grown-idle": {
+    "src": "img/dragon/koralle-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-grown-sleeping": {
+    "src": "img/dragon/koralle-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-hatchling-happy": {
+    "src": "img/dragon/koralle-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-hatchling-idle": {
+    "src": "img/dragon/koralle-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-hatchling-sleeping": {
+    "src": "img/dragon/koralle-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-young-happy": {
+    "src": "img/dragon/koralle-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-young-idle": {
+    "src": "img/dragon/koralle-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/koralle-young-sleeping": {
+    "src": "img/dragon/koralle-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-grown-happy": {
+    "src": "img/dragon/kristall-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-grown-idle": {
+    "src": "img/dragon/kristall-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-grown-sleeping": {
+    "src": "img/dragon/kristall-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-hatchling-happy": {
+    "src": "img/dragon/kristall-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-hatchling-idle": {
+    "src": "img/dragon/kristall-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-hatchling-sleeping": {
+    "src": "img/dragon/kristall-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-young-happy": {
+    "src": "img/dragon/kristall-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-young-idle": {
+    "src": "img/dragon/kristall-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/kristall-young-sleeping": {
+    "src": "img/dragon/kristall-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-grown-happy": {
+    "src": "img/dragon/lagune-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-grown-idle": {
+    "src": "img/dragon/lagune-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-grown-sleeping": {
+    "src": "img/dragon/lagune-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-hatchling-happy": {
+    "src": "img/dragon/lagune-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-hatchling-idle": {
+    "src": "img/dragon/lagune-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-hatchling-sleeping": {
+    "src": "img/dragon/lagune-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-young-happy": {
+    "src": "img/dragon/lagune-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-young-idle": {
+    "src": "img/dragon/lagune-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/lagune-young-sleeping": {
+    "src": "img/dragon/lagune-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-grown-happy": {
+    "src": "img/dragon/muschel-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-grown-idle": {
+    "src": "img/dragon/muschel-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-grown-sleeping": {
+    "src": "img/dragon/muschel-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-hatchling-happy": {
+    "src": "img/dragon/muschel-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-hatchling-idle": {
+    "src": "img/dragon/muschel-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-hatchling-sleeping": {
+    "src": "img/dragon/muschel-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-young-happy": {
+    "src": "img/dragon/muschel-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-young-idle": {
+    "src": "img/dragon/muschel-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/muschel-young-sleeping": {
+    "src": "img/dragon/muschel-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-grown-happy": {
+    "src": "img/dragon/perle-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-grown-idle": {
+    "src": "img/dragon/perle-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-grown-sleeping": {
+    "src": "img/dragon/perle-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-hatchling-happy": {
+    "src": "img/dragon/perle-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-hatchling-idle": {
+    "src": "img/dragon/perle-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-hatchling-sleeping": {
+    "src": "img/dragon/perle-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-young-happy": {
+    "src": "img/dragon/perle-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-young-idle": {
+    "src": "img/dragon/perle-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/perle-young-sleeping": {
+    "src": "img/dragon/perle-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-grown-happy": {
+    "src": "img/dragon/schatz-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-grown-idle": {
+    "src": "img/dragon/schatz-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-grown-sleeping": {
+    "src": "img/dragon/schatz-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-hatchling-happy": {
+    "src": "img/dragon/schatz-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-hatchling-idle": {
+    "src": "img/dragon/schatz-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-hatchling-sleeping": {
+    "src": "img/dragon/schatz-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-young-happy": {
+    "src": "img/dragon/schatz-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-young-idle": {
+    "src": "img/dragon/schatz-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schatz-young-sleeping": {
+    "src": "img/dragon/schatz-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-grown-happy": {
+    "src": "img/dragon/schaum-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-grown-idle": {
+    "src": "img/dragon/schaum-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-grown-sleeping": {
+    "src": "img/dragon/schaum-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-hatchling-happy": {
+    "src": "img/dragon/schaum-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-hatchling-idle": {
+    "src": "img/dragon/schaum-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-hatchling-sleeping": {
+    "src": "img/dragon/schaum-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-young-happy": {
+    "src": "img/dragon/schaum-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-young-idle": {
+    "src": "img/dragon/schaum-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/schaum-young-sleeping": {
+    "src": "img/dragon/schaum-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-grown-happy": {
+    "src": "img/dragon/tang-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-grown-idle": {
+    "src": "img/dragon/tang-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-grown-sleeping": {
+    "src": "img/dragon/tang-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-hatchling-happy": {
+    "src": "img/dragon/tang-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-hatchling-idle": {
+    "src": "img/dragon/tang-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-hatchling-sleeping": {
+    "src": "img/dragon/tang-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-young-happy": {
+    "src": "img/dragon/tang-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-young-idle": {
+    "src": "img/dragon/tang-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tang-young-sleeping": {
+    "src": "img/dragon/tang-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-grown-happy": {
+    "src": "img/dragon/tiefsee-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-grown-idle": {
+    "src": "img/dragon/tiefsee-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-grown-sleeping": {
+    "src": "img/dragon/tiefsee-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-hatchling-happy": {
+    "src": "img/dragon/tiefsee-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-hatchling-idle": {
+    "src": "img/dragon/tiefsee-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-hatchling-sleeping": {
+    "src": "img/dragon/tiefsee-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-young-happy": {
+    "src": "img/dragon/tiefsee-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-young-idle": {
+    "src": "img/dragon/tiefsee-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/tiefsee-young-sleeping": {
+    "src": "img/dragon/tiefsee-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-grown-happy": {
+    "src": "img/dragon/welle-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-grown-idle": {
+    "src": "img/dragon/welle-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-grown-sleeping": {
+    "src": "img/dragon/welle-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-hatchling-happy": {
+    "src": "img/dragon/welle-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-hatchling-idle": {
+    "src": "img/dragon/welle-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-hatchling-sleeping": {
+    "src": "img/dragon/welle-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-young-happy": {
+    "src": "img/dragon/welle-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-young-idle": {
+    "src": "img/dragon/welle-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/welle-young-sleeping": {
+    "src": "img/dragon/welle-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-grown-happy": {
+    "src": "img/dragon/wrack-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-grown-idle": {
+    "src": "img/dragon/wrack-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-grown-sleeping": {
+    "src": "img/dragon/wrack-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-hatchling-happy": {
+    "src": "img/dragon/wrack-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-hatchling-idle": {
+    "src": "img/dragon/wrack-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-hatchling-sleeping": {
+    "src": "img/dragon/wrack-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-young-happy": {
+    "src": "img/dragon/wrack-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-young-idle": {
+    "src": "img/dragon/wrack-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/wrack-young-sleeping": {
+    "src": "img/dragon/wrack-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "egg/echo": {
+    "src": "img/egg/echo.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/koralle": {
+    "src": "img/egg/koralle.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/kristall": {
+    "src": "img/egg/kristall.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/lagune": {
+    "src": "img/egg/lagune.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/muschel": {
+    "src": "img/egg/muschel.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/perle": {
+    "src": "img/egg/perle.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/schatz": {
+    "src": "img/egg/schatz.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/schaum": {
+    "src": "img/egg/schaum.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/tang": {
+    "src": "img/egg/tang.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/tiefsee": {
+    "src": "img/egg/tiefsee.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/welle": {
+    "src": "img/egg/welle.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/wrack": {
+    "src": "img/egg/wrack.webp",
+    "w": 320,
+    "h": 320
+  },
+  "land/ie": {
+    "src": "img/land/ie.webp",
+    "w": 1536,
+    "h": 1024
+  },
+  "land/kurzlang": {
+    "src": "img/land/kurzlang.webp",
+    "w": 1536,
+    "h": 1024
+  },
+  "land/laute": {
+    "src": "img/land/laute.webp",
+    "w": 1536,
+    "h": 1024
+  },
+  "land/luecke": {
+    "src": "img/land/luecke.webp",
+    "w": 1536,
+    "h": 1024
+  },
+  "land/map": {
+    "src": "img/land/map.webp",
+    "w": 1536,
+    "h": 1024
+  },
+  "land/mehrzahl": {
+    "src": "img/land/mehrzahl.webp",
+    "w": 1536,
+    "h": 1024
+  },
+  "shell/echo-bottom": {
+    "src": "img/shell/echo-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/echo-top": {
+    "src": "img/shell/echo-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/koralle-bottom": {
+    "src": "img/shell/koralle-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/koralle-top": {
+    "src": "img/shell/koralle-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/kristall-bottom": {
+    "src": "img/shell/kristall-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/kristall-top": {
+    "src": "img/shell/kristall-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/lagune-bottom": {
+    "src": "img/shell/lagune-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/lagune-top": {
+    "src": "img/shell/lagune-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/muschel-bottom": {
+    "src": "img/shell/muschel-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/muschel-top": {
+    "src": "img/shell/muschel-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/perle-bottom": {
+    "src": "img/shell/perle-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/perle-top": {
+    "src": "img/shell/perle-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/schatz-bottom": {
+    "src": "img/shell/schatz-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/schatz-top": {
+    "src": "img/shell/schatz-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/schaum-bottom": {
+    "src": "img/shell/schaum-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/schaum-top": {
+    "src": "img/shell/schaum-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/tang-bottom": {
+    "src": "img/shell/tang-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/tang-top": {
+    "src": "img/shell/tang-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/tiefsee-bottom": {
+    "src": "img/shell/tiefsee-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/tiefsee-top": {
+    "src": "img/shell/tiefsee-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/welle-bottom": {
+    "src": "img/shell/welle-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/welle-top": {
+    "src": "img/shell/welle-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/wrack-bottom": {
+    "src": "img/shell/wrack-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/wrack-top": {
+    "src": "img/shell/wrack-top.webp",
+    "w": 320,
+    "h": 320
+  },
+  "word/apfel": {
+    "src": "img/word/apfel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/auto": {
+    "src": "img/word/auto.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/baer": {
+    "src": "img/word/baer.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/baeume": {
+    "src": "img/word/baeume.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/ball": {
+    "src": "img/word/ball.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/bauch": {
+    "src": "img/word/bauch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/baum": {
+    "src": "img/word/baum.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/bett": {
+    "src": "img/word/bett.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/biene": {
+    "src": "img/word/biene.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/birne": {
+    "src": "img/word/birne.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/blatt": {
+    "src": "img/word/blatt.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/blume": {
+    "src": "img/word/blume.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/brief": {
+    "src": "img/word/brief.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/brille": {
+    "src": "img/word/brille.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/broetchen": {
+    "src": "img/word/broetchen.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/bruecke": {
+    "src": "img/word/bruecke.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/buch": {
+    "src": "img/word/buch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/buerste": {
+    "src": "img/word/buerste.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/dach": {
+    "src": "img/word/dach.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/ei": {
+    "src": "img/word/ei.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/feuer": {
+    "src": "img/word/feuer.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/finger": {
+    "src": "img/word/finger.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fisch": {
+    "src": "img/word/fisch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fliege": {
+    "src": "img/word/fliege.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fliegenpilz": {
+    "src": "img/word/fliegenpilz.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fluegel": {
+    "src": "img/word/fluegel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/freund": {
+    "src": "img/word/freund.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/frosch": {
+    "src": "img/word/frosch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fuchs": {
+    "src": "img/word/fuchs.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fuss": {
+    "src": "img/word/fuss.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/gans": {
+    "src": "img/word/gans.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/geige": {
+    "src": "img/word/geige.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/gemuese": {
+    "src": "img/word/gemuese.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/giesskanne": {
+    "src": "img/word/giesskanne.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/glas": {
+    "src": "img/word/glas.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/haeuser": {
+    "src": "img/word/haeuser.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/hai": {
+    "src": "img/word/hai.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/hand": {
+    "src": "img/word/hand.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/haus": {
+    "src": "img/word/haus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/hose": {
+    "src": "img/word/hose.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/hund": {
+    "src": "img/word/hund.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/hut": {
+    "src": "img/word/hut.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/insel": {
+    "src": "img/word/insel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kaefer": {
+    "src": "img/word/kaefer.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kaese": {
+    "src": "img/word/kaese.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kaiser": {
+    "src": "img/word/kaiser.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/katze": {
+    "src": "img/word/katze.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kind": {
+    "src": "img/word/kind.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kirsche": {
+    "src": "img/word/kirsche.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kissen": {
+    "src": "img/word/kissen.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/klavier": {
+    "src": "img/word/klavier.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kleid": {
+    "src": "img/word/kleid.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/knie": {
+    "src": "img/word/knie.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/koenig": {
+    "src": "img/word/koenig.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kopf": {
+    "src": "img/word/kopf.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/korb": {
+    "src": "img/word/korb.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kueche": {
+    "src": "img/word/kueche.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kuerbis": {
+    "src": "img/word/kuerbis.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kuh": {
+    "src": "img/word/kuh.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/laus": {
+    "src": "img/word/laus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/loeffel": {
+    "src": "img/word/loeffel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/loewe": {
+    "src": "img/word/loewe.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/maedchen": {
+    "src": "img/word/maedchen.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/maeuse": {
+    "src": "img/word/maeuse.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/mann": {
+    "src": "img/word/mann.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/maus": {
+    "src": "img/word/maus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/milch": {
+    "src": "img/word/milch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/moehre": {
+    "src": "img/word/moehre.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/moewe": {
+    "src": "img/word/moewe.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/muecke": {
+    "src": "img/word/muecke.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/muetze": {
+    "src": "img/word/muetze.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/nuss": {
+    "src": "img/word/nuss.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/papier": {
+    "src": "img/word/papier.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/pferd": {
+    "src": "img/word/pferd.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/pilz": {
+    "src": "img/word/pilz.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/pinsel": {
+    "src": "img/word/pinsel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/rad": {
+    "src": "img/word/rad.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/radiergummi": {
+    "src": "img/word/radiergummi.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/riese": {
+    "src": "img/word/riese.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/riesenrad": {
+    "src": "img/word/riesenrad.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/ritter": {
+    "src": "img/word/ritter.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/schaf": {
+    "src": "img/word/schaf.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/schiff": {
+    "src": "img/word/schiff.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/schuessel": {
+    "src": "img/word/schuessel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/schuh": {
+    "src": "img/word/schuh.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/seife": {
+    "src": "img/word/seife.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/sieb": {
+    "src": "img/word/sieb.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/spiegel": {
+    "src": "img/word/spiegel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/stiefel": {
+    "src": "img/word/stiefel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/stier": {
+    "src": "img/word/stier.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/stuhl": {
+    "src": "img/word/stuhl.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/teufel": {
+    "src": "img/word/teufel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/tier": {
+    "src": "img/word/tier.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/tisch": {
+    "src": "img/word/tisch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/topf": {
+    "src": "img/word/topf.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/tuer": {
+    "src": "img/word/tuer.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/turm": {
+    "src": "img/word/turm.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/uhr": {
+    "src": "img/word/uhr.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/voegel": {
+    "src": "img/word/voegel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/vogel": {
+    "src": "img/word/vogel.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/wand": {
+    "src": "img/word/wand.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/wiese": {
+    "src": "img/word/wiese.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/wolf": {
+    "src": "img/word/wolf.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/wurst": {
+    "src": "img/word/wurst.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zaehne": {
+    "src": "img/word/zaehne.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zahn": {
+    "src": "img/word/zahn.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zaun": {
+    "src": "img/word/zaun.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/ziege": {
+    "src": "img/word/ziege.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zimmer": {
+    "src": "img/word/zimmer.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zirkus": {
+    "src": "img/word/zirkus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zug": {
+    "src": "img/word/zug.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zwiebel": {
+    "src": "img/word/zwiebel.webp",
+    "w": 400,
+    "h": 400
+  }
+}

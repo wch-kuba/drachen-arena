@@ -1,86 +1,1587 @@
 {
-  "model": "gemini-3.8-flash-tts",
-  "voice": "Sulafat",
+  "provider": "elevenlabs",
+  "model": "eleven_v3",
+  "speed": 0.85,
+  "narrator": "knurps",
+  "narratorTones": [
+    "cheerful",
+    "playful",
+    "warmly"
+  ],
+  "wordVoices": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "clips": {
-    "a": "audio/dc01ac5cb16c.mp3",
-    "au": "audio/f3815702e752.mp3",
-    "äu": "audio/bd1aa3d2c31f.mp3",
-    "Ball": "audio/589d96d9c517.mp3",
-    "Bälle": "audio/e0588f218b2e.mp3",
-    "Bäume": "audio/80027269ee3e.mp3",
-    "Biene": "audio/39e1f4909f42.mp3",
-    "Birne": "audio/976eceaf50ad.mp3",
-    "Brief": "audio/222e05789617.mp3",
-    "der Ball": "audio/8efb2ff43c69.mp3",
-    "Der Bär läuft heute weit.": "audio/3ad0a3e3c80b.mp3",
-    "der Baum": "audio/d0dbc5b18417.mp3",
-    "der Fisch": "audio/81a5ac6757de.mp3",
-    "der Fuchs": "audio/e83def97a9ec.mp3",
-    "der Hund": "audio/9e0c68e64309.mp3",
-    "der Hut": "audio/2a7fbbd30721.mp3",
-    "der Korb": "audio/836ea9994cae.mp3",
-    "der Stuhl": "audio/1e6d2ed453b6.mp3",
-    "der Topf": "audio/acfe82f619ee.mp3",
-    "die Laus": "audio/2da4aa4f82db.mp3",
-    "die Maus": "audio/98bc328139a1.mp3",
-    "Die Maus isst Käse.": "audio/b35a8821bed6.mp3",
-    "Die Ringe zeigen dir die Farbe.": "audio/c08017f0a3d3.mp3",
-    "die Wand": "audio/c295b6308e63.mp3",
-    "ei": "audio/4f1170e45e19.mp3",
-    "eu": "audio/4a534a0a489c.mp3",
-    "Fast! Achte auf große und kleine Buchstaben.": "audio/f7fde7970c29.mp3",
-    "Fast! Nomen schreibt man groß.": "audio/35dc237ab1d9.mp3",
-    "Fast! Schau auf die Ringe.": "audio/e202f5e1737f.mp3",
-    "Fisch": "audio/2e5d2ceeaeba.mp3",
-    "Fische": "audio/5455168c514c.mp3",
-    "Füchse": "audio/0d28b437b0d3.mp3",
-    "Haus": "audio/c23ca74c3ad6.mp3",
-    "Hör gut zu. Kurz oder lang?": "audio/a75b91c29526.mp3",
-    "Hör noch einmal genau hin.": "audio/8e7f7c4f764b.mp3",
-    "Hose": "audio/a1a29d0f5425.mp3",
-    "Hunde": "audio/9d5f868287f6.mp3",
-    "Hüte": "audio/71d95995ffd0.mp3",
-    "Im Garten blüht ein Baum.": "audio/4e9f0cc32ba7.mp3",
-    "Kirsche": "audio/bf069bb974bb.mp3",
-    "König": "audio/36477a2d865c.mp3",
-    "Körbe": "audio/ca2049e37efc.mp3",
-    "Läuse": "audio/53fa2ffea1ff.mp3",
-    "Leute": "audio/420db8cac719.mp3",
-    "Mäuse": "audio/414f094f5184.mp3",
-    "Mund": "audio/e147c80c9b10.mp3",
-    "Mütze": "audio/a68f9c4e2a00.mp3",
-    "o": "audio/13b05bb8842c.mp3",
-    "ö": "audio/c859ccbc80f5.mp3",
-    "Rose": "audio/0e60b3cd6cfc.mp3",
-    "Schaf": "audio/4840404bf17c.mp3",
-    "Schreib das Wort.": "audio/42b393e6baf8.mp3",
-    "Schreib die Mehrzahl.": "audio/c8e29aea85fe.mp3",
-    "So fängt es an. Schreib weiter!": "audio/f65658b7df14.mp3",
-    "So heißt es. Schreib es ab.": "audio/a22a9f05893f.mp3",
-    "So ist es richtig. Tipp auf Fertig.": "audio/35160c4c7b41.mp3",
-    "So ist es richtig. Tipp darauf.": "audio/847d0f2ea84b.mp3",
-    "Spiegel": "audio/13432cad2ba3.mp3",
-    "Stühle": "audio/45d2b4cafd19.mp3",
-    "Super! Ein Kristall für deinen Schatz.": "audio/2867247ebf37.mp3",
-    "Tier": "audio/b267ea763344.mp3",
-    "Tipp auf die Buchstaben. Dann auf die Farbe.": "audio/9f454d83190d.mp3",
-    "Tipp: Aus a wird ä.": "audio/bf08210c33a9.mp3",
-    "Tipp: Aus au wird äu.": "audio/70d161622354.mp3",
-    "Tipp: Aus o wird ö.": "audio/caee652ba955.mp3",
-    "Tipp: Aus u wird ü.": "audio/1de2c48868b5.mp3",
-    "Tipp: Es hat ein langes i. Das schreibt man ie.": "audio/dd4747dd8ce6.mp3",
-    "Tipp: Schau auf die Buchstaben auf den Farben.": "audio/064dee408856.mp3",
-    "Tipp: Sprich das Wort langsam und hör genau hin.": "audio/22ba8394be20.mp3",
-    "Tipp: Sprich das Wort laut. Klingt der Selbstlaut kurz oder lang?": "audio/ea85b7106570.mp3",
-    "Tipp: Wird aus a, o, u ein ä, ö, ü?": "audio/64579bd994a6.mp3",
-    "Tisch": "audio/339ff67c849c.mp3",
-    "Töpfe": "audio/0caec0901859.mp3",
-    "ü": "audio/300eac859179.mp3",
-    "Wände": "audio/881ecf74ff9e.mp3",
-    "Was ist das für ein Laut?": "audio/00d16aa1fb7c.mp3",
-    "Welche Buchstaben fehlen?": "audio/8695aab10104.mp3",
-    "Welcher Buchstabe fehlt?": "audio/0709d607cd79.mp3",
-    "Wiese": "audio/0731f224b51a.mp3",
-    "Ziege": "audio/f62429e8e312.mp3"
+    "a": [
+      "audio/307cc2ace4e3.mp3",
+      "audio/7f0a97e19dc8.mp3",
+      "audio/af3146d51575.mp3",
+      "audio/dd05d996a646.mp3"
+    ],
+    "ä": [
+      "audio/463eaffdb98b.mp3",
+      "audio/378332c04396.mp3",
+      "audio/5b0af6859d08.mp3",
+      "audio/717619d8786b.mp3"
+    ],
+    "ai": [
+      "audio/df09cd5e7334.mp3",
+      "audio/284d27a6c736.mp3",
+      "audio/bb0ea53c1161.mp3",
+      "audio/0438ecf37415.mp3"
+    ],
+    "Am Abend leuchten die Sterne.": [
+      "audio/a6fd75e125e9.mp3",
+      "audio/ef13129cfca1.mp3",
+      "audio/0242cc8fb5cf.mp3",
+      "audio/66c00f7ee8a7.mp3"
+    ],
+    "Äpfel": [
+      "audio/2a13a12c5139.mp3",
+      "audio/f729afee84ed.mp3",
+      "audio/eb862fd85903.mp3",
+      "audio/797d7c418d87.mp3"
+    ],
+    "au": [
+      "audio/35ffbbffd135.mp3",
+      "audio/fd766a1fdbde.mp3",
+      "audio/950e611e602d.mp3",
+      "audio/c288a338b1e9.mp3"
+    ],
+    "äu": [
+      "audio/e4e4454e1004.mp3",
+      "audio/1c5c8686cba9.mp3",
+      "audio/d407784b41bf.mp3",
+      "audio/0410a12ddb6c.mp3"
+    ],
+    "Autos": [
+      "audio/45517c219505.mp3",
+      "audio/5a03c07e5d84.mp3",
+      "audio/e69aaba9203c.mp3",
+      "audio/0985926b2fd7.mp3"
+    ],
+    "Bahn": [
+      "audio/21e0ec20a1fd.mp3",
+      "audio/605374cdd647.mp3",
+      "audio/136df1bf714e.mp3",
+      "audio/4dda4f47dc42.mp3"
+    ],
+    "Ball": [
+      "audio/33b7c9f82303.mp3",
+      "audio/7ecd34ed46f6.mp3",
+      "audio/3b61e5d32888.mp3",
+      "audio/6932074c0986.mp3"
+    ],
+    "Bälle": [
+      "audio/6261ab4a092c.mp3",
+      "audio/efde0e7d8638.mp3",
+      "audio/4ff29536d7f9.mp3",
+      "audio/8d2025f3699f.mp3"
+    ],
+    "Bären": [
+      "audio/8859e791e1b0.mp3",
+      "audio/f16b9cc727a6.mp3",
+      "audio/79fcc75d2350.mp3",
+      "audio/f30408726a81.mp3"
+    ],
+    "Bäuche": [
+      "audio/fd29eb1b0b93.mp3",
+      "audio/80b0dd6ddc9a.mp3",
+      "audio/fffc2ebb80e2.mp3",
+      "audio/d464bb001b93.mp3"
+    ],
+    "Baum": [
+      "audio/a49a1ed0aacc.mp3",
+      "audio/0c7055224f60.mp3",
+      "audio/9f51f0b1c2c1.mp3",
+      "audio/f1d3cd6b5376.mp3"
+    ],
+    "Bäume": [
+      "audio/27737216663b.mp3",
+      "audio/2749a5641519.mp3",
+      "audio/f6675d064205.mp3",
+      "audio/168e6da592fd.mp3"
+    ],
+    "Beet": [
+      "audio/f63943890d81.mp3",
+      "audio/0fa89efab2d0.mp3",
+      "audio/c31a13bc938c.mp3",
+      "audio/b04a04c4b44d.mp3"
+    ],
+    "Bett": [
+      "audio/1a676e39369d.mp3",
+      "audio/ce3d3e3db4d1.mp3",
+      "audio/013ac2f362b6.mp3",
+      "audio/719e4b3375bf.mp3"
+    ],
+    "Betten": [
+      "audio/05e911d6755a.mp3",
+      "audio/d1ed59d0f501.mp3",
+      "audio/2bbe53427bbe.mp3",
+      "audio/c7df0bd0c3a0.mp3"
+    ],
+    "Biene": [
+      "audio/46a8094611af.mp3",
+      "audio/21a907e6dcfb.mp3",
+      "audio/ed7b89c2f51a.mp3",
+      "audio/f226038805f0.mp3"
+    ],
+    "Birne": [
+      "audio/ec86d5b01525.mp3",
+      "audio/2f938468664d.mp3",
+      "audio/1eebf8e3468c.mp3",
+      "audio/fb36513b1fda.mp3"
+    ],
+    "Blätter": [
+      "audio/7784ecef8567.mp3",
+      "audio/c43a7cfee61f.mp3",
+      "audio/4b84709f2b77.mp3",
+      "audio/4329412c5d49.mp3"
+    ],
+    "Blumen": [
+      "audio/fcc9d1bf5c4c.mp3",
+      "audio/4520434eb27f.mp3",
+      "audio/f6e249fa7131.mp3",
+      "audio/ad0dceb52059.mp3"
+    ],
+    "Brief": [
+      "audio/6374cac9e89e.mp3",
+      "audio/368e7b88c5d9.mp3",
+      "audio/c52d0750f065.mp3",
+      "audio/94666f40c770.mp3"
+    ],
+    "Brille": [
+      "audio/8ba89bb599d5.mp3",
+      "audio/69ddd1c28902.mp3",
+      "audio/fd1a0c39d389.mp3",
+      "audio/e3dc6004d5a4.mp3"
+    ],
+    "Brot": [
+      "audio/798e224af0bf.mp3",
+      "audio/73f7f1a17c97.mp3",
+      "audio/572a950db1e0.mp3",
+      "audio/a5eedcd3f9bc.mp3"
+    ],
+    "Brötchen": [
+      "audio/a74bfad7e3fa.mp3",
+      "audio/fb9813c2587c.mp3",
+      "audio/09b93c6fbbdb.mp3",
+      "audio/ab9e189ce38d.mp3"
+    ],
+    "Brücke": [
+      "audio/82b8d4e1a7c4.mp3",
+      "audio/54df6fbc1169.mp3",
+      "audio/40016754b089.mp3",
+      "audio/8ee49c1749e8.mp3"
+    ],
+    "Bücher": [
+      "audio/7f44e4d25936.mp3",
+      "audio/1d6508371250.mp3",
+      "audio/8bd534995f2b.mp3",
+      "audio/16430632c96d.mp3"
+    ],
+    "Bürste": [
+      "audio/bdc493b6b0ff.mp3",
+      "audio/e07d6ae014fb.mp3",
+      "audio/8ba01f3b625b.mp3",
+      "audio/73c08e361f17.mp3"
+    ],
+    "Dächer": [
+      "audio/8c3eb7789de9.mp3",
+      "audio/655d19831229.mp3",
+      "audio/4a0ef0ddfaf7.mp3",
+      "audio/d62161c147be.mp3"
+    ],
+    "das Auto": [
+      "audio/1516a6913455.mp3",
+      "audio/bb5bf584dcfe.mp3",
+      "audio/46fca60f6b93.mp3",
+      "audio/bb3343bb65dd.mp3"
+    ],
+    "das Bett": [
+      "audio/e69b9676e414.mp3",
+      "audio/b5169b5ff772.mp3",
+      "audio/f74b71db665b.mp3",
+      "audio/a8ceda1379d4.mp3"
+    ],
+    "das Blatt": [
+      "audio/143053d8d75b.mp3",
+      "audio/e66358a388b2.mp3",
+      "audio/fa315a4a7aac.mp3",
+      "audio/03c7be9b5e4d.mp3"
+    ],
+    "Das Brot liegt auf dem Teller.": [
+      "audio/af0326df38a3.mp3",
+      "audio/8f851456603f.mp3",
+      "audio/1ffef5ea705f.mp3",
+      "audio/6df1ed163b3b.mp3"
+    ],
+    "das Buch": [
+      "audio/2afb95fac3c8.mp3",
+      "audio/57f72ccecc8b.mp3",
+      "audio/3c86176f7a4a.mp3",
+      "audio/3cf6aa1a0169.mp3"
+    ],
+    "das Dach": [
+      "audio/2603e93573fd.mp3",
+      "audio/6d76dae1d61c.mp3",
+      "audio/86fd8217f9ec.mp3",
+      "audio/b26ef2b47abf.mp3"
+    ],
+    "das Ei": [
+      "audio/147eec9ae080.mp3",
+      "audio/d3ec9f9eebc1.mp3",
+      "audio/e91c8f905555.mp3",
+      "audio/b78696c6e4c9.mp3"
+    ],
+    "Das Eis ist süß.": [
+      "audio/116084dfb919.mp3",
+      "audio/bd885dc47981.mp3",
+      "audio/df6b2600c48f.mp3",
+      "audio/1bff159b1927.mp3"
+    ],
+    "das Glas": [
+      "audio/4de938e8a74f.mp3",
+      "audio/e0288d5a13ef.mp3",
+      "audio/3d7e206a9d85.mp3",
+      "audio/c5eaa8da2175.mp3"
+    ],
+    "das Haus": [
+      "audio/b7774cb10430.mp3",
+      "audio/d37cf39391e4.mp3",
+      "audio/3022a3cf9485.mp3",
+      "audio/02a75d6e7892.mp3"
+    ],
+    "das Kind": [
+      "audio/d5a162ba4e84.mp3",
+      "audio/9b214e85a043.mp3",
+      "audio/f9999758f80a.mp3",
+      "audio/764077398141.mp3"
+    ],
+    "das Pferd": [
+      "audio/17c946f705f2.mp3",
+      "audio/459b793145c8.mp3",
+      "audio/d26f77824aae.mp3",
+      "audio/9ca3e7de4e8b.mp3"
+    ],
+    "das Rad": [
+      "audio/4d5656aba495.mp3",
+      "audio/0084a85b3dbb.mp3",
+      "audio/ea935d4d0015.mp3",
+      "audio/c15f7a623ed2.mp3"
+    ],
+    "das Schaf": [
+      "audio/49a7a4ce0ed2.mp3",
+      "audio/1390e77cb342.mp3",
+      "audio/568e492d4d79.mp3",
+      "audio/cd738b69d586.mp3"
+    ],
+    "Decke": [
+      "audio/76a105f6d766.mp3",
+      "audio/8322d40630fb.mp3",
+      "audio/c8df4090019d.mp3",
+      "audio/f20bf3d0d575.mp3"
+    ],
+    "der Apfel": [
+      "audio/24eef264d8b0.mp3",
+      "audio/85223f6bbe2d.mp3",
+      "audio/abe66b4e9b63.mp3",
+      "audio/b48d5c2db2cd.mp3"
+    ],
+    "der Ball": [
+      "audio/2e0361717ce0.mp3",
+      "audio/d6bd34b83260.mp3",
+      "audio/6c52f7e7a84d.mp3",
+      "audio/683de7cc5ded.mp3"
+    ],
+    "der Bär": [
+      "audio/7dbc449a1cd1.mp3",
+      "audio/7901cf9a2e00.mp3",
+      "audio/3ff31e022a18.mp3",
+      "audio/aa87a276b140.mp3"
+    ],
+    "Der Bär läuft heute weit.": [
+      "audio/d59ded0ebeb2.mp3",
+      "audio/631c4e0b929a.mp3",
+      "audio/23eda4971df1.mp3",
+      "audio/0fd232290701.mp3"
+    ],
+    "der Bauch": [
+      "audio/e2d019952c84.mp3",
+      "audio/81112a5682d6.mp3",
+      "audio/094405132740.mp3",
+      "audio/0f9f4a22baa3.mp3"
+    ],
+    "der Baum": [
+      "audio/dc0756a34c2e.mp3",
+      "audio/294cac4fec67.mp3",
+      "audio/0c43033b1df8.mp3",
+      "audio/b4a49420fe34.mp3"
+    ],
+    "der Fisch": [
+      "audio/546c5faaf143.mp3",
+      "audio/2604ba1681db.mp3",
+      "audio/5384e47a116b.mp3",
+      "audio/d1c525079d3a.mp3"
+    ],
+    "der Frosch": [
+      "audio/8ecec27ebfcd.mp3",
+      "audio/47cb6a75df0e.mp3",
+      "audio/753ef6518e1b.mp3",
+      "audio/03b705c3e78b.mp3"
+    ],
+    "der Fuchs": [
+      "audio/60a7a16377d4.mp3",
+      "audio/0175023b2aec.mp3",
+      "audio/dff1feea7061.mp3",
+      "audio/42138ca0792b.mp3"
+    ],
+    "Der Fuchs läuft in den Wald.": [
+      "audio/696be11fc6c0.mp3",
+      "audio/668fd2eb30e1.mp3",
+      "audio/5532fcd5f091.mp3",
+      "audio/ab42ddc3042b.mp3"
+    ],
+    "der Fuß": [
+      "audio/3d71445bc97e.mp3",
+      "audio/3eff59ed8505.mp3",
+      "audio/d94f0f96d60e.mp3",
+      "audio/529cc6073f4a.mp3"
+    ],
+    "der Hund": [
+      "audio/2ae639bed62e.mp3",
+      "audio/af62a5ddc44f.mp3",
+      "audio/72933eef199e.mp3",
+      "audio/428cee56be29.mp3"
+    ],
+    "der Hut": [
+      "audio/8c65fe1dda90.mp3",
+      "audio/ae4a4b1c5335.mp3",
+      "audio/5c3a7fbb06d4.mp3",
+      "audio/dd6ad301482a.mp3"
+    ],
+    "Der Igel schläft im Laub.": [
+      "audio/de7cbb4b982f.mp3",
+      "audio/f016fe590a19.mp3",
+      "audio/e9e609aeedff.mp3",
+      "audio/a65e390fe7c3.mp3"
+    ],
+    "Der Kaiser hat eine Krone.": [
+      "audio/0e79074e8e83.mp3",
+      "audio/3770f01f1c51.mp3",
+      "audio/b900ec59223f.mp3",
+      "audio/58c69e22223e.mp3"
+    ],
+    "der Kopf": [
+      "audio/acc923e43220.mp3",
+      "audio/c6e49f1bb5cf.mp3",
+      "audio/687820d7b037.mp3",
+      "audio/8d82302c61e5.mp3"
+    ],
+    "der Korb": [
+      "audio/502624fdf156.mp3",
+      "audio/f6c41bf83aee.mp3",
+      "audio/efa44c153f6b.mp3",
+      "audio/51149560a234.mp3"
+    ],
+    "Der Löwe hat eine Mähne.": [
+      "audio/3a0c5001232a.mp3",
+      "audio/c95e2c5a9d8b.mp3",
+      "audio/822dc6d6e432.mp3",
+      "audio/32c3b3276f00.mp3"
+    ],
+    "der Mann": [
+      "audio/5eafb4ce7b6d.mp3",
+      "audio/1759ed2fc1ae.mp3",
+      "audio/49304a2f8900.mp3",
+      "audio/90ecf8d36159.mp3"
+    ],
+    "der Schuh": [
+      "audio/84b9b406ee26.mp3",
+      "audio/8919cfb22296.mp3",
+      "audio/a9d081eb1ebb.mp3",
+      "audio/e4e7569b6dde.mp3"
+    ],
+    "der Stuhl": [
+      "audio/90154544fc34.mp3",
+      "audio/3f5c15c4733b.mp3",
+      "audio/628e3d9c9a3a.mp3",
+      "audio/0fdac2ece8c9.mp3"
+    ],
+    "der Tisch": [
+      "audio/7ca28e3dacb6.mp3",
+      "audio/bbf28507c19c.mp3",
+      "audio/c43b6a5c1d1e.mp3",
+      "audio/85fe5913a71a.mp3"
+    ],
+    "der Topf": [
+      "audio/ab39424541b8.mp3",
+      "audio/fcfc59c6055d.mp3",
+      "audio/740c8ac4ab0d.mp3",
+      "audio/486ded81bc4f.mp3"
+    ],
+    "der Turm": [
+      "audio/6342339ab768.mp3",
+      "audio/1315b04e02dd.mp3",
+      "audio/55e0e2262613.mp3",
+      "audio/3824b488037c.mp3"
+    ],
+    "der Vogel": [
+      "audio/206b7bd21d1f.mp3",
+      "audio/cfcd80d400c5.mp3",
+      "audio/d33680200169.mp3",
+      "audio/625735c2c08d.mp3"
+    ],
+    "der Wolf": [
+      "audio/401a4c530c7c.mp3",
+      "audio/d0ecd150f6c2.mp3",
+      "audio/79ebd05f2742.mp3",
+      "audio/f6b7f472cd87.mp3"
+    ],
+    "der Zahn": [
+      "audio/ecc0dd521f70.mp3",
+      "audio/62c6f68d9028.mp3",
+      "audio/93fd662a64c1.mp3",
+      "audio/a2ed8ec7aa70.mp3"
+    ],
+    "der Zaun": [
+      "audio/09bbc6e1ca30.mp3",
+      "audio/b2a98a35b85c.mp3",
+      "audio/e7b63b53d51d.mp3",
+      "audio/0d84cdb8796e.mp3"
+    ],
+    "der Zug": [
+      "audio/395160cb9ca4.mp3",
+      "audio/f98be33fb1b8.mp3",
+      "audio/705019319f83.mp3",
+      "audio/9370cf2e25e2.mp3"
+    ],
+    "Die Bäume sind grün.": [
+      "audio/a993bc29c466.mp3",
+      "audio/7a0cb9d1f891.mp3",
+      "audio/5481fa2eb70a.mp3",
+      "audio/e66fd1878d3c.mp3"
+    ],
+    "die Blume": [
+      "audio/6cff95c301c8.mp3",
+      "audio/c24f8ecf368a.mp3",
+      "audio/94581313fa28.mp3",
+      "audio/a03cd389fcba.mp3"
+    ],
+    "Die Eule schläft am Tag.": [
+      "audio/ebb63fbed849.mp3",
+      "audio/797e4198a0ba.mp3",
+      "audio/dcbd1efe3c27.mp3",
+      "audio/375b18439374.mp3"
+    ],
+    "die Gans": [
+      "audio/a19831879b62.mp3",
+      "audio/0188d214117b.mp3",
+      "audio/fe912b327a16.mp3",
+      "audio/0e1a625c5cd4.mp3"
+    ],
+    "die Hand": [
+      "audio/a9efa0161040.mp3",
+      "audio/bb0baa66f83f.mp3",
+      "audio/7f3824c626ea.mp3",
+      "audio/6edeadbe3a8c.mp3"
+    ],
+    "die Hose": [
+      "audio/128d8cbdb43f.mp3",
+      "audio/bffa6d6b09fc.mp3",
+      "audio/8ac65aad0c7a.mp3",
+      "audio/120dfd1f9671.mp3"
+    ],
+    "die Katze": [
+      "audio/915090189c32.mp3",
+      "audio/7c26a048de0d.mp3",
+      "audio/2a1a38b231f9.mp3",
+      "audio/8703690fc07c.mp3"
+    ],
+    "die Kuh": [
+      "audio/4901e686c991.mp3",
+      "audio/610db68ec3be.mp3",
+      "audio/5b1cccfbcd51.mp3",
+      "audio/0c044a8aa907.mp3"
+    ],
+    "Die Kühe stehen auf der Wiese.": [
+      "audio/72db4362ba57.mp3",
+      "audio/dad1c285899f.mp3",
+      "audio/adfbf9c950ed.mp3",
+      "audio/67f9cbdc2bc9.mp3"
+    ],
+    "die Laus": [
+      "audio/bdf563caf38e.mp3",
+      "audio/f0a7406da244.mp3",
+      "audio/ea6d3bb509de.mp3",
+      "audio/ce919b5d0676.mp3"
+    ],
+    "die Maus": [
+      "audio/1d66a9f7b606.mp3",
+      "audio/71c816f23d3b.mp3",
+      "audio/17f185088fb3.mp3",
+      "audio/51e8d6488506.mp3"
+    ],
+    "Die Maus isst Käse.": [
+      "audio/e9dc1ce0f26f.mp3",
+      "audio/9889f4cfe6a3.mp3",
+      "audio/9c93765fcab9.mp3",
+      "audio/3e07c4244a8d.mp3"
+    ],
+    "Die Möwe fliegt über das Meer.": [
+      "audio/8d00f699d6e5.mp3",
+      "audio/6b5089c94399.mp3",
+      "audio/d22ebb5c8d7d.mp3",
+      "audio/83a084e72d71.mp3"
+    ],
+    "die Nuss": [
+      "audio/31bfcf6b18e8.mp3",
+      "audio/d738bb3a3f04.mp3",
+      "audio/2a17c16e954b.mp3",
+      "audio/5a8c33fe9236.mp3"
+    ],
+    "Die Ringe zeigen dir die Farbe.": [
+      "audio/f75e90e5d18a.mp3",
+      "audio/e2f3424252b5.mp3",
+      "audio/19bdfa0810f7.mp3"
+    ],
+    "die Tür": [
+      "audio/c9497d488ab8.mp3",
+      "audio/765d9bb96900.mp3",
+      "audio/ba36bd67af04.mp3",
+      "audio/0a1ccb96e8e1.mp3"
+    ],
+    "die Uhr": [
+      "audio/6d375d05a8a0.mp3",
+      "audio/d565e270e4da.mp3",
+      "audio/28d91198a613.mp3",
+      "audio/af8dd12f7e4b.mp3"
+    ],
+    "die Wand": [
+      "audio/2605a2abeb00.mp3",
+      "audio/e283fa9c2206.mp3",
+      "audio/050827a2ba02.mp3",
+      "audio/66182540bb6d.mp3"
+    ],
+    "die Wurst": [
+      "audio/e5963eac8449.mp3",
+      "audio/7a998827f69f.mp3",
+      "audio/3ee69f542e97.mp3",
+      "audio/2c8475eb4dfc.mp3"
+    ],
+    "e": [
+      "audio/c26fd69905a2.mp3",
+      "audio/74e91c7589d9.mp3",
+      "audio/a3817356e4e5.mp3",
+      "audio/ac3e381f366d.mp3"
+    ],
+    "ei": [
+      "audio/c4062946fb66.mp3",
+      "audio/1046fc21fda8.mp3",
+      "audio/c7633b86cfbf.mp3",
+      "audio/134cc2b51162.mp3"
+    ],
+    "Eier": [
+      "audio/23751709a6b7.mp3",
+      "audio/d07283ad9014.mp3",
+      "audio/f2930012941a.mp3",
+      "audio/643643ef4681.mp3"
+    ],
+    "Ein Hai schwimmt im Meer.": [
+      "audio/cc5bde0bc8fb.mp3",
+      "audio/ec8ce659f904.mp3",
+      "audio/50491c6f65d6.mp3",
+      "audio/07aa6d5b88a2.mp3"
+    ],
+    "eu": [
+      "audio/b77fb0e9cd89.mp3",
+      "audio/d61e49f60910.mp3",
+      "audio/4bef57ce32af.mp3",
+      "audio/d89bac2c61f1.mp3"
+    ],
+    "Fast! Achte auf große und kleine Buchstaben.": [
+      "audio/1e3a98cee7c1.mp3",
+      "audio/82260e25943a.mp3",
+      "audio/eb39c3bfd8b2.mp3"
+    ],
+    "Fast! Nomen schreibt man groß.": [
+      "audio/cffd869148cc.mp3",
+      "audio/c5f750eb96bf.mp3",
+      "audio/e544861083c8.mp3"
+    ],
+    "Fast! Schau auf die Ringe.": [
+      "audio/d27b9e91bb1b.mp3",
+      "audio/d2a013434e78.mp3",
+      "audio/7da02e9d1e08.mp3"
+    ],
+    "Feuer": [
+      "audio/2bf11585ce81.mp3",
+      "audio/ff48448cf384.mp3",
+      "audio/3be7ae127951.mp3",
+      "audio/4a24ba2d7e55.mp3"
+    ],
+    "Finger": [
+      "audio/5cbd88eb3f0e.mp3",
+      "audio/e827e91f9182.mp3",
+      "audio/eb014c3886e6.mp3",
+      "audio/1f43cfacdec7.mp3"
+    ],
+    "Fisch": [
+      "audio/af5ddadc2676.mp3",
+      "audio/3854d982ce0a.mp3",
+      "audio/45f56c49240c.mp3",
+      "audio/50c6ce965ae0.mp3"
+    ],
+    "Fische": [
+      "audio/dfe6201e4dd4.mp3",
+      "audio/2aa09c49cea4.mp3",
+      "audio/3c7ebbefd48c.mp3",
+      "audio/2fe70a863aee.mp3"
+    ],
+    "Fliege": [
+      "audio/2246ed758919.mp3",
+      "audio/c6a9108f3ba2.mp3",
+      "audio/049345db6e21.mp3",
+      "audio/33011fcf5b75.mp3"
+    ],
+    "Fliegenpilz": [
+      "audio/e99f2f230918.mp3",
+      "audio/0b0bfa10a46d.mp3",
+      "audio/e8d887063cb0.mp3",
+      "audio/3540bd376f3d.mp3"
+    ],
+    "Flügel": [
+      "audio/bf2caec0e571.mp3",
+      "audio/aff258f7cc74.mp3",
+      "audio/dc36e35361cf.mp3",
+      "audio/1e5cdbf72449.mp3"
+    ],
+    "Freund": [
+      "audio/6fe8c5e6e292.mp3",
+      "audio/9a379688f26d.mp3",
+      "audio/610d71132025.mp3",
+      "audio/5ba03e3cb40f.mp3"
+    ],
+    "Frösche": [
+      "audio/fe65f3ab1ec2.mp3",
+      "audio/ff400f9cc302.mp3",
+      "audio/b21e365c874f.mp3",
+      "audio/925dcb20802c.mp3"
+    ],
+    "Füchse": [
+      "audio/04df7e9856b9.mp3",
+      "audio/74f57a3c7d47.mp3",
+      "audio/76999ccb9888.mp3",
+      "audio/733fc8319d21.mp3"
+    ],
+    "Füße": [
+      "audio/46c8524e5c84.mp3",
+      "audio/346d2727b6ff.mp3",
+      "audio/67f2038f94b6.mp3",
+      "audio/a8c0e65bd20e.mp3"
+    ],
+    "Gänse": [
+      "audio/66a1a78af440.mp3",
+      "audio/37bac09293ed.mp3",
+      "audio/fe2e6780639b.mp3",
+      "audio/33cfda186c3f.mp3"
+    ],
+    "Geige": [
+      "audio/23d6db132ca4.mp3",
+      "audio/5fb10f881f6b.mp3",
+      "audio/c9640a8f1656.mp3",
+      "audio/b3e59d8bf8ea.mp3"
+    ],
+    "Gemüse": [
+      "audio/2c1b868c4383.mp3",
+      "audio/e67993d9239d.mp3",
+      "audio/3e4f9d461652.mp3",
+      "audio/209a3218b639.mp3"
+    ],
+    "Gießkanne": [
+      "audio/71ba4c297dc7.mp3",
+      "audio/29a3e6dcba16.mp3",
+      "audio/b3d7c7cd0648.mp3",
+      "audio/ef0c9a06040e.mp3"
+    ],
+    "Gläser": [
+      "audio/586dfe049a23.mp3",
+      "audio/6d0677f69cd5.mp3",
+      "audio/ea08874678f8.mp3",
+      "audio/9373ec72d8ee.mp3"
+    ],
+    "Haar": [
+      "audio/09969731c3f8.mp3",
+      "audio/c2e61741bd02.mp3",
+      "audio/393040e72b5f.mp3",
+      "audio/65ac0c55dd82.mp3"
+    ],
+    "Hai": [
+      "audio/1c6368a185a5.mp3",
+      "audio/468c13f110d1.mp3",
+      "audio/81984a892ace.mp3",
+      "audio/ba191ae89435.mp3"
+    ],
+    "Hände": [
+      "audio/ca86afaa3cdf.mp3",
+      "audio/b257e0321f87.mp3",
+      "audio/aaffc1fea080.mp3",
+      "audio/7bdb9ebc9306.mp3"
+    ],
+    "Haus": [
+      "audio/542b5a6417b7.mp3",
+      "audio/ff99696354af.mp3",
+      "audio/24f78806bf21.mp3",
+      "audio/d958c3711422.mp3"
+    ],
+    "Häuser": [
+      "audio/dd42559540aa.mp3",
+      "audio/0cd9795215eb.mp3",
+      "audio/2bf7726c3ec2.mp3",
+      "audio/0b9919e63149.mp3"
+    ],
+    "Hör gut zu. Kurz oder lang?": [
+      "audio/d8b8bbbd664a.mp3",
+      "audio/66aed99f1703.mp3",
+      "audio/d3dbd7d2311a.mp3"
+    ],
+    "Hör noch einmal genau hin.": [
+      "audio/29ef8ce96439.mp3",
+      "audio/311b960e8763.mp3",
+      "audio/b8cf04110935.mp3"
+    ],
+    "Hose": [
+      "audio/f6f5f753d063.mp3",
+      "audio/470c9e7f09be.mp3",
+      "audio/178d3ad528ad.mp3",
+      "audio/5386b9738934.mp3"
+    ],
+    "Hosen": [
+      "audio/2ea36bb876c6.mp3",
+      "audio/17fa1ce474b3.mp3",
+      "audio/2cfd2085d33e.mp3",
+      "audio/8dd1d6b6d7f1.mp3"
+    ],
+    "Huhn": [
+      "audio/ae3b31efa404.mp3",
+      "audio/1e7433374e8c.mp3",
+      "audio/841ee4859e39.mp3",
+      "audio/b851096ad45d.mp3"
+    ],
+    "Hund": [
+      "audio/9689a8c0d89e.mp3",
+      "audio/79029237d1d9.mp3",
+      "audio/78070a27116b.mp3",
+      "audio/147cc6ce58f7.mp3"
+    ],
+    "Hunde": [
+      "audio/0747d2285df5.mp3",
+      "audio/c615c2e0c95f.mp3",
+      "audio/ef0ba9bfe664.mp3",
+      "audio/925f5680d927.mp3"
+    ],
+    "Hüte": [
+      "audio/6f0bf671e086.mp3",
+      "audio/48770336984a.mp3",
+      "audio/46a1ed2788cb.mp3",
+      "audio/d41431ddbcfb.mp3"
+    ],
+    "Hütte": [
+      "audio/592c7107d8aa.mp3",
+      "audio/1f41e21a6092.mp3",
+      "audio/723059459dc6.mp3",
+      "audio/0b850631c84a.mp3"
+    ],
+    "i": [
+      "audio/e912774be26b.mp3",
+      "audio/2d3484415c35.mp3",
+      "audio/3d05ae151938.mp3",
+      "audio/2430f596691a.mp3"
+    ],
+    "Im Garten blüht ein Baum.": [
+      "audio/24ad2997edfa.mp3",
+      "audio/577d15c42916.mp3",
+      "audio/4f2b375e7b56.mp3",
+      "audio/65521697eb2b.mp3"
+    ],
+    "Im Ofen brennt ein Feuer.": [
+      "audio/2f808d1656be.mp3",
+      "audio/e8cc8f6aa634.mp3",
+      "audio/4872da88b50a.mp3",
+      "audio/5df48bd0ee54.mp3"
+    ],
+    "Insel": [
+      "audio/1f1c081efbab.mp3",
+      "audio/dd92253e2e00.mp3",
+      "audio/486b2c326b7e.mp3",
+      "audio/647adcd210be.mp3"
+    ],
+    "Jacke": [
+      "audio/f35a86c3350f.mp3",
+      "audio/a6e848d934aa.mp3",
+      "audio/d736055187b0.mp3",
+      "audio/160c881159bc.mp3"
+    ],
+    "Käfer": [
+      "audio/6b8247121712.mp3",
+      "audio/d3f0b9ea5130.mp3",
+      "audio/18b7411ca1db.mp3",
+      "audio/6495e43325d3.mp3"
+    ],
+    "Kahn": [
+      "audio/f76c880d022e.mp3",
+      "audio/ef2def25098e.mp3",
+      "audio/9f3411181b7f.mp3",
+      "audio/37b17ee00af2.mp3"
+    ],
+    "Kaiser": [
+      "audio/e2e984538ee6.mp3",
+      "audio/a10bc9e66085.mp3",
+      "audio/4067d03afa04.mp3",
+      "audio/c42a40deafe4.mp3"
+    ],
+    "Kamm": [
+      "audio/bf9fd138b370.mp3",
+      "audio/c403a7e433e3.mp3",
+      "audio/2e10070a7c40.mp3",
+      "audio/fabad3d22426.mp3"
+    ],
+    "kann": [
+      "audio/40c775082c17.mp3",
+      "audio/16d10da58ba6.mp3",
+      "audio/66d621c38305.mp3",
+      "audio/66b2d768ad10.mp3"
+    ],
+    "Käse": [
+      "audio/568d4112fac4.mp3",
+      "audio/3ade44479944.mp3",
+      "audio/a0468e5914ee.mp3",
+      "audio/1cb08da5c1a3.mp3"
+    ],
+    "Katze": [
+      "audio/62a9b7175306.mp3",
+      "audio/f3b871015b23.mp3",
+      "audio/52969b091b86.mp3",
+      "audio/d961f2a5bbe9.mp3"
+    ],
+    "Katzen": [
+      "audio/ba4f8b472785.mp3",
+      "audio/3b2ab034dc2e.mp3",
+      "audio/1928bd12cfea.mp3",
+      "audio/4e24c6afa4d3.mp3"
+    ],
+    "Kind": [
+      "audio/bb0e0a2838ef.mp3",
+      "audio/c7d696683425.mp3",
+      "audio/8c209b29576a.mp3",
+      "audio/b613018ecd32.mp3"
+    ],
+    "Kinder": [
+      "audio/88c4a722bd6f.mp3",
+      "audio/461cca009508.mp3",
+      "audio/138ca7e37f2c.mp3",
+      "audio/0953d9ceca42.mp3"
+    ],
+    "Kirsche": [
+      "audio/4d991c5f7d7a.mp3",
+      "audio/269ad57bbec2.mp3",
+      "audio/911852845b5f.mp3",
+      "audio/d3d589e702d0.mp3"
+    ],
+    "Kissen": [
+      "audio/b9f64c8a2f87.mp3",
+      "audio/e49517250b68.mp3",
+      "audio/d4e2492e76e5.mp3",
+      "audio/9f2d98e9537d.mp3"
+    ],
+    "Klavier": [
+      "audio/10cda2dafb55.mp3",
+      "audio/8a097fa79cdb.mp3",
+      "audio/a75d485a296d.mp3",
+      "audio/d813f98a5fc3.mp3"
+    ],
+    "Kleid": [
+      "audio/fefb2f725c57.mp3",
+      "audio/71391807d99e.mp3",
+      "audio/eaa0e2c36d47.mp3",
+      "audio/6f74cdcaceb5.mp3"
+    ],
+    "Knie": [
+      "audio/45b28f1e17ce.mp3",
+      "audio/6e0f501f40fb.mp3",
+      "audio/0af21ff322f5.mp3",
+      "audio/e3461debdaf7.mp3"
+    ],
+    "König": [
+      "audio/2f9113f743d1.mp3",
+      "audio/f03e32e16089.mp3",
+      "audio/e1053b349b91.mp3",
+      "audio/2605f87aa69f.mp3"
+    ],
+    "Köpfe": [
+      "audio/10b4f9c33abb.mp3",
+      "audio/d9045f3c4b04.mp3",
+      "audio/434f1c6dbc0c.mp3",
+      "audio/6cc170b3d0de.mp3"
+    ],
+    "Körbe": [
+      "audio/5ffb9f4c0017.mp3",
+      "audio/eab33408a4c1.mp3",
+      "audio/b5f2a3bfa7cf.mp3",
+      "audio/c701c8f44822.mp3"
+    ],
+    "Küche": [
+      "audio/7f0cbb54b712.mp3",
+      "audio/f76d1a27f719.mp3",
+      "audio/7e42ffdff8cd.mp3",
+      "audio/3747921a7b38.mp3"
+    ],
+    "Kühe": [
+      "audio/d6b2274c570d.mp3",
+      "audio/47684cc7f53b.mp3",
+      "audio/34a38010b0ff.mp3",
+      "audio/1ef139544014.mp3"
+    ],
+    "Kürbis": [
+      "audio/2f26b73669eb.mp3",
+      "audio/31a6f8dafc7c.mp3",
+      "audio/e0a80fe8587a.mp3",
+      "audio/90343311aa21.mp3"
+    ],
+    "Läuse": [
+      "audio/48edc1b5e2ee.mp3",
+      "audio/ee95788d7f67.mp3",
+      "audio/409428a103f1.mp3",
+      "audio/f29256101688.mp3"
+    ],
+    "Löffel": [
+      "audio/40776db52499.mp3",
+      "audio/931a4004af4c.mp3",
+      "audio/ffb3bd774d2a.mp3",
+      "audio/3610048a2cae.mp3"
+    ],
+    "Löwe": [
+      "audio/3964b38d7e38.mp3",
+      "audio/17ae5e5e5c87.mp3",
+      "audio/0a00fe7430dd.mp3",
+      "audio/81d33f2aa605.mp3"
+    ],
+    "Mädchen": [
+      "audio/7429466d9dbf.mp3",
+      "audio/2b14fbe908b8.mp3",
+      "audio/54ffe2d0066d.mp3",
+      "audio/d602b45c6a03.mp3"
+    ],
+    "Männer": [
+      "audio/525e4028da37.mp3",
+      "audio/93a9ba14e34f.mp3",
+      "audio/cd75c689416c.mp3",
+      "audio/84efa8038e47.mp3"
+    ],
+    "Mäuse": [
+      "audio/97cdbc05ae83.mp3",
+      "audio/5268c192bddb.mp3",
+      "audio/1960e379f2f3.mp3",
+      "audio/091a32e36072.mp3"
+    ],
+    "Mein Freund hat ein Boot.": [
+      "audio/b54a48781a3e.mp3",
+      "audio/fc1b8daa5ac6.mp3",
+      "audio/cd8a1a1f4c09.mp3",
+      "audio/c56bb25f814f.mp3"
+    ],
+    "Mein Hund bellt laut.": [
+      "audio/484d3f957fa3.mp3",
+      "audio/f128ff029b67.mp3",
+      "audio/f8377ee010e5.mp3",
+      "audio/469dc2ea5838.mp3"
+    ],
+    "Miete": [
+      "audio/aca7d5ab89b4.mp3",
+      "audio/285c665a2167.mp3",
+      "audio/7d688c4a1284.mp3",
+      "audio/8cea5029dc4a.mp3"
+    ],
+    "Milch": [
+      "audio/ee7d909a21f2.mp3",
+      "audio/1ce499f39fac.mp3",
+      "audio/15cdcd75cf72.mp3",
+      "audio/e2ce2a43df4e.mp3"
+    ],
+    "Mitte": [
+      "audio/efcdcbd690f3.mp3",
+      "audio/de1582c1c82a.mp3",
+      "audio/95f4b9a52a5c.mp3",
+      "audio/63d5edd7655f.mp3"
+    ],
+    "Möhre": [
+      "audio/b8870f270d37.mp3",
+      "audio/ec6f04c120af.mp3",
+      "audio/4165b23b3a26.mp3",
+      "audio/1d42ba4acfee.mp3"
+    ],
+    "Mond": [
+      "audio/665e8a1a731d.mp3",
+      "audio/62abaa05e493.mp3",
+      "audio/8242903fefd2.mp3",
+      "audio/21b05077bd65.mp3"
+    ],
+    "Möwe": [
+      "audio/ae44c8cd4bdc.mp3",
+      "audio/23e68a5dca47.mp3",
+      "audio/cf9421bd17f5.mp3",
+      "audio/b15ada694980.mp3"
+    ],
+    "Mücke": [
+      "audio/ed46fadc3747.mp3",
+      "audio/8f943c19a284.mp3",
+      "audio/2254704326bf.mp3",
+      "audio/a2ff458d17d8.mp3"
+    ],
+    "Mund": [
+      "audio/16e4d46b3ca1.mp3",
+      "audio/dd3b5d586532.mp3",
+      "audio/9f572bad5071.mp3",
+      "audio/75febb8f81b2.mp3"
+    ],
+    "Mütze": [
+      "audio/540176c85455.mp3",
+      "audio/d8178e923d74.mp3",
+      "audio/d67a556235ed.mp3",
+      "audio/49c5968cf07f.mp3"
+    ],
+    "Nase": [
+      "audio/810752d127de.mp3",
+      "audio/f174c00ca529.mp3",
+      "audio/4f9cd02cd010.mp3",
+      "audio/4fb72fa80070.mp3"
+    ],
+    "Nüsse": [
+      "audio/a7a7c5beab47.mp3",
+      "audio/4f19c2ea44b5.mp3",
+      "audio/a480c14ffc2c.mp3",
+      "audio/e01a15ae0998.mp3"
+    ],
+    "o": [
+      "audio/fc8690afe35e.mp3",
+      "audio/39444c3fd254.mp3",
+      "audio/d621e8198c2c.mp3",
+      "audio/147e20e3b999.mp3"
+    ],
+    "ö": [
+      "audio/6e502b7054e7.mp3",
+      "audio/eece7100404f.mp3",
+      "audio/b9929b1331a8.mp3",
+      "audio/934318bb8d96.mp3"
+    ],
+    "Ofen": [
+      "audio/017acee6ddee.mp3",
+      "audio/5d577db7d84e.mp3",
+      "audio/0f70711f2c92.mp3",
+      "audio/10cc7f838f03.mp3"
+    ],
+    "offen": [
+      "audio/baa63f4c0c08.mp3",
+      "audio/e21ee78a5093.mp3",
+      "audio/75f9e59d0684.mp3",
+      "audio/a0eb21256f39.mp3"
+    ],
+    "Oma backt einen Kuchen.": [
+      "audio/b665a149dce2.mp3",
+      "audio/a086580ad670.mp3",
+      "audio/06dbcda24e31.mp3",
+      "audio/f211805f5aef.mp3"
+    ],
+    "Papier": [
+      "audio/6a2154aadf0f.mp3",
+      "audio/4b31cdb2c9a2.mp3",
+      "audio/8d95a07c76c6.mp3",
+      "audio/705f1c24b11d.mp3"
+    ],
+    "Pferde": [
+      "audio/56f5755e6e47.mp3",
+      "audio/6f1cfae778c3.mp3",
+      "audio/57acfe10849a.mp3",
+      "audio/31e6b27d25d0.mp3"
+    ],
+    "Pilz": [
+      "audio/1e53fe1a6886.mp3",
+      "audio/20d311e5276e.mp3",
+      "audio/e820bb2cc0b9.mp3",
+      "audio/9a03d9ba0678.mp3"
+    ],
+    "Pinsel": [
+      "audio/91cd492d601a.mp3",
+      "audio/7b2c8bbee52f.mp3",
+      "audio/5e705290a192.mp3",
+      "audio/00750939711c.mp3"
+    ],
+    "Räder": [
+      "audio/075ce17654de.mp3",
+      "audio/1a2f5f1e32ca.mp3",
+      "audio/c0e422a4b3bb.mp3",
+      "audio/fcc42f121b42.mp3"
+    ],
+    "Radiergummi": [
+      "audio/9afea80e9b4b.mp3",
+      "audio/ea3819e7da88.mp3",
+      "audio/4b820998213d.mp3",
+      "audio/18bad8309520.mp3"
+    ],
+    "Riese": [
+      "audio/e92fd1595061.mp3",
+      "audio/64617871c5a5.mp3",
+      "audio/e50cddb19be7.mp3",
+      "audio/6c2e8f3b7141.mp3"
+    ],
+    "Riesenrad": [
+      "audio/5c06d6147780.mp3",
+      "audio/f60b602da8d4.mp3",
+      "audio/057ab305f8b2.mp3",
+      "audio/e8abdc53ca43.mp3"
+    ],
+    "Ritter": [
+      "audio/21d47c1ab225.mp3",
+      "audio/97f254c36b1b.mp3",
+      "audio/379437dd782e.mp3",
+      "audio/5fffc3281580.mp3"
+    ],
+    "Rose": [
+      "audio/76e35aca75ea.mp3",
+      "audio/f15a9862c263.mp3",
+      "audio/db9303bc7ff6.mp3",
+      "audio/a629331164a5.mp3"
+    ],
+    "Schaf": [
+      "audio/b37444a8f526.mp3",
+      "audio/e570ee9b32e1.mp3",
+      "audio/068b49e1691f.mp3",
+      "audio/2f53be3d428d.mp3"
+    ],
+    "Schafe": [
+      "audio/858786ba89da.mp3",
+      "audio/2f042547c61a.mp3",
+      "audio/6be920b055bf.mp3",
+      "audio/ea45821a7a66.mp3"
+    ],
+    "Schal": [
+      "audio/020eb5533701.mp3",
+      "audio/f0b870296058.mp3",
+      "audio/fd7c39329193.mp3",
+      "audio/99a29f4c69e5.mp3"
+    ],
+    "Schall": [
+      "audio/d08db4d73ae1.mp3",
+      "audio/5cf379f9373a.mp3",
+      "audio/67bbc2c3be9a.mp3",
+      "audio/20a822ffa598.mp3"
+    ],
+    "Schiff": [
+      "audio/2cdc2c38bb2a.mp3",
+      "audio/a7a892066cd5.mp3",
+      "audio/64fe0e1311b7.mp3",
+      "audio/13a61fce78c3.mp3"
+    ],
+    "Schreib das Wort.": [
+      "audio/7d5180cab0b7.mp3",
+      "audio/f27bc25f9a61.mp3",
+      "audio/77ce45cb3bde.mp3"
+    ],
+    "Schreib die Mehrzahl.": [
+      "audio/125797f18eba.mp3",
+      "audio/4fd24463791d.mp3",
+      "audio/0f07af673544.mp3"
+    ],
+    "Schuhe": [
+      "audio/bdd5eb9aaf0c.mp3",
+      "audio/7dcf8b8bf9fb.mp3",
+      "audio/c102f48c9292.mp3",
+      "audio/3de9b7a49719.mp3"
+    ],
+    "Schüssel": [
+      "audio/5a152ebc52ce.mp3",
+      "audio/a1c3daf9ee97.mp3",
+      "audio/3328f77b0670.mp3",
+      "audio/ffd9f19f9baa.mp3"
+    ],
+    "Seife": [
+      "audio/460cd46c133a.mp3",
+      "audio/3f8b6c468d12.mp3",
+      "audio/262ca03093eb.mp3",
+      "audio/78279171a88b.mp3"
+    ],
+    "Sieb": [
+      "audio/afd2ffe20463.mp3",
+      "audio/5ed1495b782f.mp3",
+      "audio/ec992f4cfd9b.mp3",
+      "audio/46761ab57289.mp3"
+    ],
+    "So fängt es an. Schreib weiter!": [
+      "audio/5200e29ab7f4.mp3",
+      "audio/29660a432c13.mp3",
+      "audio/972ba90bdef1.mp3"
+    ],
+    "So heißt es. Schreib es ab.": [
+      "audio/2f4d90c58fc5.mp3",
+      "audio/7b973017808d.mp3",
+      "audio/539ef0c09fc7.mp3"
+    ],
+    "So ist es richtig. Tipp auf Fertig.": [
+      "audio/3eb5ab60c329.mp3",
+      "audio/d7e866e3e711.mp3",
+      "audio/0e46d0ce7d80.mp3"
+    ],
+    "So ist es richtig. Tipp darauf.": [
+      "audio/b53a97072d75.mp3",
+      "audio/9084f342ce01.mp3",
+      "audio/be008edd54c9.mp3"
+    ],
+    "Sonne": [
+      "audio/064209d3d64e.mp3",
+      "audio/08d841060862.mp3",
+      "audio/95ef8a87057c.mp3",
+      "audio/17e1ba0fe914.mp3"
+    ],
+    "Spiegel": [
+      "audio/c1f79dc4d7ca.mp3",
+      "audio/93bfd864f7c4.mp3",
+      "audio/034dd819220a.mp3",
+      "audio/dcb70df088a9.mp3"
+    ],
+    "Stiefel": [
+      "audio/62e5f3b515bb.mp3",
+      "audio/7698b43b621e.mp3",
+      "audio/5317f66dd1a8.mp3",
+      "audio/92caf6929f1f.mp3"
+    ],
+    "Stiel": [
+      "audio/e9221ec09b14.mp3",
+      "audio/41bbaea7fbd5.mp3",
+      "audio/65b2f15c07a5.mp3",
+      "audio/89744bc75777.mp3"
+    ],
+    "Stier": [
+      "audio/01e1bc18156f.mp3",
+      "audio/c133e3fbb226.mp3",
+      "audio/4f2e741d1cca.mp3",
+      "audio/b44cd3d3057d.mp3"
+    ],
+    "still": [
+      "audio/0c0aaad57683.mp3",
+      "audio/37c76cdb0df1.mp3",
+      "audio/b198009d815f.mp3",
+      "audio/882e94444c16.mp3"
+    ],
+    "Stühle": [
+      "audio/2f0ec066d646.mp3",
+      "audio/8ce56cdf2440.mp3",
+      "audio/b7fd44bff85d.mp3",
+      "audio/da2320d40cd0.mp3"
+    ],
+    "Super! Ein Kristall für deinen Schatz.": [
+      "audio/93849f973d24.mp3",
+      "audio/077ad282156c.mp3",
+      "audio/5984a4e9e0a8.mp3"
+    ],
+    "Teufel": [
+      "audio/d33eb90eab93.mp3",
+      "audio/4bbc8289a75c.mp3",
+      "audio/9211f475ffc2.mp3",
+      "audio/0a61073d8c5e.mp3"
+    ],
+    "Tier": [
+      "audio/ed76ad903e21.mp3",
+      "audio/4870406f0aa7.mp3",
+      "audio/34d55d1eeda8.mp3",
+      "audio/4b978816b58c.mp3"
+    ],
+    "Tipp auf die Buchstaben. Dann auf die Farbe.": [
+      "audio/d14cf0a0a852.mp3",
+      "audio/e30167a1b32f.mp3",
+      "audio/6e43605823d1.mp3"
+    ],
+    "Tipp: Aus a wird ä.": [
+      "audio/5e28f0df9d7b.mp3",
+      "audio/5ca821a9f354.mp3",
+      "audio/6f3bca02ef10.mp3"
+    ],
+    "Tipp: Aus au wird äu.": [
+      "audio/2eadfc6e1a3f.mp3",
+      "audio/69f802738756.mp3",
+      "audio/58bfda8bfc14.mp3"
+    ],
+    "Tipp: Aus o wird ö.": [
+      "audio/3d8f9d8bf811.mp3",
+      "audio/0d584440c755.mp3",
+      "audio/9198ee58e105.mp3"
+    ],
+    "Tipp: Aus u wird ü.": [
+      "audio/ca5a71c595de.mp3",
+      "audio/0d931dc6b858.mp3",
+      "audio/26d262612a3b.mp3"
+    ],
+    "Tipp: Brötchen kommt von Brot: Aus o wird ö.": [
+      "audio/14d3a7f232db.mp3",
+      "audio/d80c51db40fd.mp3",
+      "audio/705fc1df4ff1.mp3"
+    ],
+    "Tipp: Danach kommen zwei gleiche Mitlaute. Dann ist der Selbstlaut kurz.": [
+      "audio/a38455cf8515.mp3",
+      "audio/9fda0ce03d04.mp3",
+      "audio/78ce1d04a292.mp3"
+    ],
+    "Tipp: Das Wort hat schon ä, ö oder ü. Das bleibt so.": [
+      "audio/73e42efb4af2.mp3",
+      "audio/594be7cd4863.mp3",
+      "audio/9185ee2076e9.mp3"
+    ],
+    "Tipp: Ein Baum, viele Bäume: Aus au wird äu.": [
+      "audio/1123e865d8c0.mp3",
+      "audio/ce75e31a1a68.mp3",
+      "audio/04b8703058ad.mp3"
+    ],
+    "Tipp: Ein h nach dem Selbstlaut macht ihn lang.": [
+      "audio/40f15127bcff.mp3",
+      "audio/c4c47c147833.mp3",
+      "audio/dabce63dd74f.mp3"
+    ],
+    "Tipp: Ein Haus, viele Häuser: Aus au wird äu.": [
+      "audio/5a7d20a20c1f.mp3",
+      "audio/0550f73a132f.mp3",
+      "audio/ac2e62ad89e1.mp3"
+    ],
+    "Tipp: Ein Merkwort: Es klingt wie ei, aber man schreibt es anders.": [
+      "audio/92559441fa81.mp3",
+      "audio/b7a25f118484.mp3",
+      "audio/dea075b907f1.mp3"
+    ],
+    "Tipp: Ein Vogel, viele Vögel: Aus o wird ö.": [
+      "audio/52e141b7ddc5.mp3",
+      "audio/3b57894ed48f.mp3",
+      "audio/f5bd3f254026.mp3"
+    ],
+    "Tipp: Ein Zahn, viele Zähne: Aus a wird ä.": [
+      "audio/a4f5427ba08b.mp3",
+      "audio/85b1876e42a3.mp3",
+      "audio/2f2e52b3819a.mp3"
+    ],
+    "Tipp: Eine Maus, viele Mäuse: Aus au wird äu.": [
+      "audio/6af0a6e07c97.mp3",
+      "audio/f17fe753e4fb.mp3",
+      "audio/be8c612adbff.mp3"
+    ],
+    "Tipp: ie ist immer lang.": [
+      "audio/77d507ae6486.mp3",
+      "audio/14fba87de40f.mp3",
+      "audio/d8be49a3c6db.mp3"
+    ],
+    "Tipp: Langes i schreibt man ie. Kurzes i schreibt man i.": [
+      "audio/d977e6374571.mp3",
+      "audio/3b07972b319c.mp3",
+      "audio/dd7f2c62f131.mp3"
+    ],
+    "Tipp: Schau auf die Buchstaben auf den Farben.": [
+      "audio/fe5bd1f074dd.mp3",
+      "audio/2e81aea57035.mp3",
+      "audio/08aa1a3e45d5.mp3"
+    ],
+    "Tipp: Sprich das Wort langsam und hör genau hin.": [
+      "audio/d2f565f9b34e.mp3",
+      "audio/1dd0d1148e2b.mp3",
+      "audio/27241eae6068.mp3"
+    ],
+    "Tipp: Sprich das Wort laut. Klingt der Selbstlaut kurz oder lang?": [
+      "audio/bb309ed1d461.mp3",
+      "audio/3ea231f71004.mp3",
+      "audio/a0ea8be1f584.mp3"
+    ],
+    "Tipp: Vor ck ist der Selbstlaut kurz.": [
+      "audio/8a549a7ad8cf.mp3",
+      "audio/cf2674335227.mp3",
+      "audio/28520833808a.mp3"
+    ],
+    "Tipp: Vor tz ist der Selbstlaut kurz.": [
+      "audio/348e732d1c8a.mp3",
+      "audio/f1da2bb0efc1.mp3",
+      "audio/dbccfb182761.mp3"
+    ],
+    "Tipp: Wird aus a, o, u ein ä, ö, ü?": [
+      "audio/fb6484e48209.mp3",
+      "audio/b6d507b7749e.mp3",
+      "audio/f4a8d907891b.mp3"
+    ],
+    "Tipp: Zwei gleiche Selbstlaute sind lang.": [
+      "audio/6d0a57f69d75.mp3",
+      "audio/cb5c6db903cb.mp3",
+      "audio/6f914cafe840.mp3"
+    ],
+    "Tisch": [
+      "audio/4e0d57d237e8.mp3",
+      "audio/053c8549c92d.mp3",
+      "audio/c34deb14a304.mp3",
+      "audio/4ef4b8310134.mp3"
+    ],
+    "Tische": [
+      "audio/81501197b8a2.mp3",
+      "audio/1aa03301f0cf.mp3",
+      "audio/e63f5df5751b.mp3",
+      "audio/639651b29e52.mp3"
+    ],
+    "Töpfe": [
+      "audio/067fac6531ce.mp3",
+      "audio/42cb1a8ba5e7.mp3",
+      "audio/d710b9a23a27.mp3",
+      "audio/c7b5529f7dfc.mp3"
+    ],
+    "Türen": [
+      "audio/ccb70d910a7f.mp3",
+      "audio/bf520d904070.mp3",
+      "audio/8354858248d6.mp3",
+      "audio/891efde0cad7.mp3"
+    ],
+    "Türme": [
+      "audio/5c6f57a5a769.mp3",
+      "audio/1a87cfa612b8.mp3",
+      "audio/f35c77bb640b.mp3",
+      "audio/356282b7cfd7.mp3"
+    ],
+    "u": [
+      "audio/b7a35641f3be.mp3",
+      "audio/a9493fc2300c.mp3",
+      "audio/6be6d43a3c86.mp3",
+      "audio/4ae32ce0b813.mp3"
+    ],
+    "ü": [
+      "audio/e02272b7c279.mp3",
+      "audio/f2544c85ddb7.mp3",
+      "audio/72960e84877a.mp3",
+      "audio/789651ae17e8.mp3"
+    ],
+    "Uhren": [
+      "audio/18529fe3303d.mp3",
+      "audio/4a337a42c55f.mp3",
+      "audio/3227f9ec273b.mp3",
+      "audio/37281c6bb681.mp3"
+    ],
+    "vier": [
+      "audio/025ef12bd151.mp3",
+      "audio/b29d15b6611d.mp3",
+      "audio/5fed3f4405f4.mp3",
+      "audio/768395110585.mp3"
+    ],
+    "Vögel": [
+      "audio/61257f9d3de7.mp3",
+      "audio/d221ca76cc16.mp3",
+      "audio/9e618067d813.mp3",
+      "audio/b099c5899284.mp3"
+    ],
+    "Wände": [
+      "audio/04521a70ac93.mp3",
+      "audio/ca39de74c84b.mp3",
+      "audio/70b6ce800b03.mp3",
+      "audio/cf22d0db8af9.mp3"
+    ],
+    "Was ist das für ein Laut?": [
+      "audio/186c9444e6c6.mp3",
+      "audio/db0aa249f55d.mp3",
+      "audio/0ba8a3cc69ec.mp3"
+    ],
+    "Welche Buchstaben fehlen?": [
+      "audio/ddf52dfd5111.mp3",
+      "audio/163cf47bea68.mp3",
+      "audio/4a5bd0c2fc3f.mp3"
+    ],
+    "Welcher Buchstabe fehlt?": [
+      "audio/e596aaf54334.mp3",
+      "audio/20fa1411464b.mp3",
+      "audio/ed0a4d96fa80.mp3"
+    ],
+    "Wiese": [
+      "audio/cf0ee0576cad.mp3",
+      "audio/b78f5c7116af.mp3",
+      "audio/fc6d01783ac5.mp3",
+      "audio/abe211a7d1fe.mp3"
+    ],
+    "Wir spielen mit dem Ball.": [
+      "audio/e9fca5303d51.mp3",
+      "audio/7d2539a20ac2.mp3",
+      "audio/cca9af0b80fb.mp3",
+      "audio/b72dbd9cde7e.mp3"
+    ],
+    "Wölfe": [
+      "audio/0b709f73a893.mp3",
+      "audio/425ee55c3f3a.mp3",
+      "audio/c3298037a44d.mp3",
+      "audio/883a43777962.mp3"
+    ],
+    "Würste": [
+      "audio/698a6da8930f.mp3",
+      "audio/a98086994c8b.mp3",
+      "audio/824255ed3a11.mp3",
+      "audio/7984d877198d.mp3"
+    ],
+    "Zahn": [
+      "audio/b484b2058011.mp3",
+      "audio/62cd5820892d.mp3",
+      "audio/0ff7237a9f77.mp3",
+      "audio/30818fb0ad59.mp3"
+    ],
+    "Zähne": [
+      "audio/a1b74c46077f.mp3",
+      "audio/f706f15fe7a3.mp3",
+      "audio/3a848aaf1593.mp3",
+      "audio/76ba88e333d2.mp3"
+    ],
+    "Zaun": [
+      "audio/9d7bc47a4c1c.mp3",
+      "audio/bc21cbdf6e2a.mp3",
+      "audio/12c54f7302d3.mp3",
+      "audio/33bbb86fa13d.mp3"
+    ],
+    "Zäune": [
+      "audio/98536af938bc.mp3",
+      "audio/10e7a1e94401.mp3",
+      "audio/753b67ff3801.mp3",
+      "audio/db2732052910.mp3"
+    ],
+    "Ziege": [
+      "audio/3299ea70f7ed.mp3",
+      "audio/61c16bdcab65.mp3",
+      "audio/a9387f54b6fe.mp3",
+      "audio/693ae5d0a626.mp3"
+    ],
+    "Zimmer": [
+      "audio/4f390e13a65c.mp3",
+      "audio/5ac69f27eb47.mp3",
+      "audio/916cd17d1135.mp3",
+      "audio/26fdf6bb407d.mp3"
+    ],
+    "Zirkus": [
+      "audio/c67ccb69f739.mp3",
+      "audio/dc7984c6fec6.mp3",
+      "audio/1913ec3065e9.mp3",
+      "audio/9f98e4beba52.mp3"
+    ],
+    "Zoo": [
+      "audio/ea4f0a6b0597.mp3",
+      "audio/3de44740fe48.mp3",
+      "audio/f7712d99052e.mp3",
+      "audio/34225bba3a37.mp3"
+    ],
+    "Züge": [
+      "audio/b8c130e30bb3.mp3",
+      "audio/653edeeebe94.mp3",
+      "audio/7ac9ff494548.mp3",
+      "audio/fa032aa13d96.mp3"
+    ],
+    "Zwiebel": [
+      "audio/9c61c42f509b.mp3",
+      "audio/08ec9e4ab648.mp3",
+      "audio/16e9cde43a8e.mp3",
+      "audio/860276d66347.mp3"
+    ]
   }
 }

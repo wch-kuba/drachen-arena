@@ -1,11 +1,12 @@
-// Read-aloud. Every text with a bundled AI voice clip (scripts/gen-audio.ts) plays that clip,
+// Read-aloud. Every text with a bundled AI voice clip (scripts/gen-audio.ts) plays a clip,
 // offline. Text without a clip falls back to the device's German voice (speechSynthesis).
 // With neither, `canSpeak()` is false and the UI shows a quiet speaker button.
 
 import manifest from '../content/audio-manifest.json'
 import { speechKey } from '../content/speech.ts'
 
-const CLIPS: Record<string, string> = manifest.clips
+/** Text → its clips. Words have one clip per voice; a random one plays each time. */
+const CLIPS: Record<string, string[]> = manifest.clips
 const RATE = 0.8
 const PREFERRED = /anna/i
 
@@ -48,7 +49,10 @@ export function initVoice(): Promise<SpeechSynthesisVoice | null> {
 
 export const hasVoice = () => voice !== null
 
-export const clipFor = (text: string): string | undefined => CLIPS[speechKey(text)]
+export function clipFor(text: string): string | undefined {
+  const clips = CLIPS[speechKey(text)]
+  return clips?.length ? clips[Math.floor(Math.random() * clips.length)] : undefined
+}
 
 /** True when every part can be heard: a clip, or else the device voice. */
 export const canSpeak = (parts: string[]) => parts.every((p) => clipFor(p)) || hasVoice()

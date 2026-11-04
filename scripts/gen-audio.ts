@@ -1,181 +1,161 @@
-// Generate the app's voice clips with Gemini TTS (build time only, on the parent's machine).
-// The child's app never calls Gemini; it plays the MP3s bundled from public/audio/.
+// Generate the app's voice clips with ElevenLabs (build time only, on the parent's machine).
+// The child's app never calls ElevenLabs; it plays the MP3s bundled from public/audio/.
 //
-//   npm run audio              generate missing clips, delete unused ones, write the manifest
-//   npm run audio -- --sample  write the same lines in several voices to audio-samples/ to pick one
-//   MODEL=<other> npm run audio -- --fill
-//                              only make clips for texts that have none yet, with another model
-//                              (e.g. when the main model hit its daily cap); existing clips stay.
-//                              A later plain run remakes those clips with the main model.
+//   npm run audio   make missing clips, delete unused ones, write the manifest and the sources list
 //
-// Needs GEMINI_API_KEY (paid tier, see PRODUCT.md › Audio) in .env.local, and ffmpeg.
-// Decision and terms: PRODUCT.md › Audio, plan/v1-03-core-engine.md › AI voice clips.
+// Voices (decided 2026-11-04, PRODUCT.md › Audio): Knurps narrates every instruction, tip and
+// feedback line in three tones; every word, plural, sound and sentence is made in four voices
+// (Kermy, Hopsi, Emmy, Knurps). The app picks one clip at random each time.
+//
+// Needs ELEVENLABS_API_KEY in .env.local (never commit it) and ffmpeg. Prints the credits used.
+// src/content/audio-sources.json lists which voice made each clip (not bundled).
 
+import { ElevenLabsClient } from '@elevenlabs/elevenlabs-js'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { SEED } from '../src/content/seed.ts'
-import { spokenTexts } from '../src/content/speech.ts'
+import { spokenRoles } from '../src/content/speech.ts'
 
-const MAIN_MODEL = 'gemini-3.8-flash-tts'
-const MODEL = process.env.MODEL ?? MAIN_MODEL
-const FILL = process.argv.includes('--fill')
-/** Chosen by the parent from the --sample run. */
-const VOICE = process.env.VOICE ?? 'Sulafat'
-/** Delivery direction (not read aloud). Changing it regenerates every clip. */
-const STYLE =
-  'Warm, friendly primary-school teacher reading to a 7-year-old German child. ' +
-  'Standard Hochdeutsch, clear and calm, a little slower than normal, smiling voice.'
-const SAMPLE_VOICES = ['Kore', 'Aoede', 'Leda', 'Sulafat', 'Achird', 'Puck']
-const SAMPLE_LINES = ['Schreib die Mehrzahl.', 'der Hut', 'Hüte', 'Super! Ein Kristall für deinen Schatz.']
+/** Voices from the ElevenLabs voice library (German), chosen by the parent. */
+const VOICES = {
+  hopsi: 'ygoBNrnmTEdu5NtDTmAY', // Hopsi – Crazy & Funny Bunny
+  kermy: 'fO96OTVqTn6bBvyybd7U', // Kermy – Gentle & Froggy
+  emmy: 'QNDh5mDABxDpT3PEzjST', // Emmy – Children's Books (cheeky squirrel)
+  knurps: '2HDQZbLZn0MJCgru92h7', // Knurps – Playful Chipmunk
+} as const
+type Voice = keyof typeof VOICES
+const NARRATOR: Voice = 'knurps'
+/** eleven_v3 audio tags, put before the line and not read aloud: same words, a different mood. */
+const NARRATOR_TONES = ['cheerful', 'playful', 'warmly'] as const
+const WORD_VOICES: Voice[] = ['kermy', 'hopsi', 'emmy', 'knurps']
+/** eleven_v3 has a speed setting (eleven_v4 has none); 0.85 = a little slower for early readers. */
+const MODEL = 'eleven_v3'
+const SPEED = 0.85
 
 const ROOT = new URL('..', import.meta.url).pathname
 const OUT_DIR = join(ROOT, 'public/audio')
 const MANIFEST = join(ROOT, 'src/content/audio-manifest.json')
-const SAMPLE_DIR = join(ROOT, 'audio-samples')
-const ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/interactions'
-/** Tier 1 allows 10 requests per minute for this model: one at a time, spaced out. */
-const CONCURRENCY = 1
-const GAP_MS = 6500
+const SOURCES = join(ROOT, 'src/content/audio-sources.json')
+/** The Starter plan allows a few requests at once. */
+const CONCURRENCY = 3
 
-const key = process.env.GEMINI_API_KEY
-if (!key) {
-  console.error('GEMINI_API_KEY missing. Put it in .env.local (never commit it).')
+if (!process.env.ELEVENLABS_API_KEY) {
+  console.error('ELEVENLABS_API_KEY missing. Put it in .env.local (never commit it).')
   process.exit(1)
 }
+// The SDK reads ELEVENLABS_API_KEY from the environment.
+const client = new ElevenLabsClient()
 
-async function tts(text: string, voice: string): Promise<Buffer> {
-  const body = {
-    model: MODEL,
-    input: [
-      {
-        type: 'user_input',
-        content: [{ type: 'text', text, annotations: [{ type: 'speech_metadata', style: STYLE }] }],
-      },
-    ],
-    response_format: { type: 'audio' },
-    generation_config: { speech_config: [{ voice }] },
-  }
+interface Job {
+  text: string
+  voice: Voice
+  tone?: string
+}
+
+const clipName = ({ voice, text, tone }: Job) =>
+  createHash('sha1')
+    .update(['elevenlabs', MODEL, VOICES[voice], SPEED, ...(tone ? [tone] : []), text].join('\n'))
+    .digest('hex')
+    .slice(0, 12) + '.mp3'
+
+async function tts({ voice, text, tone }: Job): Promise<Buffer> {
   for (let attempt = 1; ; attempt++) {
-    const res = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-goog-api-key': key! },
-      body: JSON.stringify(body),
-    })
-    if (res.ok) {
-      const json = await res.json()
-      const data: string | undefined =
-        json.output_audio?.data ??
-        json.steps
-          ?.filter((s: { type: string }) => s.type === 'model_output')
-          .flatMap((s: { content?: { type: string; data?: string }[] }) => s.content ?? [])
-          .find((c: { type: string }) => c.type === 'audio')?.data
-      if (!data) throw new Error(`No audio in response for "${text}": ${JSON.stringify(json).slice(0, 400)}`)
-      return Buffer.from(data, 'base64')
+    try {
+      const audio = await client.textToSpeech.convert(VOICES[voice], {
+        text: tone ? `[${tone}] ${text}` : text,
+        modelId: MODEL,
+        languageCode: 'de',
+        outputFormat: 'pcm_24000',
+        voiceSettings: { speed: SPEED },
+      })
+      return Buffer.from(await new Response(audio).arrayBuffer())
+    } catch (e) {
+      const status = (e as { statusCode?: number }).statusCode ?? 0
+      // Too many at once or a server hiccup: wait and retry. Anything else (no credits left,
+      // bad key) stops the run; the clips made so far are kept.
+      if ((status !== 429 && status < 500) || attempt >= 5) throw e
+      await new Promise((r) => setTimeout(r, 3000 * attempt))
     }
-    const msg = await res.text()
-    // The daily cap won't lift by waiting a few seconds: stop at once.
-    const retry = (res.status === 429 && !/per day/i.test(msg)) || res.status >= 500
-    if (!retry || attempt >= 5) throw new Error(`Gemini ${res.status} for "${text}": ${msg.slice(0, 600)}`)
-    // Honour "retry in Ns" from the rate-limit message, else back off.
-    const wait = Number(msg.match(/retry in (\d+)s/i)?.[1] ?? 0) * 1000 || 5000 * attempt
-    console.log(`  rate limited, waiting ${Math.round(wait / 1000)}s …`)
-    await new Promise((r) => setTimeout(r, wait + 500))
   }
 }
 
-/** WAV (or raw 24 kHz PCM) → trimmed, loudness-normalized mono MP3. */
-function toMp3(audio: Buffer, out: string) {
-  const isWav = audio.subarray(0, 4).toString('ascii') === 'RIFF'
-  const src = join(tmpdir(), `drachen-${process.pid}-${Math.random().toString(36).slice(2)}.${isWav ? 'wav' : 'pcm'}`)
-  writeFileSync(src, audio)
-  const input = isWav ? ['-i', src] : ['-f', 's16le', '-ar', '24000', '-ac', '1', '-i', src]
+/** Raw 24 kHz PCM → trimmed, loudness-normalized mono MP3. */
+function toMp3(pcm: Buffer, out: string) {
+  const src = join(tmpdir(), `drachen-${process.pid}-${Math.random().toString(36).slice(2)}.pcm`)
+  writeFileSync(src, pcm)
   const trim = 'silenceremove=start_periods=1:start_threshold=-50dB'
   execFileSync('ffmpeg', [
-    '-y', '-loglevel', 'error', ...input,
+    '-y', '-loglevel', 'error', '-f', 's16le', '-ar', '24000', '-ac', '1', '-i', src,
     '-af', `${trim},areverse,${trim},areverse,loudnorm=I=-16:TP=-1.5:LRA=11,apad=pad_dur=0.08`,
     '-ac', '1', '-ar', '24000', '-codec:a', 'libmp3lame', '-b:a', '48k', out,
   ])
   rmSync(src)
 }
 
-const clipName = (text: string) =>
-  createHash('sha1').update([MODEL, VOICE, STYLE, text].join('\n')).digest('hex').slice(0, 12) + '.mp3'
-
 async function pool<T>(xs: T[], fn: (x: T) => Promise<void>) {
   let i = 0
-  await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
-    while (i < xs.length) {
-      const started = Date.now()
-      await fn(xs[i++])
-      if (i < xs.length) await new Promise((r) => setTimeout(r, Math.max(0, GAP_MS - (Date.now() - started))))
-    }
-  }))
+  await Promise.all(
+    Array.from({ length: CONCURRENCY }, async () => {
+      while (i < xs.length) await fn(xs[i++])
+    }),
+  )
 }
 
-async function samples() {
-  mkdirSync(SAMPLE_DIR, { recursive: true })
-  const jobs = SAMPLE_VOICES.flatMap((v) => SAMPLE_LINES.map((line, n) => ({ v, line, n }))).filter(
-    ({ v, n }) => !existsSync(join(SAMPLE_DIR, `${v}-${n + 1}.mp3`)),
-  )
-  console.log(`${jobs.length} sample clips to generate (about ${Math.ceil((jobs.length * GAP_MS) / 60000)} min).`)
-  await pool(jobs, async ({ v, line, n }) => {
-    toMp3(await tts(line, v), join(SAMPLE_DIR, `${v}-${n + 1}.mp3`))
-  })
-  // One file per voice, all lines in a row with a short pause, for quick listening.
-  for (const v of SAMPLE_VOICES) {
-    const inputs = SAMPLE_LINES.flatMap((_, n) => ['-i', join(SAMPLE_DIR, `${v}-${n + 1}.mp3`)])
-    const pads = SAMPLE_LINES.map((_, n) => `[${n}:a]apad=pad_dur=0.6[a${n}]`).join(';')
-    const joined = SAMPLE_LINES.map((_, n) => `[a${n}]`).join('') + `concat=n=${SAMPLE_LINES.length}:v=0:a=1,aformat=sample_fmts=s16p:sample_rates=24000`
-    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...inputs, '-filter_complex', `${pads};${joined}`, '-codec:a', 'libmp3lame', '-b:a', '64k', join(SAMPLE_DIR, `voice-${v}.mp3`)])
-  }
-  console.log(`Samples in ${SAMPLE_DIR}/voice-<Name>.mp3: ${SAMPLE_VOICES.join(', ')}`)
-}
+const credits = async () => (await client.user.subscription.get()).characterCount
 
 async function generate() {
   mkdirSync(OUT_DIR, { recursive: true })
-  const texts = spokenTexts(SEED)
-  const clips: Record<string, string> = {}
-  const todo: string[] = []
-  const old: { clips?: Record<string, string> } = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {}
-  for (const t of texts) {
-    const kept = old.clips?.[t]
-    if (FILL && kept && existsSync(join(ROOT, 'public', kept))) {
-      clips[t] = kept
-      continue
-    }
-    const file = clipName(t)
-    clips[t] = `audio/${file}`
-    if (!existsSync(join(OUT_DIR, file))) todo.push(t)
-  }
-  console.log(`${texts.length} texts, ${todo.length} to generate (voice ${VOICE}).`)
+  const { narrator, words } = spokenRoles(SEED)
+  const jobs: Job[] = [
+    ...narrator.flatMap((text) => NARRATOR_TONES.map((tone) => ({ text, voice: NARRATOR, tone }))),
+    ...words.flatMap((text) => WORD_VOICES.map((voice) => ({ text, voice }))),
+  ]
+  const todo = jobs.filter((j) => !existsSync(join(OUT_DIR, clipName(j))))
+  console.log(
+    `${narrator.length} narrator texts (${NARRATOR} × ${NARRATOR_TONES.length} tones) + ${words.length} words × ${WORD_VOICES.length} voices` +
+      ` = ${jobs.length} clips, ${todo.length} to make (${MODEL}, speed ${SPEED}).`,
+  )
+  if (process.argv.includes('--dry')) return
+
+  const before = await credits()
   let done = 0
   let failure: unknown
   try {
-    await pool(todo, async (t) => {
-      toMp3(await tts(t, VOICE), join(OUT_DIR, clipName(t)))
-      console.log(`  ${++done}/${todo.length}  ${t}`)
+    await pool(todo, async (job) => {
+      toMp3(await tts(job), join(OUT_DIR, clipName(job)))
+      if (++done % 25 === 0 || done === todo.length) console.log(`  ${done}/${todo.length}`)
     })
   } catch (e) {
-    // E.g. the daily request cap: keep what was made, list it, and let the next run continue.
     failure = e
-    for (const t of todo) if (!existsSync(join(OUT_DIR, clipName(t)))) delete clips[t]
-    console.error(`Stopped after ${done} of ${todo.length} clips. Run again later for the rest.`)
+    console.error(`Stopped after ${done} of ${todo.length} clips. Run again to make the rest.`)
   }
 
-  const used = new Set(Object.values(clips).map((p) => p.slice('audio/'.length)))
+  // Manifest: each text with the clips that exist (narrator: one per tone; words: one per voice).
+  const clips: Record<string, string[]> = {}
+  const sources: Record<string, string[]> = {}
+  for (const job of jobs) {
+    if (!existsSync(join(OUT_DIR, clipName(job)))) continue
+    ;(clips[job.text] ??= []).push(`audio/${clipName(job)}`)
+    ;(sources[job.text] ??= []).push(job.tone ? `${job.voice} (${job.tone})` : job.voice)
+  }
+  const used = new Set(Object.values(clips).flatMap((c) => c.map((p) => p.slice('audio/'.length))))
   const stale = readdirSync(OUT_DIR).filter((f) => f.endsWith('.mp3') && !used.has(f))
   stale.forEach((f) => rmSync(join(OUT_DIR, f)))
   if (stale.length) console.log(`Removed ${stale.length} unused clips.`)
 
-  const sorted = Object.fromEntries(Object.entries(clips).sort(([a], [b]) => a.localeCompare(b, 'de')))
-  const manifest = { model: MAIN_MODEL, voice: VOICE, clips: sorted }
-  const next = JSON.stringify(manifest, null, 2) + '\n'
-  if (!existsSync(MANIFEST) || readFileSync(MANIFEST, 'utf8') !== next) writeFileSync(MANIFEST, next)
-  console.log(`Manifest: ${Object.keys(sorted).length} clips → src/content/audio-manifest.json`)
+  const byText = <T>(o: Record<string, T>) => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b, 'de')))
+  const manifest = { provider: 'elevenlabs', model: MODEL, speed: SPEED, narrator: NARRATOR, narratorTones: NARRATOR_TONES, wordVoices: WORD_VOICES, clips: byText(clips) }
+  writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n')
+  writeFileSync(SOURCES, JSON.stringify(byText(sources), null, 2) + '\n')
+  console.log(`Manifest: ${Object.keys(clips).length} of ${narrator.length + words.length} texts have clips.`)
+
+  const after = await credits()
+  const { characterLimit } = await client.user.subscription.get()
+  console.log(`ElevenLabs credits: ${after - before} this run, ${after} of ${characterLimit} used this month.`)
   if (failure) throw failure
 }
 
-await (process.argv.includes('--sample') ? samples() : generate())
+await generate()

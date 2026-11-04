@@ -1,4 +1,39 @@
 {
+  "backdrop/landscape": {
+    "src": "img/backdrop/landscape.webp",
+    "w": 1400,
+    "h": 933
+  },
+  "backdrop/portrait": {
+    "src": "img/backdrop/portrait.webp",
+    "w": 933,
+    "h": 1400
+  },
+  "cave/ie": {
+    "src": "img/cave/ie.webp",
+    "w": 480,
+    "h": 480
+  },
+  "cave/kurzlang": {
+    "src": "img/cave/kurzlang.webp",
+    "w": 480,
+    "h": 480
+  },
+  "cave/laute": {
+    "src": "img/cave/laute.webp",
+    "w": 480,
+    "h": 480
+  },
+  "cave/luecke": {
+    "src": "img/cave/luecke.webp",
+    "w": 480,
+    "h": 480
+  },
+  "cave/mehrzahl": {
+    "src": "img/cave/mehrzahl.webp",
+    "w": 480,
+    "h": 480
+  },
   "dragon/echo-grown-happy": {
     "src": "img/dragon/echo-grown-happy.webp",
     "w": 640,
@@ -628,6 +663,31 @@
     "src": "img/land/mehrzahl.webp",
     "w": 1536,
     "h": 1024
+  },
+  "prop/gem": {
+    "src": "img/prop/gem.webp",
+    "w": 160,
+    "h": 160
+  },
+  "prop/hoard-1": {
+    "src": "img/prop/hoard-1.webp",
+    "w": 900,
+    "h": 672
+  },
+  "prop/hoard-2": {
+    "src": "img/prop/hoard-2.webp",
+    "w": 900,
+    "h": 646
+  },
+  "prop/hoard-3": {
+    "src": "img/prop/hoard-3.webp",
+    "w": 900,
+    "h": 614
+  },
+  "prop/hoard-4": {
+    "src": "img/prop/hoard-4.webp",
+    "w": 900,
+    "h": 637
   },
   "shell/echo-bottom": {
     "src": "img/shell/echo-bottom.webp",

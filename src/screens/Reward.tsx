@@ -2,7 +2,7 @@ import { useEffect } from 'preact/hooks'
 import { play } from '../engine/sfx.ts'
 import type { Stage } from '../engine/rewards.ts'
 import { T } from '../strings.ts'
-import { DragonPic, EggPic, Gem, HoardLedge } from '../ui/art.tsx'
+import { DragonPic, EggPic, Gem, GemPic, HoardLedge } from '../ui/art.tsx'
 
 // End of a round: the round's crystals drop onto the hoard, the egg shows how close it is to
 // hatching (one meter gem per 10 crystals), and the dragon of the day keeps the child company.
@@ -45,7 +45,7 @@ export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, on
       <div class="reward-head">
         <h1>{T.roundScore(score, total)}</h1>
         <p class="reward-sub">
-          <Gem class="inline-gem" /> {T.roundCrystals(crystals + bonus)}
+          <GemPic class="inline-gem" /> {T.roundCrystals(crystals + bonus)}
         </p>
         {bonus > 0 && <p class="reward-bonus">{T.roundBonus(bonus)}</p>}
       </div>
@@ -57,10 +57,10 @@ export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, on
         <div class="reward-pile">
           {Array.from({ length: drops }, (_, i) => (
             <span class="drop-gem" style={{ '--i': i, '--x': `${10 + i * 18}%` }}>
-              <Gem />
+              <GemPic />
             </span>
           ))}
-          <HoardLedge gems={10} />
+          <HoardLedge gems={0} size={0.7} />
           {dragon && (
             <DragonPic class="reward-dragon" kind={dragon.kind} stage={dragon.stage} pose="happy" label={dragon.name} />
           )}

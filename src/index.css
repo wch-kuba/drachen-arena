@@ -233,22 +233,13 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
-.counter svg {
-  width: 1.35rem;
-  height: 1.35rem;
+.counter .gem-pic {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: -0.15rem 0;
 }
 
 /* ---------- Grotto backdrop ---------- */
-
-:root {
-  --roof: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0h200v22l-8 10-6-14-10 30-9-26-12 12-8-18-14 34-10-30-9 10-10-16-12 24-8-22-10 12-9-20-12 30-9-28-10 14-8-16-6 10z'/%3E%3C/svg%3E");
-  /* Rock bands lighten toward the hoard; the band nearest the gold catches its warm light. */
-  --bands:
-    radial-gradient(160% 22% at 50% 100%, var(--hoard-band) 0 50%, transparent 50.5%),
-    radial-gradient(160% 30% at 50% 100%, var(--rock-4) 0 50%, transparent 50.5%),
-    radial-gradient(160% 40% at 50% 100%, var(--rock-3) 0 50%, transparent 50.5%),
-    radial-gradient(160% 52% at 50% 100%, var(--rock-2) 0 50%, transparent 50.5%);
-}
 
 .grotto {
   position: relative;
@@ -256,28 +247,24 @@ p {
   background: var(--rock-1);
 }
 
+/* The painted grotto wall (Part 7): dark rock, stalactite roof, warm hoard glow from below.
+   It replaces the drawn rock bands and roof; rock-1 shows while it loads. */
+:root {
+  --backdrop: url('/img/backdrop/portrait.webp');
+}
+
+@media (orientation: landscape) {
+  :root {
+    --backdrop: url('/img/backdrop/landscape.webp');
+  }
+}
+
 .ex.grotto,
 .reward.grotto,
 .collection.grotto,
 .welcome.grotto,
 .hatch.grotto {
-  background: var(--bands), var(--rock-1);
-}
-
-.ex.grotto::before,
-.reward.grotto::before,
-.collection.grotto::before,
-.welcome.grotto::before,
-.hatch.grotto::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 4.5rem;
-  z-index: -1;
-  background: var(--rock-0);
-  -webkit-mask: var(--roof) 0 0 / 100% 100%;
-  mask: var(--roof) 0 0 / 100% 100%;
-  pointer-events: none;
+  background: var(--backdrop) 50% 100% / cover no-repeat, var(--rock-1);
 }
 
 /* ---------- Home ---------- */
@@ -290,25 +277,7 @@ p {
   grid-template-columns: minmax(0, 1fr);
   padding: 1rem 1.25rem 1.5rem;
   overflow: hidden;
-  /* Stepped light from the hoard: rock bands get lighter toward the gold, full width. */
-  background:
-    radial-gradient(160% 18% at 50% 62%, var(--hoard-band) 0 50%, transparent 50.5%),
-    radial-gradient(160% 22% at 50% 64%, var(--rock-4) 0 50%, transparent 50.5%),
-    radial-gradient(160% 26% at 50% 66%, var(--rock-3) 0 50%, transparent 50.5%),
-    radial-gradient(160% 32% at 50% 70%, var(--rock-2) 0 50%, transparent 50.5%),
-    var(--rock-1);
-}
-
-.home-stage::before {
-  /* Stalactite roof */
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 7rem;
-  background: var(--rock-0);
-  -webkit-mask: var(--roof) 0 0 / 100% 100%;
-  mask: var(--roof) 0 0 / 100% 100%;
-  pointer-events: none;
+  background: var(--backdrop) 50% 100% / cover no-repeat, var(--rock-1);
 }
 
 .home-top {
@@ -449,10 +418,34 @@ p {
   text-align: right;
 }
 
+/* A painted cave entrance; a locked one is dark rock behind a lock. */
 .land-mouth {
+  position: relative;
+  display: block;
   flex: none;
-  width: 4.9rem;
-  height: 4.9rem;
+  width: 6rem;
+  height: 6rem;
+  transition: transform 120ms var(--ease-out);
+}
+
+.land-mouth img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+}
+
+.land-mouth[data-locked] img {
+  filter: brightness(0.35) saturate(0.35);
+}
+
+.land-lock {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 1.6rem;
+  translate: -50% -50%;
 }
 
 .land-name {
@@ -692,10 +685,16 @@ p {
   animation: rise 360ms var(--ease-out) both;
 }
 
-.feedback svg {
+.feedback svg,
+.feedback .gem-pic {
   flex: none;
   width: 2rem;
   height: 2rem;
+}
+
+.feedback .gem-pic {
+  width: 2.3rem;
+  height: 2.3rem;
 }
 
 .feedback[data-tone='almost'] {
@@ -1436,7 +1435,8 @@ b.hl {
 .reward-egg {
   position: relative;
   z-index: 1;
-  margin-bottom: -2.2rem;
+  /* The egg sits down in the painted heap. */
+  margin-bottom: -4.6rem;
 }
 
 .reward-egg .egg-pic {
@@ -1792,8 +1792,8 @@ b.hl {
 }
 
 .hatch-land .land-mouth {
-  width: 4.9rem;
-  height: 4.9rem;
+  width: 7rem;
+  height: 7rem;
 }
 
 /* ---------- Reward extras ---------- */
@@ -1816,7 +1816,7 @@ b.hl {
 
 .reward-friend {
   margin-top: 0;
-  color: var(--foam-soft);
+  color: var(--foam);
 }
 
 /* On a phone the dragon on the pile says enough; the line would push the way out off screen. */
@@ -2025,7 +2025,7 @@ b.hl {
   }
 
   .reward-egg {
-    margin-bottom: -3.4rem;
+    margin-bottom: -6.2rem;
   }
 
   .home-cta {
@@ -2211,4 +2211,30 @@ b.hl {
 /* The dragon of the day cheers next to the egg on the reward pile. */
 img.reward-dragon {
   width: 46%;
+}
+
+/* The painted gem fills whatever box holds it (flight, drops, counter, feedback). */
+.gem-pic {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.gem-pic.inline-gem {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/* Words straight on the painted rock get a soft dark halo, so they stay readable over the
+   hoard's glow. A blurred shadow, never an outline. */
+.grotto :is(h1, h2, p, .land-name, .land-what, .niche-name, .niche-meta, .reward-home) {
+  text-shadow: 0 1px 2px rgb(4 28 34 / 0.85), 0 0 12px rgb(4 28 34 / 0.7);
+}
+
+.grotto .plaque :is(h1, h2, p) {
+  text-shadow: none;
 }

@@ -153,3 +153,26 @@ export const LAND_PROMPTS: Record<string, string> = {
   ie: 'Tiefsee-Garten: a calm deep-sea garden with glowing sea plants, jellyfish lights and soft dark-teal water.',
   map: 'World map: a cozy treasure map of an undersea world seen from above, five places connected by a dotted path: a crystal cave, a pearl reef, a shipwreck, a round grotto and a deep-sea garden. No text, no letters.',
 }
+
+/** Painted world pieces (scripts/gen-images.ts groups prop, cave, backdrop). */
+export const HOARD_PROMPT =
+  'A treasure hoard: a wide, low mound of gold coins with a few turquoise cut gems and pearls, glowing warm gold from within. Seen from the front and slightly from above. About three times wider than tall, with a gently rounded top where a dragon could lie. No dragon, no chest, nothing else.'
+
+/** Smaller hoards are made from the picked big one, so all sizes match. Index 1..3. */
+export const HOARD_SIZES = [
+  '',
+  'Make it a small hoard: just a low scatter of coins and two gems, still wide and flat.',
+  'Make it a modest hoard: a low pile, about half as high as the reference.',
+  'Make it a big hoard: almost as big as the reference, slightly lower.',
+]
+
+export const PROP_PROMPTS: Record<string, string> = {
+  gem: 'One turquoise cut gem, a faceted crystal seen from the front, with a small white glint.',
+  coin: 'One gold coin, slightly tilted, with an engraved ring and a soft shine.',
+}
+
+export const CAVE_PROMPT = (inside: string) =>
+  `A cave entrance in dark sea-teal grotto rock: a rounded stone arch seen straight from the front, framed by thick rock. Through the opening you see: ${inside} The opening glows softly from inside. Only the rock arch and the view through it, nothing around it.`
+
+export const BACKDROP_PROMPT =
+  'Background for a children\'s game screen: the inside of an underwater sea grotto. Dark sea-teal rock walls and a jagged stalactite roof at the top; darkest at the top, stepping lighter toward the bottom, where warm gold treasure light glows up from below the frame. Calm and low in detail, with large quiet areas so text can sit on it. No characters, no treasure, no text.'

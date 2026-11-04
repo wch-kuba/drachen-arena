@@ -6,7 +6,7 @@ import { answer, current, isOver, next, startRound, type Result, type Round } fr
 import type { Item } from '../engine/types.ts'
 import { isSentence } from '../engine/words.ts'
 import { GENTLE, PRAISE, pick, T } from '../strings.ts'
-import { Gem, HoardLedge, IconClose, IconLight } from '../ui/art.tsx'
+import { Gem, GemPic, HoardLedge, IconClose, IconLight } from '../ui/art.tsx'
 import { Speak } from '../ui/Speak.tsx'
 import { LautChoice, ShortLong } from './ex/Choice.tsx'
 import { Sentence } from './ex/Sentence.tsx'
@@ -145,7 +145,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
 
       {flight && (
         <span class="flying-gem" style={{ '--gem-path': flight, left: 0, top: 0 }}>
-          <Gem />
+          <GemPic />
         </span>
       )}
     </div>
@@ -156,7 +156,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
 export function Feedback({ tone, say, children }: { tone: 'right' | 'almost'; say?: string[]; children: ComponentChildren }) {
   return (
     <div class="plaque feedback" data-tone={tone} role="status">
-      {tone === 'right' ? <Gem /> : <IconLight />}
+      {tone === 'right' ? <GemPic /> : <IconLight />}
       <span class="feedback-text">{children}</span>
       {say && <Speak text={say} />}
     </div>

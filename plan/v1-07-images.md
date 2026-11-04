@@ -38,6 +38,12 @@
 - [x] Animate the hero: idle breathing/blink on home, happy pose on right answers and rewards, hatch sequence (respect `prefers-reduced-motion`). Decided 2026-11-04: no dragon on the exercise screens (it took task space and was tiny on the phone); the happy pose shows on the round summary and the hatch greeting.
 - [x] Update DESIGN.md "Drawn art and illustration": placeholders gone, poses/growth/animation rules recorded.
 
+### Painted world pieces (added 2026-11-04: the drawn pieces looked weak next to the art)
+- [x] Hoard pile: painted treasure heap in 4 sizes (grows with crystals), made from one reference; replaces the SVG pile on Home, Welcome, the round summary and the exercise ledge.
+- [x] Gem and coin: painted cut gem and coin for the flying gem, gems landing on the hoard and the crystal counter. Small UI gems (progress track, egg meter) stay drawn. No coin: nothing in the app uses one.
+- [x] Grotto entrances: one painted cave entrance per land with its chamber inside; locked = same art darkened behind a lock.
+- [x] Grotto rock backdrop: painted grotto wall (portrait and landscape) behind every screen, darker at the top, lit warm from below; replaces the stepped rock bands and stalactite roof. Text contrast must hold.
+
 ### Design review after the art is in
 - [ ] `/impeccable critique` of every screen with the real art (separate from the device tests in Part 8).
 - [ ] Fix the top findings with `/impeccable polish`.

@@ -3,7 +3,7 @@
 // public/img via images.ts) in the same style: thick dark-teal outline, light from below.
 
 import type { Stage } from '../engine/rewards.ts'
-import { dragonPic, eggPic, landPic, type Pose } from './images.ts'
+import { dragonPic, eggPic, pic, type Pose } from './images.ts'
 
 const INK = 'var(--ink)'
 
@@ -31,129 +31,71 @@ export function Gem({ filled = true, class: cls }: { filled?: boolean; class?: s
   )
 }
 
-export function Coin({ class: cls }: { class?: string }) {
-  return (
-    <svg class={cls} viewBox="0 0 40 40" aria-hidden="true">
-      <circle cx="20" cy="20" r="16" fill="var(--gold-500)" stroke={INK} stroke-width="3" />
-      <circle cx="20" cy="20" r="10" fill="none" stroke="var(--gold-800)" stroke-width="2" />
-      <path d="M13 14a10 10 0 0 1 9-4" stroke="var(--gold-100)" stroke-width="3" fill="none" stroke-linecap="round" />
-    </svg>
-  )
-}
-
 /** What lies on the hoard: the child's dragon (asleep on Home), or the egg before the first one. */
 export type OnHoard = { dragon: { kind: string; stage: Stage; name: string } } | { egg: string }
 
-/** The hoard heap with the dragon asleep on it. `size` 0..1 sets how high the pile is. */
+/** The painted hoard in 4 sizes; `size` 0..1 picks how big the pile has grown. */
+const hoardPic = (size: number) => pic(`prop/hoard-${Math.min(4, 1 + Math.floor(size * 4))}`)!
+
+/** Room above the pile for whatever lies on it, in viewBox units (the pile is 400 wide). */
+const ABOVE = 240
+
+/** The hoard with the dragon asleep on it (or the egg). `size` 0..1 sets how high the pile is. */
 export function HoardScene({ size = 0.6, on }: { size?: number; on: OnHoard }) {
-  const top = 300 - 120 * size // y of the pile's crest
+  const pile = hoardPic(size)
+  const pileH = (400 * pile.h) / pile.w
+  // The dragon (with its own bit of gold) sinks into the pile, so the two read as one heap.
+  const ground = ABOVE + pileH * 0.78
   const d = 'dragon' in on ? on.dragon : undefined
   const sleeper = d && dragonPic(d.kind, d.stage, 'sleeping')
   const egg = 'egg' in on ? eggPic(on.egg) : undefined
   return (
-    <svg viewBox="0 20 400 340" role="img" aria-label={d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'}>
-      <HoardLight id="hoard-light" />
-      {/* Pile, lit gold from within */}
-      <path
-        d={`M20 352 C60 ${top + 40} 140 ${top} 200 ${top} S340 ${top + 40} 380 352 Z`}
-        fill="url(#hoard-light)"
-        stroke={INK}
-        stroke-width="5"
-        stroke-linejoin="round"
-      />
-      <path d={`M60 352 C100 ${top + 70} 160 ${top + 30} 200 ${top + 30} S300 ${top + 70} 340 352 Z`} fill="var(--gold-300)" opacity="0.55" />
-      <path d={`M110 352 C140 ${top + 90} 180 ${top + 60} 200 ${top + 60} S260 ${top + 90} 290 352 Z`} fill="var(--gold-100)" opacity="0.6" />
-      {/* The dragon (or egg) nestles into the crest, so the front coins and gems overlap it. */}
+    <svg viewBox={`0 0 400 ${ABOVE + pileH}`} role="img" aria-label={d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'}>
+      <image href={pile.src} x="0" y={ABOVE} width="400" height={pileH} />
       {sleeper && d && (
         <g class="dragon-breathe">
-          <Sized href={sleeper.src} cx={200} ground={top + 52} size={280 * STAGE_SCALE[d.stage]} />
+          <Sized href={sleeper.src} cx={200} ground={ground} size={290 * STAGE_SCALE[d.stage]} />
         </g>
       )}
       {sleeper && d && (
-        <text class="zzz" x={200 + 120 * STAGE_SCALE[d.stage]} y={top + 52 - 190 * STAGE_SCALE[d.stage]} fill="var(--foam)" font-size="26" font-weight="700">
+        <text class="zzz" x={200 + 125 * STAGE_SCALE[d.stage]} y={ground - 200 * STAGE_SCALE[d.stage]} fill="var(--foam)" font-size="26" font-weight="700">
           z z
         </text>
       )}
-      {egg && <image href={egg.src} x="140" y={top - 128} width="120" height="150" preserveAspectRatio="xMidYMax meet" />}
-      {/* Coins on the pile */}
-      {[
-        [70, 330],
-        [110, 312],
-        [150, 300],
-        [250, 302],
-        [292, 318],
-        [330, 334],
-        [180, 330],
-        [222, 336],
-      ].map(([x, y]) => (
-        <g>
-          <ellipse cx={x} cy={y} rx="15" ry="7" fill="var(--gold-300)" stroke={INK} stroke-width="3" />
-          <ellipse cx={x - 3} cy={y - 1} rx="6" ry="2" fill="var(--gold-100)" />
-        </g>
-      ))}
-      {/* Gems */}
-      <path d="M86 296l10-12h16l8 12-17 20z" fill="var(--tq-300)" stroke={INK} stroke-width="3" stroke-linejoin="round" />
-      <path d="M86 296h34M103 316l-3-20 5-12" fill="none" stroke={INK} stroke-width="2" />
-      <path d="M300 290l8-10h14l6 10-14 17z" fill="var(--tq-500)" stroke={INK} stroke-width="3" stroke-linejoin="round" />
-      <path d="M300 290h28" fill="none" stroke={INK} stroke-width="2" />
-      <path d="M200 340l7-9h12l6 9-13 15z" fill="var(--tq-300)" stroke={INK} stroke-width="3" stroke-linejoin="round" />
-      {/* Catch-lights: gems pick up the hoard's glow */}
-      <path d="M94 293l5-6M304 287l4-5M206 336l3-4" stroke="var(--glass)" stroke-width="3" stroke-linecap="round" />
+      {egg && <Sized href={egg.src} cx={200} ground={ground + 6} size={150} />}
     </svg>
   )
 }
 
-/** Inner light of the hoard: gold brightening toward its heart. */
-export function HoardLight({ id }: { id: string }) {
-  return (
-    <defs>
-      <radialGradient id={id} cx="50%" cy="85%" r="75%">
-        <stop offset="0" stop-color="var(--gold-100)" />
-        <stop offset="0.45" stop-color="var(--gold-300)" />
-        <stop offset="1" stop-color="var(--gold-600)" />
-      </radialGradient>
-    </defs>
-  )
-}
+/** Where each earned gem lands, across the pile (0 = left edge, 1 = right edge). */
+const LANDING = [0.36, 0.62, 0.5, 0.28, 0.72, 0.44, 0.56, 0.2, 0.8, 0.4]
 
-/** A low hoard ledge for game screens: the destination of every earned gem. */
-export function HoardLedge({ gems = 3, class: cls }: { gems?: number; class?: string }) {
-  const placed = [
-    [118, 58, 'var(--tq-300)'],
-    [262, 54, 'var(--tq-500)'],
-    [200, 40, 'var(--tq-300)'],
-    [160, 70, 'var(--tq-500)'],
-    [236, 72, 'var(--tq-300)'],
-    [84, 80, 'var(--tq-500)'],
-    [310, 78, 'var(--tq-300)'],
-    [180, 52, 'var(--tq-500)'],
-    [222, 58, 'var(--tq-300)'],
-    [140, 46, 'var(--tq-500)'],
-  ] as const
+/** The painted heap is a mound: its surface is high in the middle and drops toward the edges. */
+const surface = (x: number) => 0.14 + 2.2 * (x - 0.5) ** 2
+
+/** A low hoard for game screens: the destination of every earned gem. */
+export function HoardLedge({ gems = 3, size = 0.3, class: cls }: { gems?: number; size?: number; class?: string }) {
+  const pile = hoardPic(size)
+  const pileH = (400 * pile.h) / pile.w
+  const gem = pic('prop/gem')!
   return (
-    <svg class={cls} viewBox="0 0 400 136" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-      <HoardLight id="ledge-light" />
-      {/* Rock shelf the hoard rests on */}
-      <path d="M-20 104 Q200 92 420 104 V136 H-20 Z" fill="var(--rock-4)" stroke={INK} stroke-width="5" stroke-linejoin="round" />
-      <path d="M40 118 h60 M250 122 h80" stroke="var(--rock-2)" stroke-width="4" stroke-linecap="round" />
-      <path d="M10 108 C60 50 140 26 200 26 S340 50 390 108 Z" fill="url(#ledge-light)" stroke={INK} stroke-width="5" stroke-linejoin="round" />
-      {[
-        [70, 96],
-        [130, 84],
-        [270, 82],
-        [330, 96],
-        [200, 92],
-      ].map(([x, y]) => (
-        <ellipse cx={x} cy={y} rx="14" ry="6" fill="var(--gold-300)" stroke={INK} stroke-width="3" />
-      ))}
-      {placed.slice(0, gems).map(([x, y, c], i) => (
+    <svg class={cls} viewBox={`0 -14 400 ${pileH + 14}`} preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <image href={pile.src} x="0" y="0" width="400" height={pileH} />
+      {LANDING.slice(0, gems).map((fx, i) => (
         <g class={i === gems - 1 ? 'gem-landed' : undefined}>
-          <path d={`M${x - 12} ${y}l8-10h12l8 10-14 16z`} fill={c} stroke={INK} stroke-width="3" stroke-linejoin="round" />
-          <path d={`M${x - 6} ${y - 5}l4-4`} stroke="var(--glass)" stroke-width="3" stroke-linecap="round" />
+          {/* Each gem sits half sunk into the coins where it lands. */}
+          <image href={gem.src} x={400 * fx - 20} y={pileH * (surface(fx) + 0.1) - 32} width="40" height="40" />
         </g>
       ))}
     </svg>
   )
+}
+
+/** The painted gem: the crystal the child earns (counter, flight, feedback, reward drops).
+ *  The small slot gems in the progress track and egg meter stay drawn (Gem). */
+export function GemPic({ class: cls }: { class?: string }) {
+  const p = pic('prop/gem')!
+  return <img class={cls ? `gem-pic ${cls}` : 'gem-pic'} src={p.src} width={p.w} height={p.h} alt="" draggable={false} />
 }
 
 /** A square picture inside an SVG scene, standing on `ground`, centered on `cx`. */
@@ -195,29 +137,19 @@ export function EggSlot() {
   )
 }
 
-const MOUTH = 'M26 112 C24 62 40 32 60 32 C80 32 96 62 94 112 Z'
-
-/** Cave mouth of a land on the home path: an open land shows a peek into its chamber. */
-export function CaveMouth({ hue, land, locked = false }: { hue: string; land: string; locked?: boolean }) {
-  const peek = !locked && landPic(land)
+/** A land's painted cave entrance on the home path. A locked one is dark rock behind a lock. */
+export function CaveMouth({ land, locked = false }: { land: string; locked?: boolean }) {
+  const p = pic(`cave/${land}`)!
   return (
-    <svg class="land-mouth" viewBox="0 0 120 120" aria-hidden="true">
-      <defs>
-        <clipPath id={`mouth-${land}`}>
-          <path d={MOUTH} />
-        </clipPath>
-      </defs>
-      <path d="M8 112 C4 50 30 10 60 10 C90 10 116 50 112 112 Z" fill={locked ? 'var(--rock-3)' : hue} stroke={INK} stroke-width="5" />
-      <path d={MOUTH} fill={locked ? 'var(--rock-1)' : 'var(--rock-0)'} />
-      {peek && <image href={peek.src} x="20" y="30" width="80" height="84" preserveAspectRatio="xMidYMid slice" clip-path={`url(#mouth-${land})`} />}
-      <path d={MOUTH} fill="none" stroke={INK} stroke-width="4" />
+    <span class="land-mouth" data-locked={locked ? '' : undefined} aria-hidden="true">
+      <img src={p.src} width={p.w} height={p.h} alt="" draggable={false} />
       {locked && (
-        <g transform="translate(44 60)" stroke="var(--foam-soft)" stroke-width="4" fill="none">
-          <rect x="2" y="14" width="28" height="22" rx="4" fill="var(--rock-3)" />
-          <path d="M8 14v-6a8 8 0 0 1 16 0v6" />
-        </g>
+        <svg class="land-lock" viewBox="0 0 32 40" stroke="var(--foam)" stroke-width="4" fill="none">
+          <rect x="2" y="16" width="28" height="22" rx="4" fill="var(--rock-3)" />
+          <path d="M8 16v-6a8 8 0 0 1 16 0v6" />
+        </svg>
       )}
-    </svg>
+    </span>
   )
 }
 

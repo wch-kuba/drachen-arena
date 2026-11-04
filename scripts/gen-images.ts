@@ -21,7 +21,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { DRAGONS } from '../src/content/dragons.ts'
-import { DRAGON_LOOKS, LAND_PROMPTS, PICTURE_PROMPTS } from '../src/content/picture-prompts.ts'
+import { BACKDROP_PROMPT, CAVE_PROMPT, DRAGON_LOOKS, HOARD_PROMPT, HOARD_SIZES, LAND_PROMPTS, PICTURE_PROMPTS, PROP_PROMPTS } from '../src/content/picture-prompts.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const RAW = join(ROOT, 'art-raw')
@@ -41,11 +41,11 @@ const STYLE = (() => {
 // ------------------------------------------------------------------------------------------------
 // Jobs
 
-type Group = 'word' | 'dragon' | 'pose' | 'egg' | 'land' | 'icon'
-const GROUPS: Group[] = ['word', 'dragon', 'pose', 'egg', 'land', 'icon']
+type Group = 'word' | 'dragon' | 'pose' | 'egg' | 'land' | 'icon' | 'prop' | 'cave' | 'backdrop'
+const GROUPS: Group[] = ['word', 'dragon', 'pose', 'egg', 'land', 'icon', 'prop', 'cave', 'backdrop']
 
 type Model = 'gpt-image-1-mini' | 'gpt-image-1.5'
-type Size = '1024x1024' | '1536x1024'
+type Size = '1024x1024' | '1536x1024' | '1024x1536'
 type Quality = 'low' | 'medium' | 'high'
 
 interface Job {
@@ -68,7 +68,7 @@ const PRICE: Record<Model, Record<Quality, number>> = {
   'gpt-image-1-mini': { low: 0.005, medium: 0.011, high: 0.036 },
   'gpt-image-1.5': { low: 0.009, medium: 0.034, high: 0.133 },
 }
-const cost = (j: Job) => PRICE[j.model][j.quality] * (j.size === '1536x1024' ? 1.5 : 1) + (j.ref ? 0.01 : 0)
+const cost = (j: Job) => PRICE[j.model][j.quality] * (j.size === '1024x1024' ? 1 : 1.5) + (j.ref ? 0.01 : 0)
 
 /** DESIGN.md › Dragons. The child wants real, powerful dragons, so the dragon prompts swap the
  *  style block's "rounded" and "cute, calm" for bold and heroic; outline, palette and light stay. */
@@ -114,6 +114,17 @@ function jobs(): Job[] {
       }
     add({ group: 'egg', key: d.id, label: 'egg', ref: `dragon/${d.id}`, model: 'gpt-image-1.5', size: '1024x1024', quality: 'medium', transparent: true, variants: 2, note: `Draw only the egg this dragon hatches from, no dragon: a smooth rounded egg standing upright. Its shell uses this dragon's main colors and pattern (not turquoise unless the dragon is turquoise), with a few gold spots.` })
   }
+  // Painted world pieces: the hoard in 4 sizes (made from the big one), gem, coin.
+  add({ group: 'prop', key: 'hoard-4', label: 'hoard, biggest (reference)', model: 'gpt-image-1.5', size: '1536x1024', quality: 'medium', transparent: true, variants: 3, note: HOARD_PROMPT })
+  for (const n of [1, 2, 3])
+    add({ group: 'prop', key: `hoard-${n}`, label: `hoard size ${n}`, ref: 'prop/hoard-4', model: 'gpt-image-1.5', size: '1536x1024', quality: 'medium', transparent: true, variants: 2, note: `This is the same treasure hoard as in the reference image, same coins, gems, colors and light. ${HOARD_SIZES[n]}` })
+  for (const [key, what] of Object.entries(PROP_PROMPTS))
+    add({ group: 'prop', key, label: key, model: 'gpt-image-1.5', size: '1024x1024', quality: 'medium', transparent: true, variants: 2, note: what })
+  for (const [key, what] of Object.entries(LAND_PROMPTS))
+    if (key !== 'map')
+      add({ group: 'cave', key, label: what, model: 'gpt-image-1.5', size: '1024x1024', quality: 'medium', transparent: true, variants: 2, note: CAVE_PROMPT(what.replace(/^[^:]*: /, '')) })
+  for (const [key, size] of [['portrait', '1024x1536'], ['landscape', '1536x1024']] as const)
+    list.push({ group: 'backdrop', key, label: `grotto wall, ${key}`, model: 'gpt-image-1.5', size, quality: 'medium', transparent: false, variants: 2, prompt: `${STYLE.replace(/Single subject[^.]*\.|transparent background,?/g, '').replace(/Palette: [^.]*\([^)]*\)[^.]*\./, 'Palette: only very dark deep teal rock (#041c22, #072830, #0b3540, #10444f) and a faint amber glow (#5c4a24, #e2a23c) at the very bottom.').replace('Gentle warm light from below as if lit by treasure.', '')}\n\n${BACKDROP_PROMPT}` })
   for (const [key, what] of Object.entries(LAND_PROMPTS))
     list.push({ group: 'land', key, label: what, model: 'gpt-image-1.5', size: '1536x1024', quality: 'medium', transparent: false, variants: 2, prompt: `${STYLE.replace(/Single subject[^.]*\.|transparent background,?/g, '')}\n\nA wide background scene with no characters and no text: ${what}` })
   list.push({ group: 'icon', key: 'icon', label: 'app icon', ref: 'dragon/perle', model: 'gpt-image-1.5', size: '1024x1024', quality: 'high', transparent: false, variants: 3, prompt: `${HERO_STYLE.replace(/Single subject[^.]*\./, '')}\n\n${SAME} App icon: this dragon's head and shoulders, proud and confident with a grin, rising over a pile of gold coins and gems, in a dark-teal grotto (#072830). Full-bleed square artwork that fills the whole canvas edge to edge: no rounded corners, no frame, no border, no margin. Bold and readable at small sizes, no text.` })
@@ -301,12 +312,17 @@ function build() {
     const png = join(tmp, `${j.group}-${j.key}.png`)
     // Transparent art: trim to the drawing, then sit it on a fixed canvas (bottom-aligned for
     // dragons, eggs and shells, so every stage and pose stands on the same ground line).
-    const box = { word: 400, dragon: 640, pose: 640, egg: 320, land: 0, icon: 0 }[j.group]
+    const box = { word: 400, dragon: 640, pose: 640, egg: 320, land: 0, icon: 0, prop: j.key.startsWith('hoard') ? 900 : 160, cave: 480, backdrop: 0 }[j.group]
     if (j.transparent) {
-      const gravity = j.group === 'word' ? 'center' : 'south'
-      execFileSync('magick', [src, '-trim', '+repage', '-resize', `${box - 16}x${box - 16}>`, '-background', 'none', '-gravity', gravity, '-extent', `${box}x${box}`, png])
+      const gravity = j.group === 'word' || j.key === 'gem' ? 'center' : 'south'
+      if (j.key.startsWith('hoard'))
+        // Hoards keep their wide shape: all four the same width, so a bigger pile is taller.
+        execFileSync('magick', [src, '-trim', '+repage', '-resize', `${box}x`, png])
+      else execFileSync('magick', [src, '-trim', '+repage', '-resize', `${box - 16}x${box - 16}>`, '-background', 'none', '-gravity', gravity, '-extent', `${box}x${box}`, png])
     } else {
-      execFileSync('magick', [src, '-resize', '1600x1600>', png])
+      // Backdrops sit behind text: calm the hoard glow a little so light words stay readable.
+      const calm = j.group === 'backdrop' ? ['-modulate', '82,90'] : []
+      execFileSync('magick', [src, ...calm, '-resize', j.group === 'backdrop' ? '1400x1400>' : '1600x1600>', png])
     }
     const dir = j.group === 'pose' ? 'dragon' : j.group
     mkdirSync(join(OUT, dir), { recursive: true })
@@ -366,9 +382,11 @@ function cutEgg(png: string, tmp: string, key: string): [string, string][] {
 
 function buildIcon(src: string) {
   const dir = join(ROOT, 'public/icons')
-  for (const s of [180, 192, 512]) execFileSync('magick', [src, '-resize', `${s}x${s}`, join(dir, `icon-${s}.png`)])
+  // No date chunks, so rebuilding the same icon changes no bytes.
+  const plain = ['-define', 'png:exclude-chunks=date,time']
+  for (const s of [180, 192, 512]) execFileSync('magick', [src, '-resize', `${s}x${s}`, ...plain, join(dir, `icon-${s}.png`)])
   // Maskable: keep the art inside the 80% safe zone.
-  execFileSync('magick', [src, '-resize', '410x410', '-background', '#072830', '-gravity', 'center', '-extent', '512x512', join(dir, 'maskable-512.png')])
+  execFileSync('magick', [src, '-resize', '410x410', '-background', '#072830', '-gravity', 'center', '-extent', '512x512', ...plain, join(dir, 'maskable-512.png')])
 }
 
 function sortKeys<T>(o: Record<string, T>) {

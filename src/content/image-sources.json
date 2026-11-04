@@ -1,4 +1,39 @@
 {
+  "img/backdrop/landscape.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "e115a6363bf7",
+    "made": "2026-11-04"
+  },
+  "img/backdrop/portrait.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "e115a6363bf7",
+    "made": "2026-11-04"
+  },
+  "img/cave/ie.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "eda9b983f8db",
+    "made": "2026-11-04"
+  },
+  "img/cave/kurzlang.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "5ba8c9d9ae72",
+    "made": "2026-11-04"
+  },
+  "img/cave/laute.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "2b68fd868a54",
+    "made": "2026-11-04"
+  },
+  "img/cave/luecke.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d5b109d79274",
+    "made": "2026-11-04"
+  },
+  "img/cave/mehrzahl.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "6476179e68da",
+    "made": "2026-11-04"
+  },
   "img/dragon/echo-grown-happy.webp": {
     "model": "gpt-image-1.5",
     "prompt": "27537a21a67e",
@@ -627,6 +662,31 @@
   "img/land/mehrzahl.webp": {
     "model": "gpt-image-1.5",
     "prompt": "b37a0873add2",
+    "made": "2026-11-04"
+  },
+  "img/prop/gem.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "5b3ea650a2aa",
+    "made": "2026-11-04"
+  },
+  "img/prop/hoard-1.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "f573263cad33",
+    "made": "2026-11-04"
+  },
+  "img/prop/hoard-2.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "bbc0f7e42806",
+    "made": "2026-11-04"
+  },
+  "img/prop/hoard-3.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "a263f29d7e49",
+    "made": "2026-11-04"
+  },
+  "img/prop/hoard-4.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "a3d94016ae89",
     "made": "2026-11-04"
   },
   "img/word/apfel.webp": {

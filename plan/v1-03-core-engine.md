@@ -7,7 +7,7 @@
 ## Tasks
 
 ### Data model
-- [ ] `Item` type, one per question:
+- [x] `Item` type, one per question:
   ```ts
   type ExerciseType = 'laute' | 'mehrzahl' | 'luecke' | 'kurzlang' | 'ie';
   interface Item {
@@ -22,48 +22,60 @@
     active: boolean;
   }
   ```
-- [ ] `Progress` per item: Leitner box (1–5), last seen, correct/wrong counts, last wrong answer typed.
-- [ ] `Profile`: child name, crystals, points, eggs, dragons (with names), unlocked worlds.
+- [x] `Progress` per item: Leitner box (1–5), last seen, correct/wrong counts, last wrong answer typed.
+- [x] `Profile`: child name, crystals, points, eggs, dragons (with names), unlocked worlds.
 
 ### Storage
-- [ ] IndexedDB via `idb-keyval` or `idb` (small).
-- [ ] Call `navigator.storage.persist()` on first start.
-- [ ] Seed items loaded from bundled JSON on first run; seed updates merge by `id` without wiping progress.
-- [ ] Schema version number plus a migration hook.
+- [x] IndexedDB via `idb-keyval` (Apache-2.0). Keys: `meta`, `items`, `progress`, `profile` in `src/engine/storage.ts`.
+- [x] Call `navigator.storage.persist()` on first start.
+- [x] Seed items loaded from the bundle on every start; seed updates merge by `id` (keeping the parent's `active` switch) without wiping progress. Part 3 uses dummy items in `src/content/test-items.ts`; Part 5 swaps in the real seed.
+- [x] Schema version number plus a migration hook.
 
 ### Answer checking
-- [ ] Trim spaces, normalize Unicode (NFC) so "ü" always matches.
-- [ ] Exact match → correct.
-- [ ] Letters right but noun lowercase → **almost right**: "Fast! Nomen schreibt man groß." Child fixes it; reward kept.
-- [ ] Article typed ("die Hüte") → accept, strip the article.
-- [ ] Wrong → hint flow.
+- [x] Trim spaces, normalize Unicode (NFC) so "ü" always matches.
+- [x] Exact match → correct.
+- [x] Letters right but noun lowercase → **almost right**: "Fast! Nomen schreibt man groß." Child fixes it; reward kept.
+- [x] Article typed ("die Hüte") → accept, strip the article.
+- [x] Wrong → hint flow.
 
 ### Hints (never punish)
-- [ ] Try 1 wrong → rule hint (item `hint` or type default).
-- [ ] Try 2 wrong → partial reveal (first letters / the changed vowel highlighted).
-- [ ] Try 3 wrong → show answer, child types it once, item goes back to box 1.
-- [ ] Crystals still given for finishing; fewer if hints were used.
+- [x] Try 1 wrong → rule hint (item `hint` or type default).
+- [x] Try 2 wrong → partial reveal (first letters / the changed vowel highlighted).
+- [x] Try 3 wrong → show answer, child types it once, item goes back to box 1.
+- [x] Crystals still given for finishing; fewer if hints were used (3 first try, 2 after one wrong try, 1 after more).
 
 ### Repetition (Leitner)
-- [ ] Right on first try → box +1. Wrong → box 1.
-- [ ] Round of 10 picks: due items first, then box 1–2 items, then new ones.
-- [ ] Box intervals: 1 = every round, 2 = 1 day, 3 = 3 days, 4 = 7 days, 5 = 14 days.
+- [x] Right on first try → box +1. Wrong → box 1.
+- [x] Round of 10 picks: due items first, then box 1–2 items, then new ones.
+- [x] Box intervals: 1 = every round, 2 = 1 day, 3 = 3 days, 4 = 7 days, 5 = 14 days.
 
 ### Audio
-- [ ] `speechSynthesis` with a de-DE voice (pick "Anna" if available), slower rate (~0.8).
-- [ ] Speaker button component, used on every word and instruction.
-- [ ] Check that a voice exists offline on the iPad and iPhone; show a quiet fallback if not.
+- [x] `speechSynthesis` with a de-DE voice (pick "Anna" if available), slower rate (~0.8).
+- [x] Speaker button component (`src/ui/Speak.tsx`), used on every word and instruction. Without a German voice it goes quiet instead of disappearing.
+- [x] Check the device voice on the iPad → **too robotic** (parent, 2026-11-04). Decision: AI-generated clips, see below. The device voice stays only as a fallback for text without a clip.
+
+### AI voice clips (decided 2026-11-04)
+Gemini TTS (`gemini-3.8-flash-tts`), **paid tier**, called only at build time from the parent's Mac. The child's app never calls an AI service; it plays bundled MP3s offline.
+- [x] `scripts/gen-audio.ts`: collects every text to speak (instructions, item prompts, answers, hints, feedback), calls Gemini, converts to normalized mono MP3 (ffmpeg) in `public/audio/`, writes `src/content/audio-manifest.json`. Skips clips that already exist (hash of text + voice + style + model), deletes unused ones. Key from `GEMINI_API_KEY`, never committed.
+- [x] Voice samples: the same lines in 6 voices (`npm run audio -- --sample`) → parent picked **Sulafat**. Tier 1 limit is 10 requests/min, so the script paces itself (~6.5 s per clip).
+- [x] Player: `speak()` plays the clip(s) in order; text without a clip falls back to the device voice; no clip and no voice → quiet speaker button.
+- [x] Clips for the 12 test items and all instructions generated (43 clips, 716 KB) and committed. A full listen-through of every clip is part of the parent's content review in Part 5.
+- [x] Heard on the iPad (Safari, local preview): speaker plays the Sulafat clips in order (parent, 2026-11-04).
+- [ ] Offline on the installed app: after this lands on `main`, airplane mode → speaker still plays. (Service workers need HTTPS, so the LAN preview can't test this.)
+
 
 ### Custom keyboard
-- [ ] On-screen QWERTZ, big keys, **Ä Ö Ü ß** row always visible.
-- [ ] Shift key for capitals (stays visually clear which mode is on).
-- [ ] Backspace, OK/check key.
-- [ ] Key press feedback (scale + optional tick sound).
-- [ ] No system keyboard ever opens (no real `<input>` focus; render the typed text yourself).
+- [x] On-screen QWERTZ, big keys, **Ä Ö Ü ß** row always visible.
+- [x] Shift key for capitals (stays visually clear which mode is on).
+- [x] Backspace, OK/check key.
+- [x] Key press feedback (scale). Tick sound moves to Part 6 with the other sound effects (DESIGN.md › Sound). Hardware keyboard also types (iPad keyboard case).
+- [x] No system keyboard ever opens (no real `<input>` focus; render the typed text yourself).
 
 ### Session shell
-- [ ] Round = 10 items → summary screen (crystals won).
-- [ ] Progress dots at the top; pause/exit without losing earned crystals.
+- [x] Round = 10 items → summary screen (crystals won).
+- [x] Progress dots at the top; pause/exit without losing earned crystals.
+
+Tests: `npm test` (vitest) covers checking, hints, Leitner, round and storage. The round was also run end to end in WebKit at phone and iPad sizes, including reload.
 
 ## Done when
 A test round of 10 dummy items runs end to end with typing, hints, audio and saved progress after closing the app.

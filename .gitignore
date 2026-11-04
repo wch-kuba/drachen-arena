@@ -30,3 +30,4 @@ dist-ssr
 .impeccable/build/
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+audio-samples/

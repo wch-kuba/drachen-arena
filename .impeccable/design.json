@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T17:53:38+00:00",
+  "title": "Design System: Drachen-Arena",
+  "extensions": {
+    "colorMeta": {
+      "rock-0": {
+        "role": "neutral",
+        "displayName": "Grotto Roof",
+        "tonalRamp": [
+          "#041c22",
+          "#072830",
+          "#0b3540",
+          "#10444f",
+          "#165562",
+          "#5c4a24",
+          "#c7e6df",
+          "#e6f6f2"
+        ]
+      },
+      "rock-1": {
+        "role": "neutral",
+        "displayName": "Grotto Floor",
+        "tonalRamp": [
+          "#041c22",
+          "#072830",
+          "#0b3540",
+          "#10444f",
+          "#165562",
+          "#5c4a24",
+          "#c7e6df",
+          "#e6f6f2"
+        ]
+      },
+      "rock-2": {
+        "role": "neutral",
+        "displayName": "Lands Rock",
+        "tonalRamp": [
+          "#041c22",
+          "#072830",
+          "#0b3540",
+          "#10444f",
+          "#165562",
+          "#5c4a24",
+          "#c7e6df",
+          "#e6f6f2"
+        ]
+      },
+      "rock-3": {
+        "role": "neutral",
+        "displayName": "Cell Rock",
+        "tonalRamp": [
+          "#041c22",
+          "#072830",
+          "#0b3540",
+          "#10444f",
+          "#165562",
+          "#5c4a24",
+          "#c7e6df",
+          "#e6f6f2"
+        ]
+      },
+      "rock-4": {
+        "role": "neutral",
+        "displayName": "Ledge Rock",
+        "tonalRamp": [
+          "#041c22",
+          "#072830",
+          "#0b3540",
+          "#10444f",
+          "#165562",
+          "#5c4a24",
+          "#c7e6df",
+          "#e6f6f2"
+        ]
+      },
+      "hoard-band": {
+        "role": "neutral",
+        "displayName": "Hoard Glow Band",
+        "tonalRamp": [
+          "#160700",
+          "#312100",
+          "#4e3d16",
+          "#6d5b35",
+          "#8e7b54",
+          "#b09c74",
+          "#d6c298",
+          "#ffecc2"
+        ]
+      },
+      "tq-700": {
+        "role": "secondary",
+        "displayName": "Deep Facet",
+        "tonalRamp": [
+          "#05262c",
+          "#0c7a76",
+          "#17a39c",
+          "#3fd3c6",
+          "#63dbd3",
+          "#91fffe",
+          "#b4f0e7",
+          "#eafbf7"
+        ]
+      },
+      "tq-500": {
+        "role": "secondary",
+        "displayName": "Scale Turquoise",
+        "tonalRamp": [
+          "#05262c",
+          "#0c7a76",
+          "#17a39c",
+          "#3fd3c6",
+          "#63dbd3",
+          "#91fffe",
+          "#b4f0e7",
+          "#eafbf7"
+        ]
+      },
+      "tq-300": {
+        "role": "secondary",
+        "displayName": "Bright Gem",
+        "tonalRamp": [
+          "#05262c",
+          "#0c7a76",
+          "#17a39c",
+          "#3fd3c6",
+          "#63dbd3",
+          "#91fffe",
+          "#b4f0e7",
+          "#eafbf7"
+        ]
+      },
+      "tq-100": {
+        "role": "secondary",
+        "displayName": "Gem Mist",
+        "tonalRamp": [
+          "#05262c",
+          "#0c7a76",
+          "#17a39c",
+          "#3fd3c6",
+          "#63dbd3",
+          "#91fffe",
+          "#b4f0e7",
+          "#eafbf7"
+        ]
+      },
+      "gold-800": {
+        "role": "primary",
+        "displayName": "Coin Engraving",
+        "tonalRamp": [
+          "#8a5414",
+          "#c98426",
+          "#cf9024",
+          "#e2a23c",
+          "#f7b653",
+          "#f7c86e",
+          "#ffe390",
+          "#ffe7b5"
+        ]
+      },
+      "gold-600": {
+        "role": "primary",
+        "displayName": "Coin Rim",
+        "tonalRamp": [
+          "#8a5414",
+          "#c98426",
+          "#cf9024",
+          "#e2a23c",
+          "#f7b653",
+          "#f7c86e",
+          "#ffe390",
+          "#ffe7b5"
+        ]
+      },
+      "gold-500": {
+        "role": "primary",
+        "displayName": "Hoard Gold",
+        "tonalRamp": [
+          "#8a5414",
+          "#c98426",
+          "#cf9024",
+          "#e2a23c",
+          "#f7b653",
+          "#f7c86e",
+          "#ffe390",
+          "#ffe7b5"
+        ]
+      },
+      "gold-300": {
+        "role": "primary",
+        "displayName": "Coin Highlight",
+        "tonalRamp": [
+          "#8a5414",
+          "#c98426",
+          "#cf9024",
+          "#e2a23c",
+          "#f7b653",
+          "#f7c86e",
+          "#ffe390",
+          "#ffe7b5"
+        ]
+      },
+      "gold-100": {
+        "role": "primary",
+        "displayName": "Coin Shine",
+        "tonalRamp": [
+          "#8a5414",
+          "#c98426",
+          "#cf9024",
+          "#e2a23c",
+          "#f7b653",
+          "#f7c86e",
+          "#ffe390",
+          "#ffe7b5"
+        ]
+      },
+      "glass": {
+        "role": "neutral",
+        "displayName": "Sea-Glass",
+        "tonalRamp": [
+          "#040e0b",
+          "#1b2724",
+          "#364340",
+          "#53615e",
+          "#73817d",
+          "#93a29f",
+          "#b9c8c4",
+          "#e3f3ef"
+        ]
+      },
+      "glass-dim": {
+        "role": "neutral",
+        "displayName": "Clouded Glass",
+        "tonalRamp": [
+          "#040e0b",
+          "#1b2724",
+          "#364340",
+          "#53615e",
+          "#73817d",
+          "#93a29f",
+          "#b9c8c4",
+          "#e3f3ef"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep-Teal Ink",
+        "tonalRamp": [
+          "#000f15",
+          "#08292f",
+          "#26454c",
+          "#44646a",
+          "#63848b",
+          "#83a5ad",
+          "#a8cbd3",
+          "#d2f6fe"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "tonalRamp": [
+          "#000f15",
+          "#08292f",
+          "#26454c",
+          "#44646a",
+          "#63848b",
+          "#83a5ad",
+          "#a8cbd3",
+          "#d2f6fe"
+        ]
+      },
+      "foam": {
+        "role": "neutral",
+        "displayName": "Foam",
+        "tonalRamp": [
+          "#040e0b",
+          "#1b2724",
+          "#364340",
+          "#53615e",
+          "#73817d",
+          "#93a29f",
+          "#b9c8c4",
+          "#e3f3ef"
+        ]
+      },
+      "foam-soft": {
+        "role": "neutral",
+        "displayName": "Soft Foam",
+        "tonalRamp": [
+          "#00110e",
+          "#002b27",
+          "#1e4843",
+          "#3d6761",
+          "#5c8781",
+          "#7da9a2",
+          "#a2cfc8",
+          "#ccfaf2"
+        ]
+      },
+      "coral": {
+        "role": "tertiary",
+        "displayName": "Warm Coral",
+        "tonalRamp": [
+          "#340000",
+          "#570000",
+          "#7b0900",
+          "#a03415",
+          "#c55639",
+          "#eb785a",
+          "#ff9f7f",
+          "#ffd2b7"
+        ]
+      },
+      "coral-100": {
+        "role": "tertiary",
+        "displayName": "Coral Mist",
+        "tonalRamp": [
+          "#340000",
+          "#570000",
+          "#7b0900",
+          "#a03415",
+          "#c55639",
+          "#eb785a",
+          "#ff9f7f",
+          "#ffd2b7"
+        ]
+      },
+      "legend-gelb": {
+        "role": "reserved",
+        "displayName": "Legend Gelb (Selbstlaut)",
+        "tonalRamp": [
+          "#1e0100",
+          "#3b1c00",
+          "#593a00",
+          "#795a00",
+          "#9a7b00",
+          "#bc9d00",
+          "#e2c300",
+          "#fff08e"
+        ]
+      },
+      "legend-gruen": {
+        "role": "reserved",
+        "displayName": "Legend Grün (Zwielaut)",
+        "tonalRamp": [
+          "#001700",
+          "#003500",
+          "#005500",
+          "#00760f",
+          "#009837",
+          "#3dbb5a",
+          "#69e27f",
+          "#b7ffc0"
+        ]
+      },
+      "legend-blau": {
+        "role": "reserved",
+        "displayName": "Legend Blau (Umlaut)",
+        "tonalRamp": [
+          "#020050",
+          "#001173",
+          "#003796",
+          "#0059ba",
+          "#2d7bdf",
+          "#519eff",
+          "#77c6ff",
+          "#baf2ff"
+        ]
+      },
+      "legend-blau-text": {
+        "role": "reserved",
+        "displayName": "Legend Blau Text",
+        "tonalRamp": [
+          "#000000",
+          "#262626",
+          "#3b3b3b",
+          "#525252",
+          "#6e6e6e",
+          "#919191",
+          "#c4c4c4",
+          "#ffffff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "root": {
+        "displayName": "Root",
+        "purpose": "Fluid root size; ~20px iPhone, ~23px iPad portrait, ~27px iPad landscape. All rem scale from it."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Reward headlines, gold-300 on rock."
+      },
+      "answer": {
+        "displayName": "Answer",
+        "purpose": "The word being worked on and letters in cells; 3.2rem from 700px, ~2.1rem on phones."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Home greeting and screen titles on rock."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Gold coin button label."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Land and niche names."
+      },
+      "prompt": {
+        "displayName": "Prompt",
+        "purpose": "Task line on the exercise plaque; feedback text."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, captions, sub-lines."
+      }
+    },
+    "shadows": [
+      {
+        "name": "plaque-lift",
+        "value": "0 6px 14px rgb(0 0 0 / 0.35)",
+        "purpose": "Plaques and kurz/lang buttons."
+      },
+      {
+        "name": "coin-lift",
+        "value": "inset 0 0 0 3px #f7c86e, inset 0 0 0 6px #c98426, 0 8px 18px rgb(0 0 0 / 0.45)",
+        "purpose": "Gold coin button: minted rim plus depth."
+      },
+      {
+        "name": "small-lift",
+        "value": "0 4px 10px rgb(0 0 0 / 0.35)",
+        "purpose": "Round buttons, disabled gold button."
+      },
+      {
+        "name": "keycap",
+        "value": "inset 0 -3px 5px rgb(5 38 44 / 0.18), 0 3px 6px rgb(0 0 0 / 0.35)",
+        "purpose": "Keyboard keys; removed on press."
+      },
+      {
+        "name": "niche-hollow",
+        "value": "inset 0 10px 18px rgb(0 0 0 / 0.45)",
+        "purpose": "Recessed collection niches."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 4px solid #f7c86e; outline-offset: 3px",
+        "purpose": "Every focus-visible element."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Presses, rises, nudges, wobble."
+      },
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.34, 1.4, 0.64, 1)",
+        "purpose": "Overshoot settle for arrivals: cell pop, gem landing, counter bump."
+      },
+      {
+        "name": "gem-fly",
+        "value": "900ms cubic-bezier(0.5, 0, 0.3, 1) along a curved offset-path",
+        "purpose": "Right answer: gem arcs with weight onto the hoard ledge."
+      },
+      {
+        "name": "cell-pop",
+        "value": "520ms ease-settle, 60ms stagger",
+        "purpose": "Right answer: cells turn gold and pop."
+      },
+      {
+        "name": "gem-land",
+        "value": "520ms ease-settle",
+        "purpose": "Gem drops onto the ledge."
+      },
+      {
+        "name": "nudge",
+        "value": "420ms ease-out, -8px/+6px",
+        "purpose": "Almost or wrong: gentle sideways nudge."
+      },
+      {
+        "name": "rise",
+        "value": "360ms ease-out, 12px",
+        "purpose": "Feedback panes enter."
+      },
+      {
+        "name": "crystal-drop",
+        "value": "700ms cubic-bezier(0.5, 0, 0.75, 0), 140ms stagger",
+        "purpose": "Reward: round's crystals drop onto the pile."
+      },
+      {
+        "name": "egg-blink",
+        "value": "1.6s steps(2, jump-none) infinite",
+        "purpose": "The only blink: a new egg."
+      },
+      {
+        "name": "egg-wobble",
+        "value": "2.4s ease-out infinite, rotate -7/6/-3/1deg",
+        "purpose": "Egg about to hatch."
+      },
+      {
+        "name": "breathe",
+        "value": "4.2s ease-in-out infinite, scaleY 1.025",
+        "purpose": "Sleeping dragon idle."
+      },
+      {
+        "name": "press",
+        "value": "120ms ease-out, translateY 2-3px",
+        "purpose": "Pressed buttons and keys."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all animation/transition 1ms, 1 iteration",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "max-width: 699px"
+      },
+      {
+        "name": "ipad",
+        "value": "min-width: 700px"
+      },
+      {
+        "name": "ipad-landscape",
+        "value": "min-width: 900px and orientation: landscape"
+      }
+    ],
+    "imageStylePrompt": "Children's picture-book illustration for a German spelling game. Friendly, rounded shapes, thick dark-teal outlines (#05262c), flat color with soft gouache texture. Palette: turquoise scales (#17a39c, #3fd3c6), warm amber gold (#e2a23c, #f7c86e), pale sea-glass (#e6f6f2), small coral accents (#ff8a6b). Gentle warm light from below as if lit by treasure. Single subject, centered, full figure, no text, no letters, transparent background. Cute, calm, never scary.",
+    "imageAssetNotes": {
+      "wordPictures": "One object each.",
+      "dragons": "Lie or sit, big eyes, gold belly and spines, sea-fin ears.",
+      "eggs": "Turquoise with gold spots."
+    },
+    "lands": [
+      {
+        "id": "laute",
+        "name": "Kristallhöhle",
+        "exercise": "Selbstlaute, Zwielaute, Umlaute",
+        "hue": "tq-300"
+      },
+      {
+        "id": "mehrzahl",
+        "name": "Perlenriff",
+        "exercise": "Einzahl und Mehrzahl",
+        "hue": "gold-300"
+      },
+      {
+        "id": "luecke",
+        "name": "Schiffswrack",
+        "exercise": "Fehlende Buchstaben",
+        "hue": "tq-500"
+      },
+      {
+        "id": "kurzlang",
+        "name": "Echo-Grotte",
+        "exercise": "Kurz oder lang?",
+        "hue": "gold-500"
+      },
+      {
+        "id": "ie",
+        "name": "Tiefsee-Garten",
+        "exercise": "Wörter mit ie",
+        "hue": "tq-100"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Gold Coin Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "The single primary action per screen, full width at thumb height.",
+      "html": "<button class=\"ds-btn-gold\">Los geht’s!</button>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-btn-gold{font-family:Andika,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:3.4rem;width:100%;padding:0 1.5rem;border:var(--outline) solid var(--ink);border-radius:999px;background:radial-gradient(120% 140% at 50% 20%,var(--gold-100) 0%,var(--gold-300) 38%,var(--gold-500) 72%,var(--gold-600) 100%);color:var(--ink);font-size:1.4rem;font-weight:700;box-shadow:inset 0 0 0 3px var(--gold-300),inset 0 0 0 6px var(--gold-600),0 8px 18px rgb(0 0 0/.45);transition:transform 120ms var(--ease-out);cursor:pointer}.ds-btn-gold:active{transform:translateY(3px) scale(.98)}.ds-btn-gold:focus-visible{outline:4px solid var(--gold-300);outline-offset:3px}.ds-btn-gold:disabled{background:var(--glass-dim);box-shadow:0 4px 10px rgb(0 0 0/.3);color:var(--ink-soft)}"
+    },
+    {
+      "name": "Round Button",
+      "kind": "button",
+      "refersTo": "button-round",
+      "description": "Sea-glass circle for close and read-aloud.",
+      "html": "<button class=\"ds-btn-round\" aria-label=\"Vorlesen\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 9h4l5-4v14l-5-4H4z\"/><path d=\"M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12\"/></svg></button>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-btn-round{display:grid;place-items:center;width:var(--tap);height:var(--tap);border:var(--outline) solid var(--ink);border-radius:50%;background:var(--glass);color:var(--ink);box-shadow:0 4px 10px rgb(0 0 0/.35);cursor:pointer}.ds-btn-round svg{width:1.35rem;height:1.35rem}.ds-btn-round:active{transform:translateY(2px)}.ds-btn-round:focus-visible{outline:4px solid var(--gold-300);outline-offset:3px}"
+    },
+    {
+      "name": "Task Plaque",
+      "kind": "card",
+      "refersTo": "plaque",
+      "description": "Sea-glass plaque carrying the exercise prompt and word.",
+      "html": "<div class=\"ds-plaque\"><div class=\"ds-ask\">Schreib die Mehrzahl.</div><p class=\"ds-word\"><small>ein</small> Hut <small>– viele …</small></p></div>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-plaque{font-family:Andika,system-ui,sans-serif;background:var(--glass);color:var(--ink);border:var(--outline) solid var(--ink);border-radius:var(--radius-plaque);box-shadow:0 6px 14px rgb(0 0 0/.35);padding:1rem;text-align:center;display:grid;gap:.6rem}.ds-ask{font-size:1.15rem;font-weight:700}.ds-word{margin:0;font-size:2.6rem;font-weight:700;line-height:1.1}.ds-word small{font-size:.55em;font-weight:400;color:var(--ink-soft)}"
+    },
+    {
+      "name": "Feedback Panes",
+      "kind": "card",
+      "refersTo": "feedback-right",
+      "description": "Gold pane for right, coral pane for almost and hints; rises in.",
+      "html": "<div class=\"ds-fb\" data-tone=\"right\"><svg viewBox=\"0 0 40 40\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M10 6h20l8 10-18 20L2 16z\" fill=\"var(--tq-300)\" stroke=\"#05262c\" stroke-width=\"3\" stroke-linejoin=\"round\"/><path d=\"M2 16h36M10 6l4 10 6 20M30 6l-4 10-6 20\" fill=\"none\" stroke=\"#05262c\" stroke-width=\"2\"/></svg>Super! Ein Kristall für deinen Schatz.</div><div class=\"ds-fb\" data-tone=\"almost\">Fast! Nomen schreibt man groß.</div>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-fb{font-family:Andika,system-ui,sans-serif;display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;margin-bottom:.6rem;font-size:1.1rem;font-weight:700;color:var(--ink);border:var(--outline) solid var(--ink);border-radius:var(--radius-plaque);box-shadow:0 6px 14px rgb(0 0 0/.35);animation:ds-rise 360ms var(--ease-out) both}.ds-fb[data-tone=right]{background:var(--gold-100)}.ds-fb[data-tone=almost]{background:var(--coral-100)}@keyframes ds-rise{from{opacity:0;transform:translateY(12px)}}"
+    },
+    {
+      "name": "Answer Cells",
+      "kind": "custom",
+      "refersTo": "cell-empty",
+      "description": "Fixed letter grid: cursor, filled, flagged, revealed, and the gold pop on right.",
+      "html": "<div class=\"ds-cells\"><span class=\"ds-cell\" data-filled>H</span><span class=\"ds-cell\" data-flag>ü</span><span class=\"ds-cell\" data-reveal>t</span><span class=\"ds-cell\" data-cursor></span></div><div class=\"ds-cells\" data-state=\"right\"><span class=\"ds-cell\">H</span><span class=\"ds-cell\">ü</span><span class=\"ds-cell\">t</span><span class=\"ds-cell\">e</span></div>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-cells{display:flex;gap:.35rem;margin-bottom:.75rem;padding:.5rem;background:var(--rock-1)}.ds-cell{font-family:Andika,system-ui,sans-serif;display:grid;place-items:center;width:2.6rem;height:3.35rem;border:var(--outline) solid var(--foam-soft);border-radius:14px;background:var(--rock-3);font-size:2.2rem;font-weight:700;color:var(--foam)}.ds-cell[data-filled]{border-color:var(--foam);background:var(--glass);color:var(--ink)}.ds-cell[data-cursor]{border-color:var(--gold-300);border-style:dashed}.ds-cell[data-flag]{border-color:var(--coral);background:var(--coral-100);color:var(--ink);box-shadow:0 0 0 4px var(--coral)}.ds-cell[data-reveal]{border-style:dashed;border-color:var(--gold-300);color:var(--gold-300)}.ds-cells[data-state=right] .ds-cell{border-color:var(--ink);background:var(--gold-300);color:var(--ink);animation:ds-pop 520ms var(--ease-settle) both}.ds-cells[data-state=right] .ds-cell:nth-child(2){animation-delay:60ms}.ds-cells[data-state=right] .ds-cell:nth-child(3){animation-delay:120ms}.ds-cells[data-state=right] .ds-cell:nth-child(4){animation-delay:180ms}@keyframes ds-pop{40%{transform:translateY(-14px) scale(1.08)}}"
+    },
+    {
+      "name": "Keyboard Keys",
+      "kind": "button",
+      "refersTo": "key",
+      "description": "Built-in QWERTZ keys; umlauts tinted Gem Mist.",
+      "html": "<div class=\"ds-kb\"><button class=\"ds-key\" data-umlaut>Ä</button><button class=\"ds-key\" data-umlaut>Ö</button><button class=\"ds-key\">H</button><button class=\"ds-key\">U</button><button class=\"ds-key\">T</button></div>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-kb{display:flex;gap:5px}.ds-key{font-family:Andika,system-ui,sans-serif;width:2.6rem;height:2.5rem;padding:0;border:3px solid var(--ink);border-radius:10px;background:var(--glass);color:var(--ink);font-size:1.35rem;font-weight:700;box-shadow:inset 0 -3px 5px rgb(5 38 44/.18),0 3px 6px rgb(0 0 0/.35);cursor:pointer}.ds-key[data-umlaut]{background:var(--tq-100)}.ds-key:active{transform:translateY(2px);box-shadow:none}.ds-key:focus-visible{outline:4px solid var(--gold-300);outline-offset:3px}"
+    },
+    {
+      "name": "Vowel Legend",
+      "kind": "chip",
+      "refersTo": "legend-gelb",
+      "description": "Reserved school colors; the only place gelb, grün, blau appear.",
+      "html": "<div class=\"ds-legend\"><button class=\"ds-lg gelb\">Selbstlaut</button><button class=\"ds-lg gruen\">Zwielaut</button><button class=\"ds-lg blau\">Umlaut</button></div>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}.ds-lg{font-family:Andika,system-ui,sans-serif;padding:.6rem .25rem .5rem;border:var(--outline) solid var(--ink);border-radius:18px;color:var(--ink);font-size:1rem;font-weight:700;cursor:pointer}.ds-lg.gelb{background:var(--legend-gelb)}.ds-lg.gruen{background:var(--legend-gruen)}.ds-lg.blau{background:var(--legend-blau);color:#fff}.ds-lg:focus-visible{outline:4px solid var(--gold-300);outline-offset:3px}"
+    },
+    {
+      "name": "Land Mouth",
+      "kind": "nav",
+      "refersTo": "niche",
+      "description": "Outlined grotto arch in the land's color with name and description on rock.",
+      "html": "<button class=\"ds-land\"><svg viewBox=\"0 0 120 120\" width=\"78\" height=\"78\"><path d=\"M8 112 C4 50 30 10 60 10 C90 10 116 50 112 112 Z\" fill=\"var(--tq-300)\" stroke=\"#05262c\" stroke-width=\"5\"/><path d=\"M26 112 C24 62 40 32 60 32 C80 32 96 62 94 112 Z\" fill=\"var(--rock-0)\"/></svg><span><span class=\"ds-land-name\">Kristallhöhle</span><span class=\"ds-land-what\">Selbstlaute, Zwielaute, Umlaute</span></span></button>",
+      "css": ":host{--rock-0:#041c22;--rock-1:#072830;--rock-2:#0b3540;--rock-3:#10444f;--rock-4:#165562;--tq-700:#0c7a76;--tq-500:#17a39c;--tq-300:#3fd3c6;--tq-100:#b4f0e7;--gold-800:#8a5414;--gold-600:#c98426;--gold-500:#e2a23c;--gold-300:#f7c86e;--gold-100:#ffe7b5;--glass:#e6f6f2;--glass-dim:#c7e6df;--ink:#05262c;--ink-soft:#2a5058;--foam:#eafbf7;--foam-soft:#a6d3cc;--coral:#ff8a6b;--coral-100:#ffe1d6;--legend-gelb:#ffe03a;--legend-gruen:#3dbb5a;--legend-blau:#2f7de1;--outline:4px;--radius-plaque:22px;--tap:2.9rem;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-settle:cubic-bezier(0.34,1.4,0.64,1)}.ds-land{font-family:Andika,system-ui,sans-serif;display:flex;align-items:center;gap:1rem;padding:1rem;border:0;background:var(--rock-2);text-align:left;cursor:pointer}.ds-land:active svg{transform:scale(.96)}.ds-land:focus-visible{outline:4px solid var(--gold-300);outline-offset:3px}.ds-land-name{display:block;font-size:1.25rem;font-weight:700;color:var(--foam)}.ds-land-what{display:block;font-size:1rem;color:var(--foam-soft)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Drachenhort",
+    "overview": "The child's own dragon sleeps on a treasure hoard in a turquoise sea grotto. Every crystal the child earns lands on that hoard, so the pile visibly grows: learning is feeding the hoard. The whole app is that one place. Home is the hoard chamber, each exercise is a side chamber of the grotto, and the reward screen drops the round's crystals onto the pile. The world rejects the usual learning-app default of a mascot above a zigzag of round level bubbles and a chunky green button.\n\nThe look is a picture book, not an interface. Deep sea-teal rock sits in stepped bands, darkest under the stalactite roof and lighter toward the hoard. The band nearest the gold picks up its warm light. The only bright materials are amber gold coins and faceted turquoise gems. Anything the child reads or answers on sits on pale sea-glass plaques with dark-teal ink. Every drawn thing has a thick dark-teal outline. Density is low and everything is large: one task per screen, huge letters, thumb-sized targets. The type scales with the device.",
+    "keyCharacteristics": [
+      "One world: a dragon's hoard in a sea grotto. The hoard grows with every correct answer.",
+      "Rock gets lighter toward the gold, in stepped bands without smooth gradients.",
+      "Gold and turquoise gems are the only bright materials. Gems have facets and never look like glossy blobs.",
+      "A 4px dark-teal outline on every plaque, button, cell and drawing.",
+      "Andika everywhere, scaled per device, at a size an early reader can manage.",
+      "Mistakes are coral and warm, never red.",
+      "The school's gelb, grün and blau exist only as the vowel legend."
+    ],
+    "rules": [
+      {
+        "name": "The Reserved Legend Rule",
+        "body": "Gelb, grün and blau are used only to mark Selbstlaut, Zwielaut and Umlaut: in the legend buttons and on painted letters. Never use them for decoration, status, a land, or a button. Test: if a yellow, green or blue pixel shows up anywhere other than the vowel exercise, it is a bug.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Treasures Rule",
+        "body": "Gold and turquoise gems are the only bright materials in the world. Everything else is rock, sea-glass or ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Never Red Rule",
+        "body": "Mistakes use coral. No red exists in this system.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Face Rule",
+        "body": "Andika is the only typeface. No second display face, and no system fallback is accepted as the shipped look.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Weights Rule",
+        "body": "Use 400 and 700 only. Anything the child must act on or read as the answer is 700.",
+        "section": "typography"
+      },
+      {
+        "name": "The Thumb Rule",
+        "body": "The one primary action on a screen is a full-width gold button at the bottom.",
+        "section": "layout"
+      },
+      {
+        "name": "The Light From Below Rule",
+        "body": "The light source is the hoard. Rock bands lighten toward the gold, and the band next to it is warm (hoard-band). Never light the scene from the top.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Soft Shadow Rule",
+        "body": "Every shadow is blurred. Pressed states move the piece down (translateY 2–3px) and drop the shadow. They never use a hard offset slab.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Outline Rule",
+        "body": "If it is drawn, it has a dark-teal outline. The only exceptions are thin facet lines, glints and the dotted path.",
+        "section": "shapes"
+      },
+      {
+        "name": "The One Blink Rule",
+        "body": "Only a new egg may blink. Nothing else flashes, pulses for attention or loops for emphasis.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** put the reading surface on sea-glass plaques (glass with ink text, a 4px ink outline and 22px corners).",
+      "**Do** keep gold amber-leaning (gold-500, gold-300) so it can never be confused with the school's gelb.",
+      "**Do** step the rock lighter toward the hoard and keep the light coming from below.",
+      "**Do** draw gems as cut, faceted shapes with an ink outline and a small glint.",
+      "**Do** give the screen one full-width gold coin button for its main action, at thumb height.",
+      "**Do** use coral and coral-100 for every \"almost\" and \"wrong\" state, with graded help.",
+      "**Do** honor reduced motion and keep the overshoot settle easing for arrivals.",
+      "**Do** reuse the image style prompt verbatim for every generated image."
+    ],
+    "donts": [
+      "**Don't** use legend gelb, grün or blau anywhere except to mark Selbstlaut, Zwielaut and Umlaut.",
+      "**Don't** use red, or any harsh sound or motion, for a mistake.",
+      "**Don't** make anything blink except a new egg.",
+      "**Don't** use hard offset shadows. Every shadow is blurred.",
+      "**Don't** draw glossy blob gems or unoutlined art.",
+      "**Don't** use any typeface other than Andika, or any weight other than 400 or 700.",
+      "**Don't** add small eyebrow labels or kickers above headings. Text for the child stays short and plain.",
+      "**Don't** fall back to the learning-app default of round level bubbles in a zigzag with a green button."
+    ]
+  }
+}

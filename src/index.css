@@ -1,13 +1,76 @@
-/* Base shell only – visual design comes in Part 2. */
-:root {
-  --theme: #2e7d5b;
-  --bg: #fdf6e3;
-  --text: #1f2a24;
-  --accent: #f6c445;
+/* Drachen-Arena – Drachenhort world. Tokens are documented in DESIGN.md. */
 
-  font: 20px/1.4 system-ui, -apple-system, sans-serif;
-  color: var(--text);
-  background: var(--bg);
+@font-face {
+  font-family: 'Andika';
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  src: url('/fonts/andika-400-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Andika';
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+  src: url('/fonts/andika-700-latin.woff2') format('woff2');
+}
+
+:root {
+  /* Grotto rock: a stepped tonal ramp, darkest at the roof, lighter toward the hoard. */
+  --rock-0: #041c22;
+  --rock-1: #072830;
+  --rock-2: #0b3540;
+  --rock-3: #10444f;
+  --rock-4: #165562;
+
+  /* Turquoise: dragon scales and cut gems. */
+  --tq-700: #0c7a76;
+  --tq-500: #17a39c;
+  --tq-300: #3fd3c6;
+  --tq-100: #b4f0e7;
+
+  /* Gold: coins and the hoard. Amber-leaning so it never reads as the school's gelb. */
+  --gold-800: #8a5414;
+  --gold-600: #c98426;
+  --gold-500: #e2a23c;
+  --gold-300: #f7c86e;
+  --gold-100: #ffe7b5;
+
+  /* Plaques: pale sea-glass panes for anything the child reads. */
+  --glass: #e6f6f2;
+  --glass-dim: #c7e6df;
+  --ink: #05262c;
+  --ink-soft: #2a5058;
+  --foam: #eafbf7;
+  --foam-soft: #a6d3cc;
+
+  /* Feedback. Mistakes are warm and safe, never red. */
+  --hoard-band: #5c4a24; /* rock lit warm by the gold */
+  --coral: #ff8a6b;
+  --coral-100: #ffe1d6;
+
+  /* School legend – reserved. Used ONLY for Selbstlaut / Zwielaut / Umlaut. */
+  --legend-gelb: #ffe03a;
+  --legend-gruen: #3dbb5a;
+  --legend-blau: #2f7de1;
+
+  --outline: 4px;
+  --radius-plaque: 22px;
+  --radius-key: 10px;
+  --tap: 2.9rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-settle: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  /* Scales with the screen: ~20px on iPhone, ~23px iPad portrait, ~27px iPad landscape. */
+  font:
+    clamp(20px, 15px + 1vw, 28px) / 1.35 'Andika',
+    system-ui,
+    sans-serif;
+  color: var(--foam);
+  background: var(--rock-1);
+  color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
@@ -26,7 +89,7 @@ body {
 }
 
 body {
-  background: var(--bg);
+  background: var(--rock-1);
   /* Game UI: no text selection, no callouts, no double-tap zoom. */
   -webkit-user-select: none;
   user-select: none;
@@ -35,10 +98,34 @@ body {
   touch-action: manipulation;
 }
 
+::selection {
+  background: var(--gold-300);
+  color: var(--ink);
+}
+
 input,
 textarea {
   -webkit-user-select: text;
   user-select: text;
+  caret-color: var(--gold-600);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 4px solid var(--gold-300);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 #app {
@@ -51,53 +138,1331 @@ textarea {
     env(safe-area-inset-left);
 }
 
-.hello {
-  flex: 1;
-  display: grid;
-  place-content: center;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ---------- Shared pieces ---------- */
+
+.plaque {
+  background: var(--glass);
+  color: var(--ink);
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--radius-plaque);
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.35);
+}
+
+.btn-gold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  min-height: 3.4rem;
+  width: 100%;
+  padding: 0 1.5rem;
+  border: var(--outline) solid var(--ink);
+  border-radius: 999px;
+  /* Minted coin: lit from within, a raised rim, soft blurred depth. */
+  background: radial-gradient(120% 140% at 50% 20%, var(--gold-100) 0%, var(--gold-300) 38%, var(--gold-500) 72%, var(--gold-600) 100%);
+  color: var(--ink);
+  font-size: 1.4rem;
+  font-weight: 700;
+  box-shadow:
+    inset 0 0 0 3px var(--gold-300),
+    inset 0 0 0 6px var(--gold-600),
+    0 8px 18px rgb(0 0 0 / 0.45);
+  transition: transform 120ms var(--ease-out);
+}
+
+.btn-gold:active {
+  transform: translateY(3px) scale(0.98);
+}
+
+.btn-gold:disabled {
+  background: var(--glass-dim);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.3);
+  color: var(--ink-soft);
+}
+
+.btn-round {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  flex: none;
+  border: var(--outline) solid var(--ink);
+  border-radius: 50%;
+  background: var(--glass);
+  color: var(--ink);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.35);
+}
+
+.btn-round:active {
+  transform: translateY(2px);
+}
+
+.btn-round svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.85rem 0.25rem 0.5rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+/* ---------- Grotto backdrop ---------- */
+
+:root {
+  --roof: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0h200v22l-8 10-6-14-10 30-9-26-12 12-8-18-14 34-10-30-9 10-10-16-12 24-8-22-10 12-9-20-12 30-9-28-10 14-8-16-6 10z'/%3E%3C/svg%3E");
+  /* Rock bands lighten toward the hoard; the band nearest the gold catches its warm light. */
+  --bands:
+    radial-gradient(160% 22% at 50% 100%, var(--hoard-band) 0 50%, transparent 50.5%),
+    radial-gradient(160% 30% at 50% 100%, var(--rock-4) 0 50%, transparent 50.5%),
+    radial-gradient(160% 40% at 50% 100%, var(--rock-3) 0 50%, transparent 50.5%),
+    radial-gradient(160% 52% at 50% 100%, var(--rock-2) 0 50%, transparent 50.5%);
+}
+
+.grotto {
+  position: relative;
+  isolation: isolate;
+  background: var(--rock-1);
+}
+
+.ex.grotto,
+.reward.grotto,
+.collection.grotto {
+  background: var(--bands), var(--rock-1);
+}
+
+.ex.grotto::before,
+.reward.grotto::before,
+.collection.grotto::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4.5rem;
+  z-index: -1;
+  background: var(--rock-0);
+  -webkit-mask: var(--roof) 0 0 / 100% 100%;
+  mask: var(--roof) 0 0 / 100% 100%;
+  pointer-events: none;
+}
+
+/* ---------- Home ---------- */
+
+.home-stage {
+  position: relative;
+  min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  padding: 1rem 1.25rem 1.5rem;
+  overflow: hidden;
+  /* Stepped light from the hoard: rock bands get lighter toward the gold, full width. */
+  background:
+    radial-gradient(160% 18% at 50% 62%, var(--hoard-band) 0 50%, transparent 50.5%),
+    radial-gradient(160% 22% at 50% 64%, var(--rock-4) 0 50%, transparent 50.5%),
+    radial-gradient(160% 26% at 50% 66%, var(--rock-3) 0 50%, transparent 50.5%),
+    radial-gradient(160% 32% at 50% 70%, var(--rock-2) 0 50%, transparent 50.5%),
+    var(--rock-1);
+}
+
+.home-stage::before {
+  /* Stalactite roof */
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 7rem;
+  background: var(--rock-0);
+  -webkit-mask: var(--roof) 0 0 / 100% 100%;
+  mask: var(--roof) 0 0 / 100% 100%;
+  pointer-events: none;
+}
+
+.home-top {
+  position: relative;
+}
+
+.home-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.home-hello {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--foam);
+}
+
+.hoard-scene {
+  position: relative;
+  align-self: center;
+  margin: 0 -0.5rem;
+}
+
+.hoard-scene svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-caption {
   text-align: center;
+  color: var(--foam-soft);
+  font-size: 1.05rem;
+  margin: 0.25rem 0 1rem;
+}
+
+.home-caption b {
+  color: var(--gold-300);
+}
+
+.dragon-breathe {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: breathe 4.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.025);
+  }
+}
+
+.zzz {
+  animation: zzz 4.2s ease-in-out infinite;
+}
+
+@keyframes zzz {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-6px);
+  }
+}
+
+/* Lands: grotto chambers along one winding path */
+
+.lands {
+  position: relative;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--rock-2);
+}
+
+.lands h2 {
+  font-size: 1.5rem;
+  color: var(--foam);
+  margin-bottom: 1.5rem;
+}
+
+.lands-inner {
+  position: relative;
+}
+
+.lands-inner h2 {
+  height: 2rem;
+  line-height: 2rem;
+}
+
+/* Path vertices sit on the mouth centers; it crosses sides in the gaps between chambers. */
+.lands-path {
+  position: absolute;
+  left: 2.45rem;
+  top: calc(3.5rem + 2.45rem);
+  width: calc(100% - 4.9rem);
+  height: calc(4 * (4.9rem + 1.75rem));
+  overflow: visible;
+  pointer-events: none;
+}
+
+.land {
+  z-index: 1;
+}
+
+/* Labels sit on a rock-colored backing so the path passes behind them. */
+.land > span:last-child {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  background: var(--rock-2);
+}
+
+.land {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 82%;
+  margin-bottom: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+
+.land:nth-of-type(even) {
+  margin-left: auto;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.land-mouth {
+  flex: none;
+  width: 4.9rem;
+  height: 4.9rem;
+}
+
+.land-name {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foam);
+}
+
+.land-what {
+  display: block;
+  font-size: 1rem;
+  color: var(--foam-soft);
+}
+
+.land[data-locked] .land-name {
+  color: var(--foam-soft);
+}
+
+.land:active .land-mouth {
+  transform: scale(0.96);
+}
+
+.build-tag {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--foam-soft);
+  opacity: 0.6;
+}
+
+/* ---------- Exercise ---------- */
+
+.ex {
+  min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 0.75rem 1rem 1rem;
+}
+
+.ex-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ex-bar .btn-round {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.ex-bar .btn-round svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.gem-track {
+  flex: 1;
+  display: flex;
+  gap: 0.35rem;
+  max-width: 22rem;
+}
+
+.gem-track svg {
+  flex: 0 1 1.2rem;
+  min-width: 0;
+  height: 1.2rem;
+}
+
+.ex-card {
+  padding: 1rem 1rem 1.1rem;
+  display: grid;
+  gap: 0.6rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.ex-ask {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.ex-ask .btn-round {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.ex-ask .btn-round svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.ex-picture {
+  width: 6rem;
+  height: 4.7rem;
+}
+
+.ex-word {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.ex-word small {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+/* Letter cells: the answer is built on a fixed grid */
+
+.cells {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 3.5rem;
+}
+
+.cell {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 3.35rem;
+  border: var(--outline) solid var(--foam-soft);
+  border-radius: 14px;
+  background: var(--rock-3);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--foam);
+}
+
+.cell[data-filled] {
+  border-color: var(--foam);
+  background: var(--glass);
+  color: var(--ink);
+}
+
+.cell[data-cursor] {
+  border-color: var(--gold-300);
+  border-style: dashed;
+}
+
+.cell[data-flag] {
+  border-color: var(--coral);
+  background: var(--coral-100);
+  box-shadow: 0 0 0 4px var(--coral);
+}
+
+.cell[data-reveal] {
+  border-style: dashed;
+  border-color: var(--gold-300);
+  color: var(--gold-300);
+  background: var(--rock-3);
+}
+
+.cells[data-state='right'] .cell {
+  border-color: var(--ink);
+  background: var(--gold-300);
+  color: var(--ink);
+  animation: cell-pop 520ms var(--ease-settle) both;
+}
+
+.cells[data-state='right'] .cell:nth-child(2) {
+  animation-delay: 60ms;
+}
+.cells[data-state='right'] .cell:nth-child(3) {
+  animation-delay: 120ms;
+}
+.cells[data-state='right'] .cell:nth-child(4) {
+  animation-delay: 180ms;
+}
+.cells[data-state='right'] .cell:nth-child(5) {
+  animation-delay: 240ms;
+}
+.cells[data-state='right'] .cell:nth-child(6) {
+  animation-delay: 300ms;
+}
+
+@keyframes cell-pop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-14px) scale(1.08);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cells[data-state='nudge'] {
+  animation: nudge 420ms var(--ease-out);
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  60% {
+    transform: translateX(6px);
+  }
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  animation: rise 360ms var(--ease-out) both;
+}
+
+.feedback svg {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+}
+
+.feedback[data-tone='almost'] {
+  background: var(--coral-100);
+}
+
+.feedback[data-tone='right'] {
+  background: var(--gold-100);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* The gem that flies to the counter on a right answer */
+.flying-gem {
+  position: fixed;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  offset-path: var(--gem-path);
+  offset-rotate: 0deg;
+  animation: gem-fly 900ms cubic-bezier(0.5, 0, 0.3, 1) forwards;
+}
+
+@keyframes gem-fly {
+  0% {
+    offset-distance: 0%;
+    transform: scale(0.6);
+  }
+  30% {
+    transform: scale(1.4);
+  }
+  100% {
+    offset-distance: 100%;
+    transform: scale(0.7);
+  }
+}
+
+.counter[data-bump] {
+  animation: bump 420ms var(--ease-settle);
+}
+
+@keyframes bump {
+  40% {
+    transform: scale(1.25);
+  }
+}
+
+.ex-left,
+.ex-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* The column that holds the hoard ledge takes the free height, so the ledge fills the gap. */
+.ex-left:has(.ledge),
+.ex-right:has(.ledge) {
+  flex: 1;
+}
+
+.ledge {
+  flex: 1;
+  min-height: 5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ledge svg {
+  width: min(100%, 30rem);
+  max-height: 100%;
+}
+
+/* Keyboard screen: the ledge only gets the height the keyboard leaves free. */
+.ex-left .ledge {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ex-left .ledge svg {
+  height: min(12dvh, 7rem);
+  width: auto;
+}
+
+/* Phones: keep the whole keyboard and its Fertig button on screen. */
+@media (max-width: 699px) {
+  .ex {
+    gap: 0.6rem;
+    padding-top: 0.5rem;
+  }
+
+  .ex-card {
+    padding: 0.6rem 0.75rem 0.75rem;
+    gap: 0.3rem;
+  }
+
+  .ex-picture {
+    width: 4.6rem;
+    height: 3.6rem;
+  }
+
+  .ex-word {
+    font-size: 2.1rem;
+  }
+
+  .ledge {
+    min-height: 3rem;
+  }
+
+  .ex-left .ledge svg {
+    max-height: 16dvh;
+  }
+
+  .ex-right .ledge svg {
+    max-height: 34dvh;
+  }
+
+  .cells {
+    min-height: 3rem;
+  }
+
+  .cell {
+    width: 2.3rem;
+    height: 2.9rem;
+    font-size: 2.2rem;
+  }
+
+  .kb {
+    gap: 6px;
+    padding-top: 2px;
+  }
+
+  .key {
+    height: 2.2rem;
+  }
+
+  .kb-row[data-umlauts] .key {
+    height: 2rem;
+  }
+
+  .kb-done {
+    min-height: 2.5rem;
+  }
+}
+
+.gem-landed {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: land 520ms var(--ease-settle) both;
+}
+
+@keyframes land {
+  from {
+    transform: translateY(-30px) scale(1.3);
+  }
+}
+
+/* ---------- Keyboard ---------- */
+
+.kb {
+  display: grid;
+  gap: 7px;
+  padding: 8px 4px 2px;
+}
+
+.kb-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.key {
+  flex: 1 1 0;
+  max-width: 2.6rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-key);
+  background: var(--glass);
+  color: var(--ink);
+  font-size: 1.35rem;
+  font-weight: 700;
+  /* Soft keycap: blurred inner shade, never a hard stripe. */
+  box-shadow:
+    inset 0 -3px 5px rgb(5 38 44 / 0.18),
+    0 3px 6px rgb(0 0 0 / 0.35);
+}
+
+.key[data-umlaut] {
+  background: var(--tq-100);
+}
+
+.kb-row[data-umlauts] .key {
+  max-width: 4.2rem;
+}
+
+.key:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.key-wide {
+  max-width: none;
+  flex: 1.6 1 0;
+  display: grid;
+  place-items: center;
+}
+
+.key-wide svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.kb-done {
+  min-height: 2.8rem;
+  font-size: 1.25rem;
+  margin-top: 4px;
+}
+
+/* ---------- Sort exercise (school legend) ---------- */
+
+.sentence {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.15rem 0.9rem;
+  padding: 1.1rem 0.75rem;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.sentence .w {
+  display: inline-flex;
+}
+
+.sentence .l {
+  min-width: 0.6em;
+  padding: 0 1px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.sentence .l[data-c='gelb'] {
+  background: var(--legend-gelb);
+}
+
+.sentence .l[data-c='gruen'] {
+  background: var(--legend-gruen);
+}
+
+.sentence .l[data-c='blau'] {
+  background: var(--legend-blau);
+  color: #fff;
+}
+
+.sentence .l[data-sel] {
+  background: var(--tq-100);
+  color: var(--ink);
+  box-shadow: 0 0 0 3px var(--tq-500);
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.legend button {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0.25rem 0.5rem;
+  border: var(--outline) solid var(--ink);
+  border-radius: 18px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.legend button b {
+  white-space: nowrap;
+  min-height: 2.5em;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.legend .gelb {
+  background: var(--legend-gelb);
+}
+.legend .gruen {
+  background: var(--legend-gruen);
+}
+.legend .blau {
+  background: var(--legend-blau);
+  color: #fff;
+}
+
+/* ---------- Short / long ---------- */
+
+.marks-word {
+  padding-bottom: 0.5em;
+  font-size: 3.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.marks-word u {
+  text-decoration: none;
+  position: relative;
+  color: var(--tq-700);
+}
+
+.marks-word u::after {
+  content: '?';
+  position: absolute;
+  left: 50%;
+  bottom: -0.55em;
+  translate: -50% 0;
+  font-size: 0.45em;
+  color: var(--ink-soft);
+}
+
+.marks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.mark-btn {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  min-height: 5.4rem;
+  padding: 0.75rem;
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--radius-plaque);
+  background: var(--glass);
+  color: var(--ink);
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.35);
+}
+
+.mark-btn svg {
+  width: 3.3rem;
+  height: 1.8rem;
+}
+
+/* ---------- Reward ---------- */
+
+.reward {
+  min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 'head' 'art' 'act';
+  gap: 1rem;
+  padding: 3.5rem 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.reward-head {
+  grid-area: head;
+}
+
+.reward-art {
+  grid-area: art;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.reward-art > svg {
+  width: min(80vw, 24rem, 55dvh);
+  height: auto;
+}
+
+.reward-act {
+  grid-area: act;
+  display: grid;
+  gap: 0.75rem;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.reward-pile {
+  position: relative;
+  width: min(100%, 26rem);
+}
+
+.drop-gem {
+  position: absolute;
+  left: var(--x);
+  top: -2.5rem;
+  width: 2rem;
+  height: 2rem;
+  animation: drop 700ms cubic-bezier(0.5, 0, 0.75, 0) both;
+  animation-delay: calc(var(--i) * 140ms + 200ms);
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(-40vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(2.5rem);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+}
+
+.reward-art {
+  align-content: end;
+  gap: 0;
+}
+
+.reward-egg {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -2.2rem;
+}
+
+.reward-egg svg {
+  width: min(42vw, 11rem, 30dvh);
+  height: auto;
+}
+
+.inline-gem {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -0.3em;
+}
+
+.name-input {
+  width: 100%;
+  padding: 0 0.75rem;
+  font: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.niche-egg {
+  place-items: center;
+  overflow: hidden;
+}
+
+.niche-egg svg {
+  width: 3.6rem;
+  height: auto;
+}
+
+.name-field .name-input {
+  width: 100%;
+  height: 3.4rem;
+}
+
+.reward h1 {
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--gold-300);
+}
+
+.reward-sub {
+  font-size: 1.2rem;
+  color: var(--foam);
+  margin-top: 0.4rem;
+}
+
+.egg-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.egg-stage svg {
+  width: min(80vw, 22rem);
+  height: auto;
+}
+
+.egg-wobble {
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+  animation: wobble 2.4s var(--ease-out) infinite;
+}
+
+@keyframes wobble {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+  68% {
+    transform: rotate(-7deg);
+  }
+  76% {
+    transform: rotate(6deg);
+  }
+  84% {
+    transform: rotate(-3deg);
+  }
+  92% {
+    transform: rotate(1deg);
+  }
+}
+
+/* The one thing allowed to blink: a new egg. */
+.egg-new {
+  animation: egg-blink 1.6s steps(2, jump-none) infinite;
+}
+
+@keyframes egg-blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.inline-coin {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -0.3em;
+}
+
+.egg-meter {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.egg-meter svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.name-field {
+  display: grid;
+  gap: 0.5rem;
+  text-align: left;
   padding: 1rem;
 }
 
-.hello h1 {
-  margin: 0;
-  font-size: 2.4rem;
-  color: var(--theme);
+.name-field label {
+  font-weight: 700;
+  font-size: 1.15rem;
 }
 
-.hello p {
-  margin: 0;
+.name-field .cells {
+  justify-content: flex-start;
 }
 
-.hello small {
-  opacity: 0.5;
-  font-size: 0.7rem;
+/* ---------- Collection ---------- */
+
+.collection {
+  min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  padding: 3.5rem 1rem 6rem;
 }
+
+.collection h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.collection-sub {
+  color: var(--foam-soft);
+  margin-bottom: 1.25rem;
+}
+
+.niches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 0.75rem;
+}
+
+.niche {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.niche:first-child {
+  grid-column: 1 / -1;
+}
+
+.niche-arch {
+  width: 100%;
+  aspect-ratio: 1 / 0.82;
+  display: grid;
+  place-items: end center;
+  padding: 0 8% 6%;
+  border: var(--outline) solid var(--ink);
+  border-radius: 999px 999px 18px 18px;
+  background: var(--rock-3);
+  box-shadow: inset 0 10px 18px rgb(0 0 0 / 0.45);
+}
+
+.niche:first-child .niche-arch {
+  aspect-ratio: 1 / 0.6;
+}
+
+.niche-arch svg {
+  width: 100%;
+  height: auto;
+}
+
+.niche-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.niche-meta {
+  font-size: 0.95rem;
+  color: var(--foam-soft);
+}
+
+.niche[data-empty] .niche-arch {
+  background: var(--rock-2);
+  border-style: dashed;
+  border-color: var(--rock-4);
+}
+
+/* ---------- Preview (parent-facing index of screens) ---------- */
+
+.preview-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding: 0.5rem 0.75rem;
+  background: var(--rock-0);
+  scrollbar-width: none;
+}
+
+.preview-nav a {
+  flex: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: var(--rock-3);
+  color: var(--foam);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.preview-screen {
+  border-bottom: 6px solid var(--rock-0);
+}
+
+/* ---------- iPad and wider ---------- */
+
+/* Shared column so nothing stretches edge to edge on a 13" screen. */
+.ex,
+.collection,
+.lands-inner {
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.niches {
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+}
+
+@media (min-width: 700px) {
+  .key {
+    max-width: 3.3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .cell {
+    width: 3.2rem;
+    height: 4.1rem;
+    font-size: 3rem;
+  }
+
+  .ex-word {
+    font-size: 3.2rem;
+  }
+
+  .ex-picture {
+    width: 9rem;
+    height: 7rem;
+  }
+
+  .home-stage {
+    padding-inline: 2rem;
+  }
+
+  .hoard-scene {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+  }
+
+  .reward-egg {
+    margin-bottom: -3.4rem;
+  }
+
+  .home-cta {
+    width: min(100%, 26rem);
+    margin-inline: auto;
+  }
+
+  .reward-inner {
+    width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+}
+
+/* iPad landscape: two panes. */
+@media (min-width: 900px) and (orientation: landscape) {
+  .reward {
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas: 'art .' 'art head' 'art act' 'art .';
+    padding: 2rem 2.5rem;
+    column-gap: 2.5rem;
+  }
+
+  .reward-art {
+    grid-auto-flow: row;
+    align-content: center;
+  }
+
+  .reward-pile {
+    width: min(100%, 28rem);
+  }
+
+  .ex-right {
+    justify-content: flex-end;
+  }
+
+  .home {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+
+  .home-stage {
+    min-height: 0;
+  }
+
+  .lands {
+    background: var(--rock-2);
+    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+
+  .ex {
+    max-width: none;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 1.5rem;
+    align-items: start;
+  }
+
+  .ex-bar {
+    grid-column: 1 / -1;
+  }
+
+  .ex-left,
+  .ex-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    height: 100%;
+  }
+}
+
+/* ---------- Update banner ---------- */
 
 .update-banner {
   position: fixed;
   left: 1rem;
   right: 1rem;
   bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border-radius: 1rem;
-  background: var(--theme);
-  color: #fff;
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.2);
 }
 
-.update-banner button {
-  min-height: 48px;
-  padding: 0 1.25rem;
-  border: 0;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--text);
-  font: inherit;
-  font-weight: 700;
+.update-banner .btn-gold {
+  width: auto;
+  min-height: 52px;
+  font-size: 1.05rem;
 }

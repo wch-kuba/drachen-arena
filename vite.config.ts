@@ -2,9 +2,9 @@ import preact from '@preact/preset-vite'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// Placeholder colors – final palette comes in Part 2 (DESIGN.md).
-const THEME = '#2e7d5b'
-const BACKGROUND = '#fdf6e3'
+// Drachenhort palette (DESIGN.md): grotto rock.
+const THEME = '#072830'
+const BACKGROUND = '#072830'
 
 export default defineConfig({
   define: {
@@ -23,7 +23,8 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        orientation: 'portrait',
+        // iPad is the main device and is used in both orientations.
+        orientation: 'any',
         theme_color: THEME,
         background_color: BACKGROUND,
         icons: [

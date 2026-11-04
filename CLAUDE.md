@@ -25,6 +25,12 @@ Forge Quick Deploy builds every push to `main` at https://drachen.webchefs.softw
 - Never push half-done work to `main`; use a branch + PR for anything larger than a small fix.
 - After a push that changes the app, check the live site (`curl -sI`) and remember the service worker: the phone sees changes only after the update prompt.
 
+## Design (always impeccable)
+
+- Any design or UI task (look and feel, screens, components, layout, color, type, motion, icons, polish, UX copy, DESIGN.md) **must** go through the `impeccable` skill. Invoke it before writing UI code or design docs.
+- Don't do design work ad hoc, even small tweaks. Use impeccable's matching mode (shape, critique, polish, colorize, animate, …).
+- Design decisions live in DESIGN.md (Part 2), and PRODUCT.md stays the product source impeccable reads.
+
 ## Language
 
 - UI text (child-facing) is German, short, warm, readable by a 7–8-year-old. Code, comments, commits, docs: English.

@@ -17,26 +17,26 @@
 - [x] "Neue Version verfügbar" prompt wired to the service worker update event.
 
 ### Forge
-- [ ] Decide the domain/subdomain and point DNS at the Forge server.
-- [ ] New site on Forge, linked to the repo, branch `main`.
-- [ ] Web directory: `/dist`.
-- [ ] Deploy script:
+- [x] Decide the domain/subdomain and point DNS at the Forge server.
+- [x] New site on Forge, linked to the repo, branch `main`.
+- [x] Web directory: `/dist`. Domain: https://drachen.webchefs.software
+- [x] Deploy script:
   ```bash
   cd $FORGE_SITE_PATH
   git pull origin $FORGE_SITE_BRANCH
   npm ci
   npm run build
   ```
-- [ ] Check that Node 20+ is on the server.
-- [ ] Let's Encrypt SSL on.
-- [ ] Nginx headers:
+- [x] Check that Node 20+ is on the server.
+- [x] Let's Encrypt SSL on.
+- [x] Nginx headers:
   ```nginx
   location = /sw.js { add_header Cache-Control "no-cache"; }
   location = /manifest.webmanifest { add_header Cache-Control "no-cache"; }
   location /assets/ { add_header Cache-Control "public, max-age=31536000, immutable"; }
   location / { try_files $uri $uri/ /index.html; }
   ```
-- [ ] Quick Deploy on (push = deploy).
+- [x] Quick Deploy on (push = deploy).
 
 ### iPhone
 - [ ] Open the URL in Safari → Share → "Zum Home-Bildschirm".

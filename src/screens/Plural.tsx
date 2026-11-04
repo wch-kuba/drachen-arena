@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'preact/hooks'
+import { askParts } from '../content/speech.ts'
 import { revealCount } from '../engine/attempt.ts'
 import { answer, current, isOver, next, startRound, type Round } from '../engine/round.ts'
 import type { Item } from '../engine/types.ts'
@@ -163,7 +164,7 @@ export function Plural({ items, onItemDone, onRoundDone, onExit }: Props) {
       <div class="ex-left">
         <div class="plaque ex-card">
           <div class="ex-ask">
-            <Speak text={`${ASK.mehrzahl} ${item.prompt}`} />
+            <Speak text={askParts(item)} />
             {ASK.mehrzahl}
           </div>
           <WordPicture image={item.image} />

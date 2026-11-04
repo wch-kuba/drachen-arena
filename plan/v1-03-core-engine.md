@@ -52,7 +52,17 @@
 ### Audio
 - [x] `speechSynthesis` with a de-DE voice (pick "Anna" if available), slower rate (~0.8).
 - [x] Speaker button component (`src/ui/Speak.tsx`), used on every word and instruction. Without a German voice it goes quiet instead of disappearing.
-- [ ] Check that a voice exists offline on the iPad and iPhone (device check pending). Quiet fallback is built.
+- [x] Check the device voice on the iPad → **too robotic** (parent, 2026-11-04). Decision: AI-generated clips, see below. The device voice stays only as a fallback for text without a clip.
+
+### AI voice clips (decided 2026-11-04)
+Gemini TTS (`gemini-3.8-flash-tts`), **paid tier**, called only at build time from the parent's Mac. The child's app never calls an AI service; it plays bundled MP3s offline.
+- [x] `scripts/gen-audio.ts`: collects every text to speak (instructions, item prompts, answers, hints, feedback), calls Gemini, converts to normalized mono MP3 (ffmpeg) in `public/audio/`, writes `src/content/audio-manifest.json`. Skips clips that already exist (hash of text + voice + style + model), deletes unused ones. Key from `GEMINI_API_KEY`, never committed.
+- [x] Voice samples: the same lines in 6 voices (`npm run audio -- --sample`) → parent picked **Sulafat**. Tier 1 limit is 10 requests/min, so the script paces itself (~6.5 s per clip).
+- [x] Player: `speak()` plays the clip(s) in order; text without a clip falls back to the device voice; no clip and no voice → quiet speaker button.
+- [x] Clips for the 12 test items and all instructions generated (43 clips, 716 KB) and committed. A full listen-through of every clip is part of the parent's content review in Part 5.
+- [x] Heard on the iPad (Safari, local preview): speaker plays the Sulafat clips in order (parent, 2026-11-04).
+- [ ] Offline on the installed app: after this lands on `main`, airplane mode → speaker still plays. (Service workers need HTTPS, so the LAN preview can't test this.)
+
 
 ### Custom keyboard
 - [x] On-screen QWERTZ, big keys, **Ä Ö Ü ß** row always visible.

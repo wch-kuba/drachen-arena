@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'preact/hooks'
-import { hasVoice, initVoice, onVoice, speak } from '../engine/audio.ts'
+import { canSpeak, initVoice, onVoice, speak } from '../engine/audio.ts'
 import { T } from '../strings.ts'
 import { IconSpeaker } from './art.tsx'
 
-// Read-aloud button. Without a German voice on the device it stays in place but goes quiet
-// (clouded glass, soft ink), so the layout never jumps and nothing nags the child.
+// Read-aloud button. Plays the bundled voice clips, falling back to the device voice.
+// With neither it stays in place but goes quiet (clouded glass, soft ink), so the layout
+// never jumps and nothing nags the child.
 
-export function Speak({ text, label = T.readAloud }: { text: string; label?: string }) {
-  const [ok, setOk] = useState(hasVoice())
+export function Speak({ text, label = T.readAloud }: { text: string | string[]; label?: string }) {
+  const parts = Array.isArray(text) ? text : [text]
+  const [, setVoiceReady] = useState(false)
 
   useEffect(() => {
-    void initVoice().then((v) => setOk(!!v))
-    return onVoice(setOk)
+    void initVoice().then((v) => setVoiceReady(!!v))
+    return onVoice(setVoiceReady)
   }, [])
 
+  const ok = canSpeak(parts)
   return (
     <button
       type="button"
@@ -21,7 +24,7 @@ export function Speak({ text, label = T.readAloud }: { text: string; label?: str
       aria-label={ok ? label : T.noVoice}
       aria-disabled={ok ? undefined : 'true'}
       data-mute={ok ? undefined : ''}
-      onClick={() => ok && speak(text)}
+      onClick={() => ok && speak(parts)}
     >
       <IconSpeaker />
     </button>

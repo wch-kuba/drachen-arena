@@ -9,7 +9,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 
 - [x] **Part 1 – Setup & first deploy** → [plan/v1-01-setup-deploy.md](plan/v1-01-setup-deploy.md)
   Empty PWA live on Forge and installed on the iPhone.
-- [ ] **Part 2 – Visual world** → [plan/v1-02-visual-world.md](plan/v1-02-visual-world.md)
+- [x] **Part 2 – Visual world** → [plan/v1-02-visual-world.md](plan/v1-02-visual-world.md)
   Kid's favorites collected, look and feel decided, DESIGN.md written.
 - [ ] **Part 3 – Core engine** → [plan/v1-03-core-engine.md](plan/v1-03-core-engine.md)
   Storage, word model, answer checking, hints, repetition, audio, custom keyboard.
@@ -22,7 +22,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 - [ ] **Part 7 – Images** → [plan/v1-07-images.md](plan/v1-07-images.md)
   AI-generated word pictures, dragons, eggs, worlds, app icon.
 - [ ] **Part 8 – Test & release v1** → [plan/v1-08-release.md](plan/v1-08-release.md)
-  Tested on the real iPhone, kid plays first session.
+  Tested on the real iPad and iPhone, kid plays first session.
 
 ## v2 – Parent panel
 
@@ -43,7 +43,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 
 ## Open questions
 
-- [ ] Kid's favorites (colors, animals, themes) – **needed before Part 2 / Part 7**
+- [x] Kid's favorites → turquoise + gold, ocean / sea creatures, dragons first; feel magical, glowing, cozy (recorded in plan/v1-02-visual-world.md, PRODUCT.md)
 - [x] Forge domain / subdomain → https://drachen.webchefs.software
-- [ ] iPhone iOS version (16.4+ preferred)
+- [ ] iPad and iPhone iOS / iPadOS versions (16.4+ preferred)
 - [ ] Picture fallback for parent-added words (emoji or photo) – needed in Part 10

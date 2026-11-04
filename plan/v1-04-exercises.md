@@ -33,4 +33,4 @@
 - [ ] Hint flow: "Es hat ein langes i…" → first letter → answer.
 
 ## Done when
-Each exercise works with 5+ test items on the iPhone, with the keyboard, hints and audio.
+Each exercise works with 5+ test items on the iPad (both orientations) and the iPhone, with the keyboard, hints and audio.

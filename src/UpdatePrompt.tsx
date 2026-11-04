@@ -21,9 +21,9 @@ export function UpdatePrompt() {
   if (!needRefresh) return null
 
   return (
-    <div class="update-banner" role="status">
+    <div class="plaque update-banner" role="status">
       <span>Neue Version verfügbar</span>
-      <button type="button" onClick={() => updateServiceWorker(true)}>
+      <button type="button" class="btn-gold" onClick={() => updateServiceWorker(true)}>
         Aktualisieren
       </button>
     </div>

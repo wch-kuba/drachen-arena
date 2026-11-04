@@ -1,6 +1,6 @@
 # Drachen-Arena – working rules
 
-Offline Klasse 2 German spelling PWA for one child on one iPhone. Vite + Preact + TypeScript + vite-plugin-pwa.
+Offline Klasse 2 German spelling PWA for one child, mainly on an iPad (also an iPhone). Vite + Preact + TypeScript + vite-plugin-pwa.
 Product facts: [PRODUCT.md](PRODUCT.md). Plan: [PLAN.md](PLAN.md) → detail files in [plan/](plan/).
 
 ## Plan housekeeping (always)
@@ -11,9 +11,9 @@ Product facts: [PRODUCT.md](PRODUCT.md). Plan: [PLAN.md](PLAN.md) → detail fil
 - Resolved open question → tick it in PLAN.md and record the answer where it belongs (plan file or PRODUCT.md).
 - New decision or scope change → update PRODUCT.md / the plan file in the same change. Plan and docs never drift from the code.
 
-## Instructions for the user (devops, settings, external websites, iPhone)
+## Instructions for the user (devops, settings, external websites, iPad/iPhone)
 
-When something must be done by hand (Forge panel, DNS, GitHub settings, iPhone checks, any external site):
+When something must be done by hand (Forge panel, DNS, GitHub settings, iPad/iPhone checks, any external site):
 - Give **one action per message**: what to open, where to click, what to enter, what to expect.
 - Then **wait** for the user to confirm, and **verify** what can be verified from here (curl the URL/headers, `gh` API, git log, build output) before giving the next step.
 - If it can't be verified from here, ask one concrete yes/no question about the expected result.

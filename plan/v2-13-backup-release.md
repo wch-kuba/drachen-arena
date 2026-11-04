@@ -14,7 +14,7 @@
 
 ### Release
 - [ ] Migration test: v1 data on the phone → update to v2 → nothing lost.
-- [ ] Full iPhone test pass (same checklist as Part 8 + all parent flows).
+- [ ] Full iPad + iPhone test pass (same checklist as Part 8 + all parent flows).
 - [ ] Run `/impeccable audit` on the parent panel.
 - [ ] Deploy to Forge, update on the phone, make a first backup.
 

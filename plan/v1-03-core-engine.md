@@ -52,7 +52,7 @@
 ### Audio
 - [ ] `speechSynthesis` with a de-DE voice (pick "Anna" if available), slower rate (~0.8).
 - [ ] Speaker button component, used on every word and instruction.
-- [ ] Check that a voice exists offline on the iPhone; show a quiet fallback if not.
+- [ ] Check that a voice exists offline on the iPad and iPhone; show a quiet fallback if not.
 
 ### Custom keyboard
 - [ ] On-screen QWERTZ, big keys, **Ä Ö Ü ß** row always visible.

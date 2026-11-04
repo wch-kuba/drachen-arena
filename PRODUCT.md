@@ -6,7 +6,7 @@
 
 web
 
-(Installable PWA, used as a home-screen app on one iPhone. Portrait, touch only.)
+(Installable PWA, used as a home-screen app. **Mainly on an iPad** (portrait and landscape), also on an iPhone (portrait). Touch only. Layout scales with the screen; iPad landscape uses two panes.)
 
 ## Stack
 
@@ -14,7 +14,7 @@ Vite + Preact + TypeScript + `vite-plugin-pwa` (service worker precaches everyth
 
 ## Users
 
-- **Primary: one child in Klasse 2** at a German primary school. Not a native-level German speller yet. Plays alone on a parent's/own iPhone, in short sessions at home. Reads simple German; all child-facing UI is in German.
+- **Primary: one child in Klasse 2** at a German primary school. Not a native-level German speller yet. Plays alone, mostly on an iPad (sometimes an iPhone), in short sessions at home. Reads simple German; all child-facing UI is in German.
 - **Secondary: the parent.** Adds words, imports lists, checks progress and problem words, keeps the material aligned with what school is covering right now. Uses a separate parent mode inside the same installed app.
 
 ## Product Purpose
@@ -68,7 +68,8 @@ Five exercise types:
 ## Brand Commitments
 
 - Name: **Drachen-Arena**. Tagline: "Deutsch lernen, Drachen sammeln und Abenteuer erleben!"
-- World: colorful, friendly dragons, eggs, crystals, magical lands.
+- World: colorful, friendly dragons, eggs, crystals, magical lands. Chosen visual world: **Drachenhort** – the child's dragon sleeps on a treasure hoard in a turquoise sea grotto (details in DESIGN.md).
+- Child's favorites (from the parent): turquoise and gold; ocean and sea creatures; dragons are the main theme; feel magical, glowing, cozy. Nothing specific to avoid.
 - Child-facing voice: German, warm and encouraging, short sentences a 7–8-year-old can read.
 
 ## Evidence on Hand

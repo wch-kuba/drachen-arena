@@ -300,12 +300,22 @@ The answer is built on a fixed grid of letter cells, one per letter of the answe
 - **Right:** every cell turns gold-300 with an ink border and pops with a stagger.
 - **Flag (almost):** coral-100 fill, coral border and a 4px coral ring on the offending cell only.
 - **Reveal (hint):** dashed gold-300 border with the letter in gold-300 on rock, as a model to copy.
+- **Gap word (Fehlende Buchstaben):** the given letters stand directly on the rock in foam (Answer type), with the gap cells inline between them. On a right answer the given letters turn gold-300 with the cells.
+- **Changed vowel:** in a plural hint, the vowel that changes is a gold-300 chip with a gold-600 ring, both in the singular on the task plaque and in the hint text ("Aus **u** wird **ü**.").
 
 ### Keyboard
 A built-in German QWERTZ keyboard; the system keyboard and autocorrect are never used. Ä, Ö, Ü and ß sit in their own top row with wider keys tinted tq-100. Keys are glass with a 3px ink outline, 10px corners and the Keycap shadow. Shift and backspace are wider keys with icons. Shift shows as tq-100 while it is on. Fertig is a gold coin button under the keys and stays disabled until the answer has a letter. Pressing a key (touch or a hardware keyboard) moves it down 2px and scales it to 0.94 for a moment, then it settles back with ease-settle. A hardware keyboard types into the same answer; Enter means Fertig, or Weiter after a right answer.
 
 ### Vowel legend (signature, reserved)
-In the Kristallhöhle sentence, every letter is a tappable span (8px corners). Selected letters get tq-100 with a 3px tq-500 ring. Below the sentence are three outlined tiles (18px corners) in legend gelb, grün and blau, each with its term. Painting a letter gives it the legend color. This is the only place those colors exist.
+In the Kristallhöhle sentence, every letter is a tappable span (8px corners); a Zwielaut is one span of two letters. Selected letters get tq-100 with a 3px tq-500 ring. Below the sentence are three outlined tiles (18px corners) in legend gelb, grün and blau, each with its letters and its term. Painting a letter gives it the legend color; tapping a painted letter picks it up again. This is the only place those colors exist.
+- **After a check:** right colors stay. Letters still to do get a soft coral ring on coral-100 (try 1), then a dashed ink outline with a thick bar in the legend color they need (try 2), then the right colors are filled in (try 3).
+- **One sound (mode A):** the letter group sits big (4.2–5.2rem) on a foam tile with an ink outline. The three legend tiles show only their terms; their letters rise in with the rule hint. A right answer paints the tile in its legend color with the cell pop.
+
+### Answer options
+Legend tiles and the kurz/lang buttons share one state set. Pressed: down 2px, scale 0.97. **Wrong:** a sideways nudge, then quiet (desaturated, half opacity, no shadow, disabled). **Last one left:** a 4px gold-300 ring, offset 3px, with the "So ist es richtig. Tipp darauf." pane. **Chosen right:** the same gold ring with the cell pop; the others go quiet. Then the gold Weiter button appears below.
+- **Kurz oder lang mark:** before the answer, a soft "?" sits under the target vowel (tq-700). After the right answer the Klett mark rises in under it: an ink dot for kurz, an ink bar as wide as the vowel for lang.
+- **Listen instead of a picture:** while a Wörter-mit-ie item has no picture, a big round speaker (5.4rem, 4.4rem on phones) takes the picture's place and the word is read on open.
+- **Hint panes** carry a small round speaker at their end, so every hint can be heard.
 
 ### Navigation
 - **Lands path:** the five land mouths (4.9rem outlined arches in the land's color, with a small motif inside the dark mouth) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen". Pressed: the mouth scales to 0.96.

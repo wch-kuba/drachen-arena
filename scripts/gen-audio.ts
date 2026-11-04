@@ -3,6 +3,10 @@
 //
 //   npm run audio              generate missing clips, delete unused ones, write the manifest
 //   npm run audio -- --sample  write the same lines in several voices to audio-samples/ to pick one
+//   MODEL=<other> npm run audio -- --fill
+//                              only make clips for texts that have none yet, with another model
+//                              (e.g. when the main model hit its daily cap); existing clips stay.
+//                              A later plain run remakes those clips with the main model.
 //
 // Needs GEMINI_API_KEY (paid tier, see PRODUCT.md › Audio) in .env.local, and ffmpeg.
 // Decision and terms: PRODUCT.md › Audio, plan/v1-03-core-engine.md › AI voice clips.
@@ -15,7 +19,9 @@ import { join } from 'node:path'
 import { SEED } from '../src/content/seed.ts'
 import { spokenTexts } from '../src/content/speech.ts'
 
-const MODEL = 'gemini-3.8-flash-tts'
+const MAIN_MODEL = 'gemini-3.8-flash-tts'
+const MODEL = process.env.MODEL ?? MAIN_MODEL
+const FILL = process.argv.includes('--fill')
 /** Chosen by the parent from the --sample run. */
 const VOICE = process.env.VOICE ?? 'Sulafat'
 /** Delivery direction (not read aloud). Changing it regenerates every clip. */
@@ -133,7 +139,13 @@ async function generate() {
   const texts = spokenTexts(SEED)
   const clips: Record<string, string> = {}
   const todo: string[] = []
+  const old: { clips?: Record<string, string> } = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {}
   for (const t of texts) {
+    const kept = old.clips?.[t]
+    if (FILL && kept && existsSync(join(ROOT, 'public', kept))) {
+      clips[t] = kept
+      continue
+    }
     const file = clipName(t)
     clips[t] = `audio/${file}`
     if (!existsSync(join(OUT_DIR, file))) todo.push(t)
@@ -159,7 +171,7 @@ async function generate() {
   if (stale.length) console.log(`Removed ${stale.length} unused clips.`)
 
   const sorted = Object.fromEntries(Object.entries(clips).sort(([a], [b]) => a.localeCompare(b, 'de')))
-  const manifest = { model: MODEL, voice: VOICE, clips: sorted }
+  const manifest = { model: MAIN_MODEL, voice: VOICE, clips: sorted }
   const next = JSON.stringify(manifest, null, 2) + '\n'
   if (!existsSync(MANIFEST) || readFileSync(MANIFEST, 'utf8') !== next) writeFileSync(MANIFEST, next)
   console.log(`Manifest: ${Object.keys(sorted).length} clips → src/content/audio-manifest.json`)

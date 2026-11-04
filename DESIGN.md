@@ -247,11 +247,11 @@ The root size is fluid (see `typography.root`): about 20px on iPhone, about 23px
 
 There are three device postures. iPad is the main device; iPhone portrait is secondary.
 
-- **Phone (up to 699px):** one column. On exercise screens, padding and gaps tighten (gaps 0.6rem, card padding 0.6–0.75rem), and cells and the picture shrink. The keyboard grows instead: it takes the full screen width (see Keyboard). That keeps the whole keyboard and its Fertig button on screen without scrolling.
+- **Phone (up to 699px):** one column. On exercise screens, padding and gaps tighten (gaps 0.6rem, card padding 0.6–0.75rem), and cells and the picture shrink. The keyboard grows instead: it takes the full screen width (see Keyboard). That keeps the whole keyboard and its Fertig button on screen without scrolling. Short phones (height up to 860px) tighten further; the shortest (up to 700px, iPhone SE) also use 2.05rem keycaps, and while a hint pane is open the task line steps aside (it has been read, and the hint has its own speaker).
 - **iPad portrait (700px and up):** a shared center column with a maximum width of 46rem for exercises, the collection and the lands. Nothing stretches edge to edge. Cells grow to 3.2 × 4.1rem and keys to 3rem tall.
-- **iPad landscape (900px and up, landscape):** two panes. Home puts the hoard stage on the left (1.15fr) and the lands as a scrollable right pane (1fr). Exercises split into a left column (task plaque, feedback, hoard ledge) and a right column (cells plus keyboard or answer buttons). The reward screen puts the art on the left (1.2fr) and the headline and actions on the right.
+- **iPad landscape (900px and up, landscape):** two panes. Home puts the hoard stage on the left (1.15fr) and the lands as a scrollable right pane (1fr). Exercises split into a left column (task plaque, feedback) and a right column (cells plus keyboard or answer buttons). The reward screen puts the art on the left (1.2fr) and the headline and actions on the right.
 
-Every full screen fills the dynamic viewport minus the safe-area insets. The main action sits at the bottom within thumb reach. The hoard ledge takes whatever height is left in its column, so a screen never has an empty gap. Spacing uses the rem steps in `spacing`, and touch targets are never smaller than `spacing.tap` (2.4rem only for the small round buttons in the exercise bar).
+**Fit (decided 2026-11-05).** The app is a fixed frame exactly the dynamic viewport tall: the page never scrolls, zooms or rubber-bands. Each screen paints its grotto under the notch and home indicator and keeps its content clear of them (`--safe-top` / `--safe-bottom`). Only two panes scroll, inside themselves: the lands (below the stage in portrait, the right pane in landscape) and the dragon niches. Every screen keeps its answer side at full size (keyboard, cells, options, the gold button); when height runs short the rest gives way in order: free room first, then the picture (down to a floor of about 3rem, since it carries the task), then the spacing. Art on Home, reward, welcome and hatch sizes itself to the room it gets (container queries), never the other way round. Letter cells narrow together when a long word would run off the side. The main action sits at the bottom within thumb reach. On exercise screens the task floats in the middle of the room above the answer side. Spacing uses the rem steps in `spacing`, and touch targets are never smaller than `spacing.tap` (2.4rem only for the small round buttons in the exercise bar).
 
 **The Thumb Rule.** The one primary action on a screen is a full-width gold button at the bottom.
 
@@ -347,14 +347,14 @@ Two kinds of art share one look (dark-teal ink outline, light from below):
 
 **Painted world pieces:**
 - **Grotto wall:** the background of every screen (`--backdrop`, portrait or landscape by orientation, `cover`, anchored at the bottom), over rock-1 while it loads. Generated with the rock tokens as its only palette and calmed a little in the build (`-modulate 82,90`), so light text stays readable. Words straight on the rock get a soft dark halo (blurred text-shadow, never an outline).
-- **Hoard:** one painted heap in 4 sizes, all the same width, so a bigger pile is taller. Home picks the size from the crystal total (`size` = crystals / 1000), the round summary shows a big one, the exercise ledge a small one. The sleeping dragon sinks into the heap with its own bit of gold, so they read as one pile. Earned gems land on the mound's curve (`surface()` in art.tsx), half sunk into the coins.
+- **Hoard:** one painted heap in 4 sizes, all the same width, so a bigger pile is taller. Home picks the size from the crystal total (`size` = crystals / 1000), the round summary shows a big one. Exercise screens have no pile (removed 2026-11-05 to give the task the room). The sleeping dragon sinks into the heap with its own bit of gold, so they read as one pile. Earned gems land on the mound's curve (`surface()` in art.tsx), half sunk into the coins.
 - **Gem:** the painted gem is the crystal the child earns: the counter, the flying gem, the gems dropping onto the reward pile, the "right" feedback pane and the inline gem in the reward line. The progress track and egg meter keep the drawn slot gems.
 - **Cave entrances:** each land is a painted stone arch with its chamber inside (6rem on the path, 7rem when a land opens). A locked land shows the same arch at 35% brightness behind a drawn lock.
 
 **Where each picture appears:**
 - **Word picture:** on the task plaque, square (6.5rem; 4.9rem on phones; 9.5rem on iPad portrait; 7.5rem on iPad landscape), with a soft drop shadow so it sits on the glass. Its alt text never gives the answer away ("Bild", except in Mehrzahl, where the word is shown anyway).
 - **Home:** the dragon of the day sleeps on the hoard (sleeping mood, sized by stage, breathing, "z z" near its head). Before the first hatch the egg lies there instead, and the caption says "Dein Ei liegt auf …". Welcome shows the child's first egg on a small hoard.
-- **Exercises:** no dragon. The screen belongs to the task; the gem flying onto the hoard is the reward for a right answer (decided 2026-11-04).
+- **Exercises:** no dragon and no pile. The screen belongs to the task; the gem flying into the progress track is the reward for a right answer (decided 2026-11-04, pile removed 2026-11-05).
 - **Round summary:** the egg in its dragon's colors and the dragon of the day in its happy mood.
 - **Collection:** each dragon in idle mood at its stage; the egg in progress in its colors; the rest stay carved slots.
 - **Hatch:** egg, then the two shell halves, then the baby (idle while naming, happy when greeted).
@@ -373,7 +373,7 @@ Per-asset notes to add after the style block:
 
 ### Motion vocabulary
 Motion has weight and settles. Two easings: `ease-out` (cubic-bezier(0.16, 1, 0.3, 1)) for arrivals and presses, and `ease-settle` (cubic-bezier(0.34, 1.4, 0.64, 1)), which overshoots a little before settling.
-- **Right answer:** a gem arcs with weight from the cells up and over onto the hoard ledge (900ms along a curved path, swelling then shrinking). It lands with a settle drop (520ms). The cells turn gold and pop one after another (520ms, 60ms stagger, ease-settle). The "right" pane rises in. Sparkle appears only on a right answer.
+- **Right answer:** a gem arcs with weight from the answer up into its slot in the progress track (900ms along a curved path, swelling then shrinking). The slot fills when it lands, with a settle drop (520ms). The cells turn gold and pop one after another (520ms, 60ms stagger, ease-settle). The "right" pane rises in. Sparkle appears only on a right answer.
 - **Almost right** (for example a lowercase noun): the cells get a gentle sideways nudge (420ms, 8px), a coral "Fast!" pane rises in, and the offending cell is flagged.
 - **Wrong:** the same nudge, then graded hint panes, one more per attempt: the rule, then the start of the word revealed, then the full answer to copy.
 - **Reward:** the round's crystals drop one by one onto the pile (700ms each, 140ms apart).

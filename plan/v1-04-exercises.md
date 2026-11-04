@@ -41,6 +41,7 @@
 - [x] Hint flow: "Es hat ein langes i…" (+ speaker for the word) → first letter → answer.
 
 Checked in WebKit at iPhone (390×844), iPad portrait (820×1180) and iPad landscape (1180×820): every exercise with a wrong try, hints and a right answer.
+- [x] Checked on the real devices (parent, 2026-11-04, Safari, local preview): iPad portrait and landscape and iPhone, all five lands, keyboard, hints and voice. Found and fixed: a letter with a ring could not be seen as selected.
 
 ## Done when
 Each exercise works with 5+ test items on the iPad (both orientations) and the iPhone, with the keyboard, hints and audio.

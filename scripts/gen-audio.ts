@@ -16,7 +16,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { TEST_ITEMS } from '../src/content/test-items.ts'
+import { SEED } from '../src/content/seed.ts'
 import { spokenTexts } from '../src/content/speech.ts'
 
 const MAIN_MODEL = 'gemini-3.8-flash-tts'
@@ -136,7 +136,7 @@ async function samples() {
 
 async function generate() {
   mkdirSync(OUT_DIR, { recursive: true })
-  const texts = spokenTexts(TEST_ITEMS)
+  const texts = spokenTexts(SEED)
   const clips: Record<string, string> = {}
   const todo: string[] = []
   const old: { clips?: Record<string, string> } = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {}

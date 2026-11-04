@@ -85,6 +85,17 @@ describe('leitner', () => {
     for (const i of items.slice(10)) expect(ids.has(i.id)).toBe(true) // the 2 new ones
   })
 
+  it('puts tagged mistakes first among new items', () => {
+    const plain = TEST_ITEMS.filter((i) => i.type === 'mehrzahl').map((i) => ({ ...i, tags: [] }))
+    const missed = { ...plain[0], id: 'missed', tags: ['missed-on-test'] }
+    const umlaut = { ...plain[1], id: 'umlaut', tags: ['umlaut-plural'] }
+    const items = [...plain.slice(2), umlaut, missed]
+    for (let k = 0; k < 20; k++) {
+      const ids = pickRound(items, {}, 'mehrzahl', now, 2).map((i) => i.id)
+      expect(ids.sort()).toEqual(['missed', 'umlaut'])
+    }
+  })
+
   it('skips inactive items and other types', () => {
     const items = [{ ...TEST_ITEMS[0], active: false }, { ...TEST_ITEMS[1], type: 'ie' as const }, TEST_ITEMS[2]]
     expect(pickRound(items, {}, 'mehrzahl', now).map((i) => i.id)).toEqual([TEST_ITEMS[2].id])

@@ -31,13 +31,17 @@ export function record(
   }
 }
 
+/** Tags that put a new item ahead of other new items (the child's known mistakes first). */
+export const PRIORITY: Record<string, number> = { 'missed-on-test': 2, 'umlaut-plural': 1 }
+const priority = (i: Item) => Math.max(0, ...(i.tags ?? []).map((t) => PRIORITY[t] ?? 0))
+
 export const isSeen = (p: Progress | undefined): p is Progress => !!p && p.lastSeen > 0
 
 export const isDue = (p: Progress, now: number) => now - p.lastSeen >= BOX_INTERVAL[p.box]
 
 /**
  * Pick a round: due items first (most overdue, lowest box), then box 1–2 items,
- * then new ones, then anything else so a small pool still fills the round. Order is shuffled.
+ * then new ones (tagged mistakes first, see PRIORITY), then anything else so a small pool still fills the round. Order is shuffled.
  */
 export function pickRound(
   items: Item[],
@@ -57,7 +61,7 @@ export function pickRound(
   const fresh = shuffle(
     pool.filter((i) => !isSeen(progress[i.id])),
     rand,
-  )
+  ).sort((a, b) => priority(b) - priority(a))
   const rest = seen.filter((i) => !isDue(p(i), now) && p(i).box > 2).sort((a, b) => p(a).lastSeen - p(b).lastSeen)
 
   const picked: Item[] = []

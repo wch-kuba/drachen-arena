@@ -14,5 +14,5 @@ export const LANDS: Land[] = [
   { id: 'mehrzahl', name: 'Perlenriff', what: 'Einzahl und Mehrzahl', hue: 'var(--gold-300)' },
   { id: 'luecke', name: 'Schiffswrack', what: 'Fehlende Buchstaben', hue: 'var(--tq-500)' },
   { id: 'kurzlang', name: 'Echo-Grotte', what: 'Kurz oder lang?', hue: 'var(--gold-500)' },
-  { id: 'ie', name: 'Tiefsee-Garten', what: 'Wörter mit ie', hue: 'var(--tq-100)' },
+  { id: 'ie', name: 'Tiefsee-Garten', what: 'i oder ie?', hue: 'var(--tq-100)' },
 ]

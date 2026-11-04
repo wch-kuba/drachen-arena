@@ -351,7 +351,7 @@ The hoard scene, hoard ledge, mound, dragon, egg, shell halves, gems, coins, lan
 
 Per-asset notes to add after the style block:
 - **Word pictures:** one object each.
-- **Dragons:** lying or sitting, big eyes, gold belly and spines, sea-fin ears.
+- **Dragons:** a powerful, majestic dragon, the hero of an adventure for a boy who loves dragons: horns, claws, wings, sea-fin ears, fierce determined eyes, a confident grin with small fangs. Never cute, chubby or toy-like; never gory. Every dragon has its own main color, build and one signature feature (`src/content/picture-prompts.ts` › DRAGON_LOOKS), so the twelve are told apart at a glance. For dragons the style block's palette line is replaced by the dragon's own colors, "Friendly, rounded shapes" becomes "Bold, dynamic shapes" and "Cute, calm, never scary" becomes "Heroic and exciting, never gory"; the dark-teal outline, gouache texture and warm light from below stay, so they read as one family. Only the hatchling stage may be baby-like.
 - **Eggs:** turquoise with gold spots.
 
 ### Motion vocabulary

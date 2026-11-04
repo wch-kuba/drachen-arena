@@ -10,3 +10,5 @@ export function WordPicture({ image }: { image?: string }) {
   const P = image ? PICTURES[image] : undefined
   return P ? <P /> : null
 }
+
+export const hasPicture = (image?: string) => !!image && image in PICTURES

@@ -1,4 +1,4 @@
-import { LANDS } from '../lands.ts'
+import { LANDS, type LandId } from '../lands.ts'
 import { CaveMouth, Gem, HoardScene, LandMotif } from '../ui/art.tsx'
 
 interface Props {
@@ -6,9 +6,10 @@ interface Props {
   crystals: number
   unlocked: number
   onStart: () => void
+  onLand: (id: LandId) => void
 }
 
-export function Home({ name, crystals, unlocked, onStart }: Props) {
+export function Home({ name, crystals, unlocked, onStart, onLand }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
@@ -51,7 +52,13 @@ export function Home({ name, crystals, unlocked, onStart }: Props) {
           {LANDS.map((land, i) => {
             const locked = i >= unlocked
             return (
-              <button type="button" class="land" data-locked={locked ? '' : undefined} disabled={locked}>
+              <button
+                type="button"
+                class="land"
+                data-locked={locked ? '' : undefined}
+                disabled={locked}
+                onClick={() => onLand(land.id)}
+              >
                 <CaveMouth hue={land.hue} locked={locked}>
                   {!locked && <LandMotif land={land.id} />}
                 </CaveMouth>

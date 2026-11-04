@@ -3,7 +3,7 @@ import { useGame } from '../engine/game.tsx'
 import { pickRound } from '../engine/leitner.ts'
 import { roundCrystals, roundFirstTries, type Round } from '../engine/round.ts'
 import type { ExerciseType } from '../engine/types.ts'
-import { Plural } from './Plural.tsx'
+import { RoundPlayer } from './Exercise.tsx'
 import { Reward } from './Reward.tsx'
 
 // One play session in a land: a round of up to 10 items, then the summary, then again or home.
@@ -31,6 +31,5 @@ export function Session({ type, onExit }: { type: ExerciseType; onExit: () => vo
     )
   }
 
-  // Part 4 adds the other four exercise screens here.
-  return <Plural key={n} items={items} onItemDone={finishItem} onRoundDone={setDone} onExit={onExit} />
+  return <RoundPlayer key={n} items={items} onItemDone={finishItem} onRoundDone={setDone} onExit={onExit} />
 }

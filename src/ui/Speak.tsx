@@ -7,7 +7,7 @@ import { IconSpeaker } from './art.tsx'
 // With neither it stays in place but goes quiet (clouded glass, soft ink), so the layout
 // never jumps and nothing nags the child.
 
-export function Speak({ text, label = T.readAloud }: { text: string | string[]; label?: string }) {
+export function Speak({ text, label = T.readAloud, big }: { text: string | string[]; label?: string; big?: boolean }) {
   const parts = Array.isArray(text) ? text : [text]
   const [, setVoiceReady] = useState(false)
 
@@ -20,7 +20,7 @@ export function Speak({ text, label = T.readAloud }: { text: string | string[]; 
   return (
     <button
       type="button"
-      class="btn-round speak"
+      class={big ? 'btn-round speak speak-big' : 'btn-round speak'}
       aria-label={ok ? label : T.noVoice}
       aria-disabled={ok ? undefined : 'true'}
       data-mute={ok ? undefined : ''}

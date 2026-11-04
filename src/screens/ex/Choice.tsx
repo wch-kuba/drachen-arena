@@ -38,7 +38,7 @@ export const COLOR: Record<Laut, 'gelb' | 'gruen' | 'blau'> = { Selbstlaut: 'gel
 export const EXAMPLES: Record<Laut, string> = { Selbstlaut: 'a e i o u', Zwielaut: 'au\u00a0ei eu\u00a0äu', Umlaut: 'ä ö ü' }
 
 export function LautChoice(p: Play) {
-  const { item, attempt: a, next, anchor, ledge } = p
+  const { item, attempt: a, next, anchor } = p
   const c = useChoice(p, LAUTE)
   return (
     <>
@@ -56,7 +56,6 @@ export function LautChoice(p: Play) {
       </div>
 
       <div class="ex-right">
-        {ledge}
         <div class="legend" data-quiz="">
           {LAUTE.map((l) => (
             <button
@@ -81,7 +80,7 @@ export function LautChoice(p: Play) {
 }
 
 export function ShortLong(p: Play) {
-  const { item, attempt: a, next, anchor, ledge } = p
+  const { item, attempt: a, next, anchor } = p
   const c = useChoice(p, [T.kurz, T.lang])
   const word = [...item.prompt]
   const v = targetVowel(item.prompt, item.at)
@@ -109,7 +108,6 @@ export function ShortLong(p: Play) {
       </div>
 
       <div class="ex-right">
-        {ledge}
         <div class="marks">
           {[T.kurz, T.lang].map((m) => (
             <button

@@ -50,7 +50,7 @@ export function HoardScene({ size = 0.6, on }: { size?: number; on: OnHoard }) {
   const sleeper = d && dragonPic(d.kind, d.stage, 'sleeping')
   const egg = 'egg' in on ? eggPic(on.egg) : undefined
   return (
-    <svg viewBox={`0 0 400 ${ABOVE + pileH}`} role="img" aria-label={d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'}>
+    <svg viewBox={`0 0 400 ${ABOVE + pileH}`} preserveAspectRatio="xMidYMax meet" role="img" aria-label={d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'}>
       <image href={pile.src} x="0" y={ABOVE} width="400" height={pileH} />
       {sleeper && d && (
         <g class="dragon-breathe">

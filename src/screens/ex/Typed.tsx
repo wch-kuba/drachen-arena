@@ -15,7 +15,7 @@ import { Feedback, HintFeedback, NextButton, RightFeedback, type Play } from '..
 
 const isUpper = (ch: string | undefined) => !!ch && ch !== ch.toLowerCase()
 
-export function Typed({ item, attempt: a, submit, next, anchor, ledge }: Play) {
+export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
   const gap = item.type === 'luecke'
   const [before, after] = gap ? gapParts(item.prompt) : ['', '']
   // Nouns start with a capital; a gap inside a word starts small.
@@ -148,7 +148,6 @@ export function Typed({ item, attempt: a, submit, next, anchor, ledge }: Play) {
         </div>
 
         {feedback && <div key={`${a.hint}-${nudge}-${right}`}>{feedback}</div>}
-        {ledge}
       </div>
 
       <div class="ex-right">
@@ -157,6 +156,8 @@ export function Typed({ item, attempt: a, submit, next, anchor, ledge }: Play) {
           ref={anchor}
           data-gap={gap ? '' : undefined}
           data-state={right ? 'right' : nudge ? 'nudge' : undefined}
+          // Cell units across the row: the cells, plus the given letters (each ~0.6 of a cell).
+          style={{ '--n': width + 0.6 * [...before, ...after].length }}
           key={nudge}
           aria-live="polite"
         >

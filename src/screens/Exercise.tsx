@@ -6,14 +6,16 @@ import { answer, current, isOver, next, startRound, type Result, type Round } fr
 import type { Item } from '../engine/types.ts'
 import { isSentence } from '../engine/words.ts'
 import { GENTLE, PRAISE, pick, T } from '../strings.ts'
-import { Gem, GemPic, HoardLedge, IconClose, IconLight } from '../ui/art.tsx'
+import { Gem, GemPic, IconClose, IconLight } from '../ui/art.tsx'
 import { Speak } from '../ui/Speak.tsx'
 import { LautChoice, ShortLong } from './ex/Choice.tsx'
 import { Sentence } from './ex/Sentence.tsx'
 import { Typed } from './ex/Typed.tsx'
 
-// One round of an exercise. The frame (gem track, hoard ledge, the gem that flies onto it)
-// stays for the whole round; each item mounts its own view, so modes can mix in one round.
+// One round of an exercise. The frame (the gem track and the gem that flies into it) stays
+// for the whole round; each item mounts its own view, so modes can mix in one round.
+// A right answer flings a gem from the answer up into its slot in the track; the slot fills
+// when it lands. (The hoard pile left the game screens to give the task the room.)
 
 /** What an item view gets from the round. */
 export interface Play {
@@ -24,8 +26,6 @@ export interface Play {
   next: () => void
   /** Put this on the answer element: the gem starts its flight there. */
   anchor: (el: HTMLElement | null) => void
-  /** The hoard ledge, placed by the view in its layout. */
-  ledge: JSX.Element
 }
 
 function viewFor(item: Item): (p: Play) => JSX.Element {
@@ -52,7 +52,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
   const [landed, setLanded] = useState(0)
   const anchorEl = useRef<HTMLElement | null>(null)
   const anchor = useRef((el: HTMLElement | null) => void (anchorEl.current = el)).current
-  const ledgeRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
 
   const goNext = () => {
     const r = next(round)
@@ -73,7 +73,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
 
   const flyGem = () => {
     const from = anchorEl.current?.getBoundingClientRect()
-    const slot = ledgeRef.current?.getBoundingClientRect()
+    const slot = trackRef.current?.children[landed]?.getBoundingClientRect()
     if (!from || !slot) {
       play('gem')
       return setLanded((g) => g + 1)
@@ -81,9 +81,9 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
     const sx = from.left + from.width / 2 - 22
     const sy = from.top + from.height / 2 - 22
     const ex = slot.left + slot.width / 2 - 22
-    const ey = slot.bottom - slot.height * 0.45 - 22
-    // Arc up and over: a gem has weight.
-    setFlight(`path("M${sx} ${sy} Q${(sx + ex) / 2} ${Math.min(sy, ey) - 140} ${ex} ${ey}")`)
+    const ey = slot.top + slot.height / 2 - 22
+    // Arc up and over into the slot: a gem has weight.
+    setFlight(`path("M${sx} ${sy} Q${(sx + ex) / 2} ${Math.max(0, Math.min(sy, ey) - 120)} ${ex} ${ey}")`)
     window.setTimeout(() => {
       play('gem')
       setFlight(null)
@@ -122,9 +122,9 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
         <button type="button" class="btn-round" aria-label={T.exit} onClick={onExit}>
           <IconClose />
         </button>
-        <div class="gem-track" aria-label={T.progress(done, round.items.length)}>
+        <div class="gem-track" ref={trackRef} aria-label={T.progress(done, round.items.length)}>
           {round.items.map((_, i) => (
-            <Gem filled={i < done} />
+            <Gem filled={i < landed} class={i === landed - 1 ? 'gem-landed' : undefined} />
           ))}
         </div>
       </div>
@@ -136,11 +136,6 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
         submit={submit}
         next={goNext}
         anchor={anchor}
-        ledge={
-          <div class="ledge" ref={ledgeRef}>
-            <HoardLedge gems={landed} />
-          </div>
-        }
       />
 
       {flight && (

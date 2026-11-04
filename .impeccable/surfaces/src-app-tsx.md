@@ -26,7 +26,7 @@ FORM: Drachenhort, the dragon's treasure hoard in a sea grotto; position 1 on th
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
-Signature interaction: a correct answer flings a gem/coin that arcs with weight onto the hoard; the pile grows. Motion has mass and settles with small overshoot; only a new egg ever blinks; sparkle only on correct answers.
+Signature interaction: a correct answer flings a gem that arcs with weight into its slot in the progress track (exercise screens have no pile since 2026-11-05); the hoard on Home grows with the crystal total. Motion has mass and settles with small overshoot; only a new egg ever blinks; sparkle only on correct answers.
 
 ## Unresolved
 - Resolved 2026-11-04 (Part 7): real dragon, egg, shell, land and word art is built in; see DESIGN.md › Drawn art and illustration.

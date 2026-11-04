@@ -39,10 +39,10 @@
 - [x] Quick Deploy on (push = deploy).
 
 ### iPhone
-- [ ] Open the URL in Safari → Share → "Zum Home-Bildschirm".
-- [ ] Opens full screen, no Safari bar.
-- [ ] Airplane mode → app still opens.
-- [ ] Push a small change → app shows the update prompt.
+- [x] Open the URL in Safari → Share → "Zum Home-Bildschirm".
+- [x] Opens full screen, no Safari bar.
+- [x] Airplane mode → app still opens.
+- [x] Push a small change → app shows the update prompt.
 
 ## Done when
 Installed icon on the iPhone opens offline, and a `git push` reaches the phone.

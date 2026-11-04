@@ -7,7 +7,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 
 ## v1 – The game (child can play, offline, installed)
 
-- [ ] **Part 1 – Setup & first deploy** → [plan/v1-01-setup-deploy.md](plan/v1-01-setup-deploy.md)
+- [x] **Part 1 – Setup & first deploy** → [plan/v1-01-setup-deploy.md](plan/v1-01-setup-deploy.md)
   Empty PWA live on Forge and installed on the iPhone.
 - [ ] **Part 2 – Visual world** → [plan/v1-02-visual-world.md](plan/v1-02-visual-world.md)
   Kid's favorites collected, look and feel decided, DESIGN.md written.
@@ -44,6 +44,6 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 ## Open questions
 
 - [ ] Kid's favorites (colors, animals, themes) – **needed before Part 2 / Part 7**
-- [ ] Forge domain / subdomain – needed in Part 1
+- [x] Forge domain / subdomain → https://drachen.webchefs.software
 - [ ] iPhone iOS version (16.4+ preferred)
 - [ ] Picture fallback for parent-added words (emoji or photo) – needed in Part 10

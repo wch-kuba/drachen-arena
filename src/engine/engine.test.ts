@@ -108,3 +108,16 @@ describe('round', () => {
     expect(r.index).toBe(10)
   })
 })
+
+describe('spoken texts', async () => {
+  const { spokenTexts, askParts } = await import('../content/speech.ts')
+  it('lists every instruction, prompt and answer once', () => {
+    const texts = spokenTexts(TEST_ITEMS)
+    expect(texts).toContain('Schreib die Mehrzahl.')
+    expect(texts).toContain('der Hut')
+    expect(texts).toContain('Hüte')
+    expect(texts).toContain('Tipp: Aus u wird oft ü.')
+    expect(new Set(texts).size).toBe(texts.length)
+    for (const p of askParts(TEST_ITEMS[0])) expect(texts).toContain(p)
+  })
+})

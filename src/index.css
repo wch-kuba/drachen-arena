@@ -212,6 +212,17 @@ p {
   height: 1.35rem;
 }
 
+/* No German voice on this device: the speaker stays, but quiet (same look as a disabled button). */
+.speak[data-mute] {
+  background: var(--glass-dim);
+  color: var(--ink-soft);
+  box-shadow: none;
+}
+
+.speak[data-mute]:active {
+  transform: none;
+}
+
 .counter {
   display: inline-flex;
   align-items: center;
@@ -476,6 +487,15 @@ p {
   padding: 0.75rem 1rem 1rem;
 }
 
+/* No items for this land yet: a plain line on the rock, the way home at thumb height. */
+.ex-empty {
+  margin: auto 0 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foam);
+  text-align: center;
+}
+
 .ex-bar {
   display: flex;
   align-items: center;
@@ -543,6 +563,7 @@ p {
 }
 
 .ex-word small {
+  white-space: nowrap;
   font-size: 0.55em;
   font-weight: 400;
   color: var(--ink-soft);
@@ -647,6 +668,7 @@ p {
 }
 
 .feedback {
+  text-wrap: pretty;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -862,9 +884,16 @@ p {
   max-width: 4.2rem;
 }
 
-.key:active {
-  transform: translateY(2px);
+.key:active,
+.key[data-down] {
+  transform: translateY(2px) scale(0.94);
   box-shadow: none;
+  transition: transform 60ms var(--ease-out);
+}
+
+.key {
+  transition: transform 160ms var(--ease-settle);
+  touch-action: manipulation;
 }
 
 .key-wide {
@@ -1138,9 +1167,28 @@ p {
 }
 
 .reward-sub {
+  text-wrap: balance;
   font-size: 1.2rem;
   color: var(--foam);
   margin-top: 0.4rem;
+}
+
+/* The quiet second way out: text on the rock, never a second gold button. */
+.reward-home {
+  min-height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--foam);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--gold-300);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.3em;
+}
+
+.reward-home:active {
+  transform: translateY(2px);
 }
 
 .egg-stage {

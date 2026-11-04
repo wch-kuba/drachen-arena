@@ -281,6 +281,8 @@ The form language is rounded and outlined, like a picture book: every plaque, bu
 ### Buttons
 - **Gold coin button (primary):** a full-width pill, at least 3.4rem tall, with a 4px ink outline. The fill is a radial gradient from gold-100 through gold-300 and gold-500 to gold-600, lit from the upper middle. It has the double inset rim and a Coin lift shadow. Label: Button type in ink. Pressed: moves down 3px and scales to 0.98 over 120ms on ease-out. Disabled: glass-dim fill, ink-soft text, small lift. There is only one per screen.
 - **Round button:** a sea-glass circle (2.9rem, or 2.4rem in the exercise bar) with an ink outline and an icon in ink. Used for close and read-aloud. Pressed: moves down 2px.
+- **Read-aloud without a voice:** when the device has no German voice, the speaker round button stays in place but goes quiet: glass-dim fill, ink-soft icon, no shadow, no press. The layout never jumps and nothing tells the child off.
+- **Quiet text action:** a second way out on a screen that already has its gold button (for example "Zur Grotte" under "Noch eine Runde") is foam text on the rock with a 3px gold-300 underline, at least `spacing.tap` tall. Never a second gold button.
 - **Answer button (kurz / lang):** a sea-glass plaque-shaped button, at least 5.4rem tall, showing the Klett-style mark (a dot under the vowel for short, a bar for long) above the word.
 - **Focus:** every focusable element gets a 4px gold-300 outline with a 3px offset.
 
@@ -300,7 +302,7 @@ The answer is built on a fixed grid of letter cells, one per letter of the answe
 - **Reveal (hint):** dashed gold-300 border with the letter in gold-300 on rock, as a model to copy.
 
 ### Keyboard
-A built-in German QWERTZ keyboard; the system keyboard and autocorrect are never used. Ä, Ö, Ü and ß sit in their own top row with wider keys tinted tq-100. Keys are glass with a 3px ink outline, 10px corners and the Keycap shadow. Shift and backspace are wider keys with icons. Shift shows as tq-100 while it is on. Fertig is a gold coin button under the keys and stays disabled until the answer has a letter.
+A built-in German QWERTZ keyboard; the system keyboard and autocorrect are never used. Ä, Ö, Ü and ß sit in their own top row with wider keys tinted tq-100. Keys are glass with a 3px ink outline, 10px corners and the Keycap shadow. Shift and backspace are wider keys with icons. Shift shows as tq-100 while it is on. Fertig is a gold coin button under the keys and stays disabled until the answer has a letter. Pressing a key (touch or a hardware keyboard) moves it down 2px and scales it to 0.94 for a moment, then it settles back with ease-settle. A hardware keyboard types into the same answer; Enter means Fertig, or Weiter after a right answer.
 
 ### Vowel legend (signature, reserved)
 In the Kristallhöhle sentence, every letter is a tappable span (8px corners). Selected letters get tq-100 with a 3px tq-500 ring. Below the sentence are three outlined tiles (18px corners) in legend gelb, grün and blau, each with its term. Painting a letter gives it the legend color. This is the only place those colors exist.

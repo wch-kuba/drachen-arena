@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'preact/hooks'
 import { UpdatePrompt } from './UpdatePrompt.tsx'
+import { TEST_ITEMS } from './content/test-items.ts'
+import { GameProvider, useGame } from './engine/game.tsx'
 import { Collection } from './screens/Collection.tsx'
 import { Home } from './screens/Home.tsx'
-import { Plural } from './screens/Plural.tsx'
 import { Reward } from './screens/Reward.tsx'
+import { Session } from './screens/Session.tsx'
 import { ShortLong } from './screens/ShortLong.tsx'
 import { Sort } from './screens/Sort.tsx'
 
-// Until the engine (Part 3) lands, the app shows the Drachenhort world with demo data.
+// Home and the Mehrzahl round run on the engine (Part 3, test items until Part 5).
+// The other screens still show demo data until Parts 4 and 6.
 // `#/vorschau` lists every key screen for the parent to review; `#/<screen>` opens one.
 
 const SCREENS = {
@@ -35,18 +38,41 @@ function useRoute() {
 
 const go = (r: string) => (location.hash = `#/${r}`)
 
+const noop = () => {}
+
+function HomeScreen() {
+  const { profile } = useGame().data
+  return (
+    <Home
+      name={profile.childName || undefined}
+      crystals={profile.crystals}
+      unlocked={profile.unlockedWorlds.length}
+      onStart={() => go('mehrzahl')}
+    />
+  )
+}
+
 function render(s: Screen) {
   switch (s) {
     case 'home':
-      return <Home crystals={128} unlocked={3} onStart={() => go('mehrzahl')} />
+      return <HomeScreen />
     case 'mehrzahl':
-      return <Plural onExit={() => go('')} />
+      return <Session type="mehrzahl" onExit={() => go('')} />
     case 'laute':
       return <Sort onExit={() => go('')} />
     case 'kurzlang':
       return <ShortLong onExit={() => go('')} />
     case 'belohnung':
-      return <Reward />
+      return (
+        <Reward
+          score={9}
+          total={10}
+          crystals={26}
+          onAgain={noop}
+          onHome={noop}
+          egg={{ filled: 3, of: 4, caption: 'Noch eine Runde, dann schlüpft dein Ei!' }}
+        />
+      )
     case 'schluepfen':
       return <Reward hatch />
     case 'drachen':
@@ -80,9 +106,9 @@ export function App() {
   }
 
   return (
-    <>
+    <GameProvider seed={TEST_ITEMS}>
       {body}
       <UpdatePrompt />
-    </>
+    </GameProvider>
   )
 }

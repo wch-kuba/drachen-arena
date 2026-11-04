@@ -356,6 +356,21 @@ export const IconSpeaker = () => (
   </svg>
 )
 
+/** Sound effects off: the speaker with a soft cross instead of waves. */
+export const IconSoundOff = () => (
+  <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
+    <path d="M4 9h4l5-4v14l-5-4H4z" />
+    <path d="M16.5 9.5l5 5M21.5 9.5l-5 5" />
+  </svg>
+)
+
+/** Grotto ambience: three gentle sea waves. */
+export const IconWaves = () => (
+  <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
+    <path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+  </svg>
+)
+
 export const IconClose = () => (
   <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
     <path d="M6 6l12 12M18 6L6 18" />

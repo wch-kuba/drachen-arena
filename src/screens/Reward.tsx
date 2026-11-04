@@ -1,4 +1,6 @@
+import { useEffect } from 'preact/hooks'
 import { dragonKind } from '../content/dragons.ts'
+import { play } from '../engine/sfx.ts'
 import type { Stage } from '../engine/rewards.ts'
 import { T } from '../strings.ts'
 import { Egg, Gem, GrownDragon, HoardLedge } from '../ui/art.tsx'
@@ -32,6 +34,7 @@ const MAX_DROPS = 5
 const METER = 10
 
 export function Reward({ score, total, crystals, bonus, egg, dragon, onAgain, onHome, onHatch }: Props) {
+  useEffect(() => play('round'), [])
   const drops = Math.min(MAX_DROPS, Math.ceil((crystals + bonus) / 3))
   const fill = egg.ready ? 1 : Math.min(1, egg.filled / egg.of)
   const lit = egg.ready ? METER : Math.floor(fill * METER)

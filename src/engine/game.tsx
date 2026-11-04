@@ -3,6 +3,7 @@
 import { createContext, type ComponentChildren } from 'preact'
 import { useContext, useEffect, useRef, useState } from 'preact/hooks'
 import { initVoice } from './audio.ts'
+import { initSfx, setSound } from './sfx.ts'
 import { record } from './leitner.ts'
 import { addCrystals, endRound, hatch } from './rewards.ts'
 import type { Result } from './round.ts'
@@ -18,6 +19,8 @@ interface Game {
   /** The child named the dragon in the ready egg. */
   hatchDragon: (name: string) => void
   setChildName: (name: string) => void
+  setSound: (on: boolean) => void
+  setAmbient: (on: boolean) => void
 }
 
 const Ctx = createContext<Game | null>(null)
@@ -31,6 +34,7 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
   useEffect(() => {
     void requestPersist()
     void initVoice()
+    initSfx()
     load(seed).then((d) => {
       latest.current = d
       setData(d)
@@ -39,6 +43,9 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
       setFailed(true)
     })
   }, [seed])
+
+  const sound = data?.profile.sound ?? true
+  useEffect(() => setSound(sound), [sound])
 
   if (failed) throw new Error('Storage unavailable')
   if (!data) return null
@@ -67,6 +74,8 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
     finishRound: (land) => changeProfile((p) => endRound(p, land)),
     hatchDragon: (name) => changeProfile((p) => hatch(p, name, Date.now())),
     setChildName: (name) => changeProfile((p) => ({ ...p, childName: name.trim() })),
+    setSound: (on) => changeProfile((p) => ({ ...p, sound: on })),
+    setAmbient: (on) => changeProfile((p) => ({ ...p, ambient: on })),
   }
 
   return <Ctx.Provider value={game}>{children}</Ctx.Provider>

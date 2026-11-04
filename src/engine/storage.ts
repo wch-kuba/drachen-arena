@@ -37,6 +37,8 @@ const MIGRATIONS: Record<number, (db: UseStore) => Promise<void>> = {
       rounds: 0,
       dragons: [],
       unlockedWorlds: UNLOCK_ORDER.filter((l) => l === UNLOCK_ORDER[0] || played.has(l)),
+      sound: true,
+      ambient: false,
     }
     await set('profile', profile, s)
   },
@@ -49,6 +51,8 @@ export const emptyProfile = (): Profile => ({
   rounds: 0,
   dragons: [],
   unlockedWorlds: [UNLOCK_ORDER[0]] as ExerciseType[],
+  sound: true,
+  ambient: false,
 })
 
 let db: UseStore | undefined

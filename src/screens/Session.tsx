@@ -1,4 +1,5 @@
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
+import { play } from '../engine/sfx.ts'
 import { useGame } from '../engine/game.tsx'
 import { pickRound } from '../engine/leitner.ts'
 import { dragonOfTheDay, EGG_COST, ROUND_BONUS, stageOf } from '../engine/rewards.ts'
@@ -16,6 +17,7 @@ export function Session({ type, onExit }: { type: ExerciseType; onExit: () => vo
   const [n, setN] = useState(0)
   const [items, setItems] = useState(() => pickRound(data.items, data.progress, type, Date.now()))
   const [done, setDone] = useState<Round | null>(null)
+  useEffect(() => play('land'), [])
 
   if (done) {
     const p = data.profile

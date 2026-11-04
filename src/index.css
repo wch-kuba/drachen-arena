@@ -287,6 +287,7 @@ p {
   min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   display: grid;
   grid-template-rows: auto 1fr auto auto auto;
+  grid-template-columns: minmax(0, 1fr);
   padding: 1rem 1.25rem 1.5rem;
   overflow: hidden;
   /* Stepped light from the hoard: rock bands get lighter toward the gold, full width. */
@@ -316,6 +317,7 @@ p {
 
 .home-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -1716,6 +1718,20 @@ b.hl {
 
 .feedback-lead {
   display: block;
+}
+
+.home-tools {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Sound switches: sea-glass when on, quiet clouded glass when off. */
+.sound-toggle[aria-pressed='false'] {
+  background: var(--glass-dim);
+  color: var(--ink-soft);
+  box-shadow: none;
 }
 
 .home-dragons {

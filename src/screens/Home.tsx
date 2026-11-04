@@ -1,6 +1,6 @@
 import { LANDS, type LandId } from '../lands.ts'
 import { T } from '../strings.ts'
-import { CaveMouth, Gem, HoardScene, LandMotif } from '../ui/art.tsx'
+import { CaveMouth, Gem, HoardScene, IconSoundOff, IconSpeaker, IconWaves, LandMotif } from '../ui/art.tsx'
 
 interface Props {
   name: string
@@ -11,18 +11,32 @@ interface Props {
   onStart: () => void
   onLand: (id: LandId) => void
   onDragons: () => void
+  sound: boolean
+  ambient: boolean
+  onSound: (on: boolean) => void
+  onAmbient: (on: boolean) => void
 }
 
-export function Home({ name, crystals, isOpen, next, onStart, onLand, onDragons }: Props) {
+export function Home({ name, crystals, isOpen, next, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
         <header class="home-top">
           <h1 class="home-hello">{T.hello(name)}</h1>
-          <span class="plaque counter" aria-label={`${crystals} ${T.crystalsWord(crystals)}`}>
-            <Gem />
-            {crystals}
-          </span>
+          <div class="home-tools">
+            <span class="plaque counter" aria-label={`${crystals} ${T.crystalsWord(crystals)}`}>
+              <Gem />
+              {crystals}
+            </span>
+            <button type="button" class="btn-round sound-toggle" aria-label={T.sounds} aria-pressed={sound} onClick={() => onSound(!sound)}>
+              {sound ? <IconSpeaker /> : <IconSoundOff />}
+            </button>
+            {sound && (
+              <button type="button" class="btn-round sound-toggle" aria-label={T.seaSound} aria-pressed={ambient} onClick={() => onAmbient(!ambient)}>
+                <IconWaves />
+              </button>
+            )}
+          </div>
         </header>
 
         <div class="hoard-scene">

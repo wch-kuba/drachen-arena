@@ -66,4 +66,8 @@ export interface Profile {
   lastLand?: ExerciseType
   dragons: Dragon[]
   unlockedWorlds: ExerciseType[]
+  /** Sound effects on (the child's mute toggle on Home). */
+  sound: boolean
+  /** Grotto ambience on Home. Off by default. */
+  ambient: boolean
 }

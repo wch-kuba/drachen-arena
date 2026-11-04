@@ -52,6 +52,8 @@ export const T = {
   stage: { hatchling: 'Drachenbaby', young: 'Junger Drache', grown: 'Großer Drache' },
   growsIn: (n: number) => (n === 1 ? 'Wächst nach der nächsten Runde' : `Wächst in ${n} Runden`),
   egg: 'Dein Ei',
+  sounds: 'Töne',
+  seaSound: 'Meeresrauschen',
   noDragons: 'Noch kein Drache. Spiel Runden, dann schlüpft dein Ei!',
 } as const
 

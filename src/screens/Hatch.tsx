@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'preact/hooks'
 import { dragonKind } from '../content/dragons.ts'
+import { play } from '../engine/sfx.ts'
 import type { Land } from '../lands.ts'
 import { T } from '../strings.ts'
 import { CaveMouth, Egg, GrownDragon, LandMotif, ShellHalves } from '../ui/art.tsx'
@@ -12,6 +13,8 @@ import { NameEntry } from '../ui/NameEntry.tsx'
 // The ready egg is saved, so closing the app at any beat brings the child back here.
 
 const CRACK_MS = 1100
+/** The egg's wobble loop in index.css. */
+const WOBBLE_MS = 2400
 
 interface Props {
   kind: string
@@ -26,8 +29,19 @@ export function Hatch({ kind, onName, onDone }: Props) {
   const [land, setLand] = useState<Land>()
   const k = dragonKind(kind)
 
+  // Every second rock of the wobble loop (2.4s, rocking from 60%) gets its little knock.
+  useEffect(() => {
+    if (beat !== 'egg') return
+    let t = window.setTimeout(function knock() {
+      play('wobble')
+      t = window.setTimeout(knock, WOBBLE_MS * 2)
+    }, WOBBLE_MS * 0.6)
+    return () => clearTimeout(t)
+  }, [beat])
+
   useEffect(() => {
     if (beat !== 'crack') return
+    play('hatch')
     const t = window.setTimeout(() => setBeat('name'), CRACK_MS)
     return () => clearTimeout(t)
   }, [beat])

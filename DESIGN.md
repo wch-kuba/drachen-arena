@@ -169,7 +169,7 @@ components:
 
 The child's own dragon sleeps on a treasure hoard in a turquoise sea grotto. Every crystal the child earns lands on that hoard, so the pile visibly grows: learning is feeding the hoard. The whole app is that one place. Home is the hoard chamber, each exercise is a side chamber of the grotto, and the reward screen drops the round's crystals onto the pile. The world rejects the usual learning-app default of a mascot above a zigzag of round level bubbles and a chunky green button.
 
-The look is a picture book, not an interface. Deep sea-teal rock sits in stepped bands, darkest under the stalactite roof and lighter toward the hoard. The band nearest the gold picks up its warm light. The only bright materials are amber gold coins and faceted turquoise gems. Anything the child reads or answers on sits on pale sea-glass plaques with dark-teal ink. Every drawn thing has a thick dark-teal outline. Density is low and everything is large: one task per screen, huge letters, thumb-sized targets. The type scales with the device.
+The look is a picture book, not an interface. Every screen stands in a painted grotto: dark sea-teal rock under a stalactite roof, darkest at the top, with the hoard's warm gold light rising from below. The only bright materials are amber gold coins and faceted turquoise gems. Anything the child reads or answers on sits on pale sea-glass plaques with dark-teal ink. Every drawn thing has a thick dark-teal outline. Density is low and everything is large: one task per screen, huge letters, thumb-sized targets. The type scales with the device.
 
 The five lands, one per exercise, are grotto chambers strung along one dotted gold path below the hoard:
 
@@ -183,7 +183,7 @@ The five lands, one per exercise, are grotto chambers strung along one dotted go
 
 **Key Characteristics:**
 - One world: a dragon's hoard in a sea grotto. The hoard grows with every correct answer.
-- Rock gets lighter toward the gold, in stepped bands without smooth gradients.
+- A painted grotto wall behind every screen: dark at the top, warm hoard light from below.
 - Gold and turquoise gems are the only bright materials. Gems have facets and never look like glossy blobs.
 - A 4px dark-teal outline on every plaque, button, cell and drawing.
 - Andika everywhere, scaled per device, at a size an early reader can manage.
@@ -206,8 +206,8 @@ The palette is cold, dark sea-teal rock lit by warm gold from below, with pale s
 - **Warm Coral** (coral) and **Coral Mist** (coral-100): the only feedback color for "almost" and "wrong". Used for the flagged cell's ring and fill, the hint pane, and the dragon's cheek. It is warm and safe.
 
 ### Neutral
-- **Grotto Rock** (rock-0 to rock-4): a stepped tonal ramp. rock-0 is the stalactite roof and the preview nav. rock-1 is the page base. rock-2 is the lands pane and the empty niches. rock-3 is empty cells and filled niches. rock-4 is the ledge and the lightest rock band.
-- **Hoard Glow Band** (hoard-band): the one rock band nearest the hoard, warmed by its light. Used only as the closest band to the gold.
+- **Grotto Rock** (rock-0 to rock-4): a stepped tonal ramp. rock-0 is the preview nav. rock-1 is the page base under the painted grotto wall (and shows while it loads). rock-2 is the lands pane and the empty niches. rock-3 is empty cells and filled niches. rock-4 is dashed slot borders. The painted wall was generated with this ramp as its only palette.
+- **Hoard Glow Band** (hoard-band): rock warmed by the gold. Part of the painted wall's palette, where its lowest rocks catch the hoard light.
 - **Sea-Glass** (glass) and **Clouded Glass** (glass-dim): plaque, key and round-button surfaces. glass-dim is the disabled gold button.
 - **Deep-Teal Ink** (ink) and **Soft Ink** (ink-soft): all outlines and all text on glass. ink-soft is for secondary words on a plaque ("ein", "– viele …").
 - **Foam** (foam) and **Soft Foam** (foam-soft): text directly on rock (greetings, land names, captions) and the borders of empty cells. foam-soft is for secondary text and locked lands.
@@ -257,7 +257,7 @@ Every full screen fills the dynamic viewport minus the safe-area insets. The mai
 
 ## Elevation & Depth
 
-Depth comes from two sources: stepped rock bands behind everything, and soft blurred drop shadows under the glass and gold pieces sitting on that rock. Shadows are always blurred. Recessed things (niches) use an inset shadow.
+Depth comes from two sources: the painted grotto wall behind everything, and soft blurred drop shadows under the glass and gold pieces sitting on that rock. Shadows are always blurred. Recessed things (niches) use an inset shadow.
 
 ### Shadow Vocabulary
 - **Plaque lift** (`box-shadow: 0 6px 14px rgb(0 0 0 / 0.35)`): plaques and the kurz/lang buttons.
@@ -266,13 +266,13 @@ Depth comes from two sources: stepped rock bands behind everything, and soft blu
 - **Keycap** (`box-shadow: inset 0 -3px 5px rgb(5 38 44 / 0.18), 0 3px 6px rgb(0 0 0 / 0.35)`): keys. When pressed, the shadow drops away and the key moves down 2px.
 - **Niche hollow** (`box-shadow: inset 0 10px 18px rgb(0 0 0 / 0.45)`): collection niches.
 
-**The Light From Below Rule.** The light source is the hoard. Rock bands lighten toward the gold, and the band next to it is warm (hoard-band). Never light the scene from the top.
+**The Light From Below Rule.** The light source is the hoard. The grotto wall is darkest under the roof and warms toward the bottom, where the gold glows. Never light the scene from the top.
 
 **The Soft Shadow Rule.** Every shadow is blurred. Pressed states move the piece down (translateY 2–3px) and drop the shadow. They never use a hard offset slab.
 
 ## Shapes
 
-The form language is rounded and outlined, like a picture book: every plaque, button, cell, key and drawing has a 4px ink outline (3px on keys). Corners step up with size, from 8px on painted letters to 10px on keys, 14px on cells, 18px on legend tiles and the base of niches, and 22px on plaques. Round buttons and the gold button are full pills or circles. Arches belong to the grotto: land mouths and collection niches are rounded arches (999px top corners, 18px base). The roof is a jagged stalactite silhouette, applied as a mask. Gems are always cut polygons with facet lines and a small glass glint. Coins are outlined ellipses.
+The form language is rounded and outlined, like a picture book: every plaque, button, cell, key and drawing has a 4px ink outline (3px on keys). Corners step up with size, from 8px on painted letters to 10px on keys, 14px on cells, 18px on legend tiles and the base of niches, and 22px on plaques. Round buttons and the gold button are full pills or circles. Arches belong to the grotto: the painted land entrances are stone arches, and collection niches are rounded arches (999px top corners, 18px base). The stalactite roof is part of the painted wall. Gems are always cut and faceted with a small glint, painted or drawn.
 
 **The Outline Rule.** If it is drawn, it has a dark-teal outline. The only exceptions are thin facet lines, glints and the dotted path.
 
@@ -318,7 +318,7 @@ Legend tiles and the kurz/lang buttons share one state set. Pressed: down 2px, s
 - **Hint panes** carry a small round speaker at their end, so every hint can be heard.
 
 ### Navigation
-- **Lands path:** the five land mouths (4.9rem outlined arches in the land's color; an open mouth shows a peek of the land's chamber art, clipped to the arch) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next says "Öffnet sich mit dem nächsten Ei". Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
+- **Lands path:** the five painted cave entrances (6rem, the chamber visible inside) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next says "Öffnet sich mit dem nächsten Ei". Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
 - **Exercise bar:** a close button plus a track of 10 gem slots. Earned gems are faceted turquoise; empty slots are rock-colored outlines.
 
 ### Collection niches
@@ -342,8 +342,14 @@ A right answer shows one praise line from a short list, in turn, never the same 
 
 ### Drawn art and illustration
 Two kinds of art share one look (dark-teal ink outline, light from below):
-- **Drawn (inline SVG, `src/ui/art.tsx`):** the hoard pile and ledge, coins, gems, rock, cave mouths, the carved egg slots of dragons still to find, and the icons (one stroke family on a 24-unit grid, 2.6 stroke width, round caps and joins, `currentColor`).
-- **Generated (WebP in `public/img`, made by `npm run images`, looked up through `src/ui/images.ts`):** 112 word pictures, 12 dragons × 3 stages × 3 moods, 12 eggs, their cut shell halves, 5 land chambers and a world map. A test (`images.test.ts`) fails if any picture the app can ask for is missing. Provenance per file in `src/content/image-sources.json`; licenses in ASSETS.md.
+- **Drawn (inline SVG, `src/ui/art.tsx`):** only small UI pieces that must stay crisp: the slot gems of the progress track and the egg meter, the carved egg slots of dragons still to find, the lock, and the icons (one stroke family on a 24-unit grid, 2.6 stroke width, round caps and joins, `currentColor`).
+- **Generated (WebP in `public/img`, made by `npm run images`, looked up through `src/ui/images.ts`):** 112 word pictures, 12 dragons × 3 stages × 3 moods, 12 eggs, their cut shell halves, 5 land chambers, a world map, and the painted world pieces (2026-11-04, replacing the drawn ones): the hoard in 4 sizes, the gem, 5 cave entrances and the grotto wall (portrait and landscape). A test (`images.test.ts`) fails if any picture the app can ask for is missing. Provenance per file in `src/content/image-sources.json`; licenses in ASSETS.md.
+
+**Painted world pieces:**
+- **Grotto wall:** the background of every screen (`--backdrop`, portrait or landscape by orientation, `cover`, anchored at the bottom), over rock-1 while it loads. Generated with the rock tokens as its only palette and calmed a little in the build (`-modulate 82,90`), so light text stays readable. Words straight on the rock get a soft dark halo (blurred text-shadow, never an outline).
+- **Hoard:** one painted heap in 4 sizes, all the same width, so a bigger pile is taller. Home picks the size from the crystal total (`size` = crystals / 1000), the round summary shows a big one, the exercise ledge a small one. The sleeping dragon sinks into the heap with its own bit of gold, so they read as one pile. Earned gems land on the mound's curve (`surface()` in art.tsx), half sunk into the coins.
+- **Gem:** the painted gem is the crystal the child earns: the counter, the flying gem, the gems dropping onto the reward pile, the "right" feedback pane and the inline gem in the reward line. The progress track and egg meter keep the drawn slot gems.
+- **Cave entrances:** each land is a painted stone arch with its chamber inside (6rem on the path, 7rem when a land opens). A locked land shows the same arch at 35% brightness behind a drawn lock.
 
 **Where each picture appears:**
 - **Word picture:** on the task plaque, square (6.5rem; 4.9rem on phones; 9.5rem on iPad portrait; 7.5rem on iPad landscape), with a soft drop shadow so it sits on the glass. Its alt text never gives the answer away ("Bild", except in Mehrzahl, where the word is shown anyway).
@@ -352,7 +358,7 @@ Two kinds of art share one look (dark-teal ink outline, light from below):
 - **Round summary:** the egg in its dragon's colors and the dragon of the day in its happy mood.
 - **Collection:** each dragon in idle mood at its stage; the egg in progress in its colors; the rest stay carved slots.
 - **Hatch:** egg, then the two shell halves, then the baby (idle while naming, happy when greeted).
-- **Lands:** each open cave mouth shows its chamber art.
+- **Lands:** each land's painted cave entrance, darkened behind a lock while closed.
 
 **Which egg:** the egg always shows the dragon that will hatch from it (`eggKind` in rewards.ts). Lands open in the same order as the dragon list, so this is the same whatever land is played; a test guards it.
 
@@ -390,7 +396,7 @@ Short effects made with ElevenLabs sound effects (`npm run sfx`, prompts in `scr
 ### Do:
 - **Do** put the reading surface on sea-glass plaques (glass with ink text, a 4px ink outline and 22px corners).
 - **Do** keep gold amber-leaning (gold-500, gold-300) so it can never be confused with the school's gelb.
-- **Do** step the rock lighter toward the hoard and keep the light coming from below.
+- **Do** keep the light coming from below: the grotto wall is dark at the top and lit by the hoard.
 - **Do** draw gems as cut, faceted shapes with an ink outline and a small glint.
 - **Do** give the screen one full-width gold coin button for its main action, at thumb height.
 - **Do** use coral and coral-100 for every "almost" and "wrong" state, with graded help.

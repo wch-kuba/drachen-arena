@@ -1,6 +1,6 @@
 import { LANDS, type LandId } from '../lands.ts'
 import { T } from '../strings.ts'
-import { CaveMouth, Gem, HoardScene, IconSoundOff, IconSpeaker, IconWaves, type OnHoard } from '../ui/art.tsx'
+import { CaveMouth, GemPic, HoardScene, IconSoundOff, IconSpeaker, IconWaves, type OnHoard } from '../ui/art.tsx'
 
 interface Props {
   name: string
@@ -27,7 +27,7 @@ export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDrag
           <h1 class="home-hello">{T.hello(name)}</h1>
           <div class="home-tools">
             <span class="plaque counter" aria-label={`${crystals} ${T.crystalsWord(crystals)}`}>
-              <Gem />
+              <GemPic />
               {crystals}
             </span>
             <button type="button" class="btn-round sound-toggle" aria-label={T.sounds} aria-pressed={sound} onClick={() => onSound(!sound)}>
@@ -87,7 +87,7 @@ export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDrag
                 disabled={locked}
                 onClick={() => onLand(land.id)}
               >
-                <CaveMouth hue={land.hue} land={land.id} locked={locked} />
+                <CaveMouth land={land.id} locked={locked} />
                 <span>
                   <span class="land-name">{land.name}</span>
                   <span class="land-what">{locked ? (land.id === next ? T.nextEgg : T.locked) : land.what}</span>

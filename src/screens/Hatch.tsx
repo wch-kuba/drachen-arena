@@ -100,7 +100,7 @@ export function Hatch({ kind, onName, onDone }: Props) {
       <div class="reward-act">
         {land && (
           <div class="hatch-land">
-            <CaveMouth hue={land.hue} land={land.id} />
+            <CaveMouth land={land.id} />
             <p class="reward-sub">{T.newLand(land.name)}</p>
           </div>
         )}

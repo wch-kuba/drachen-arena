@@ -22,4 +22,15 @@ describe('art', () => {
     expect(keys.filter((k) => !hasPic(k))).toEqual([])
     expect(LANDS.map((l) => `land/${l.id}`).filter((k) => !hasPic(k))).toEqual([])
   })
+
+  it('has the painted world pieces: hoard sizes, gem, cave entrances, grotto walls', () => {
+    const keys = [
+      ...[1, 2, 3, 4].map((n) => `prop/hoard-${n}`),
+      'prop/gem',
+      ...LANDS.map((l) => `cave/${l.id}`),
+      'backdrop/portrait',
+      'backdrop/landscape',
+    ]
+    expect(keys.filter((k) => !hasPic(k))).toEqual([])
+  })
 })

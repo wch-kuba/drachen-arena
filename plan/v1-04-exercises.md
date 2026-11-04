@@ -10,7 +10,7 @@
 - [x] All five lands open from Home (`#/laute`, `#/mehrzahl`, `#/luecke`, `#/kurzlang`, `#/ie`). Every land stays open until Part 6 adds unlocking by progress.
 - [x] Every hint pane has a speaker button.
 - [x] Test items: 12 Mehrzahl, 8 Laute (one sound) + 3 sentences, 8 Lücke, 8 Kurz/lang, 6 ie (`src/content/test-items.ts`).
-- [ ] Voice clips for the last 9 texts (Gemini Tier 1 has a cap of 100 requests per day, hit on 2026-11-04): run `npm run audio` again. Until then those texts use the device voice.
+- [x] Voice clips for the last 9 texts. Gemini Tier 1 allows 100 requests per model per day (hit on 2026-11-04), so they were made with `gemini-3.8-flash-lite-tts` (same voice, Sulafat; parent OK with a slightly different sound): `MODEL=gemini-3.8-flash-lite-tts npm run audio -- --fill`. A later plain `npm run audio` remakes them with the main model.
 
 ## 1. Selbstlaute, Zwielaute, Umlaute (choice)
 - [x] **Mode A:** show one letter or group (a, ei, ü, au, äu…) + audio → 3 big buttons: Selbstlaut (gelb) / Zwielaut (grün) / Umlaut (blau). The letters of each class show on the buttons only after a wrong try (rule hint); a right answer paints the tile in its legend color.

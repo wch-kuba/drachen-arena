@@ -13,7 +13,7 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
   Kid's favorites collected, look and feel decided, DESIGN.md written.
 - [x] **Part 3 – Core engine** → [plan/v1-03-core-engine.md](plan/v1-03-core-engine.md)
   Storage, word model, answer checking, hints, repetition, AI voice clips (Gemini, offline), custom keyboard.
-- [ ] **Part 4 – Five exercises** → [plan/v1-04-exercises.md](plan/v1-04-exercises.md)
+- [x] **Part 4 – Five exercises** → [plan/v1-04-exercises.md](plan/v1-04-exercises.md)
   All five exercise screens working with test words.
 - [ ] **Part 5 – Seed content** → [plan/v1-05-content.md](plan/v1-05-content.md)
   ~150–200 Klasse 2 words, reviewed by parent.

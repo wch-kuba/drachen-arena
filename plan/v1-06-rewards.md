@@ -6,7 +6,7 @@
 
 ## Tasks
 
-Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per finished round (3–5 rounds per egg), Mehrzahl open first and one more land per hatch, growth by rounds since hatching (10 → young, 25 → grown). Details in PRODUCT.md › Rewards. Engine: `src/engine/rewards.ts`, roster: `src/content/dragons.ts`.
+Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per finished round (3–5 rounds per egg), Mehrzahl open first and one more land per hatch, growth by rounds since hatching (10 → young, 25 → grown). **Superseded 2026-11-05** by "Feed one dragon" below (growth and lands by crystal steps). Details in PRODUCT.md › Rewards. Engine: `src/engine/rewards.ts`, roster: `src/content/dragons.ts`.
 
 ### Economy
 - [x] Crystals: 3 = first try, 2 = after a hint, 1 = after the answer was shown.
@@ -20,7 +20,7 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 - [x] Dragon collection screen: hatched dragons with names and growth, the egg in progress, eggs still to find as silhouettes.
 - [x] ~10–15 dragons in v1: 12 kinds, tinted placeholders until Part 7.
 - [x] Dragon growth: a hatched dragon grows hatchling → young → grown as the child keeps playing (rule to decide, e.g. crystals earned after hatching). Never shrinks. Art from Part 7.
-  Rule: young after 10 finished rounds since hatching, grown after 25 ("Wächst in 7 Runden" in the collection).
+  Rule: young after 10 finished rounds since hatching, grown after 25 ("Wächst in 7 Runden" in the collection). Replaced 2026-11-05: fed with crystals, see below.
 
 ### Sound effects (decided 2026-11-04, via `/impeccable` when built)
 - [x] Make the effects with ElevenLabs sound effects (`eleven_text_to_sound_v3`, ~10 credits per second) and bundle them as MP3 for offline. Demos in `audio-samples/sfx-*`. → `npm run sfx` (`scripts/gen-sfx.ts`), 10 files in `public/sfx/`, ~310 credits, 380 KB.
@@ -47,8 +47,34 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 - [x] Greeting with the child's name ("Hallo, [Name]!"). The name is set on first start in v1; it moves to parent mode in v2.
 - [x] A list of short German praise lines ("Super!", "Stark gemacht!", "Du bist ein Drachenprofi!"), rotating.
 - [x] Gentle wrong-answer lines, leading the first hint ("Noch nicht ganz.", "Gleich hast du es!").
-- [x] Round summary: crystals, egg progress, dragon of the day.
-- [ ] Voice clips for the new texts (praise, gentle lines, name questions): next `npm run audio` run (ElevenLabs, see PRODUCT.md › Audio). Until then the device voice reads them.
+- [x] Round summary: crystals, egg progress, dragon of the day. (2026-11-05: the goal only, no dragon of the day.)
+- [x] Voice clips for the new texts (praise, gentle lines, name questions, the feed/grow lines of 2026-11-05): next `npm run audio` run (ElevenLabs, see PRODUCT.md › Audio). Until then the device voice reads them.
+  Done 2026-11-05: 18 lines × 3 Knurps tones = 54 clips; the 3 clips of the retired line "Super! Ein Kristall für deinen Schatz." were removed. Lines with the child-chosen dragon name can't be pre-recorded, so the grow screen's speaker reads name-free lines ("Dein Drache ist satt!", "Tipp auf deinen Drachen!", "Dein Drache ist gewachsen!") while the screen text keeps the name.
+
+### Feed one dragon (decided 2026-11-05)
+Rounds-based growth felt unrelated to effort. New loop, one goal at a time, crystals the only currency:
+egg (100) → baby; feed 100 → young; feed 100 → grown; the grown dragon finds the next egg.
+A land opens at every step (hatch, young, grown). Eggs hatch in roster order (the 5 land dragons first).
+- [x] Engine: one goal (`goalOf`), growth by crystals, land per step, eggs in roster order (`rewards.ts` + tests).
+- [x] Storage schema 3: dragons keep the stage they had, egg crystals become goal crystals; nothing taken away.
+- [x] Screens via `/impeccable` (shaped 2026-11-05, build after the open screen PR is merged; brief below).
+
+#### Screen brief (shaped with the user 2026-11-05)
+Decisions: the growth moment gets its own screen like the hatch; Home shows the dragon being fed; the round summary shows only the goal (no dragon of the day).
+States the screens must cover: **egg phase** (no dragon yet, or the newest is grown), **egg ready** (`pendingHatch`), **dragon phase** (`growing(p)`), **grow ready** (`pendingGrowth`), **done** (all 12 found and grown).
+
+- [x] **Engine add-on** (`rewards.ts`, `types.ts`, tests): `Profile.pendingGrowth?: { id, land? }`, set in `endRound` on a growth step (`land` = the land it opened), cleared by `seeGrowth(p)`. While set, the summary and Home lead to the grow screen, like a ready egg. Drop `dragonOfTheDay` (no longer shown anywhere).
+- [x] **Shared land reveal** (`Hatch.tsx` → small component): the hello beat's rising cave mouth + "Eine neue Grotte ist offen: …" + gold "Zur Grotte", used by Hatch and Grow. No land left to open → just the gold button.
+- [x] **Grow screen** (new `screens/Grow.tsx`, route through `HomeScreen` like Hatch): beat 1 "Funkel ist satt!" with the dragon at its old stage (happy pose), tap or auto after a short wait; beat 2 the old picture scales up to the new stage's size from the same ground line (`STAGE_SCALE`, ease-settle with a small overshoot), then swaps to the new picture, headline "Funkel ist gewachsen!" + the stage name. Grown step: "Funkel ist groß! Er hat ein Ei gefunden." and the next egg (`eggKind`) rolls in beside him. Then the land reveal. Sound: reuse the hatch sfx family (no new ElevenLabs sfx unless it feels flat). Reduced motion: the swap without the scale.
+- [x] **Reward** (`Reward.tsx`, `Session.tsx`): `egg` prop becomes `goal`: `{ kind: 'egg', eggKind } | { kind: 'dragon', dragon }`, `filled`, `ready`. Egg phase as today. Dragon phase: the fed dragon in happy pose stands where the egg was (its stage size), meter caption "Noch 40 Kristalle, dann wächst Funkel."; full: "Funkel ist satt!" and gold "Zu Funkel!". Remove the dragon-of-the-day line and the second dragon on the pile. Done state: meter hidden, the newest dragon on the pile.
+- [x] **Home** (`app.tsx` HomeScreen, `Home.tsx`, `art.tsx` `OnHoard`): dragon phase → the fed dragon sleeps on the hoard (as today, by stage). Egg phase with dragons → the newest dragon sleeps and the egg lies against it (new `OnHoard` case `{ dragon, egg }`, egg ~0.5 of the egg-only size, in front). Before the first hatch → egg alone (as today). Locked land label: egg phase "Öffnet sich mit dem nächsten Ei", dragon phase "Öffnet sich, wenn Funkel wächst".
+- [x] **Collection** (`Collection.tsx`): the fed dragon's meta "Junger Drache · Noch 40 Kristalle"; other dragons only their stage. Egg niche only in egg phase ("Noch 36 Kristalle, dann schlüpft dein Ei."); in dragon phase that niche is a carved slot with "Kommt, wenn Funkel groß ist." Remove `roundsToGrow` / `growsIn`.
+- [x] **Strings** (`strings.ts`): add `feedLeft(n, name)`, `fed(name)` "… ist satt!", `toDragon(name)` "Zu …!", `grew(name)`, `grownEgg(name)` "… ist groß! Er hat ein Ei gefunden.", `nextGrow(name)` "Öffnet sich, wenn … wächst", `eggAfter(name)` "Kommt, wenn … groß ist."; remove `growsIn`, `dragonOfDay`. New lines join the open voice-clip task above.
+- [x] **Preview routes** (`app.tsx` `SCREENS`, `DEMO`): `DEMO` dragons get `stage` and `goalCrystals`; add `belohnung-drache` (dragon phase, 60/100), `belohnung-satt` (grow ready), `wachsen` (grow screen, young), `wachsen-gross` (grown step + egg); keep the egg ones.
+- [x] **DESIGN.md**: Reward and egg (goal meter for egg or dragon), new "Growing" section next to Hatching, Home (fed dragon; dragon + egg), Collection niches (crystals, not rounds), "Which egg" (roster order). Remove the dragon of the day.
+- [x] **Check**: `npm run build`, vitest, WebKit walk on the iPad viewport through egg → hatch → feed → grow → grown + egg, and a reload at each ready state.
+  Checked 2026-11-05: build + 56 tests; all new preview states shot on iPad portrait/landscape and iPhone; real-app run with a schema-2 profile (migrates to young + 95 goal crystals), a saved growth survives a reload, grow → land reveal → Home with dragon + egg, hints switch.
+- [x] PRODUCT.md › Rewards and DESIGN.md updated.
 
 ## Done when
 Playing 5 rounds hatches an egg, unlocks a land, and everything survives an app restart.

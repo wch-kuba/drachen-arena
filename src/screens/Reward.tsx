@@ -2,18 +2,20 @@ import { useEffect } from 'preact/hooks'
 import { atmosphereHere, play } from '../engine/sfx.ts'
 import type { Stage } from '../engine/rewards.ts'
 import { T } from '../strings.ts'
-import { DragonPic, EggPic, Gem, GemPic, HoardLedge } from '../ui/art.tsx'
+import { DragonPic, EggPic, Gem, GemPic, HoardLedge, STAGE_SCALE } from '../ui/art.tsx'
 
-// End of a round: the round's crystals drop onto the hoard, the egg shows how close it is to
-// hatching (one meter gem per 10 crystals), and the dragon of the day keeps the child company.
-// When the egg is full, the one gold button leads to the hatching.
+// End of a round: the round's crystals drop onto the hoard, and the one goal shows how close it
+// is (one meter gem per 10 crystals): the egg, or the dragon being fed. When the goal is full,
+// the one gold button leads to the hatching or the growing.
 
-export interface EggState {
-  /** Crystals in the egg, 0 … of. */
-  filled: number
-  of: number
-  ready: boolean
+export interface DragonLook {
+  kind: string
+  name: string
+  stage: Stage
 }
+
+/** What the crystals fill: an egg (its dragon's kind), the dragon being fed, or nothing left. */
+export type RewardGoal = { egg: string } | { dragon: DragonLook } | { done: DragonLook | undefined }
 
 interface Props {
   /** Items right on the first try. */
@@ -22,25 +24,36 @@ interface Props {
   /** Crystals from the items, without the round bonus. */
   crystals: number
   bonus: number
-  egg: EggState
-  /** The dragon in the egg (eggKind), so the egg shows its colors. */
-  eggKind: string
-  dragon?: { kind: string; name: string; stage: Stage }
+  goal: RewardGoal
+  /** Crystals in the goal, 0 … of. */
+  filled: number
+  of: number
+  ready: boolean
   onAgain: () => void
   onHome: () => void
-  onHatch: () => void
+  /** The goal is full: on to the hatching or the growing. */
+  onReady: () => void
 }
 
 const MAX_DROPS = 5
 const METER = 10
 
-export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, onAgain, onHome, onHatch }: Props) {
+export function Reward({ score, total, crystals, bonus, goal, filled, of, ready, onAgain, onHome, onReady }: Props) {
   useEffect(() => play('round'), [])
   // The round's end is a Home-like moment: the atmosphere may play again.
   useEffect(() => atmosphereHere(), [])
   const drops = Math.min(MAX_DROPS, Math.ceil((crystals + bonus) / 3))
-  const fill = egg.ready ? 1 : Math.min(1, egg.filled / egg.of)
-  const lit = egg.ready ? METER : Math.floor(fill * METER)
+  const lit = ready ? METER : Math.floor(Math.min(1, filled / of) * METER)
+  const fed = 'dragon' in goal ? goal.dragon : undefined
+  const done = 'done' in goal
+  const shown = fed ?? ('done' in goal ? goal.done : undefined)
+  const caption = fed
+    ? ready
+      ? T.fedReady(fed.name)
+      : T.feedLeft(of - filled, fed.name)
+    : ready
+      ? T.eggReady
+      : T.eggLeft(of - filled)
 
   return (
     <div class="reward grotto">
@@ -52,10 +65,17 @@ export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, on
         {bonus > 0 && <p class="reward-bonus">{T.roundBonus(bonus)}</p>}
       </div>
       <div class="reward-art">
-        {/* The egg rests on the hoard; the round's crystals drop onto the pile around it. */}
-        <div class="reward-egg">
-          <EggPic kind={eggKind} isNew={egg.ready} />
-        </div>
+        {/* The goal rests on the hoard; the round's crystals drop onto the pile around it. */}
+        {'egg' in goal && (
+          <div class="reward-egg">
+            <EggPic kind={goal.egg} isNew={ready} />
+          </div>
+        )}
+        {shown && (
+          <div class="reward-fed" style={{ '--s': STAGE_SCALE[shown.stage] }}>
+            <DragonPic kind={shown.kind} stage={shown.stage} pose="happy" label={shown.name} />
+          </div>
+        )}
         <div class="reward-pile">
           {Array.from({ length: drops }, (_, i) => (
             <span class="drop-gem" style={{ '--i': i, '--x': `${10 + i * 18}%` }}>
@@ -63,22 +83,22 @@ export function Reward({ score, total, crystals, bonus, egg, eggKind, dragon, on
             </span>
           ))}
           <HoardLedge gems={0} size={0.7} />
-          {dragon && (
-            <DragonPic class="reward-dragon" kind={dragon.kind} stage={dragon.stage} pose="happy" label={dragon.name} />
-          )}
         </div>
       </div>
       <div class="reward-act">
-        <div class="egg-meter" role="img" aria-label={egg.ready ? T.eggReady : T.eggLeft(egg.of - egg.filled)}>
-          {Array.from({ length: METER }, (_, i) => (
-            <Gem filled={i < lit} />
-          ))}
-        </div>
-        <p class="reward-sub">{egg.ready ? T.eggReady : T.eggLeft(egg.of - egg.filled)}</p>
-        {dragon && !egg.ready && <p class="reward-sub reward-friend">{T.dragonOfDay(dragon.name)}</p>}
-        {egg.ready ? (
-          <button type="button" class="btn-gold" onClick={onHatch}>
-            {T.toEgg}
+        {!done && (
+          <>
+            <div class="egg-meter" role="img" aria-label={caption}>
+              {Array.from({ length: METER }, (_, i) => (
+                <Gem filled={i < lit} />
+              ))}
+            </div>
+            <p class="reward-sub">{caption}</p>
+          </>
+        )}
+        {ready ? (
+          <button type="button" class="btn-gold" onClick={onReady}>
+            {fed ? T.toDragon(fed.name) : T.toEgg}
           </button>
         ) : (
           <>

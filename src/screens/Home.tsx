@@ -5,11 +5,12 @@ import { CaveMouth, GemPic, HoardScene, IconMusic, IconSoundOff, IconSpeaker, ty
 interface Props {
   name: string
   crystals: number
-  /** The dragon of the day asleep on the hoard, or the egg before the first one hatches. */
+  /** The goal on the hoard: the dragon being fed, the egg, or the newest dragon with the egg. */
   on: OnHoard
   isOpen: (land: LandId) => boolean
-  /** The land that opens with the next egg. */
+  /** The land that opens with the next step, and what that step is ("Öffnet sich …"). */
   next?: LandId
+  nextHint: string
   onStart: () => void
   onLand: (id: LandId) => void
   onDragons: () => void
@@ -19,7 +20,7 @@ interface Props {
   onAmbient: (on: boolean) => void
 }
 
-export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
+export function Home({ name, crystals, on, isOpen, next, nextHint, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
@@ -46,7 +47,7 @@ export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDrag
         </div>
 
         <p class="home-caption">
-          {'dragon' in on ? T.sleepsOn(on.dragon.name) : T.eggLiesOn}{' '}
+          {on.dragon ? T.sleepsOn(on.dragon.name) : T.eggLiesOn}{' '}
           <b>
             {crystals} {T.crystalsWord(crystals)}
           </b>
@@ -90,7 +91,7 @@ export function Home({ name, crystals, on, isOpen, next, onStart, onLand, onDrag
                 <CaveMouth land={land.id} locked={locked} />
                 <span>
                   <span class="land-name">{land.name}</span>
-                  <span class="land-what">{locked ? (land.id === next ? T.nextEgg : T.locked) : land.what}</span>
+                  <span class="land-what">{locked ? (land.id === next ? nextHint : T.locked) : land.what}</span>
                 </span>
               </button>
             )

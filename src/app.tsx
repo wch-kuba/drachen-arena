@@ -3,14 +3,17 @@ import { UpdatePrompt } from './UpdatePrompt.tsx'
 import { LANDS, type LandId } from './lands.ts'
 import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
-import { dragonOfTheDay, eggKind, isUnlocked, nextLand, stageOf, UNLOCK_ORDER } from './engine/rewards.ts'
+import { eggKind, goalOf, isUnlocked, nextLand, UNLOCK_ORDER } from './engine/rewards.ts'
 import { atmosphereHere } from './engine/sfx.ts'
 import { emptyProfile } from './engine/storage.ts'
 import type { Profile } from './engine/types.ts'
 import { Collection } from './screens/Collection.tsx'
+import { Grow } from './screens/Grow.tsx'
 import { Hatch } from './screens/Hatch.tsx'
 import { Home } from './screens/Home.tsx'
-import { Reward } from './screens/Reward.tsx'
+import type { OnHoard } from './ui/art.tsx'
+import { T } from './strings.ts'
+import { Reward, type RewardGoal } from './screens/Reward.tsx'
 import { Session } from './screens/Session.tsx'
 import { Welcome } from './screens/Welcome.tsx'
 
@@ -28,7 +31,13 @@ const SCREENS = {
   willkommen: 'Erster Start',
   belohnung: 'Belohnung',
   'belohnung-ei': 'Belohnung, Ei voll',
+  'belohnung-drache': 'Belohnung, Drache wird gefüttert',
+  'belohnung-satt': 'Belohnung, Drache satt',
   schluepfen: 'Ei schlüpft',
+  wachsen: 'Drache wächst',
+  'wachsen-gross': 'Drache wird groß, neues Ei',
+  'grotte-drache': 'Grotte, Drache wird gefüttert (Demo)',
+  'grotte-ei': 'Grotte, großer Drache mit Ei (Demo)',
   'drachen-demo': 'Drachen (Demo)',
 } as const
 type Screen = keyof typeof SCREENS
@@ -49,7 +58,7 @@ const go = (r: string) => (location.hash = `#/${r}`)
 
 const noop = () => {}
 
-/** Home, with the two moments that come first: naming the child, and a ready egg. */
+/** Home, with the moments that come first: naming the child, a ready egg, a dragon that grew. */
 function HomeScreen() {
   const game = useGame()
   const { data, setChildName, hatchDragon } = game
@@ -57,7 +66,7 @@ function HomeScreen() {
   // Keeps the hatch open for its last beat ("Hallo, Funkel!") after the egg is saved as a dragon.
   const [hatching, setHatching] = useState<string>()
   // The atmosphere (music + water) plays on Home, not over the welcome or the hatch.
-  const home = !!p.childName && !p.pendingHatch && !hatching
+  const home = !!p.childName && !p.pendingHatch && !p.pendingGrowth && !hatching
   useEffect(() => (home ? atmosphereHere() : undefined), [home])
   if (!p.childName) return <Welcome onName={setChildName} />
   const kind = p.pendingHatch ?? hatching
@@ -76,16 +85,29 @@ function HomeScreen() {
       />
     )
   }
+  const grew = p.pendingGrowth && p.dragons.find((d) => d.id === p.pendingGrowth!.id)
+  if (p.pendingGrowth && grew) {
+    const land = p.pendingGrowth.land
+    return (
+      <Grow
+        key={`${grew.id}-${grew.stage}`}
+        dragon={grew}
+        land={LANDS.find((l) => l.id === land)}
+        nextEgg={'egg' in goalOf(p) ? eggKind(p) : undefined}
+        onDone={game.seeGrowth}
+      />
+    )
+  }
   const last = p.lastLand && isUnlocked(p, p.lastLand) ? p.lastLand : UNLOCK_ORDER[0]
-  // The dragon of the day sleeps on the hoard: the same companion as in the lands and rewards.
-  const friend = dragonOfTheDay(p, Date.now())
+  const { on, hint } = homeGoal(p)
   return (
     <Home
       name={p.childName}
       crystals={p.crystals}
-      on={friend ? { dragon: { kind: friend.kind, name: friend.name, stage: stageOf(friend, p.rounds) } } : { egg: eggKind(p) }}
+      on={on}
       isOpen={(l) => isUnlocked(p, l)}
       next={nextLand(p)}
+      nextHint={hint}
       onStart={() => go(last)}
       onLand={go}
       onDragons={() => go('drachen')}
@@ -95,6 +117,15 @@ function HomeScreen() {
       onAmbient={game.setAmbient}
     />
   )
+}
+
+/** The goal on the hoard: the dragon being fed, or the egg (against the newest dragon, if any). */
+function homeGoal(p: Profile): { on: OnHoard; hint: string } {
+  const goal = goalOf(p)
+  const newest = p.dragons.at(-1)
+  if ('dragon' in goal) return { on: { dragon: goal.dragon }, hint: T.nextGrow(goal.dragon.name) }
+  if ('egg' in goal) return { on: { dragon: newest, egg: goal.egg }, hint: T.nextEgg }
+  return { on: { dragon: newest }, hint: T.locked }
 }
 
 /** A land the child hasn't opened yet (e.g. an old bookmark) goes back home. */
@@ -115,14 +146,40 @@ const DEMO: Profile = {
   ...emptyProfile(),
   childName: 'Kim',
   crystals: 412,
-  eggCrystals: 64,
+  goalCrystals: 64,
   rounds: 30,
   dragons: [
-    { id: 'a', kind: 'perle', name: 'Perla', hatchedAt: 0, roundsAtHatch: 0 },
-    { id: 'b', kind: 'wrack', name: 'Funkel', hatchedAt: 0, roundsAtHatch: 12 },
-    { id: 'c', kind: 'tang', name: 'Blubb', hatchedAt: 0, roundsAtHatch: 26 },
+    { id: 'a', kind: 'perle', name: 'Perla', hatchedAt: 0, stage: 'grown' },
+    { id: 'b', kind: 'wrack', name: 'Funkel', hatchedAt: 0, stage: 'grown' },
+    { id: 'c', kind: 'tang', name: 'Blubb', hatchedAt: 0, stage: 'young' },
   ],
+  unlockedWorlds: ['mehrzahl', 'luecke', 'ie', 'laute', 'kurzlang'],
 }
+
+/** The demo after Blubb is grown too: the next egg fills. */
+const DEMO_EGG: Profile = { ...DEMO, dragons: DEMO.dragons.map((d) => ({ ...d, stage: 'grown' })) }
+
+const demoReward = (goal: RewardGoal, filled: number, ready = false) => (
+  <Reward score={9} total={10} crystals={26} bonus={10} goal={goal} filled={filled} of={100} ready={ready} onAgain={noop} onHome={noop} onReady={noop} />
+)
+
+const demoHome = (p: Profile) => (
+  <Home
+    name={p.childName}
+    crystals={p.crystals}
+    on={homeGoal(p).on}
+    isOpen={(l) => isUnlocked({ ...p, unlockedWorlds: ['mehrzahl', 'luecke'] }, l)}
+    next="ie"
+    nextHint={homeGoal(p).hint}
+    onStart={noop}
+    onLand={noop}
+    onDragons={noop}
+    sound
+    ambient={false}
+    onSound={noop}
+    onAmbient={noop}
+  />
+)
 
 function render(s: Screen) {
   switch (s) {
@@ -139,23 +196,23 @@ function render(s: Screen) {
     case 'willkommen':
       return <Welcome onName={noop} />
     case 'belohnung':
+      return demoReward({ egg: 'tang' }, 64)
     case 'belohnung-ei':
-      return (
-        <Reward
-          score={9}
-          total={10}
-          crystals={26}
-          bonus={10}
-          egg={{ filled: s === 'belohnung' ? 64 : 0, of: 100, ready: s === 'belohnung-ei' }}
-          eggKind="tang"
-          dragon={{ kind: 'wrack', name: 'Funkel', stage: 'young' }}
-          onAgain={noop}
-          onHome={noop}
-          onHatch={noop}
-        />
-      )
+      return demoReward({ egg: 'tang' }, 100, true)
+    case 'belohnung-drache':
+      return demoReward({ dragon: { kind: 'wrack', name: 'Funkel', stage: 'hatchling' } }, 60)
+    case 'belohnung-satt':
+      return demoReward({ dragon: { kind: 'wrack', name: 'Funkel', stage: 'young' } }, 100, true)
     case 'schluepfen':
       return <Hatch kind="welle" onName={() => LANDS[2]} onDone={noop} />
+    case 'wachsen':
+      return <Grow key={s} dragon={{ kind: 'wrack', name: 'Funkel', stage: 'young' }} land={LANDS[2]} onDone={noop} />
+    case 'wachsen-gross':
+      return <Grow key={s} dragon={{ kind: 'wrack', name: 'Funkel', stage: 'grown' }} land={LANDS[3]} nextEgg="tang" onDone={noop} />
+    case 'grotte-drache':
+      return demoHome(DEMO)
+    case 'grotte-ei':
+      return demoHome(DEMO_EGG)
     case 'drachen-demo':
       return <Collection profile={DEMO} onBack={noop} />
   }

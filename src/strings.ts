@@ -3,6 +3,9 @@
 import type { ExerciseType } from './engine/types.ts'
 
 export const T = {
+  updateReady: 'Neue Version verfügbar',
+  updateNow: 'Aktualisieren',
+  updating: 'Wird aktualisiert …',
   almostNoun: 'Fast! Nomen schreibt man groß.',
   almostCase: 'Fast! Achte auf große und kleine Buchstaben.',
   hintRule: (rule: string) => `Tipp: ${rule}`,

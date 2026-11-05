@@ -291,6 +291,7 @@ The form language is rounded and outlined, like a picture book: every plaque, bu
 - **Background:** glass with ink text. The "right" feedback pane is gold-100; the "almost" and hint panes are coral-100.
 - **Shadow Strategy:** Plaque lift.
 - **Use:** the task card (prompt row with a read-aloud button, word picture, word), feedback panes (icon at 2rem plus text), the crystal counter (tabular numbers), the name field and the update banner. Greetings, land names, captions and reward headlines sit directly on the rock in foam or gold-300, not on plaques.
+- **Update banner:** "Neue Version verfügbar" with a gold "Aktualisieren" button. After the tap the button gives way to "Wird aktualisiert …" and a gold bar (glass-dim track, 3px ink outline, gold-100 → gold-500 fill) in the same plaque. The bar follows the service worker's phases and creeps toward 90% in between, so it never stands still; after 10 s the app reloads anyway.
 
 ### Answer cells
 The answer is built on a fixed grid of letter cells, one per letter of the answer.

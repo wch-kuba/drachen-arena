@@ -15,6 +15,7 @@
 - [x] `viewport-fit=cover` and safe-area padding (notch / home indicator).
 - [x] Disable zoom-on-double-tap and text selection on game UI.
 - [x] "Neue Version verfügbar" prompt wired to the service worker update event.
+- [x] Update progress (asked 2026-11-05: "Aktualisieren" sometimes takes long): after the tap a gold progress bar replaces the button, following the worker phases; reload fallback after 10 s in case the takeover event never comes. Checked in preview with a real second build, iPad and iPhone widths.
 
 ### Forge
 - [x] Decide the domain/subdomain and point DNS at the Forge server.

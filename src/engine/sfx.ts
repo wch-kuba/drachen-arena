@@ -3,14 +3,14 @@
 // iOS only lets audio start inside a tap, so the context is created and resumed on the
 // first touch or key. Effects are on by default; the atmosphere (music + water) is off by default.
 
-export type Sfx = 'right' | 'gem' | 'key' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land'
+export type Sfx = 'right' | 'gem' | 'key' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land' | 'wake' | 'roar'
 type Loop = 'music' | 'grotto'
 
 // The music loop (~25 MB decoded) loads only when the atmosphere is first wanted.
-const ALL: Sfx[] = ['right', 'gem', 'key', 'hint', 'round', 'wobble', 'hatch', 'land']
+const ALL: Sfx[] = ['right', 'gem', 'key', 'hint', 'round', 'wobble', 'hatch', 'land', 'wake', 'roar']
 const FILE: Partial<Record<Sfx | Loop, string>> = { key: 'key.wav' }
 /** Sounds repeated in quick runs get a small random pitch, so typing doesn't sound mechanical. */
-const VARY: Partial<Record<Sfx, number>> = { key: 0.06 }
+const VARY: Partial<Record<Sfx, number>> = { key: 0.06, wake: 0.05, roar: 0.04 }
 
 let ctx: AudioContext | undefined
 const buffers = new Map<string, Promise<AudioBuffer | undefined>>()
@@ -61,7 +61,8 @@ export function initSfx() {
   })
 }
 
-export function play(name: Sfx) {
+/** `rate` shifts the pitch: a small dragon snorts higher than a grown one. */
+export function play(name: Sfx, rate = 1) {
   if (!on || !ctx) return
   const c = ctx
   void load(name).then((buf) => {
@@ -69,7 +70,7 @@ export function play(name: Sfx) {
     const src = c.createBufferSource()
     src.buffer = buf
     const vary = VARY[name]
-    if (vary) src.playbackRate.value = 1 + (Math.random() * 2 - 1) * vary
+    src.playbackRate.value = rate * (vary ? 1 + (Math.random() * 2 - 1) * vary : 1)
     src.connect(c.destination)
     src.start()
   })

@@ -16,7 +16,7 @@ Free libraries checked 2026-11-04 (Kenney, OpenGameArt, itch.io, OpenMoji, Twemo
 
 | File | Source | License |
 |---|---|---|
-| right, gem, hint, round, wobble, hatch, land, grotto (`.mp3`) | Generated 2026-11-04 with ElevenLabs sound effects (`eleven_text_to_sound_v3`) by `scripts/gen-sfx.ts`; prompts in that file | ElevenLabs paid plan: commercial use of generated audio allowed. Re-check the terms before a commercial release. |
+| right, gem, hint, round, wobble, hatch, land, grotto (`.mp3`); wake, roar (2026-11-05) | Generated 2026-11-04 with ElevenLabs sound effects (`eleven_text_to_sound_v3`) by `scripts/gen-sfx.ts`; prompts in that file | ElevenLabs paid plan: commercial use of generated audio allowed. Re-check the terms before a commercial release. |
 | music (`.mp3`) | Generated 2026-11-05 with ElevenLabs Music (`music_v1`, instrumental) by `scripts/gen-music.ts`; prompt and loop points in that file | ElevenLabs paid plan: commercial use of generated music allowed. Re-check the terms before a commercial release. |
 
 ## Voice clips (`public/audio/`)

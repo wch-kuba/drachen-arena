@@ -39,6 +39,9 @@ export const EFFECTS: Record<string, Effect> = {
   wobble: { prompt: `An egg wobbling and rocking on coins, small wooden knocks and a curious little rattle. ${TOON}`, seconds: 1.6, lufs: -22 },
   hatch: { prompt: `An eggshell cracking open, then a tiny baby dragon’s cute hiccup. ${TOON}`, seconds: 2.5, lufs: -20 },
   land: { prompt: `Entering a magical underwater cave: a short sparkling whoosh with soft bubbles. ${TOON}`, seconds: 1.5, lufs: -22 },
+  // Tapping the dragon on Home. Not TOON: the dragons are cool heroes, never cute.
+  wake: { prompt: 'A dragon waking up underwater: one short warm rumbling snort through the nose that blows out a burst of bubbles. Cool and friendly, not cute, not scary. No speech, no music.', seconds: 1.2, lufs: -22 },
+  roar: { prompt: 'A proud young dragon gives a short triumphant roar underwater, warm and heroic, ending in a rush of bubbles. Exciting, never harsh or scary. No speech, no music.', seconds: 1.6, lufs: -21 },
   // Quiet water under the background music (Home and reward only, off by default).
   grotto: { prompt: 'Calm underwater sea grotto ambience: soft distant water, gentle drips, faint bubbles. Seamless, no music.', seconds: 12, loop: true, lufs: -34 },
 }

@@ -414,6 +414,93 @@ p {
   }
 }
 
+/* Tap the dragon on Home: the whole scene is one big target; the dragon wakes, hops, sleeps again. */
+.hoard-tap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 1.5rem;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dragon-body,
+.hoard-egg {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+/* Awake and happy, the dragon is lit gold from below, like the grow moment. */
+.dragon-body {
+  transition: filter 400ms var(--ease-out);
+}
+
+.dragon-body[data-mood='happy'] {
+  filter: drop-shadow(0 10px 22px rgb(247 200 110 / 0.45));
+}
+
+/* The moods swap quickly, hidden inside each squash, so two silhouettes never ghost. */
+.dragon-mood {
+  opacity: 0;
+  transition: opacity 140ms var(--ease-out);
+}
+
+.dragon-mood[data-on] {
+  opacity: 1;
+}
+
+.zzz-wrap {
+  transition: opacity 600ms var(--ease-out);
+}
+
+.zzz-wrap[data-off] {
+  opacity: 0;
+  transition-duration: 160ms;
+}
+
+.bubble {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: bubble-rise 1.9s var(--ease-out) both;
+}
+
+.bubble circle {
+  fill: rgb(180 240 231 / 0.14);
+  stroke: var(--tq-100);
+  stroke-width: 2.5;
+}
+
+.bubble path {
+  fill: none;
+  stroke: var(--foam);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+@keyframes bubble-rise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  15% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(calc(var(--dx) * -0.4), calc(var(--rise) * 0.55)) scale(0.95);
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--rise)) scale(1.1);
+  }
+}
+
 /* Lands: grotto chambers along one winding path */
 
 .lands {

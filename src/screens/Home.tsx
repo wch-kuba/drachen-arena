@@ -45,7 +45,7 @@ export function Home({ name, crystals, on, isOpen, next, nextHint, nextStep, onS
         </header>
 
         <div class="hoard-scene">
-          <HoardScene size={Math.min(1, crystals / 1000)} on={on} />
+          <HoardScene size={Math.min(1, crystals / 1000)} on={on} tappable />
         </div>
 
         <p class="home-caption">

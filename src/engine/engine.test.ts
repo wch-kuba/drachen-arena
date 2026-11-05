@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { TEST_ITEMS } from '../content/test-items.ts'
 import { crystalsFor, revealCount, startAttempt, submit } from './attempt.ts'
 import { check } from './check.ts'
-import { BOX_INTERVAL, pickRound, record } from './leitner.ts'
+import { BOX_INTERVAL, MAX_BOX1, pickRound, record } from './leitner.ts'
 import { answer, next, roundCrystals, startRound } from './round.ts'
 import type { Item, Progress } from './types.ts'
 
@@ -71,18 +71,49 @@ describe('leitner', () => {
     expect(record({ ...p, box: 5 }, true, now).box).toBe(5)
   })
 
-  it('picks due items first, then low boxes, then new ones', () => {
+  it('picks due items first, then new ones, then resting ones', () => {
     const items = TEST_ITEMS.filter((i) => i.type === 'mehrzahl')
     const progress: Record<string, Progress> = {}
-    // 3 due (box 3, rested longer than 3 days), 2 low not due, 5 resting high.
+    // 3 due (box 3, rested longer than 3 days), 2 box 2 seen today, 5 resting high.
     items.slice(0, 3).forEach((i) => (progress[i.id] = { box: 3, lastSeen: now - BOX_INTERVAL[3] - 1, correct: 1, wrong: 0 }))
     items.slice(3, 5).forEach((i) => (progress[i.id] = { box: 2, lastSeen: now - 1000, correct: 1, wrong: 0 }))
     items.slice(5, 10).forEach((i) => (progress[i.id] = { box: 5, lastSeen: now - 1000, correct: 4, wrong: 0 }))
     const round = pickRound(items, progress, 'mehrzahl', now)
     const ids = new Set(round.map((i) => i.id))
     expect(round).toHaveLength(10)
-    for (const i of items.slice(0, 5)) expect(ids.has(i.id)).toBe(true)
-    for (const i of items.slice(10)) expect(ids.has(i.id)).toBe(true) // the 2 new ones
+    for (const i of items.slice(0, 5)) expect(ids.has(i.id)).toBe(true) // due, then box 2 before box 5
+    for (const i of items.slice(10)) expect(ids.has(i.id)).toBe(true) // the new ones
+  })
+
+  it('brings in new words instead of replaying the last round', () => {
+    const items = Array.from({ length: 40 }, (_, k) => item(`W${k}`))
+    const progress: Record<string, Progress> = {}
+    let t = now
+    const seenIds = new Set<string>()
+    let prev = new Set<string>()
+    for (let r = 0; r < 4; r++) {
+      const round = pickRound(items, progress, 'mehrzahl', t)
+      const ids = new Set(round.map((i) => i.id))
+      const repeats = [...ids].filter((id) => prev.has(id))
+      expect(repeats.length).toBeLessThanOrEqual(2) // only the 2 missed words come back
+      round.forEach((i, k) => {
+        seenIds.add(i.id)
+        progress[i.id] = record(progress[i.id], k >= 2, t)
+      })
+      prev = ids
+      t += 60_000
+    }
+    expect(seenIds.size).toBeGreaterThanOrEqual(34)
+  })
+
+  it('caps box-1 words so a bad round does not repeat whole', () => {
+    const items = Array.from({ length: 30 }, (_, k) => item(`W${k}`))
+    const progress: Record<string, Progress> = {}
+    items.slice(0, 10).forEach((i) => (progress[i.id] = { box: 1, lastSeen: now - 1000, correct: 0, wrong: 1 }))
+    const round = pickRound(items, progress, 'mehrzahl', now)
+    expect(round.filter((i) => progress[i.id]).length).toBe(MAX_BOX1)
+    // With nothing else to play, box 1 still fills the round.
+    expect(pickRound(items.slice(0, 10), progress, 'mehrzahl', now)).toHaveLength(10)
   })
 
   it('puts tagged mistakes first among new items', () => {

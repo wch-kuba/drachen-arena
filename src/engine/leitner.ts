@@ -39,9 +39,13 @@ export const isSeen = (p: Progress | undefined): p is Progress => !!p && p.lastS
 
 export const isDue = (p: Progress, now: number) => now - p.lastSeen >= BOX_INTERVAL[p.box]
 
+/** Most box-1 items in one round, so a few misses don't bring back the same round again and again. */
+export const MAX_BOX1 = ROUND_SIZE / 2
+
 /**
- * Pick a round: due items first (most overdue, lowest box), then box 1–2 items,
- * then new ones (tagged mistakes first, see PRIORITY), then anything else so a small pool still fills the round. Order is shuffled.
+ * Pick a round: due items first (lowest box, most overdue; box 1 capped at MAX_BOX1), then new ones
+ * (tagged mistakes first, see PRIORITY), then resting items, longest rested first, so a small pool
+ * still fills the round and rotates. Box 2–5 items that aren't due never push out new ones. Order is shuffled.
  */
 export function pickRound(
   items: Item[],
@@ -55,23 +59,33 @@ export function pickRound(
   const seen = pool.filter((i) => isSeen(progress[i.id]))
   const p = (i: Item) => progress[i.id]!
   const overdue = (i: Item) => now - p(i).lastSeen - BOX_INTERVAL[p(i).box]
+  const oldestFirst = (a: Item, b: Item) => p(a).lastSeen - p(b).lastSeen || p(a).box - p(b).box
 
   const due = seen.filter((i) => isDue(p(i), now)).sort((a, b) => p(a).box - p(b).box || overdue(b) - overdue(a))
-  const low = seen.filter((i) => !isDue(p(i), now) && p(i).box <= 2).sort((a, b) => p(a).lastSeen - p(b).lastSeen)
+  const box1 = due.filter((i) => p(i).box === 1)
+  const reviews = due.filter((i) => p(i).box > 1)
   const fresh = shuffle(
     pool.filter((i) => !isSeen(progress[i.id])),
     rand,
   ).sort((a, b) => priority(b) - priority(a))
-  const rest = seen.filter((i) => !isDue(p(i), now) && p(i).box > 2).sort((a, b) => p(a).lastSeen - p(b).lastSeen)
+  const resting = seen.filter((i) => !isDue(p(i), now)).sort(oldestFirst)
 
-  const picked: Item[] = []
-  for (const list of [due, low, fresh, rest]) {
+  const picked = new Set<Item>()
+  const take = (list: Item[], max = size) => {
+    let n = 0
     for (const i of list) {
-      if (picked.length >= size) break
-      picked.push(i)
+      if (picked.size >= size || n >= max) break
+      if (picked.has(i)) continue
+      picked.add(i)
+      n++
     }
   }
-  return shuffle(picked, rand)
+  take(box1, Math.min(MAX_BOX1, size))
+  take(reviews)
+  take(fresh)
+  take(resting)
+  take(box1) // a small pool may still need the rest of box 1
+  return shuffle([...picked], rand)
 }
 
 function shuffle<T>(xs: T[], rand: () => number): T[] {

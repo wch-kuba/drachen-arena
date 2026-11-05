@@ -43,7 +43,7 @@ export const T = {
   locked: 'Noch verschlossen',
   nextEgg: 'Öffnet sich mit dem nächsten Ei',
   roundBonus: (n: number) => `+${n} extra für die ganze Runde!`,
-  eggLeft: (n: number) => `Noch ${n} Kristalle, dann schlüpft dein Ei.`,
+  eggLeft: (n: number) => `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}, dann schlüpft dein Ei.`,
   eggReady: 'Dein Ei wackelt! Gleich schlüpft es.',
   toEgg: 'Zum Ei!',
   tapEgg: 'Tipp auf das Ei!',
@@ -58,6 +58,13 @@ export const T = {
   feedLeft: (n: number, name: string) => `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}, dann wächst ${name}.`,
   /** The same, short, in the collection. */
   crystalsLeft: (n: number) => `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}`,
+  /** The stage inside a sentence: adjectives lowercase ("ein junger Drache"), unlike the stage label. */
+  stageInText: { hatchling: 'Drachenbaby', young: 'junger Drache', grown: 'großer Drache' },
+  /** Home, under the caption: crystals until the fed dragon reaches its next size. */
+  growsInto: (n: number, name: string, stage: string) =>
+    `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}, dann wird ${name} ein ${stage}.`,
+  /** Home, under the caption, when every dragon is found and grown. */
+  fullGrown: (name: string, stage: string) => `${name} ist schon ein ${stage}!`,
   fed: (name: string) => `${name} ist satt!`,
   fedReady: (name: string) => `${name} ist satt und will wachsen!`,
   toDragon: (name: string) => `Zu ${name}!`,

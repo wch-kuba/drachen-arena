@@ -375,6 +375,13 @@ p {
   color: var(--gold-300);
 }
 
+.home-next {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  text-wrap: balance;
+}
+
 .dragon-breathe {
   transform-box: fill-box;
   transform-origin: 50% 100%;

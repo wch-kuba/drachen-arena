@@ -2,7 +2,10 @@
 // Dragons, eggs, shells, lands and word pictures are generated illustrations (Part 7,
 // public/img via images.ts) in the same style: thick dark-teal outline, light from below.
 
+import { useEffect, useRef, useState } from 'preact/hooks'
 import type { Stage } from '../engine/rewards.ts'
+import { play } from '../engine/sfx.ts'
+import { T } from '../strings.ts'
 import { dragonPic, eggPic, pic, type Pose } from './images.ts'
 
 const INK = 'var(--ink)'
@@ -44,8 +47,46 @@ const hoardPic = (size: number) => pic(`prop/hoard-${Math.min(4, 1 + Math.floor(
 /** Room above the pile for whatever lies on it, in viewBox units (the pile is 400 wide). */
 const ABOVE = 240
 
-/** The hoard with the dragon asleep on it (or the egg). `size` 0..1 sets how high the pile is. */
-export function HoardScene({ size = 0.6, on }: { size?: number; on: OnHoard }) {
+/** A small dragon snorts and roars higher than a grown one. */
+const PITCH: Record<Stage, number> = { hatchling: 1.3, young: 1.12, grown: 1 }
+/** How long the woken dragon stays happy after the last tap, then idle before it sleeps again. */
+const HOLD = 3000
+const NAP = 900
+/** From sleeping to idle, then the first hop into the happy pose. */
+const WAKE = 520
+
+const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const SETTLE = 'cubic-bezier(0.34, 1.4, 0.64, 1)'
+const OUT = 'cubic-bezier(0.16, 1, 0.3, 1)'
+const IN = 'cubic-bezier(0.5, 0, 0.75, 0)'
+
+/** A crouch, a jump of `up` units (tilted `tilt` at the top), a squashed landing that settles. */
+const hopFrames = (up: number, tilt: number): Keyframe[] => [
+  { transform: 'translateY(0) rotate(0deg) scale(1, 1)', easing: OUT },
+  { transform: 'translateY(0) rotate(0deg) scale(1.06, 0.9)', offset: 0.16, easing: OUT },
+  { transform: `translateY(${-up}px) rotate(${tilt}deg) scale(0.96, 1.06)`, offset: 0.5, easing: IN },
+  { transform: 'translateY(0) rotate(0deg) scale(1.05, 0.93)', offset: 0.8, easing: SETTLE },
+  { transform: 'translateY(0) rotate(0deg) scale(1, 1)' },
+]
+
+interface Bubble {
+  id: number
+  x: number
+  y: number
+  r: number
+  dx: number
+  rise: number
+  delay: number
+}
+let bubbleId = 0
+
+/**
+ * The hoard with the dragon asleep on it (or the egg). `size` 0..1 sets how high the pile is.
+ * `tappable` (Home): a tap wakes the dragon, which hops into its happy pose blowing bubbles, then
+ * falls asleep again; more taps give more hops, every third a big one with a roar. A lone egg rocks.
+ */
+export function HoardScene({ size = 0.6, on, tappable = false }: { size?: number; on: OnHoard; tappable?: boolean }) {
   const pile = hoardPic(size)
   const pileH = (400 * pile.h) / pile.w
   // The dragon (with its own bit of gold) sinks into the pile, so the two read as one heap.
@@ -56,22 +97,152 @@ export function HoardScene({ size = 0.6, on }: { size?: number; on: OnHoard }) {
   // With both, the dragon moves left and the smaller egg leans against it in front.
   const both = !!(sleeper && egg)
   const cx = both ? 180 : 200
+  const scale = d ? STAGE_SCALE[d.stage] : 1
+  const dragonSize = 290 * scale
+
+  const [mood, setMoodState] = useState<Pose>('sleeping')
+  const moodNow = useRef<Pose>('sleeping')
+  const setMood = (m: Pose) => {
+    moodNow.current = m
+    setMoodState(m)
+  }
+  const [bubbles, setBubbles] = useState<Bubble[]>([])
+  const body = useRef<SVGGElement>(null)
+  const eggEl = useRef<SVGGElement>(null)
+  const timers = useRef<{ wake?: number; rest?: number }>({})
+  const streak = useRef(0)
+  const lastTap = useRef(0)
+  useEffect(
+    () => () => {
+      clearTimeout(timers.current.wake)
+      clearTimeout(timers.current.rest)
+    },
+    [],
+  )
+
+  const move = (el: SVGGElement | null, frames: Keyframe[], duration: number) => {
+    if (el && !reduced()) el.animate(frames, { duration })
+  }
+  const rockEgg = () => move(eggEl.current, [0, -8, 7, -4, 2, 0].map((a) => ({ transform: `rotate(${a}deg)` })), 900)
+
+  const blow = (count: number) => {
+    if (reduced()) return
+    // Out of the dragon's mouth, roughly: the upper middle of its happy pose.
+    const fresh = Array.from({ length: count }, (_, i): Bubble => ({
+      id: ++bubbleId,
+      x: cx + (Math.random() - 0.3) * dragonSize * 0.3,
+      y: ground - dragonSize * 0.72,
+      r: (5 + Math.random() * 7) * Math.max(0.65, scale),
+      dx: (Math.random() - 0.5) * 50,
+      rise: -(110 + Math.random() * 90) * Math.max(0.7, scale),
+      delay: i * 70 + Math.random() * 40,
+    }))
+    setBubbles((b) => [...b, ...fresh])
+    const ids = new Set(fresh.map((b) => b.id))
+    setTimeout(() => setBubbles((b) => b.filter((x) => !ids.has(x.id))), 2400)
+  }
+
+  const hop = (big: boolean) => {
+    move(body.current, big ? hopFrames(dragonSize * 0.16, -4) : hopFrames(dragonSize * 0.08, 0), big ? 760 : 560)
+    blow(big ? 9 : 5)
+    if (big && egg) rockEgg()
+  }
+
+  /** Happy for a while after the last tap, then idle, then back to sleep with a settle. */
+  const restLater = (after: number) => {
+    clearTimeout(timers.current.rest)
+    timers.current.rest = window.setTimeout(() => {
+      setMood('idle')
+      timers.current.rest = window.setTimeout(() => {
+        setMood('sleeping')
+        move(body.current, [{ transform: 'scale(1.03, 0.95)' }, { transform: 'scale(1, 1)' }], 600)
+      }, NAP)
+    }, after)
+  }
+
+  const tap = () => {
+    const now = performance.now()
+    if (now - lastTap.current < 220) return
+    lastTap.current = now
+    if (!d) {
+      rockEgg()
+      play('wobble')
+      return
+    }
+    const pitch = PITCH[d.stage]
+    clearTimeout(timers.current.wake)
+    if (moodNow.current === 'sleeping') {
+      // Wake: a squash, then up into idle; a beat later the first happy hop.
+      streak.current = 0
+      setMood('idle')
+      move(body.current, [{ transform: 'scale(1.06, 0.88)' }, { transform: 'scale(0.97, 1.05)', offset: 0.45 }, { transform: 'scale(1, 1)' }], WAKE)
+      play('wake', pitch)
+      timers.current.wake = window.setTimeout(() => {
+        setMood('happy')
+        hop(false)
+      }, WAKE)
+      restLater(WAKE + HOLD)
+      return
+    }
+    streak.current++
+    const big = streak.current % 3 === 0
+    setMood('happy')
+    hop(big)
+    play(big ? 'roar' : 'wake', pitch)
+    restLater(HOLD)
+  }
+
   const label = d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'
-  return (
-    <svg viewBox={`0 0 400 ${ABOVE + pileH}`} preserveAspectRatio="xMidYMax meet" role="img" aria-label={label}>
+  const scene = (
+    <svg
+      viewBox={`0 0 400 ${ABOVE + pileH}`}
+      preserveAspectRatio="xMidYMax meet"
+      role={tappable ? undefined : 'img'}
+      aria-label={tappable ? undefined : label}
+      aria-hidden={tappable ? 'true' : undefined}
+    >
       <image href={pile.src} x="0" y={ABOVE} width="400" height={pileH} />
       {sleeper && d && (
-        <g class="dragon-breathe">
-          <Sized href={sleeper.src} cx={cx} ground={ground} size={290 * STAGE_SCALE[d.stage]} />
+        <g class={mood === 'sleeping' ? 'dragon-breathe' : undefined}>
+          <g ref={body} class="dragon-body" data-mood={mood}>
+            {tappable ? (
+              // All three moods stand on one canvas and ground line; only one is shown.
+              (['sleeping', 'idle', 'happy'] as const).map((m) => (
+                <g key={m} class="dragon-mood" data-on={m === mood ? '' : undefined}>
+                  <Sized href={dragonPic(d.kind, d.stage, m)!.src} cx={cx} ground={ground} size={dragonSize} />
+                </g>
+              ))
+            ) : (
+              <Sized href={sleeper.src} cx={cx} ground={ground} size={dragonSize} />
+            )}
+          </g>
         </g>
       )}
       {sleeper && d && (
-        <text class="zzz" x={cx + 125 * STAGE_SCALE[d.stage]} y={ground - 200 * STAGE_SCALE[d.stage]} fill="var(--foam)" font-size="26" font-weight="700">
-          z z
-        </text>
+        <g class="zzz-wrap" data-off={mood !== 'sleeping' ? '' : undefined}>
+          <text class="zzz" x={cx + 125 * scale} y={ground - 200 * scale} fill="var(--foam)" font-size="26" font-weight="700">
+            z z
+          </text>
+        </g>
       )}
-      {egg && (both ? <Sized href={egg.src} cx={310} ground={ground + 10} size={84} /> : <Sized href={egg.src} cx={200} ground={ground + 6} size={150} />)}
+      {egg && (
+        <g ref={eggEl} class="hoard-egg">
+          {both ? <Sized href={egg.src} cx={310} ground={ground + 10} size={84} /> : <Sized href={egg.src} cx={200} ground={ground + 6} size={150} />}
+        </g>
+      )}
+      {bubbles.map((b) => (
+        <g key={b.id} class="bubble" style={{ '--dx': `${b.dx}px`, '--rise': `${b.rise}px`, animationDelay: `${b.delay}ms` }}>
+          <circle cx={b.x} cy={b.y} r={b.r} />
+          <path d={`M${b.x - b.r * 0.55} ${b.y - b.r * 0.1}a${b.r * 0.55} ${b.r * 0.55} 0 0 1 ${b.r * 0.45} ${-b.r * 0.45}`} />
+        </g>
+      ))}
     </svg>
+  )
+  if (!tappable) return scene
+  return (
+    <button type="button" class="hoard-tap" aria-label={d ? T.wakeDragon(d.name) : T.tapEgg} onClick={tap}>
+      {scene}
+    </button>
   )
 }
 

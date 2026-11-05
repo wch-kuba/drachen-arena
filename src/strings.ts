@@ -39,6 +39,8 @@ export const T = {
   sleepsOn: (name: string) => `${name} schläft auf`,
   /** Home caption before the first dragon: the egg lies on the hoard. */
   eggLiesOn: 'Dein Ei liegt auf',
+  /** Label of the tappable hoard on Home: tapping wakes the dragon (a lone egg uses tapEgg). */
+  wakeDragon: (name: string) => `${name} aufwecken`,
   /** Alt text of a word picture that must not give the answer away. */
   picture: 'Bild',
   crystalsWord: (n: number) => (n === 1 ? 'Kristall' : 'Kristallen'),

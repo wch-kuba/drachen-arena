@@ -37,6 +37,7 @@
 - [x] Adjust layout, sizes and cropping around the real art on iPhone, iPad portrait and iPad landscape. Checked in WebKit at 390×844, 820×1180 and 1180×820.
 - [x] Animate the hero: idle breathing/blink on home, happy pose on right answers and rewards, hatch sequence (respect `prefers-reduced-motion`). Decided 2026-11-04: no dragon on the exercise screens (it took task space and was tiny on the phone); the happy pose shows on the round summary and the hatch greeting.
 - [x] Update DESIGN.md "Drawn art and illustration": placeholders gone, poses/growth/animation rules recorded.
+- [x] Tap the dragon on Home (asked 2026-11-05): it wakes (sleeping → idle), hops into its happy pose with bubbles, gold light from below and a snort; more taps = more hops, every third a bigger one with a roar; it falls back asleep ~3 s after the last tap. A lone egg rocks with its knock. Built from the existing poses (code, no video); a Midjourney start/end-frame clip stays an option for later. Checked in WebKit at 820×1180 and 390×844.
 
 ### Painted world pieces (added 2026-11-04: the drawn pieces looked weak next to the art)
 - [x] Hoard pile: painted treasure heap in 4 sizes (grows with crystals), made from one reference; replaces the SVG pile on Home, Welcome, the round summary and the exercise ledge.

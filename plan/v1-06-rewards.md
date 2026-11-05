@@ -76,6 +76,7 @@ States the screens must cover: **egg phase** (no dragon yet, or the newest is gr
 - [x] **Check**: `npm run build`, vitest, WebKit walk on the iPad viewport through egg → hatch → feed → grow → grown + egg, and a reload at each ready state.
   Checked 2026-11-05: build + 56 tests; all new preview states shot on iPad portrait/landscape and iPhone; real-app run with a schema-2 profile (migrates to young + 95 goal crystals), a saved growth survives a reload, grow → land reveal → Home with dragon + egg, hints switch.
 - [x] PRODUCT.md › Rewards and DESIGN.md updated.
+- [x] **Fix: goal filled outside a finished round** (found on the iPad 2026-11-05: 105 crystals, egg not ready). Item crystals save at once, but the step was only taken in `endRound`, so leaving a round early left a full goal with nothing pending. Now `takeStep` (shared with `endRound`) runs when Home opens with a full goal (`stepDue`), so Home goes straight to the hatch or grow screen. Checked: tests + build, real app with the iPad state (105, no dragon) opens the hatch.
 
 ## Done when
 Playing 5 rounds hatches an egg, unlocks a land, and everything survives an app restart.

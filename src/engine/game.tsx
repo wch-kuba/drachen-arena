@@ -5,7 +5,7 @@ import { useContext, useEffect, useRef, useState } from 'preact/hooks'
 import { initVoice } from './audio.ts'
 import { initSfx, setAmbient, setSound } from './sfx.ts'
 import { record } from './leitner.ts'
-import { addCrystals, endRound, hatch, seeGrowth } from './rewards.ts'
+import { addCrystals, endRound, hatch, seeGrowth, takeStep } from './rewards.ts'
 import type { Result } from './round.ts'
 import { load, requestPersist, saveProfile, saveProgress, type Data } from './storage.ts'
 import type { ExerciseType, Item, Profile } from './types.ts'
@@ -20,6 +20,8 @@ interface Game {
   hatchDragon: (name: string) => void
   /** The child has seen the dragon grow. */
   seeGrowth: () => void
+  /** A goal filled outside a finished round (round left early): make the egg ready or grow the dragon. */
+  takeStep: () => void
   setChildName: (name: string) => void
   setSound: (on: boolean) => void
   setAmbient: (on: boolean) => void
@@ -78,6 +80,7 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
     finishRound: (land) => changeProfile((p) => endRound(p, land)),
     hatchDragon: (name) => changeProfile((p) => hatch(p, name, Date.now())),
     seeGrowth: () => changeProfile(seeGrowth),
+    takeStep: () => changeProfile(takeStep),
     setChildName: (name) => changeProfile((p) => ({ ...p, childName: name.trim() })),
     setSound: (on) => changeProfile((p) => ({ ...p, sound: on })),
     setAmbient: (on) => changeProfile((p) => ({ ...p, ambient: on })),

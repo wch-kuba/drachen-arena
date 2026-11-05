@@ -61,28 +61,36 @@ const openNext = (p: Profile): Profile => {
 }
 
 /**
- * After a finished round: bonus and round count, then at most one step if the goal is full:
- * the fed dragon grows (a land opens, the growth waits to be shown), or the egg is ready.
- * While a step waits to be shown, no further step is taken.
+ * After a finished round: bonus and round count, then at most one step if the goal is full.
  */
 export function endRound(p: Profile, land: ExerciseType): Profile {
-  const q: Profile = { ...addCrystals(p, ROUND_BONUS), rounds: p.rounds + 1, lastLand: land }
-  if (q.pendingHatch || q.pendingGrowth || q.goalCrystals < STEP_COST) return q
-  const goal = goalOf(q)
+  return takeStep({ ...addCrystals(p, ROUND_BONUS), rounds: p.rounds + 1, lastLand: land })
+}
+
+/** A full goal with no step waiting to be shown: Home takes the step (e.g. after leaving a round early). */
+export const stepDue = (p: Profile): boolean =>
+  !p.pendingHatch && !p.pendingGrowth && p.goalCrystals >= STEP_COST && !('done' in goalOf(p))
+
+/**
+ * At most one step if the goal is full: the fed dragon grows (a land opens, the growth waits
+ * to be shown), or the egg is ready. While a step waits to be shown, no further step is taken.
+ */
+export function takeStep(p: Profile): Profile {
+  if (!stepDue(p)) return p
+  const goal = goalOf(p)
   if ('dragon' in goal) {
     const d = goal.dragon
     const stage = STAGES[STAGES.indexOf(d.stage) + 1]
-    const opened = nextLand(q)
+    const opened = nextLand(p)
     return openNext({
-      ...q,
-      goalCrystals: q.goalCrystals - STEP_COST,
-      dragons: q.dragons.map((x) => (x.id === d.id ? { ...x, stage } : x)),
+      ...p,
+      goalCrystals: p.goalCrystals - STEP_COST,
+      dragons: p.dragons.map((x) => (x.id === d.id ? { ...x, stage } : x)),
       pendingGrowth: { id: d.id, land: opened },
     })
   }
-  // All dragons found and grown: the crystals stay until v2 adds more.
-  if ('done' in goal) return q
-  return { ...q, goalCrystals: q.goalCrystals - STEP_COST, pendingHatch: goal.egg }
+  if ('egg' in goal) return { ...p, goalCrystals: p.goalCrystals - STEP_COST, pendingHatch: goal.egg }
+  return p
 }
 
 /** The child named the dragon in the ready egg. Opens the next land. */

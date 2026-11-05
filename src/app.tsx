@@ -3,7 +3,7 @@ import { UpdatePrompt } from './UpdatePrompt.tsx'
 import { LANDS, type LandId } from './lands.ts'
 import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
-import { eggKind, goalLeft, goalOf, isUnlocked, nextLand, STAGES, UNLOCK_ORDER } from './engine/rewards.ts'
+import { eggKind, goalLeft, goalOf, isUnlocked, nextLand, STAGES, stepDue, UNLOCK_ORDER } from './engine/rewards.ts'
 import { atmosphereHere } from './engine/sfx.ts'
 import { emptyProfile } from './engine/storage.ts'
 import type { Profile } from './engine/types.ts'
@@ -66,9 +66,16 @@ function HomeScreen() {
   // Keeps the hatch open for its last beat ("Hallo, Funkel!") after the egg is saved as a dragon.
   const [hatching, setHatching] = useState<string>()
   // The atmosphere (music + water) plays on Home, not over the welcome or the hatch.
-  const home = !!p.childName && !p.pendingHatch && !p.pendingGrowth && !hatching
+  const due = !!p.childName && !hatching && stepDue(p)
+  const home = !!p.childName && !p.pendingHatch && !p.pendingGrowth && !hatching && !due
   useEffect(() => (home ? atmosphereHere() : undefined), [home])
+  // A goal filled outside a finished round (the child left a round early): take the step here,
+  // so the egg hatches or the dragon grows instead of waiting for the next full round.
+  useEffect(() => {
+    if (due) game.takeStep()
+  }, [due])
   if (!p.childName) return <Welcome onName={setChildName} />
+  if (due) return null
   const kind = p.pendingHatch ?? hatching
   if (kind) {
     return (

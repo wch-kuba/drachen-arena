@@ -14,6 +14,8 @@ import {
   hatch,
   seeGrowth,
   stageBefore,
+  stepDue,
+  takeStep,
 } from './rewards.ts'
 import type { Profile } from './types.ts'
 
@@ -147,5 +149,31 @@ describe('growth moment', () => {
     p = endRound(seeGrowth(p), 'mehrzahl')
     expect(p.dragons[0].stage).toBe('grown')
     expect(p.pendingGrowth).toEqual({ id: 'd', land: 'laute' })
+  })
+})
+
+describe('round left early', () => {
+  it('readies the egg once Home sees a full goal, without a round bonus', () => {
+    const p = addCrystals(emptyProfile(), 105)
+    expect(stepDue(p)).toBe(true)
+    const q = takeStep(p)
+    expect(q.pendingHatch).toBe(DRAGONS[0].id)
+    expect(q.goalCrystals).toBe(5)
+    expect(q.rounds).toBe(0)
+    expect(stepDue(q)).toBe(false)
+  })
+
+  it('grows the fed dragon one step at a time, each after it was shown', () => {
+    let p = takeStep({ ...withDragon('hatchling'), goalCrystals: 2 * STEP_COST })
+    expect(p.dragons[0].stage).toBe('young')
+    expect(takeStep(p)).toBe(p)
+    p = takeStep(seeGrowth(p))
+    expect(p.dragons[0].stage).toBe('grown')
+  })
+
+  it('takes no step when the goal is not full or everything is grown', () => {
+    expect(stepDue(addCrystals(emptyProfile(), STEP_COST - 1))).toBe(false)
+    const dragons = DRAGONS.map((d, i) => ({ id: `d${i}`, kind: d.id, name: d.id, hatchedAt: 0, stage: 'grown' as const }))
+    expect(stepDue({ ...emptyProfile(), dragons, goalCrystals: STEP_COST })).toBe(false)
   })
 })

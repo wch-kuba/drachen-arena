@@ -46,7 +46,8 @@
 
 ### Repetition (Leitner)
 - [x] Right on first try → box +1. Wrong → box 1.
-- [x] Round of 10 picks: due items first, then box 1–2 items, then new ones.
+- [x] Round of 10 picks: due items first, then new ones, then resting items (longest rested first).
+- [x] Fix repetitive rotation: not-due box-2 words no longer push out new words; at most 5 box-1 words per round (parent report, 2026-11-05).
 - [x] Box intervals: 1 = every round, 2 = 1 day, 3 = 3 days, 4 = 7 days, 5 = 14 days.
 
 ### Audio

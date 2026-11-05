@@ -285,6 +285,16 @@
       "audio/c8df4090019d.mp3",
       "audio/f20bf3d0d575.mp3"
     ],
+    "Dein Drache ist gewachsen!": [
+      "audio/9a3e5560ca11.mp3",
+      "audio/83afed59623c.mp3",
+      "audio/f35a0b721710.mp3"
+    ],
+    "Dein Drache ist satt!": [
+      "audio/7cf41b0ef7a1.mp3",
+      "audio/7416850f9d99.mp3",
+      "audio/4105192188cd.mp3"
+    ],
     "der Apfel": [
       "audio/24eef264d8b0.mp3",
       "audio/85223f6bbe2d.mp3",
@@ -572,6 +582,11 @@
       "audio/3ee69f542e97.mp3",
       "audio/2c8475eb4dfc.mp3"
     ],
+    "Du bist ein Drachenprofi!": [
+      "audio/3674f9a90585.mp3",
+      "audio/0e396aee6c9b.mp3",
+      "audio/b0a0cc01437d.mp3"
+    ],
     "e": [
       "audio/c26fd69905a2.mp3",
       "audio/74e91c7589d9.mp3",
@@ -701,6 +716,11 @@
       "audio/3e4f9d461652.mp3",
       "audio/209a3218b639.mp3"
     ],
+    "Genau so!": [
+      "audio/c02305af28b9.mp3",
+      "audio/e5917e7c44be.mp3",
+      "audio/1444fa597b3f.mp3"
+    ],
     "Gießkanne": [
       "audio/71ba4c297dc7.mp3",
       "audio/29a3e6dcba16.mp3",
@@ -712,6 +732,11 @@
       "audio/6d0677f69cd5.mp3",
       "audio/ea08874678f8.mp3",
       "audio/9373ec72d8ee.mp3"
+    ],
+    "Gleich hast du es!": [
+      "audio/c3d8b3778bde.mp3",
+      "audio/507bbc0e0907.mp3",
+      "audio/12fa2693d1a6.mp3"
     ],
     "Haar": [
       "audio/09969731c3f8.mp3",
@@ -897,6 +922,11 @@
       "audio/d4e2492e76e5.mp3",
       "audio/9f2d98e9537d.mp3"
     ],
+    "Klasse!": [
+      "audio/be17c686210b.mp3",
+      "audio/82ebdf3c9ae9.mp3",
+      "audio/af5e80636fde.mp3"
+    ],
     "Klavier": [
       "audio/10cda2dafb55.mp3",
       "audio/8a097fa79cdb.mp3",
@@ -1059,6 +1089,16 @@
       "audio/4f9cd02cd010.mp3",
       "audio/4fb72fa80070.mp3"
     ],
+    "Nicht schlimm. Probier es noch mal.": [
+      "audio/d499f9abb41c.mp3",
+      "audio/84a4b1f7c036.mp3",
+      "audio/910dc0c144a1.mp3"
+    ],
+    "Noch nicht ganz.": [
+      "audio/32f9458c4475.mp3",
+      "audio/8ef35469a430.mp3",
+      "audio/ddfca5e3f056.mp3"
+    ],
     "Nüsse": [
       "audio/a7a7c5beab47.mp3",
       "audio/4f19c2ea44b5.mp3",
@@ -1119,6 +1159,11 @@
       "audio/5e705290a192.mp3",
       "audio/00750939711c.mp3"
     ],
+    "Prima, weiter so!": [
+      "audio/59297974d596.mp3",
+      "audio/f90ea34435a8.mp3",
+      "audio/a5969b1ac6ab.mp3"
+    ],
     "Räder": [
       "audio/075ce17654de.mp3",
       "audio/1a2f5f1e32ca.mp3",
@@ -1130,6 +1175,11 @@
       "audio/ea3819e7da88.mp3",
       "audio/4b820998213d.mp3",
       "audio/18bad8309520.mp3"
+    ],
+    "Richtig! Dein Schatz wächst.": [
+      "audio/9dfdf31a00b1.mp3",
+      "audio/6ab452c66161.mp3",
+      "audio/a59fc9608e61.mp3"
     ],
     "Riese": [
       "audio/e92fd1595061.mp3",
@@ -1251,6 +1301,11 @@
       "audio/034dd819220a.mp3",
       "audio/dcb70df088a9.mp3"
     ],
+    "Stark gemacht!": [
+      "audio/991e336c12c6.mp3",
+      "audio/ec69d939586f.mp3",
+      "audio/d76bc1a46e18.mp3"
+    ],
     "Stiefel": [
       "audio/62e5f3b515bb.mp3",
       "audio/7698b43b621e.mp3",
@@ -1281,10 +1336,10 @@
       "audio/b7fd44bff85d.mp3",
       "audio/da2320d40cd0.mp3"
     ],
-    "Super! Ein Kristall für deinen Schatz.": [
-      "audio/93849f973d24.mp3",
-      "audio/077ad282156c.mp3",
-      "audio/5984a4e9e0a8.mp3"
+    "Super!": [
+      "audio/5e68240fafcd.mp3",
+      "audio/9821e31253ea.mp3",
+      "audio/253c8384861a.mp3"
     ],
     "Teufel": [
       "audio/d33eb90eab93.mp3",
@@ -1297,6 +1352,16 @@
       "audio/4870406f0aa7.mp3",
       "audio/34d55d1eeda8.mp3",
       "audio/4b978816b58c.mp3"
+    ],
+    "Tipp auf das Ei!": [
+      "audio/e6de3d6521aa.mp3",
+      "audio/f742ad090045.mp3",
+      "audio/db116a855c9e.mp3"
+    ],
+    "Tipp auf deinen Drachen!": [
+      "audio/51ca21089d82.mp3",
+      "audio/772b412eaeb2.mp3",
+      "audio/8a6a4affdeb2.mp3"
     ],
     "Tipp auf die Buchstaben. Dann auf die Farbe.": [
       "audio/d14cf0a0a852.mp3",
@@ -1430,6 +1495,11 @@
       "audio/e63f5df5751b.mp3",
       "audio/639651b29e52.mp3"
     ],
+    "Toll gemacht!": [
+      "audio/13d39c89ee1c.mp3",
+      "audio/b5e55e0583f0.mp3",
+      "audio/a843443b25a0.mp3"
+    ],
     "Töpfe": [
       "audio/067fac6531ce.mp3",
       "audio/42cb1a8ba5e7.mp3",
@@ -1466,6 +1536,11 @@
       "audio/3227f9ec273b.mp3",
       "audio/37281c6bb681.mp3"
     ],
+    "Versuch es noch einmal.": [
+      "audio/5d00d6060792.mp3",
+      "audio/b8cb8df54c06.mp3",
+      "audio/329ff0852b89.mp3"
+    ],
     "vier": [
       "audio/025ef12bd151.mp3",
       "audio/b29d15b6611d.mp3",
@@ -1498,6 +1573,16 @@
       "audio/e596aaf54334.mp3",
       "audio/20fa1411464b.mp3",
       "audio/ed0a4d96fa80.mp3"
+    ],
+    "Wie heißt du?": [
+      "audio/5a71d5f75a59.mp3",
+      "audio/3d53d92fe3ae.mp3",
+      "audio/f422b7bd8adb.mp3"
+    ],
+    "Wie soll dein Drache heißen?": [
+      "audio/9c3c7613885b.mp3",
+      "audio/d23b8b8e81b0.mp3",
+      "audio/d640de50da98.mp3"
     ],
     "Wiese": [
       "audio/cf0ee0576cad.mp3",

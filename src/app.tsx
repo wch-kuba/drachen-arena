@@ -3,7 +3,7 @@ import { UpdatePrompt } from './UpdatePrompt.tsx'
 import { LANDS, type LandId } from './lands.ts'
 import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
-import { eggKind, goalOf, isUnlocked, nextLand, UNLOCK_ORDER } from './engine/rewards.ts'
+import { eggKind, goalLeft, goalOf, isUnlocked, nextLand, STAGES, UNLOCK_ORDER } from './engine/rewards.ts'
 import { atmosphereHere } from './engine/sfx.ts'
 import { emptyProfile } from './engine/storage.ts'
 import type { Profile } from './engine/types.ts'
@@ -99,7 +99,7 @@ function HomeScreen() {
     )
   }
   const last = p.lastLand && isUnlocked(p, p.lastLand) ? p.lastLand : UNLOCK_ORDER[0]
-  const { on, hint } = homeGoal(p)
+  const { on, hint, step } = homeGoal(p)
   return (
     <Home
       name={p.childName}
@@ -108,6 +108,7 @@ function HomeScreen() {
       isOpen={(l) => isUnlocked(p, l)}
       next={nextLand(p)}
       nextHint={hint}
+      nextStep={step}
       onStart={() => go(last)}
       onLand={go}
       onDragons={() => go('drachen')}
@@ -120,12 +121,18 @@ function HomeScreen() {
 }
 
 /** The goal on the hoard: the dragon being fed, or the egg (against the newest dragon, if any). */
-function homeGoal(p: Profile): { on: OnHoard; hint: string } {
+function homeGoal(p: Profile): { on: OnHoard; hint: string; step: string } {
   const goal = goalOf(p)
   const newest = p.dragons.at(-1)
-  if ('dragon' in goal) return { on: { dragon: goal.dragon }, hint: T.nextGrow(goal.dragon.name) }
-  if ('egg' in goal) return { on: { dragon: newest, egg: goal.egg }, hint: T.nextEgg }
-  return { on: { dragon: newest }, hint: T.locked }
+  const left = goalLeft(p)
+  if ('dragon' in goal) {
+    const d = goal.dragon
+    const next = STAGES[STAGES.indexOf(d.stage) + 1]
+    return { on: { dragon: d }, hint: T.nextGrow(d.name), step: T.growsInto(left, d.name, T.stageInText[next]) }
+  }
+  if ('egg' in goal) return { on: { dragon: newest, egg: goal.egg }, hint: T.nextEgg, step: T.eggLeft(left) }
+  // 'done' always has a newest dragon: every dragon is found and grown.
+  return { on: { dragon: newest }, hint: T.locked, step: newest ? T.fullGrown(newest.name, T.stageInText.grown) : '' }
 }
 
 /** A land the child hasn't opened yet (e.g. an old bookmark) goes back home. */
@@ -171,6 +178,7 @@ const demoHome = (p: Profile) => (
     isOpen={(l) => isUnlocked({ ...p, unlockedWorlds: ['mehrzahl', 'luecke'] }, l)}
     next="ie"
     nextHint={homeGoal(p).hint}
+    nextStep={homeGoal(p).step}
     onStart={noop}
     onLand={noop}
     onDragons={noop}

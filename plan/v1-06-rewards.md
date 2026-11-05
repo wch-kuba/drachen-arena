@@ -21,6 +21,7 @@ Rules decided 2026-11-04 (with the user): 100 crystals per egg plus +10 per fini
 - [x] ~10–15 dragons in v1: 12 kinds, tinted placeholders until Part 7.
 - [x] Dragon growth: a hatched dragon grows hatchling → young → grown as the child keeps playing (rule to decide, e.g. crystals earned after hatching). Never shrinks. Art from Part 7.
   Rule: young after 10 finished rounds since hatching, grown after 25 ("Wächst in 7 Runden" in the collection). Replaced 2026-11-05: fed with crystals, see below.
+- [x] Home shows the next step under the caption, in crystals: "Noch 40 Kristalle, dann wird Funkel ein junger Drache.", "Noch 37 Kristalle, dann schlüpft dein Ei.", or "… ist schon ein großer Drache!" when all are grown.
 
 ### Sound effects (decided 2026-11-04, via `/impeccable` when built)
 - [x] Make the effects with ElevenLabs sound effects (`eleven_text_to_sound_v3`, ~10 credits per second) and bundle them as MP3 for offline. Demos in `audio-samples/sfx-*`. → `npm run sfx` (`scripts/gen-sfx.ts`), 10 files in `public/sfx/`, ~310 credits, 380 KB.

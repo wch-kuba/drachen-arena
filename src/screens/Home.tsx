@@ -11,6 +11,8 @@ interface Props {
   /** The land that opens with the next step, and what that step is ("Öffnet sich …"). */
   next?: LandId
   nextHint: string
+  /** Under the caption: what the crystals fill next and how many are still needed. */
+  nextStep: string
   onStart: () => void
   onLand: (id: LandId) => void
   onDragons: () => void
@@ -20,7 +22,7 @@ interface Props {
   onAmbient: (on: boolean) => void
 }
 
-export function Home({ name, crystals, on, isOpen, next, nextHint, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
+export function Home({ name, crystals, on, isOpen, next, nextHint, nextStep, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
@@ -52,6 +54,7 @@ export function Home({ name, crystals, on, isOpen, next, nextHint, onStart, onLa
             {crystals} {T.crystalsWord(crystals)}
           </b>
           .
+          <span class="home-next">{nextStep}</span>
         </p>
 
         <button type="button" class="reward-home home-dragons" onClick={onDragons}>

@@ -1,5 +1,7 @@
 // Core data model shared by every exercise (plan/v1-03-core-engine.md).
 
+import type { Stage } from './rewards.ts'
+
 export type ExerciseType = 'laute' | 'mehrzahl' | 'luecke' | 'kurzlang' | 'ie'
 
 /** One question. Seed items ship with the app; parent items are added in v2. */
@@ -47,8 +49,8 @@ export interface Dragon {
   /** Typed by the child when the egg hatched. */
   name: string
   hatchedAt: number
-  /** `Profile.rounds` at hatch time; growth counts rounds since then. */
-  roundsAtHatch: number
+  /** Grows one step per STEP_COST crystals fed while it is the newest dragon. Never shrinks. */
+  stage: Stage
 }
 
 export interface Profile {
@@ -56,12 +58,14 @@ export interface Profile {
   childName: string
   /** All crystals ever earned. Only ever goes up. */
   crystals: number
-  /** Crystals in the current egg (0 … EGG_COST). */
-  eggCrystals: number
+  /** Crystals in the current goal: the egg, or the newest dragon's next growth step. */
+  goalCrystals: number
   /** Finished rounds, all lands. */
   rounds: number
   /** Dragon kind of an egg that is ready but not named yet; survives an app restart. */
   pendingHatch?: string
+  /** A dragon that just grew (and the land that opened), until the child has seen it grow. */
+  pendingGrowth?: { id: string; land?: ExerciseType }
   /** Land of the last round, for the start button. */
   lastLand?: ExerciseType
   dragons: Dragon[]

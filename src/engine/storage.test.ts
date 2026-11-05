@@ -41,7 +41,7 @@ describe('load', () => {
   })
 })
 
-describe('migration 1 → 2', () => {
+describe('migrations', () => {
   it('keeps crystals and every land already played open', async () => {
     const s = createStore(name, 'kv')
     const played = TEST_ITEMS.find((i) => i.type === 'kurzlang')!
@@ -54,9 +54,26 @@ describe('migration 1 → 2', () => {
       s,
     )
     const { profile } = await load(TEST_ITEMS)
-    expect(profile).toMatchObject({ childName: 'Kim', crystals: 230, eggCrystals: 30, rounds: 0 })
+    expect(profile).toMatchObject({ childName: 'Kim', crystals: 230, goalCrystals: 30, rounds: 0 })
+    expect(profile).not.toHaveProperty('eggCrystals')
     expect(profile.unlockedWorlds).toEqual(['mehrzahl', 'kurzlang'])
     expect(profile).not.toHaveProperty('points')
+  })
+
+  it('2 → 3 keeps each dragon at the stage it had and the egg crystals as goal crystals', async () => {
+    const s = createStore(name, 'kv')
+    await set('meta', { schema: 2 }, s)
+    const d = (id: string, roundsAtHatch: number) => ({ id, kind: id, name: id, hatchedAt: 0, roundsAtHatch })
+    await set(
+      'profile',
+      { childName: 'Kim', crystals: 400, eggCrystals: 64, rounds: 30, dragons: [d('perle', 0), d('wrack', 12), d('tang', 26)] },
+      s,
+    )
+    const { profile } = await load(TEST_ITEMS)
+    expect(profile.goalCrystals).toBe(64)
+    expect(profile).not.toHaveProperty('eggCrystals')
+    expect(profile.dragons.map((x) => x.stage)).toEqual(['grown', 'young', 'hatchling'])
+    expect(profile.dragons[0]).not.toHaveProperty('roundsAtHatch')
   })
 
   it('starts a new child with only the first land open', async () => {

@@ -46,7 +46,6 @@ export const T = {
   eggLeft: (n: number) => `Noch ${n} Kristalle, dann schlüpft dein Ei.`,
   eggReady: 'Dein Ei wackelt! Gleich schlüpft es.',
   toEgg: 'Zum Ei!',
-  dragonOfDay: (name: string) => `${name} ist heute bei dir.`,
   tapEgg: 'Tipp auf das Ei!',
   hatched: 'Dein Ei ist geschlüpft!',
   askDragonName: 'Wie soll dein Drache heißen?',
@@ -55,7 +54,24 @@ export const T = {
   toGrotto: 'Zur Grotte',
   dragonCount: (n: number) => (n === 1 ? '1 Drache' : `${n} Drachen`),
   stage: { hatchling: 'Drachenbaby', young: 'Junger Drache', grown: 'Großer Drache' },
-  growsIn: (n: number) => (n === 1 ? 'Wächst nach der nächsten Runde' : `Wächst in ${n} Runden`),
+  /** The dragon being fed (round summary): "Noch 40 Kristalle, dann wächst Funkel." */
+  feedLeft: (n: number, name: string) => `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}, dann wächst ${name}.`,
+  /** The same, short, in the collection. */
+  crystalsLeft: (n: number) => `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}`,
+  fed: (name: string) => `${name} ist satt!`,
+  fedReady: (name: string) => `${name} ist satt und will wachsen!`,
+  toDragon: (name: string) => `Zu ${name}!`,
+  tapDragon: (name: string) => `Tipp auf ${name}!`,
+  grew: (name: string) => `${name} ist gewachsen!`,
+  grownEgg: (name: string) => `${name} ist groß und hat ein Ei gefunden!`,
+  /** Read aloud on the grow screen. Name-free: clips are made at build time, the name is the child's. */
+  fedSay: 'Dein Drache ist satt!',
+  tapDragonSay: 'Tipp auf deinen Drachen!',
+  grewSay: 'Dein Drache ist gewachsen!',
+  /** A locked land while a dragon is being fed. */
+  nextGrow: (name: string) => `Öffnet sich, wenn ${name} wächst`,
+  /** The next egg's niche while a dragon is being fed. */
+  eggAfter: (name: string) => `Kommt, wenn ${name} groß ist.`,
   egg: 'Dein Ei',
   sounds: 'Töne',
   music: 'Musik',

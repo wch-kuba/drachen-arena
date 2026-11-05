@@ -31,8 +31,12 @@ export function Gem({ filled = true, class: cls }: { filled?: boolean; class?: s
   )
 }
 
-/** What lies on the hoard: the child's dragon (asleep on Home), or the egg before the first one. */
-export type OnHoard = { dragon: { kind: string; stage: Stage; name: string } } | { egg: string }
+/** What lies on the hoard: the dragon (asleep on Home), the egg, or the dragon with the egg
+ *  against it (a grown dragon while the next egg fills). */
+export interface OnHoard {
+  dragon?: { kind: string; stage: Stage; name: string }
+  egg?: string
+}
 
 /** The painted hoard in 4 sizes; `size` 0..1 picks how big the pile has grown. */
 const hoardPic = (size: number) => pic(`prop/hoard-${Math.min(4, 1 + Math.floor(size * 4))}`)!
@@ -46,23 +50,27 @@ export function HoardScene({ size = 0.6, on }: { size?: number; on: OnHoard }) {
   const pileH = (400 * pile.h) / pile.w
   // The dragon (with its own bit of gold) sinks into the pile, so the two read as one heap.
   const ground = ABOVE + pileH * 0.78
-  const d = 'dragon' in on ? on.dragon : undefined
+  const d = on.dragon
   const sleeper = d && dragonPic(d.kind, d.stage, 'sleeping')
-  const egg = 'egg' in on ? eggPic(on.egg) : undefined
+  const egg = on.egg ? eggPic(on.egg) : undefined
+  // With both, the dragon moves left and the smaller egg leans against it in front.
+  const both = !!(sleeper && egg)
+  const cx = both ? 180 : 200
+  const label = d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'
   return (
-    <svg viewBox={`0 0 400 ${ABOVE + pileH}`} preserveAspectRatio="xMidYMax meet" role="img" aria-label={d ? `${d.name} schläft auf seinem Schatz` : 'Dein Ei liegt auf dem Schatz'}>
+    <svg viewBox={`0 0 400 ${ABOVE + pileH}`} preserveAspectRatio="xMidYMax meet" role="img" aria-label={label}>
       <image href={pile.src} x="0" y={ABOVE} width="400" height={pileH} />
       {sleeper && d && (
         <g class="dragon-breathe">
-          <Sized href={sleeper.src} cx={200} ground={ground} size={290 * STAGE_SCALE[d.stage]} />
+          <Sized href={sleeper.src} cx={cx} ground={ground} size={290 * STAGE_SCALE[d.stage]} />
         </g>
       )}
       {sleeper && d && (
-        <text class="zzz" x={200 + 125 * STAGE_SCALE[d.stage]} y={ground - 200 * STAGE_SCALE[d.stage]} fill="var(--foam)" font-size="26" font-weight="700">
+        <text class="zzz" x={cx + 125 * STAGE_SCALE[d.stage]} y={ground - 200 * STAGE_SCALE[d.stage]} fill="var(--foam)" font-size="26" font-weight="700">
           z z
         </text>
       )}
-      {egg && <Sized href={egg.src} cx={200} ground={ground + 6} size={150} />}
+      {egg && (both ? <Sized href={egg.src} cx={310} ground={ground + 10} size={84} /> : <Sized href={egg.src} cx={200} ground={ground + 6} size={150} />)}
     </svg>
   )
 }

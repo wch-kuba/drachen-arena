@@ -1,16 +1,18 @@
 import { DRAGONS } from '../content/dragons.ts'
-import { EGG_COST, eggKind, roundsToGrow, stageOf } from '../engine/rewards.ts'
+import { eggKind, goalLeft, growing } from '../engine/rewards.ts'
 import type { Profile } from '../engine/types.ts'
 import { T } from '../strings.ts'
 import { DragonPic, EggPic, EggSlot, IconBack } from '../ui/art.tsx'
 
 // The dragon collection: each hatched dragon rests on its own small hoard in a niche of the
-// grotto, newest first and biggest. Then the egg in progress, then the eggs still to find as
-// dashed shapes carved into the rock: the child sees how many there are, never what they are.
+// grotto, newest first and biggest; the one being fed says how many crystals it still needs.
+// Then the next egg (filling, or waiting until that dragon is grown), then the eggs still to
+// find as dashed shapes carved into the rock: the child sees how many, never what they are.
 
 export function Collection({ profile, onBack }: { profile: Profile; onBack: () => void }) {
   const dragons = [...profile.dragons].reverse()
   const ready = !!profile.pendingHatch
+  const fed = growing(profile)
   const left = DRAGONS.length - profile.dragons.length - 1
 
   return (
@@ -24,8 +26,7 @@ export function Collection({ profile, onBack }: { profile: Profile; onBack: () =
       <p class="collection-sub">{dragons.length ? T.dragonCount(dragons.length) : T.noDragons}</p>
       <div class="niches">
         {dragons.map((d) => {
-          const stage = stageOf(d, profile.rounds)
-          const grow = roundsToGrow(d, profile.rounds)
+          const stage = d.stage
           return (
             <div class="niche">
               <div class="niche-arch" data-stage={stage}>
@@ -34,20 +35,16 @@ export function Collection({ profile, onBack }: { profile: Profile; onBack: () =
               <span class="niche-name">{d.name}</span>
               <span class="niche-meta">
                 {T.stage[stage]}
-                {grow !== undefined && <> · {T.growsIn(grow)}</>}
+                {d.id === fed?.id && <> · {T.crystalsLeft(goalLeft(profile))}</>}
               </span>
             </div>
           )
         })}
         {left >= 0 && (
-          <div class="niche">
-            <div class="niche-arch niche-egg">
-              <EggPic kind={eggKind(profile)} isNew={ready} />
-            </div>
+          <div class="niche" data-empty={fed ? '' : undefined}>
+            <div class="niche-arch niche-egg">{fed ? <EggSlot /> : <EggPic kind={eggKind(profile)} isNew={ready} />}</div>
             <span class="niche-name">{T.egg}</span>
-            <span class="niche-meta">
-              {ready ? T.eggReady : T.eggLeft(EGG_COST - profile.eggCrystals)}
-            </span>
+            <span class="niche-meta">{fed ? T.eggAfter(fed.name) : ready ? T.eggReady : T.eggLeft(goalLeft(profile))}</span>
           </div>
         )}
         {Array.from({ length: Math.max(0, left) }, () => (

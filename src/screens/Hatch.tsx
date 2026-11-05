@@ -97,17 +97,24 @@ export function Hatch({ kind, onName, onDone }: Props) {
         <h1>{T.helloDragon(name)}</h1>
       </div>
       {art}
-      <div class="reward-act">
-        {land && (
-          <div class="hatch-land">
-            <CaveMouth land={land.id} />
-            <p class="reward-sub">{T.newLand(land.name)}</p>
-          </div>
-        )}
-        <button type="button" class="btn-gold" onClick={onDone}>
-          {T.toGrotto}
-        </button>
-      </div>
+      <LandReveal land={land} onDone={onDone} />
+    </div>
+  )
+}
+
+/** The last beat of a hatch or a growth: the grotto that just opened rises in, then home. */
+export function LandReveal({ land, onDone }: { land?: Land; onDone: () => void }) {
+  return (
+    <div class="reward-act">
+      {land && (
+        <div class="hatch-land">
+          <CaveMouth land={land.id} />
+          <p class="reward-sub">{T.newLand(land.name)}</p>
+        </div>
+      )}
+      <button type="button" class="btn-gold" onClick={onDone}>
+        {T.toGrotto}
+      </button>
     </div>
   )
 }

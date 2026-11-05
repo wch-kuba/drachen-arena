@@ -2,10 +2,10 @@
 // Keys: meta, items, progress, profile. All small enough to read and write whole.
 
 import { createStore, get, set, setMany, update, type UseStore } from 'idb-keyval'
-import { EGG_COST, UNLOCK_ORDER } from './rewards.ts'
-import type { ExerciseType, Item, Profile, Progress } from './types.ts'
+import { UNLOCK_ORDER, type Stage } from './rewards.ts'
+import type { Dragon, ExerciseType, Item, Profile, Progress } from './types.ts'
 
-export const SCHEMA = 2
+export const SCHEMA = 3
 
 interface Meta {
   schema: number
@@ -30,10 +30,11 @@ const MIGRATIONS: Record<number, (db: UseStore) => Promise<void>> = {
     ])
     const played = new Set((items ?? []).filter((i) => progress?.[i.id]?.lastSeen).map((i) => i.type))
     const crystals = typeof old.crystals === 'number' ? old.crystals : 0
-    const profile: Profile = {
+    // Schema 2 shape; step 2 → 3 turns it into today's.
+    const profile = {
       childName: typeof old.childName === 'string' ? old.childName : '',
       crystals,
-      eggCrystals: crystals % EGG_COST,
+      eggCrystals: crystals % 100,
       rounds: 0,
       dragons: [],
       unlockedWorlds: UNLOCK_ORDER.filter((l) => l === UNLOCK_ORDER[0] || played.has(l)),
@@ -42,12 +43,30 @@ const MIGRATIONS: Record<number, (db: UseStore) => Promise<void>> = {
     }
     await set('profile', profile, s)
   },
+  // 2 → 3: feed one dragon. Growth comes from crystals, not rounds. Every dragon keeps the
+  // stage it had by the old rule (young after 10 rounds since hatch, grown after 25), and the
+  // egg's crystals now fill the current goal. Nothing is taken away.
+  2: async (s) => {
+    const old = await get<Record<string, unknown>>('profile', s)
+    if (!old) return
+    const rounds = typeof old.rounds === 'number' ? old.rounds : 0
+    const { eggCrystals, ...rest } = old
+    const dragons = ((old.dragons as Record<string, unknown>[] | undefined) ?? []).map(
+      ({ roundsAtHatch, ...d }): Dragon => {
+        const since = rounds - (typeof roundsAtHatch === 'number' ? roundsAtHatch : rounds)
+        const stage: Stage = since >= 25 ? 'grown' : since >= 10 ? 'young' : 'hatchling'
+        return { ...(d as Omit<Dragon, 'stage'>), stage }
+      },
+    )
+    const goalCrystals = typeof eggCrystals === 'number' ? eggCrystals : 0
+    await set('profile', { ...rest, goalCrystals, dragons }, s)
+  },
 }
 
 export const emptyProfile = (): Profile => ({
   childName: '',
   crystals: 0,
-  eggCrystals: 0,
+  goalCrystals: 0,
   rounds: 0,
   dragons: [],
   unlockedWorlds: [UNLOCK_ORDER[0]] as ExerciseType[],

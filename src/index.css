@@ -1431,6 +1431,14 @@ b.hl {
   padding-block: 0.75rem 0.85rem;
 }
 
+/* Sentence mode: the color is the cue, the term alone is the label. */
+.legend[data-plain] button {
+  min-height: 4.2rem;
+  align-content: center;
+  padding-inline: 0.5rem;
+  font-size: 1.1rem;
+}
+
 .legend[data-quiz] button b {
   min-height: 1.4em;
   font-size: 1.05rem;
@@ -1494,6 +1502,12 @@ b.hl {
 @media (max-width: 699px) {
   .legend[data-quiz] button {
     font-size: 0.95rem;
+  }
+
+  .legend[data-plain] button {
+    min-height: 3.6rem;
+    padding-inline: 0.4rem;
+    font-size: 0.85rem;
   }
 
   .sentence {

@@ -14,7 +14,7 @@
 
 ## 1. Selbstlaute, Zwielaute, Umlaute (choice)
 - [x] **Mode A:** show one letter or group (a, ei, ü, au, äu…) + audio → 3 big buttons: Selbstlaut (gelb) / Zwielaut (grün) / Umlaut (blau). The letters of each class show on the buttons only after a wrong try (rule hint); a right answer paints the tile in its legend color.
-- [x] **Mode B (school-test style):** a short sentence; child taps a letter or group and gives it a color. Tapping "ei" selects both letters as one group. Tapping a painted letter picks it up again.
+- [x] **Mode B (school-test style):** a short sentence; child taps a letter or group and gives it a color. Tapping "ei" selects both letters as one group. Tapping a painted letter picks it up again. The color buttons show only the term (Selbstlaut / Zwielaut / Umlaut), no example letters: the color is the cue, as in the school test.
 - [x] Mode B check (decided 2026-11-04): right colors stay, wrong ones are wiped. Try 1 → soft coral rings on the letters still to do. Try 2 → the rings show the color to use. Try 3 → the right colors are filled in and the child taps Fertig.
 - [x] Mix modes A and B in a round. An item is mode B when its answer is a coloring (`lauteCode(sentence)`), not a class name.
 

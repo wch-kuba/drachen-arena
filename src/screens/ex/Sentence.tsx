@@ -4,7 +4,7 @@ import { normalize } from '../../engine/check.ts'
 import { encode, units, type Laut, type Unit } from '../../engine/words.ts'
 import { T } from '../../strings.ts'
 import { Speak } from '../../ui/Speak.tsx'
-import { COLOR, EXAMPLES } from './Choice.tsx'
+import { COLOR } from './Choice.tsx'
 import { Feedback, NextButton, type Play, RightFeedback } from '../Exercise.tsx'
 
 // Laute, sentence mode (1B), like the school test: tap a letter, then its color.
@@ -135,10 +135,9 @@ export function Sentence({ item, attempt: a, submit, next, anchor }: Play) {
       </div>
 
       <div class="ex-right">
-        <div class="legend">
+        <div class="legend" data-plain>
           {(['Selbstlaut', 'Zwielaut', 'Umlaut'] as Laut[]).map((l) => (
             <button type="button" class={COLOR[l]} disabled={a.done} onClick={() => paint(l)}>
-              <b>{EXAMPLES[l]}</b>
               {l}
             </button>
           ))}

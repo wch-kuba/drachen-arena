@@ -8,7 +8,8 @@
 //   npm run images -- build                    picked variants → public/img/*.webp + manifest
 //
 // Groups: word, dragon (grown idle, the reference), pose (the other 8 stage × pose combos, made
-// from the dragon reference), egg, land, icon. The hatch shell halves are not generated: build
+// from the dragon reference), egg, land, icon, prop, cave, backdrop, fly (each grown dragon in
+// flight, from its reference) and flight (the pieces it flies past). The hatch shell halves are not generated: build
 // cuts each picked egg along a zigzag, so the halves always fit together exactly.
 //
 // The style block is read from DESIGN.md › "Image style prompt", so it is always used verbatim.
@@ -21,7 +22,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { DRAGONS } from '../src/content/dragons.ts'
-import { BACKDROP_PROMPT, CAVE_PROMPT, DRAGON_LOOKS, HOARD_PROMPT, HOARD_SIZES, LAND_PROMPTS, PICTURE_PROMPTS, PROP_PROMPTS } from '../src/content/picture-prompts.ts'
+import { BACKDROP_PROMPT, CAVE_PROMPT, DRAGON_LOOKS, FLIGHT_PROMPTS, FLY_FACES_LEFT, FLY_POSE, HOARD_PROMPT, HOARD_SIZES, LAND_PROMPTS, PICTURE_PROMPTS, PROP_PROMPTS } from '../src/content/picture-prompts.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const RAW = join(ROOT, 'art-raw')
@@ -41,8 +42,8 @@ const STYLE = (() => {
 // ------------------------------------------------------------------------------------------------
 // Jobs
 
-type Group = 'word' | 'dragon' | 'pose' | 'egg' | 'land' | 'icon' | 'prop' | 'cave' | 'backdrop'
-const GROUPS: Group[] = ['word', 'dragon', 'pose', 'egg', 'land', 'icon', 'prop', 'cave', 'backdrop']
+type Group = 'word' | 'dragon' | 'pose' | 'egg' | 'land' | 'icon' | 'prop' | 'cave' | 'backdrop' | 'fly' | 'flight'
+const GROUPS: Group[] = ['word', 'dragon', 'pose', 'egg', 'land', 'icon', 'prop', 'cave', 'backdrop', 'fly', 'flight']
 
 type Model = 'gpt-image-1-mini' | 'gpt-image-1.5'
 type Size = '1024x1024' | '1536x1024' | '1024x1536'
@@ -99,7 +100,7 @@ function jobs(): Job[] {
   const list: Job[] = []
   const add = (j: Omit<Job, 'prompt'> & { note: string }) => {
     const { note, ...rest } = j
-    const style = j.group === 'dragon' || j.group === 'pose' ? HERO_STYLE : j.group === 'egg' ? OWN_COLORS : STYLE
+    const style = j.group === 'dragon' || j.group === 'pose' || j.group === 'fly' ? HERO_STYLE : j.group === 'egg' ? OWN_COLORS : STYLE
     list.push({ ...rest, prompt: `${style}\n\n${note}` })
   }
   for (const [key, what] of Object.entries(PICTURE_PROMPTS))
@@ -112,6 +113,8 @@ function jobs(): Job[] {
         if (stage === 'grown' && pose === 'idle') continue // that is the reference itself
         add({ group: 'pose', key: `${d.id}-${stage}-${pose}`, label: `${stage}, ${pose}`, ref: `dragon/${d.id}`, model: 'gpt-image-1.5', size: '1024x1024', quality: 'medium', transparent: true, variants: 1, note: `${SAME} Show it ${STAGES[stage]}, ${POSES[pose]}. Full body.` })
       }
+    // The Drachenflug (Part 6b): the grown dragon in flight, seen from the side.
+    add({ group: 'fly', key: d.id, label: 'flying', ref: `dragon/${d.id}`, model: 'gpt-image-1.5', size: '1536x1024', quality: 'medium', transparent: true, variants: 1, note: `${SAME} ${FLY_POSE}` })
     add({ group: 'egg', key: d.id, label: 'egg', ref: `dragon/${d.id}`, model: 'gpt-image-1.5', size: '1024x1024', quality: 'medium', transparent: true, variants: 2, note: `Draw only the egg this dragon hatches from, no dragon: a smooth rounded egg standing upright. Its shell uses this dragon's main colors and pattern (not turquoise unless the dragon is turquoise), with a few gold spots.` })
   }
   // Painted world pieces: the hoard in 4 sizes (made from the big one), gem, coin.
@@ -123,6 +126,9 @@ function jobs(): Job[] {
   for (const [key, what] of Object.entries(LAND_PROMPTS))
     if (key !== 'map')
       add({ group: 'cave', key, label: what, model: 'gpt-image-1.5', size: '1024x1024', quality: 'medium', transparent: true, variants: 2, note: CAVE_PROMPT(what.replace(/^[^:]*: /, '')) })
+  // What the dragon flies past (Part 6b): single pieces, placed along the flight by the app.
+  for (const [key, what] of Object.entries(FLIGHT_PROMPTS))
+    add({ group: 'flight', key, label: key, model: 'gpt-image-1.5', size: key === 'pillar' || key === 'kelp' ? '1024x1536' : '1024x1024', quality: 'medium', transparent: true, variants: 2, note: what })
   for (const [key, size] of [['portrait', '1024x1536'], ['landscape', '1536x1024']] as const)
     list.push({ group: 'backdrop', key, label: `grotto wall, ${key}`, model: 'gpt-image-1.5', size, quality: 'medium', transparent: false, variants: 2, prompt: `${STYLE.replace(/Single subject[^.]*\.|transparent background,?/g, '').replace(/Palette: [^.]*\([^)]*\)[^.]*\./, 'Palette: only very dark deep teal rock (#041c22, #072830, #0b3540, #10444f) and a faint amber glow (#5c4a24, #e2a23c) at the very bottom.').replace('Gentle warm light from below as if lit by treasure.', '')}\n\n${BACKDROP_PROMPT}` })
   for (const [key, what] of Object.entries(LAND_PROMPTS))
@@ -312,10 +318,15 @@ function build() {
     const png = join(tmp, `${j.group}-${j.key}.png`)
     // Transparent art: trim to the drawing, then sit it on a fixed canvas (bottom-aligned for
     // dragons, eggs and shells, so every stage and pose stands on the same ground line).
-    const box = { word: 400, dragon: 640, pose: 640, egg: 320, land: 0, icon: 0, prop: j.key.startsWith('hoard') ? 900 : 160, cave: 480, backdrop: 0 }[j.group]
+    const box = { word: 400, dragon: 640, pose: 640, egg: 320, land: 0, icon: 0, prop: j.key.startsWith('hoard') ? 900 : 160, cave: 480, backdrop: 0, fly: 640, flight: 560 }[j.group]
     if (j.transparent) {
       const gravity = j.group === 'word' || j.key === 'gem' ? 'center' : 'south'
-      if (j.key.startsWith('hoard'))
+      if (j.group === 'fly' || j.group === 'flight')
+        // Flight art keeps its own shape (a wide dragon, a tall pillar): trimmed, longest side = box.
+        // The generator picks its own direction; every flying dragon must face right.
+        // A plain trim stops at the faint haze around the drawing, so the box comes from the solid part.
+        execFileSync('magick', [src, '-crop', solidBox(src), '+repage', ...(j.group === 'fly' && FLY_FACES_LEFT.includes(j.key) ? ['-flop'] : []), '-resize', `${box}x${box}>`, png])
+      else if (j.key.startsWith('hoard'))
         // Hoards keep their wide shape: all four the same width, so a bigger pile is taller.
         execFileSync('magick', [src, '-trim', '+repage', '-resize', `${box}x`, png])
       else execFileSync('magick', [src, '-trim', '+repage', '-resize', `${box - 16}x${box - 16}>`, '-background', 'none', '-gravity', gravity, '-extent', `${box}x${box}`, png])
@@ -378,6 +389,17 @@ function cutEgg(png: string, tmp: string, key: string): [string, string][] {
     execFileSync('magick', [cut, ink, '-compose', 'over', '-composite', out])
     return [half, out] as [string, string]
   })
+}
+
+/** The box around everything that is clearly there (alpha over 8 %), with a small margin. */
+function solidBox(src: string): string {
+  const [w, h] = execFileSync('magick', ['identify', '-format', '%w %h', src]).toString().split(' ').map(Number)
+  const bbox = execFileSync('magick', [src, '-alpha', 'extract', '-threshold', '8%', '-format', '%@', 'info:']).toString()
+  const [, bw, bh, bx, by] = bbox.match(/(\d+)x(\d+)\+(\d+)\+(\d+)/)!.map(Number)
+  const m = 8
+  const x = Math.max(0, bx - m)
+  const y = Math.max(0, by - m)
+  return `${Math.min(w - x, bw + 2 * m)}x${Math.min(h - y, bh + 2 * m)}+${x}+${y}`
 }
 
 function buildIcon(src: string) {

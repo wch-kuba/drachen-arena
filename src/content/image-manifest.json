@@ -634,6 +634,106 @@
     "w": 320,
     "h": 320
   },
+  "flight/fish": {
+    "src": "img/flight/fish.webp",
+    "w": 560,
+    "h": 267
+  },
+  "flight/jelly": {
+    "src": "img/flight/jelly.webp",
+    "w": 378,
+    "h": 560
+  },
+  "flight/kelp": {
+    "src": "img/flight/kelp.webp",
+    "w": 228,
+    "h": 560
+  },
+  "flight/ledge": {
+    "src": "img/flight/ledge.webp",
+    "w": 560,
+    "h": 424
+  },
+  "flight/pillar": {
+    "src": "img/flight/pillar.webp",
+    "w": 292,
+    "h": 560
+  },
+  "flight/rocks": {
+    "src": "img/flight/rocks.webp",
+    "w": 560,
+    "h": 547
+  },
+  "flight/stalactites": {
+    "src": "img/flight/stalactites.webp",
+    "w": 560,
+    "h": 445
+  },
+  "flight/wreck": {
+    "src": "img/flight/wreck.webp",
+    "w": 560,
+    "h": 517
+  },
+  "fly/echo": {
+    "src": "img/fly/echo.webp",
+    "w": 640,
+    "h": 293
+  },
+  "fly/koralle": {
+    "src": "img/fly/koralle.webp",
+    "w": 640,
+    "h": 295
+  },
+  "fly/kristall": {
+    "src": "img/fly/kristall.webp",
+    "w": 640,
+    "h": 297
+  },
+  "fly/lagune": {
+    "src": "img/fly/lagune.webp",
+    "w": 640,
+    "h": 289
+  },
+  "fly/muschel": {
+    "src": "img/fly/muschel.webp",
+    "w": 640,
+    "h": 242
+  },
+  "fly/perle": {
+    "src": "img/fly/perle.webp",
+    "w": 640,
+    "h": 351
+  },
+  "fly/schatz": {
+    "src": "img/fly/schatz.webp",
+    "w": 640,
+    "h": 334
+  },
+  "fly/schaum": {
+    "src": "img/fly/schaum.webp",
+    "w": 640,
+    "h": 342
+  },
+  "fly/tang": {
+    "src": "img/fly/tang.webp",
+    "w": 640,
+    "h": 195
+  },
+  "fly/tiefsee": {
+    "src": "img/fly/tiefsee.webp",
+    "w": 640,
+    "h": 296
+  },
+  "fly/welle": {
+    "src": "img/fly/welle.webp",
+    "w": 640,
+    "h": 216
+  },
+  "fly/wrack": {
+    "src": "img/fly/wrack.webp",
+    "w": 640,
+    "h": 215
+  },
   "land/ie": {
     "src": "img/land/ie.webp",
     "w": 1536,

@@ -176,3 +176,23 @@ export const CAVE_PROMPT = (inside: string) =>
 
 export const BACKDROP_PROMPT =
   'Background for a children\'s game screen: the inside of an underwater sea grotto. Dark sea-teal rock walls and a jagged stalactite roof at the top; darkest at the top, stepping lighter toward the bottom, where warm gold treasure light glows up from below the frame. Calm and low in detail, with large quiet areas so text can sit on it. No characters, no treasure, no text.'
+
+/** The Drachenflug (Part 6b): each grown dragon in flight, made from its reference picture. */
+export const FLY_POSE =
+  'Show it fully grown, flying fast toward the right, seen exactly from the side: body stretched out level, head forward, a determined grin, tail streaming behind. If it has wings, they are spread wide in mid-beat, one raised high. If it has no wings, it glides like a swimming sea creature, body in a flowing wave, fins, flippers or legs tucked back. Nothing under it: no ground, no gold, no water, no shadow. Full body, nothing cut off.'
+
+/** Picked flying poses that came out facing left; the build mirrors them (checked by eye). */
+export const FLY_FACES_LEFT = ['perle', 'wrack', 'tang', 'kristall', 'welle', 'tiefsee', 'schaum', 'lagune']
+
+/** Single pieces of the sea grotto the dragon flies past. Transparent, no characters. */
+const ROCK = 'Dark sea-teal grotto rock (#0b3540, #10444f, #165562) with the thick dark-teal outline, lit faintly warm from below.'
+export const FLIGHT_PROMPTS: Record<string, string> = {
+  stalactites: `A cluster of five stalactites of different lengths hanging down from a cave ceiling, joined by a strip of rock along the top edge, cut flat at the very top. ${ROCK} Only rock, nothing else.`,
+  rocks: `A rock formation rising from a sea cave floor: three pointed stalagmites of different heights with a few small glowing turquoise crystals and one branch of coral, cut flat at the very bottom. ${ROCK}`,
+  pillar: `One tall natural rock column, wider at the top and the bottom and narrow in the middle, as if a stalactite and a stalagmite grew together, with a few barnacles. Cut flat at the very top and bottom. ${ROCK} Only the column.`,
+  jelly: 'One glowing jellyfish seen from the side: a round turquoise bell with soft light inside, short frilly arms and long trailing tentacles. Calm and magical.',
+  wreck: 'The bow of an old sunken wooden sailing ship lying tilted on the sea floor: broken planks, a snapped mast with a torn scrap of sail, a ship lantern glowing warm gold, seaweed growing on it. Cut flat at the very bottom. No treasure, no characters.',
+  ledge: `A low, wide, flat-topped rock ledge in a sea cave, like a natural stone table. On its top lies a small ring-shaped nest of gold coins and a few turquoise cut gems, glowing warm gold, empty in the middle where an egg could sit. ${ROCK} No egg, no characters.`,
+  kelp: 'A tall bunch of kelp seaweed growing straight up from the bottom, six long wavy leaves in olive and emerald green with small air bladders. Cut flat at the very bottom.',
+  fish: 'A small school of five little silver-turquoise fish swimming toward the left, seen from the side, spread out loosely.',
+}

@@ -42,6 +42,8 @@ export const EFFECTS: Record<string, Effect> = {
   // Tapping the dragon on Home. Not TOON: the dragons are cool heroes, never cute.
   wake: { prompt: 'A dragon waking up underwater: one short warm rumbling snort through the nose that blows out a burst of bubbles. Cool and friendly, not cute, not scary. No speech, no music.', seconds: 1.2, lufs: -22 },
   roar: { prompt: 'A proud young dragon gives a short triumphant roar underwater, warm and heroic, ending in a rush of bubbles. Exciting, never harsh or scary. No speech, no music.', seconds: 1.6, lufs: -21 },
+  // The dragon flight (Part 6b): take-off.
+  wings: { prompt: 'A big dragon takes off underwater: three powerful, heavy leathery wing beats getting faster, then a rushing whoosh as it shoots away, with a trail of bubbles. Heroic and exciting, never scary. No speech, no music.', seconds: 2.6, lufs: -20 },
   // Quiet water under the background music (Home and reward only, off by default).
   grotto: { prompt: 'Calm underwater sea grotto ambience: soft distant water, gentle drips, faint bubbles. Seamless, no music.', seconds: 12, loop: true, lufs: -34 },
 }

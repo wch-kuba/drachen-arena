@@ -14,8 +14,8 @@ import type { Dragon, ExerciseType, Profile } from './types.ts'
 export const STEP_COST = 100
 export const ROUND_BONUS = 10
 
-/** Mehrzahl first: umlaut plurals are the child's biggest gap. One more land per step. */
-export const UNLOCK_ORDER: ExerciseType[] = ['mehrzahl', 'luecke', 'ie', 'laute', 'kurzlang']
+/** Mehrzahl first, then its two umlaut lands: umlaut plurals are the child's biggest gap. One more land per step. */
+export const UNLOCK_ORDER: ExerciseType[] = ['mehrzahl', 'umlaut', 'einzahl', 'luecke', 'ie', 'laute', 'kurzlang']
 
 /** Lands closed for now, whatever the profile says (Echo-Grotte: content not ready yet). */
 export const BLOCKED: ReadonlySet<ExerciseType> = new Set(['kurzlang'])

@@ -14,6 +14,16 @@ export const T = {
   hintListen: 'Hör noch einmal genau hin.',
   hintChoice: 'So ist es richtig. Tipp darauf.',
   umlautRule: (from: string, to: string) => `Aus ${from} wird ${to}.`,
+  /** Austernbank, step 1: "Bekommt das u zwei Punkte?" For au only the a gets them: "Wird aus au ein äu?" */
+  pearlAsk: (vowel: string) => (vowel === 'au' ? 'Wird aus au ein äu?' : `Bekommt das ${vowel} zwei Punkte?`),
+  pearlYes: 'Zwei Punkte',
+  pearlNo: 'Bleibt so',
+  /** Austernbank, the vowel rightly stays: "Richtig, das u bleibt." */
+  pearlStays: (vowel: string) => `Richtig, das ${vowel} bleibt.`,
+  /** Austernbank, rule hint after a wrong pearl choice. Said with the plural, never the answer letter. */
+  pearlHint: 'Sag die Mehrzahl laut. Hörst du ä, ö, ü oder äu?',
+  /** Strudel, after a right umlaut answer: "Wände mit ä, weil es von Wand kommt." */
+  because: (plural: string, umlaut: string, singular: string) => `${plural} mit ${umlaut}, weil es von ${singular} kommt.`,
   satzMissed: 'Fast! Schau auf die Ringe.',
   satzColor: 'Die Ringe zeigen dir die Farbe.',
   satzShow: 'So ist es richtig. Tipp auf Fertig.',
@@ -117,6 +127,8 @@ export function pick(list: readonly string[]): string {
 export const DEFAULT_HINT: Record<ExerciseType, string> = {
   laute: 'Schau auf die Buchstaben auf den Farben.',
   mehrzahl: 'Wird aus a, o, u ein ä, ö, ü?',
+  umlaut: 'Wird aus a, o, u, au ein ä, ö, ü, äu?',
+  einzahl: 'Einzahl heißt: nur eins. Wie heißt das Wort dann?',
   luecke: 'Sprich das Wort langsam und hör genau hin.',
   kurzlang: 'Sprich das Wort laut. Klingt der Selbstlaut kurz oder lang?',
   // The land mixes ie and short-i words, so the rule names both and gives neither away.
@@ -127,6 +139,8 @@ export const DEFAULT_HINT: Record<ExerciseType, string> = {
 export const ASK: Record<ExerciseType, string> = {
   laute: 'Was ist das für ein Laut?',
   mehrzahl: 'Schreib die Mehrzahl.',
+  umlaut: 'Schreib die Mehrzahl.',
+  einzahl: 'Schreib die Einzahl.',
   luecke: 'Welcher Buchstabe fehlt?',
   kurzlang: 'Hör gut zu. Kurz oder lang?',
   ie: 'Schreib das Wort.',

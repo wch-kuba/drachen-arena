@@ -120,3 +120,31 @@ export function pluralMistake(typed: string, plural: string): Mistake {
   const umlauts = (s: string) => s.replace(/[^äöü]/g, '')
   return umlauts(t) === umlauts(a) ? 'ending' : 'both'
 }
+
+/** Strudel: the change back from plural to singular (Wände → Wand: ä → a), if any. */
+export function singularChange(item: Item): { from: string; to: string; at: number } | undefined {
+  const c = umlautChange(item.answer, withoutArticle(item.prompt))
+  return c && { from: c.to, to: c.from, at: c.at }
+}
+
+/** Strudel, after a right umlaut answer: "Wände mit ä, weil Wand." */
+export function becauseOf(item: Item): { plural: string; umlaut: string; singular: string } | undefined {
+  const c = singularChange(item)
+  return c && { plural: withoutArticle(item.prompt), umlaut: c.from, singular: item.answer }
+}
+
+/**
+ * Austernbank: the vowel the pearl decision is about, in the singular without its article.
+ * With a change it is the changing vowel (Hut → u, Laus → au); without one, the first a, o, u
+ * or au (Hund → u, Auto → au). `to` is the plural's umlaut, or undefined when it stays.
+ */
+export function pearlVowel(item: Item): { at: number; from: string; to?: string } {
+  const change = umlautChange(item.prompt, item.answer)
+  if (change) return change
+  const word = withoutArticle(item.prompt)
+  const m = /au|[aou]/i.exec(word)
+  return m ? { at: [...word.slice(0, m.index)].length, from: m[0].toLowerCase() } : { at: 0, from: '' }
+}
+
+/** The umlaut of a vowel the pearls land on: a → ä, au → äu. */
+export const withDots = (v: string) => v.replace(/^a/, 'ä').replace(/^o/, 'ö').replace(/^u/, 'ü')

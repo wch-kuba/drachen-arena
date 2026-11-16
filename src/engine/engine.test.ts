@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { TEST_ITEMS } from '../content/test-items.ts'
-import { crystalsFor, revealCount, startAttempt, submit } from './attempt.ts'
+import { crystalsFor, firstTry, miss, revealCount, startAttempt, submit } from './attempt.ts'
 import { check } from './check.ts'
 import { BOX_INTERVAL, MAX_BOX1, pickRound, record } from './leitner.ts'
 import { answer, next, roundCrystals, startRound } from './round.ts'
@@ -176,5 +176,17 @@ describe('spoken texts', async () => {
     expect(words).toContain('Mütze')
     expect(words).toContain('ei')
     expect(words.some((w) => narrator.includes(w))).toBe(false)
+  })
+})
+
+describe('pearl decision (Part 15)', () => {
+  it('counts a wrong decision for the crystals but not for the typing hints', () => {
+    let a = miss(startAttempt())
+    expect(a.hint).toBe(0)
+    expect(a.mistakes).toEqual(['umlaut'])
+    a = submit(a, { id: 'x', type: 'umlaut', prompt: 'der Hut', answer: 'Hüte', source: 'seed', active: true }, 'Hüte')
+    expect(a.done).toBe(true)
+    expect(crystalsFor(a)).toBe(2)
+    expect(firstTry(a)).toBe(false)
   })
 })

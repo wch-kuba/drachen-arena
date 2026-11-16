@@ -1,6 +1,6 @@
-// The five lands: one grotto chamber per exercise type (see PRODUCT.md).
+// The seven lands: one grotto chamber per exercise type (see PRODUCT.md).
 
-export type LandId = 'laute' | 'mehrzahl' | 'luecke' | 'kurzlang' | 'ie'
+export type LandId = 'laute' | 'mehrzahl' | 'umlaut' | 'einzahl' | 'luecke' | 'kurzlang' | 'ie'
 
 export interface Land {
   id: LandId
@@ -12,6 +12,8 @@ export interface Land {
 export const LANDS: Land[] = [
   { id: 'laute', name: 'Kristallhöhle', what: 'Selbstlaute, Zwielaute, Umlaute', hue: 'var(--tq-300)' },
   { id: 'mehrzahl', name: 'Perlenriff', what: 'Einzahl und Mehrzahl', hue: 'var(--gold-300)' },
+  { id: 'umlaut', name: 'Austernbank', what: 'a, o, u oder ä,\u00a0ö,\u00a0ü?', hue: 'var(--tq-300)' },
+  { id: 'einzahl', name: 'Strudel', what: 'Von vielen zu einem', hue: 'var(--gold-300)' },
   { id: 'luecke', name: 'Schiffswrack', what: 'Fehlende Buchstaben', hue: 'var(--tq-500)' },
   { id: 'kurzlang', name: 'Echo-Grotte', what: 'Kurz oder lang?', hue: 'var(--gold-500)' },
   { id: 'ie', name: 'Tiefsee-Garten', what: 'i oder ie?', hue: 'var(--tq-100)' },

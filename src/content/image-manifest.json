@@ -9,6 +9,11 @@
     "w": 933,
     "h": 1400
   },
+  "cave/einzahl": {
+    "src": "img/cave/einzahl.webp",
+    "w": 480,
+    "h": 480
+  },
   "cave/ie": {
     "src": "img/cave/ie.webp",
     "w": 480,
@@ -33,6 +38,56 @@
     "src": "img/cave/mehrzahl.webp",
     "w": 480,
     "h": 480
+  },
+  "cave/umlaut": {
+    "src": "img/cave/umlaut.webp",
+    "w": 480,
+    "h": 480
+  },
+  "dragon/auster-grown-happy": {
+    "src": "img/dragon/auster-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-grown-idle": {
+    "src": "img/dragon/auster-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-grown-sleeping": {
+    "src": "img/dragon/auster-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-hatchling-happy": {
+    "src": "img/dragon/auster-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-hatchling-idle": {
+    "src": "img/dragon/auster-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-hatchling-sleeping": {
+    "src": "img/dragon/auster-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-young-happy": {
+    "src": "img/dragon/auster-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-young-idle": {
+    "src": "img/dragon/auster-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/auster-young-sleeping": {
+    "src": "img/dragon/auster-young-sleeping.webp",
+    "w": 640,
+    "h": 640
   },
   "dragon/echo-grown-happy": {
     "src": "img/dragon/echo-grown-happy.webp",
@@ -394,6 +449,51 @@
     "w": 640,
     "h": 640
   },
+  "dragon/strudel-grown-happy": {
+    "src": "img/dragon/strudel-grown-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-grown-idle": {
+    "src": "img/dragon/strudel-grown-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-grown-sleeping": {
+    "src": "img/dragon/strudel-grown-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-hatchling-happy": {
+    "src": "img/dragon/strudel-hatchling-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-hatchling-idle": {
+    "src": "img/dragon/strudel-hatchling-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-hatchling-sleeping": {
+    "src": "img/dragon/strudel-hatchling-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-young-happy": {
+    "src": "img/dragon/strudel-young-happy.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-young-idle": {
+    "src": "img/dragon/strudel-young-idle.webp",
+    "w": 640,
+    "h": 640
+  },
+  "dragon/strudel-young-sleeping": {
+    "src": "img/dragon/strudel-young-sleeping.webp",
+    "w": 640,
+    "h": 640
+  },
   "dragon/tang-grown-happy": {
     "src": "img/dragon/tang-grown-happy.webp",
     "w": 640,
@@ -574,6 +674,11 @@
     "w": 640,
     "h": 640
   },
+  "egg/auster": {
+    "src": "img/egg/auster.webp",
+    "w": 320,
+    "h": 320
+  },
   "egg/echo": {
     "src": "img/egg/echo.webp",
     "w": 320,
@@ -611,6 +716,11 @@
   },
   "egg/schaum": {
     "src": "img/egg/schaum.webp",
+    "w": 320,
+    "h": 320
+  },
+  "egg/strudel": {
+    "src": "img/egg/strudel.webp",
     "w": 320,
     "h": 320
   },
@@ -674,6 +784,11 @@
     "w": 560,
     "h": 517
   },
+  "fly/auster": {
+    "src": "img/fly/auster.webp",
+    "w": 640,
+    "h": 345
+  },
   "fly/echo": {
     "src": "img/fly/echo.webp",
     "w": 640,
@@ -714,6 +829,11 @@
     "w": 640,
     "h": 342
   },
+  "fly/strudel": {
+    "src": "img/fly/strudel.webp",
+    "w": 640,
+    "h": 267
+  },
   "fly/tang": {
     "src": "img/fly/tang.webp",
     "w": 640,
@@ -733,6 +853,11 @@
     "src": "img/fly/wrack.webp",
     "w": 640,
     "h": 215
+  },
+  "land/einzahl": {
+    "src": "img/land/einzahl.webp",
+    "w": 1536,
+    "h": 1024
   },
   "land/ie": {
     "src": "img/land/ie.webp",
@@ -764,6 +889,11 @@
     "w": 1536,
     "h": 1024
   },
+  "land/umlaut": {
+    "src": "img/land/umlaut.webp",
+    "w": 1536,
+    "h": 1024
+  },
   "prop/gem": {
     "src": "img/prop/gem.webp",
     "w": 160,
@@ -788,6 +918,16 @@
     "src": "img/prop/hoard-4.webp",
     "w": 900,
     "h": 637
+  },
+  "shell/auster-bottom": {
+    "src": "img/shell/auster-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/auster-top": {
+    "src": "img/shell/auster-top.webp",
+    "w": 320,
+    "h": 320
   },
   "shell/echo-bottom": {
     "src": "img/shell/echo-bottom.webp",
@@ -869,6 +1009,16 @@
     "w": 320,
     "h": 320
   },
+  "shell/strudel-bottom": {
+    "src": "img/shell/strudel-bottom.webp",
+    "w": 320,
+    "h": 320
+  },
+  "shell/strudel-top": {
+    "src": "img/shell/strudel-top.webp",
+    "w": 320,
+    "h": 320
+  },
   "shell/tang-bottom": {
     "src": "img/shell/tang-bottom.webp",
     "w": 320,
@@ -914,6 +1064,11 @@
     "w": 400,
     "h": 400
   },
+  "word/apfel-viele": {
+    "src": "img/word/apfel-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/auto": {
     "src": "img/word/auto.webp",
     "w": 400,
@@ -944,6 +1099,11 @@
     "w": 400,
     "h": 400
   },
+  "word/baum-viele": {
+    "src": "img/word/baum-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/bett": {
     "src": "img/word/bett.webp",
     "w": 400,
@@ -964,8 +1124,18 @@
     "w": 400,
     "h": 400
   },
+  "word/blatt-viele": {
+    "src": "img/word/blatt-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/blume": {
     "src": "img/word/blume.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/blume-viele": {
+    "src": "img/word/blume-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1004,6 +1174,11 @@
     "w": 400,
     "h": 400
   },
+  "word/dach-viele": {
+    "src": "img/word/dach-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/ei": {
     "src": "img/word/ei.webp",
     "w": 400,
@@ -1021,6 +1196,11 @@
   },
   "word/fisch": {
     "src": "img/word/fisch.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/fisch-viele": {
+    "src": "img/word/fisch-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1059,6 +1239,11 @@
     "w": 400,
     "h": 400
   },
+  "word/fuss-viele": {
+    "src": "img/word/fuss-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/gans": {
     "src": "img/word/gans.webp",
     "w": 400,
@@ -1084,6 +1269,11 @@
     "w": 400,
     "h": 400
   },
+  "word/glas-viele": {
+    "src": "img/word/glas-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/haeuser": {
     "src": "img/word/haeuser.webp",
     "w": 400,
@@ -1099,8 +1289,18 @@
     "w": 400,
     "h": 400
   },
+  "word/hand-viele": {
+    "src": "img/word/hand-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/haus": {
     "src": "img/word/haus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/haus-viele": {
+    "src": "img/word/haus-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1114,8 +1314,18 @@
     "w": 400,
     "h": 400
   },
+  "word/hund-viele": {
+    "src": "img/word/hund-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/hut": {
     "src": "img/word/hut.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/hut-viele": {
+    "src": "img/word/hut-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1144,8 +1354,18 @@
     "w": 400,
     "h": 400
   },
+  "word/katze-viele": {
+    "src": "img/word/katze-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/kind": {
     "src": "img/word/kind.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/kind-viele": {
+    "src": "img/word/kind-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1189,6 +1409,11 @@
     "w": 400,
     "h": 400
   },
+  "word/korb-viele": {
+    "src": "img/word/korb-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/kueche": {
     "src": "img/word/kueche.webp",
     "w": 400,
@@ -1206,6 +1431,11 @@
   },
   "word/laus": {
     "src": "img/word/laus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/laus-viele": {
+    "src": "img/word/laus-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1236,6 +1466,11 @@
   },
   "word/maus": {
     "src": "img/word/maus.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/maus-viele": {
+    "src": "img/word/maus-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1291,6 +1526,11 @@
   },
   "word/rad": {
     "src": "img/word/rad.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/rad-viele": {
+    "src": "img/word/rad-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1384,6 +1624,11 @@
     "w": 400,
     "h": 400
   },
+  "word/topf-viele": {
+    "src": "img/word/topf-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/tuer": {
     "src": "img/word/tuer.webp",
     "w": 400,
@@ -1409,8 +1654,18 @@
     "w": 400,
     "h": 400
   },
+  "word/vogel-viele": {
+    "src": "img/word/vogel-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/wand": {
     "src": "img/word/wand.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/wand-viele": {
+    "src": "img/word/wand-viele.webp",
     "w": 400,
     "h": 400
   },
@@ -1439,6 +1694,11 @@
     "w": 400,
     "h": 400
   },
+  "word/zahn-viele": {
+    "src": "img/word/zahn-viele.webp",
+    "w": 400,
+    "h": 400
+  },
   "word/zaun": {
     "src": "img/word/zaun.webp",
     "w": 400,
@@ -1461,6 +1721,11 @@
   },
   "word/zug": {
     "src": "img/word/zug.webp",
+    "w": 400,
+    "h": 400
+  },
+  "word/zug-viele": {
+    "src": "img/word/zug-viele.webp",
     "w": 400,
     "h": 400
   },

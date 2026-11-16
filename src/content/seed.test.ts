@@ -5,16 +5,16 @@ import { SEED } from './seed.ts'
 import { DRAGON_LOOKS, LAND_PROMPTS, PICTURE_PROMPTS } from './picture-prompts.ts'
 import { DRAGONS } from './dragons.ts'
 import { LANDS } from '../lands.ts'
-import { gapParts, isSentence, lautOf, targetVowel, umlautChange, units } from '../engine/words.ts'
+import { gapParts, isSentence, lautOf, pearlVowel, targetVowel, umlautChange, units } from '../engine/words.ts'
 import type { ExerciseType } from '../engine/types.ts'
 
 const of = (t: ExerciseType) => SEED.filter((i) => i.type === t)
 
 describe('seed', () => {
-  it('has unique ids and 150–200 items', () => {
+  it('has unique ids and 150–260 items (Part 15 added two lands)', () => {
     expect(new Set(SEED.map((i) => i.id)).size).toBe(SEED.length)
     expect(SEED.length).toBeGreaterThanOrEqual(150)
-    expect(SEED.length).toBeLessThanOrEqual(200)
+    expect(SEED.length).toBeLessThanOrEqual(260)
   })
 
   it('has enough items per exercise', () => {
@@ -74,8 +74,23 @@ describe('seed', () => {
   it('lists the school-test misses', () => {
     const missed = SEED.filter((i) => i.tags?.includes('missed-on-test')).map((i) => i.id)
     expect(missed.sort()).toEqual(
-      ['mz-hut', 'mz-laus', 'mz-korb', 'mz-wand', 'lu-muetze', 'lu-birne', 'lu-kirsche', 'lu-koenig'].sort(),
+      ['mz-hut', 'mz-laus', 'mz-korb', 'mz-wand', 'ub-hut', 'ub-laus', 'ub-korb', 'ub-wand', 'ez-hut', 'ez-laus', 'ez-korb', 'ez-wand', 'lu-muetze', 'lu-birne', 'lu-kirsche', 'lu-koenig'].sort(),
     )
+  })
+
+  it('gives every Austernbank word an a, o, u or au to decide on', () => {
+    for (const i of SEED.filter((x) => x.type === 'umlaut')) {
+      const v = pearlVowel(i)
+      expect(['a', 'o', 'u', 'au'], i.id).toContain(v.from)
+      if (v.to) expect(i.answer.toLowerCase(), i.id).toContain(v.to)
+    }
+  })
+
+  it('gives every Strudel word its article and a picture of many', () => {
+    for (const i of SEED.filter((x) => x.type === 'einzahl')) {
+      expect(i.article, i.id).toMatch(/^(der|die|das)$/)
+      expect(i.image, i.id).toMatch(/-viele$/)
+    }
   })
 
   it('gives every picture word a picture description, and no extras', () => {

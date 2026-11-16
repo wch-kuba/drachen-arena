@@ -9,6 +9,11 @@
     "prompt": "e115a6363bf7",
     "made": "2026-11-04"
   },
+  "img/cave/einzahl.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "b59e4b3f6bb9",
+    "made": "2026-11-16"
+  },
   "img/cave/ie.webp": {
     "model": "gpt-image-1.5",
     "prompt": "eda9b983f8db",
@@ -33,6 +38,56 @@
     "model": "gpt-image-1.5",
     "prompt": "6476179e68da",
     "made": "2026-11-04"
+  },
+  "img/cave/umlaut.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "4dab247ec0dc",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "f8c39b433566",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-16"
+  },
+  "img/dragon/auster-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-16"
   },
   "img/dragon/echo-grown-happy.webp": {
     "model": "gpt-image-1.5",
@@ -394,6 +449,51 @@
     "prompt": "c57feb506fa5",
     "made": "2026-11-04"
   },
+  "img/dragon/strudel-grown-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "27537a21a67e",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-grown-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "324851273582",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-grown-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9f4e271c4322",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-hatchling-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c105a8bad11e",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-hatchling-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c7f92ecc01d8",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-hatchling-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "3143e36bb213",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-young-happy.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "ef01433f5f98",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-young-idle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "9a4ef85d2ab8",
+    "made": "2026-11-16"
+  },
+  "img/dragon/strudel-young-sleeping.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "c57feb506fa5",
+    "made": "2026-11-16"
+  },
   "img/dragon/tang-grown-happy.webp": {
     "model": "gpt-image-1.5",
     "prompt": "27537a21a67e",
@@ -574,6 +674,11 @@
     "prompt": "c57feb506fa5",
     "made": "2026-11-04"
   },
+  "img/egg/auster.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-16"
+  },
   "img/egg/echo.webp": {
     "model": "gpt-image-1.5",
     "prompt": "d7066c93211c",
@@ -614,6 +719,11 @@
     "prompt": "d7066c93211c",
     "made": "2026-11-04"
   },
+  "img/egg/strudel.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "d7066c93211c",
+    "made": "2026-11-16"
+  },
   "img/egg/tang.webp": {
     "model": "gpt-image-1.5",
     "prompt": "d7066c93211c",
@@ -633,6 +743,11 @@
     "model": "gpt-image-1.5",
     "prompt": "d7066c93211c",
     "made": "2026-11-04"
+  },
+  "img/flap/auster.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
   },
   "img/flap/echo.webp": {
     "model": "gemini-omni-1.2-flash",
@@ -670,6 +785,11 @@
     "made": "2026-11-16"
   },
   "img/flap/schaum.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/strudel.webp": {
     "model": "gemini-omni-1.2-flash",
     "prompt": "scripts/gen-flap.ts",
     "made": "2026-11-16"
@@ -734,6 +854,11 @@
     "prompt": "63431aac4567",
     "made": "2026-11-16"
   },
+  "img/fly/auster.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
   "img/fly/echo.webp": {
     "model": "gpt-image-1.5",
     "prompt": "cd1c8d23fce2",
@@ -774,6 +899,11 @@
     "prompt": "cd1c8d23fce2",
     "made": "2026-11-16"
   },
+  "img/fly/strudel.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
   "img/fly/tang.webp": {
     "model": "gpt-image-1.5",
     "prompt": "cd1c8d23fce2",
@@ -792,6 +922,11 @@
   "img/fly/wrack.webp": {
     "model": "gpt-image-1.5",
     "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/land/einzahl.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "085d4a1defcb",
     "made": "2026-11-16"
   },
   "img/land/ie.webp": {
@@ -824,6 +959,11 @@
     "prompt": "b37a0873add2",
     "made": "2026-11-04"
   },
+  "img/land/umlaut.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "4fac0aa2c0c1",
+    "made": "2026-11-16"
+  },
   "img/prop/gem.webp": {
     "model": "gpt-image-1.5",
     "prompt": "5b3ea650a2aa",
@@ -848,6 +988,11 @@
     "model": "gpt-image-1.5",
     "prompt": "a3d94016ae89",
     "made": "2026-11-04"
+  },
+  "img/word/apfel-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "51cbb543c092",
+    "made": "2026-11-16"
   },
   "img/word/apfel.webp": {
     "model": "gpt-image-1-mini",
@@ -879,6 +1024,11 @@
     "prompt": "0806dcfd463a",
     "made": "2026-11-04"
   },
+  "img/word/baum-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "ccc1664a016f",
+    "made": "2026-11-16"
+  },
   "img/word/baum.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "b47e9c829cb9",
@@ -899,10 +1049,20 @@
     "prompt": "4e2c8dd7bee7",
     "made": "2026-11-04"
   },
+  "img/word/blatt-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "f04c6b7ab650",
+    "made": "2026-11-16"
+  },
   "img/word/blatt.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "99194897db06",
     "made": "2026-11-04"
+  },
+  "img/word/blume-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "422abe07cb5e",
+    "made": "2026-11-16"
   },
   "img/word/blume.webp": {
     "model": "gpt-image-1-mini",
@@ -939,6 +1099,11 @@
     "prompt": "78615ff85ff7",
     "made": "2026-11-04"
   },
+  "img/word/dach-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "106e6bce7d59",
+    "made": "2026-11-16"
+  },
   "img/word/dach.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "4ab4ed5f69a7",
@@ -958,6 +1123,11 @@
     "model": "gpt-image-1-mini",
     "prompt": "b6e23dd0a5cd",
     "made": "2026-11-04"
+  },
+  "img/word/fisch-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "e4c8f7d88c89",
+    "made": "2026-11-16"
   },
   "img/word/fisch.webp": {
     "model": "gpt-image-1-mini",
@@ -994,6 +1164,11 @@
     "prompt": "758a5b859149",
     "made": "2026-11-04"
   },
+  "img/word/fuss-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "0d5141940352",
+    "made": "2026-11-16"
+  },
   "img/word/fuss.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "bf9dc1f940a3",
@@ -1019,6 +1194,11 @@
     "prompt": "84eea2e9d082",
     "made": "2026-11-04"
   },
+  "img/word/glas-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "254537c595bf",
+    "made": "2026-11-16"
+  },
   "img/word/glas.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "c89f049bf959",
@@ -1034,10 +1214,20 @@
     "prompt": "36ab23cd59c2",
     "made": "2026-11-04"
   },
+  "img/word/hand-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "6be4de65f705",
+    "made": "2026-11-16"
+  },
   "img/word/hand.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "f7641f4d72b5",
     "made": "2026-11-04"
+  },
+  "img/word/haus-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "46b7a31df9db",
+    "made": "2026-11-16"
   },
   "img/word/haus.webp": {
     "model": "gpt-image-1-mini",
@@ -1049,10 +1239,20 @@
     "prompt": "be9711a0165b",
     "made": "2026-11-04"
   },
+  "img/word/hund-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "3797d7faf5d2",
+    "made": "2026-11-16"
+  },
   "img/word/hund.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "9765c8ce0e4b",
     "made": "2026-11-04"
+  },
+  "img/word/hut-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "c078347fe4e9",
+    "made": "2026-11-16"
   },
   "img/word/hut.webp": {
     "model": "gpt-image-1-mini",
@@ -1079,10 +1279,20 @@
     "prompt": "6a3852446938",
     "made": "2026-11-04"
   },
+  "img/word/katze-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "b16ed2e78e1b",
+    "made": "2026-11-16"
+  },
   "img/word/katze.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "aff9df4ba57e",
     "made": "2026-11-04"
+  },
+  "img/word/kind-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "005375dfdbfa",
+    "made": "2026-11-16"
   },
   "img/word/kind.webp": {
     "model": "gpt-image-1-mini",
@@ -1124,6 +1334,11 @@
     "prompt": "b4606a9e2c51",
     "made": "2026-11-04"
   },
+  "img/word/korb-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "fedd3972ca29",
+    "made": "2026-11-16"
+  },
   "img/word/korb.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "de2f6be8ec80",
@@ -1143,6 +1358,11 @@
     "model": "gpt-image-1-mini",
     "prompt": "c7b208913bfe",
     "made": "2026-11-04"
+  },
+  "img/word/laus-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "e0e13c5b94a2",
+    "made": "2026-11-16"
   },
   "img/word/laus.webp": {
     "model": "gpt-image-1-mini",
@@ -1173,6 +1393,11 @@
     "model": "gpt-image-1-mini",
     "prompt": "79da915bea0d",
     "made": "2026-11-04"
+  },
+  "img/word/maus-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "d12b4699644c",
+    "made": "2026-11-16"
   },
   "img/word/maus.webp": {
     "model": "gpt-image-1-mini",
@@ -1228,6 +1453,11 @@
     "model": "gpt-image-1-mini",
     "prompt": "dd172da7c369",
     "made": "2026-11-04"
+  },
+  "img/word/rad-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "4275e3c4e5d6",
+    "made": "2026-11-16"
   },
   "img/word/rad.webp": {
     "model": "gpt-image-1-mini",
@@ -1319,6 +1549,11 @@
     "prompt": "484f5f560c44",
     "made": "2026-11-04"
   },
+  "img/word/topf-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "d94c7b2d8f5d",
+    "made": "2026-11-16"
+  },
   "img/word/topf.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "d583f94d19fb",
@@ -1344,10 +1579,20 @@
     "prompt": "6de5a1a4b8a1",
     "made": "2026-11-04"
   },
+  "img/word/vogel-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "e2446e4704e7",
+    "made": "2026-11-16"
+  },
   "img/word/vogel.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "f8b056a8e42e",
     "made": "2026-11-04"
+  },
+  "img/word/wand-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "8c5aa873f491",
+    "made": "2026-11-16"
   },
   "img/word/wand.webp": {
     "model": "gpt-image-1-mini",
@@ -1374,6 +1619,11 @@
     "prompt": "4d9f0f9fa278",
     "made": "2026-11-04"
   },
+  "img/word/zahn-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "847086e40a11",
+    "made": "2026-11-16"
+  },
   "img/word/zahn.webp": {
     "model": "gpt-image-1-mini",
     "prompt": "308111bec956",
@@ -1398,6 +1648,11 @@
     "model": "gpt-image-1-mini",
     "prompt": "3a3606ff50ec",
     "made": "2026-11-04"
+  },
+  "img/word/zug-viele.webp": {
+    "model": "gpt-image-1-mini",
+    "prompt": "d65df0ad96b0",
+    "made": "2026-11-16"
   },
   "img/word/zug.webp": {
     "model": "gpt-image-1-mini",

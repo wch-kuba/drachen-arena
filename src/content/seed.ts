@@ -137,6 +137,85 @@ const MEHRZAHL: Item[] = [
 ]
 
 // ---------------------------------------------------------------------------------------------
+// 2a. Austernbank (Part 15): does the vowel get two dots, then type the plural. Mehrzahl nouns
+// with an a, o, u or au to decide on (no ä/ö/ü traps: there is nothing to decide). About a
+// third keep their vowel, so the child checks instead of always adding dots.
+
+const pearls = (prompt: string, answer: string, extra: Partial<Item> = {}) => {
+  const tags = [...(umlautChange(prompt, answer) ? ['umlaut-plural'] : []), ...(extra.tags ?? [])]
+  const noun = slug(prompt.split(' ')[1])
+  return make('umlaut', `ub-${noun}`, prompt, answer, { image: noun, ...extra, tags })
+}
+
+const AUSTERNBANK: Item[] = [
+  pearls('der Hut', 'Hüte', { tags: [MISSED] }),
+  pearls('die Laus', 'Läuse', { tags: [MISSED] }),
+  pearls('der Korb', 'Körbe', { tags: [MISSED] }),
+  pearls('die Wand', 'Wände', { tags: [MISSED] }),
+  pearls('der Ball', 'Bälle'),
+  pearls('der Baum', 'Bäume'),
+  pearls('das Haus', 'Häuser'),
+  pearls('die Maus', 'Mäuse'),
+  pearls('der Topf', 'Töpfe'),
+  pearls('der Zahn', 'Zähne'),
+  pearls('der Stuhl', 'Stühle'),
+  pearls('der Fuß', 'Füße'),
+  pearls('die Hand', 'Hände'),
+  pearls('der Kopf', 'Köpfe'),
+  pearls('der Zug', 'Züge'),
+  pearls('der Frosch', 'Frösche'),
+  pearls('der Turm', 'Türme'),
+  pearls('der Bauch', 'Bäuche'),
+  pearls('das Dach', 'Dächer'),
+  pearls('das Glas', 'Gläser'),
+  // The vowel stays.
+  pearls('der Hund', 'Hunde'),
+  pearls('der Schuh', 'Schuhe'),
+  pearls('das Auto', 'Autos'),
+  pearls('das Schaf', 'Schafe'),
+  pearls('die Uhr', 'Uhren'),
+  pearls('die Katze', 'Katzen'),
+  pearls('die Blume', 'Blumen'),
+  pearls('die Hose', 'Hosen'),
+]
+
+// ---------------------------------------------------------------------------------------------
+// 2b. Strudel (Part 15): plural → singular, "Wände kommt von Wand". The picture shows many.
+
+const back = (plural: string, article: 'der' | 'die' | 'das', singular: string, extra: Partial<Item> = {}) => {
+  const noun = slug(singular)
+  const item = make('einzahl', `ez-${noun}`, `die ${plural}`, singular, { image: `${noun}-viele`, article, ...extra })
+  return { ...item, tags: [...(umlautChange(singular, plural) ? ['umlaut-plural'] : []), ...(extra.tags ?? [])] }
+}
+
+const STRUDEL: Item[] = [
+  back('Wände', 'die', 'Wand', { tags: [MISSED] }),
+  back('Hüte', 'der', 'Hut', { tags: [MISSED] }),
+  back('Läuse', 'die', 'Laus', { tags: [MISSED] }),
+  back('Körbe', 'der', 'Korb', { tags: [MISSED] }),
+  back('Bäume', 'der', 'Baum'),
+  back('Häuser', 'das', 'Haus'),
+  back('Mäuse', 'die', 'Maus'),
+  back('Zähne', 'der', 'Zahn'),
+  back('Hände', 'die', 'Hand'),
+  back('Füße', 'der', 'Fuß'),
+  back('Gläser', 'das', 'Glas'),
+  back('Räder', 'das', 'Rad'),
+  back('Äpfel', 'der', 'Apfel'),
+  back('Vögel', 'der', 'Vogel'),
+  back('Dächer', 'das', 'Dach'),
+  back('Blätter', 'das', 'Blatt'),
+  back('Züge', 'der', 'Zug'),
+  back('Töpfe', 'der', 'Topf'),
+  // No vowel change: the child still has to think, not just take dots away.
+  back('Hunde', 'der', 'Hund'),
+  back('Fische', 'der', 'Fisch'),
+  back('Kinder', 'das', 'Kind'),
+  back('Katzen', 'die', 'Katze'),
+  back('Blumen', 'die', 'Blume'),
+]
+
+// ---------------------------------------------------------------------------------------------
 // 3. Fehlende Buchstaben: one vowel/umlaut or a group (ie, ei, ai, au, eu, äu). Picture + audio
 // tell the word. Avoid gaps that make another word the child knows (B_ch: Bauch/Buch/Bach).
 
@@ -293,4 +372,4 @@ const IE_WORDS: Item[] = [
   ...['Fisch', 'Kissen', 'Brille', 'Pinsel', 'Ritter', 'Schiff', 'Finger', 'Kind', 'Zimmer', 'Insel'].map(shortI),
 ]
 
-export const SEED: Item[] = [...LAUTE, ...MEHRZAHL, ...LUECKE, ...KURZLANG, ...IE_WORDS]
+export const SEED: Item[] = [...LAUTE, ...MEHRZAHL, ...AUSTERNBANK, ...STRUDEL, ...LUECKE, ...KURZLANG, ...IE_WORDS]

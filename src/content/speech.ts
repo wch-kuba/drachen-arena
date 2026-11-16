@@ -3,7 +3,7 @@
 
 import { normalize } from '../engine/check.ts'
 import type { Item } from '../engine/types.ts'
-import { isSentence, umlautChange, wordOf } from '../engine/words.ts'
+import { becauseOf, isSentence, pearlVowel, singularChange, umlautChange, wordOf } from '../engine/words.ts'
 import { DRAGONS } from './dragons.ts'
 import { ASK, ASK_GROUP, ASK_SATZ, DEFAULT_HINT, T, GENTLE, PRAISE } from '../strings.ts'
 
@@ -29,7 +29,12 @@ export function askParts(item: Item): string[] {
 /** The rule hint: the item's own, the umlaut change of a plural, or the exercise default. */
 export function ruleOf(item: Item): string {
   if (item.hint) return item.hint
-  const change = item.type === 'mehrzahl' ? umlautChange(item.prompt, item.answer) : undefined
+  const change =
+    item.type === 'mehrzahl' || item.type === 'umlaut'
+      ? umlautChange(item.prompt, item.answer)
+      : item.type === 'einzahl'
+        ? singularChange(item)
+        : undefined
   return change ? T.umlautRule(change.from, change.to) : DEFAULT_HINT[item.type]
 }
 
@@ -38,6 +43,18 @@ export function cardSay(kind: string): string[] {
   const c = DRAGONS.find((d) => d.id === kind)?.card
   return c ? [c.art, c.power, c.lives] : []
 }
+
+/** Austernbank, step 1: the pearl question for this word's vowel. */
+export const pearlAskOf = (item: Item) => T.pearlAsk(pearlVowel(item).from)
+
+/** Strudel, after a right umlaut answer, or undefined. */
+export function becauseLine(item: Item): string | undefined {
+  const b = becauseOf(item)
+  return b && T.because(b.plural, b.umlaut, b.singular)
+}
+
+/** Strudel: the singular with its article, as it is spoken. */
+export const singularOf = (item: Item) => (item.article ? `${item.article} ${item.answer}` : item.answer)
 
 /**
  * Every spoken text, by who says it. The narrator (one voice) reads instructions, tips and
@@ -72,9 +89,16 @@ export function spokenRoles(items: Item[]): { narrator: string[]; words: string[
     T.satzColor,
     T.satzShow,
     ...Object.values(DEFAULT_HINT).map(T.hintRule),
+    T.pearlHint,
     ...items.flatMap((i) => [askOf(i), T.hintRule(ruleOf(i))]),
+    ...items.flatMap((i) => (i.type === 'umlaut' ? [pearlAskOf(i)] : [])),
+    ...items.flatMap((i) => (i.type === 'einzahl' ? [becauseLine(i) ?? ''] : [])),
   ]
-  const words = items.flatMap((i) => [wordOf(i), ...(i.type === 'mehrzahl' ? [i.answer] : [])])
+  const words = items.flatMap((i) => [
+    wordOf(i),
+    ...(i.type === 'mehrzahl' || i.type === 'umlaut' ? [i.answer] : []),
+    ...(i.type === 'einzahl' ? [singularOf(i)] : []),
+  ])
   const n = unique(narrator)
   const said = new Set(n)
   return { narrator: n, words: unique(words).filter((w) => !said.has(w)) }

@@ -130,6 +130,8 @@ export const PICTURE_PROMPTS: Record<string, string> = {
  * Perle is the classic turquoise-and-gold reference.
  */
 export const DRAGON_LOOKS: Record<string, string> = {
+  auster: 'Type: crab dragon, a heavily armored dragon low on six jointed legs like a giant crab, two huge pincer claws in front, short powerful wings folded on its back. Colors: dark slate blue-grey armor plates, pearl-white belly and claw tips. Signature: two glowing white pearls set side by side on its brow.',
+  strudel: 'Type: hammerhead sea dragon, a muscular shark-like body with a wide hammer-shaped head, a tall dorsal fin, two strong front legs and two fin-wings, a powerful shark tail. Colors: steel-grey back, deep teal flanks, pale belly. Signature: a glowing turquoise whirlpool spiral pattern swirling down its back to the tail.',
   perle: 'Type: classic western dragon, four legs and two wings. Colors: turquoise scales, light turquoise wings, gold belly plates, gold horns and spines. Signature: a small pearl on its forehead.',
   wrack: 'Type: dragon turtle, four sturdy legs, no wings, a huge domed shell on its back. Colors: dark navy-blue skin, rusty bronze shell, dull gold belly. Signature: barnacles and an old ship lantern hanging from the shell, a tail ending in an anchor-shaped fluke.',
   tang: 'Type: eastern long dragon (like a Chinese lung), very long snake-like body that curves in S-shapes, four short legs, no wings, long whiskers. Colors: deep emerald green and olive, pale green belly. Signature: a flowing mane of kelp leaves along its whole back.',
@@ -148,6 +150,8 @@ export const DRAGON_LOOKS: Record<string, string> = {
 export const LAND_PROMPTS: Record<string, string> = {
   laute: 'Kristallhöhle: an underwater crystal cave with large glowing turquoise and sea-glass crystals growing from the rock.',
   mehrzahl: 'Perlenriff: a sunny shallow reef with giant open shells full of pearls, soft corals and sand.',
+  umlaut: 'Austernbank: an oyster bed on the sea floor, big rough oysters lying open with glowing pearls inside, pairs of pearls glinting in the sand.',
+  einzahl: 'Strudel: a swirling whirlpool in a teal sea cave, a spiral current pulling sand, shells and bubbles toward one glowing center.',
   luecke: 'Schiffswrack: a friendly old wooden shipwreck on the sea floor, with an open treasure chest and seaweed.',
   kurzlang: 'Echo-Grotte: a round echoing grotto with arches, soft gold light and ripples in the water.',
   ie: 'Tiefsee-Garten: a calm deep-sea garden with glowing sea plants, jellyfish lights and soft dark-teal water.',
@@ -177,12 +181,24 @@ export const CAVE_PROMPT = (inside: string) =>
 export const BACKDROP_PROMPT =
   'Background for a children\'s game screen: the inside of an underwater sea grotto. Dark sea-teal rock walls and a jagged stalactite roof at the top; darkest at the top, stepping lighter toward the bottom, where warm gold treasure light glows up from below the frame. Calm and low in detail, with large quiet areas so text can sit on it. No characters, no treasure, no text.'
 
+/** Strudel (Part 15): the plural picture, "many" of a Mehrzahl noun, keyed `<noun>-viele`. */
+const MANY = ['wand', 'hut', 'laus', 'korb', 'baum', 'haus', 'maus', 'zahn', 'hand', 'fuss', 'glas', 'rad', 'apfel', 'vogel', 'dach', 'blatt', 'zug', 'topf', 'hund', 'fisch', 'kind', 'katze', 'blume']
+/** Nouns where "three of the same" came out as one thing: said more plainly. */
+const MANY_OWN: Record<string, string> = {
+  wand: 'three separate short sections of brick wall standing apart from each other in a row, with clear gaps between them',
+  hand: 'three separate open hands raised side by side, three hands clearly apart from each other, no arms',
+  zug: 'three separate small toy trains in a row, each a short locomotive, with clear gaps between them',
+}
+for (const noun of MANY)
+  PICTURE_PROMPTS[`${noun}-viele`] =
+    MANY_OWN[noun] ?? `three of the same thing in a small group, side by side and slightly overlapping, clearly more than one: ${PICTURE_PROMPTS[noun]}`
+
 /** The Drachenflug (Part 6b): each grown dragon in flight, made from its reference picture. */
 export const FLY_POSE =
   'Show it fully grown, flying fast toward the right, seen exactly from the side: body stretched out level, head forward, a determined grin, tail streaming behind. If it has wings, they are spread wide in mid-beat, one raised high. If it has no wings, it glides like a swimming sea creature, body in a flowing wave, fins, flippers or legs tucked back. Nothing under it: no ground, no gold, no water, no shadow. Full body, nothing cut off.'
 
 /** Picked flying poses that came out facing left; the build mirrors them (checked by eye). */
-export const FLY_FACES_LEFT = ['perle', 'wrack', 'tang', 'kristall', 'welle', 'tiefsee', 'schaum', 'lagune']
+export const FLY_FACES_LEFT = ['perle', 'wrack', 'tang', 'kristall', 'welle', 'tiefsee', 'schaum', 'lagune', 'auster', 'strudel']
 
 /** Single pieces of the sea grotto the dragon flies past. Transparent, no characters. */
 const ROCK = 'Dark sea-teal grotto rock (#0b3540, #10444f, #165562) with the thick dark-teal outline, lit faintly warm from below.'

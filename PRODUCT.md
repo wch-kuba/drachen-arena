@@ -35,14 +35,16 @@ The school test format (color letters in a sentence; complete the plural from a 
 
 ## Capabilities and Constraints
 
-Five exercise types:
+Seven exercise types (6 and 7 added 2026-11-16, plan/v1-15-plural-grottos.md):
 1. **Selbstlaute, Zwielaute, Umlaute**: choose the category (3 options) for a letter/letter group; plus a sentence mode mirroring the school test (tap letters in a sentence and sort them).
 2. **Einzahl und Mehrzahl**: see singular + picture, type the plural. Emphasis on umlaut plurals.
 3. **Fehlende Buchstaben**: type the missing letter(s) in a word.
 4. **Kurze und lange Selbstlaute**: choose short or long. Needs audio (see Audio below).
 5. **Wörter mit ie**: see a picture, type the word. Short-i words (Fisch, Kissen) are mixed in, so the child chooses: long i → ie, short i → i. Land label: "i oder ie?".
+6. **Austernbank** ("a, o, u oder ä, ö, ü?"): see singular + picture, first decide whether the vowel gets two dots for the plural (the dots are two pearls; "Bleibt so" if not; for au: "Wird aus au ein äu?"), then type the plural. A wrong decision is a wrong try with a hint. About a third of the words keep their vowel.
+7. **Strudel** ("Von vielen zu einem"): see the plural + a picture of many, type the singular (its article is given). After a right umlaut word: "Wände mit ä, weil es von Wand kommt." Trains the school strategy for ä/äu from the other side.
 
-- Exercises 2, 3, 5 are typed; 1 and 4 are choice-based. Typing uses a **custom in-app keyboard** (large keys, Ä Ö Ü ß always visible, no autocorrect), not the iOS system keyboard.
+- Exercises 2, 3, 5, 7 are typed; 1 and 4 are choice-based; 6 is a choice, then typed. Typing uses a **custom in-app keyboard** (large keys, Ä Ö Ü ß always visible, no autocorrect), not the iOS system keyboard.
 - **Answer strictness:** capitalization matters but is handled gently. A lowercase noun ("hüte") counts as almost right: "Fast! Nomen schreibt man groß." The child fixes it and still earns the reward. An article is never required.
 - **Exercise 1 has two modes:** (A) a single letter or letter group → pick 1 of 3 categories; (B) school-test style, where the child taps letters in a sentence and sorts them gelb (Selbstlaut) / grün (Zwielaut) / blau (Umlaut).
 - **Exercise 4 marks:** dot under a short vowel (•), line under a long vowel (–), as in Klett materials. The child taps • or –.
@@ -54,7 +56,7 @@ Five exercise types:
 - Rewards: points and crystals for correct answers, eggs that hatch into collectible dragons that grow (hatchling → young → grown) and show moods (idle, happy, sleeping), new worlds/levels unlocked by progress. Rules (decided 2026-11-04):
   - Crystals: 3 right on the first try, 2 after one hint, 1 after more help; +10 for every finished round. The crystal total is the score. Nothing is ever taken away.
   - One goal at a time, filled with crystals (decided 2026-11-05, replaces growth by rounds): the egg needs 100 → it hatches a baby; the child then feeds that dragon 100 → young, 100 more → grown; the grown dragon finds the next egg. Extra crystals carry into the next step. Never shrinks. A full goal takes its step when the round ends, or on Home if the child left the round early (decided 2026-11-05).
-  - Every step (hatch, young, grown) opens the next land. Order: Mehrzahl (open at start, the biggest test gap) → Fehlende Buchstaben → i oder ie? → Laute → Kurz oder lang. Eggs hatch in roster order: the five land dragons first (in land order), then the rest; 12 dragons in v1.
+  - Every step (hatch, young, grown) opens the next land. Order: Mehrzahl (open at start, the biggest test gap) → Austernbank → Strudel → Fehlende Buchstaben → i oder ie? → Laute → Kurz oder lang (new lands placed early 2026-11-16, they target the biggest gap; Kurz oder lang is blocked for now). Eggs hatch in roster order: the seven land dragons first (in land order), then the rest; 14 dragons.
   - Living dragons (decided 2026-11-16, Part 6b): things to look at and play with that change no rule. The egg cracks as it fills and a fed dragon glows when it is almost full; a round with every item right on the first try gets a bigger celebration and the same crystals; every hatched dragon has a card (kind, power, home, size, and its favorite word: the first word the child got firmly right while feeding it); a dragon that becomes grown carries the child on a flight through the grotto to the next egg, and can fly again from its card. The flight has no score, no timer and no crystals. Not added, on purpose: streaks or daily bonuses, a shop, random loot, timed challenges.
   - The child types their own name on first start (v1); parent mode takes this over in v2.
 - Progress stored locally on the device (IndexedDB, `navigator.storage.persist()`), with JSON backup export/import in the parent panel. Installed-PWA storage is separate from Safari's, so all parent work happens inside the installed app.
@@ -63,7 +65,7 @@ Five exercise types:
   - Why not Gemini TTS any more: Tier 1 caps at 100 requests per model per day, so the seed would have taken a week; Google Cloud TTS (Chirp 3 HD) had no cap but less warmth. ElevenLabs Starter: 40,000 credits a month, enough to make every clip in one run.
   - Terms: ElevenLabs paid plans include commercial use of the generated audio; library voices may be used under the plan. The ElevenLabs account belongs to the parent (adult); no child data is sent, only our own word lists. **Before any commercial release:** re-check the ElevenLabs terms for library voices in a children's product.
 - Word pictures: **AI-generated illustrations** (OpenAI GPT Image, via a build-time batch script; free library assets where one set fits the style) in one consistent style, bundled with the app for the seed content. A fallback for parent-added words (emoji or photo) is still to be decided.
-- Seed content: about 150–200 Klasse 2 words across the five exercises, written by us and reviewed by the parent.
+- Seed content: about 240 Klasse 2 items across the seven exercises, written by us and reviewed by the parent.
 
 **Release plan**
 - v1: five exercises, seed content, rewards loop, offline install.

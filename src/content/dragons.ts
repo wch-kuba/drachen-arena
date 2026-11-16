@@ -16,6 +16,8 @@ export interface DragonKind {
 
 export const DRAGONS: DragonKind[] = [
   { id: 'perle', land: 'mehrzahl', card: { art: 'Perlendrache', power: 'Findet jede Perle im Meer.', home: 'Perlenriff', lives: 'Er wohnt im Perlenriff.' } },
+  { id: 'auster', land: 'umlaut', card: { art: 'Krabbendrache', power: 'Seine Scheren knacken jede Muschel.', home: 'Austernbank', lives: 'Er wohnt auf der Austernbank.' } },
+  { id: 'strudel', land: 'einzahl', card: { art: 'Hammerdrache', power: 'Dreht das Wasser zu einem wilden Strudel.', home: 'Strudel', lives: 'Er wohnt im Strudel.' } },
   { id: 'wrack', land: 'luecke', card: { art: 'Schildkrötendrache', power: 'Sein Panzer hält jeden Sturm aus.', home: 'Schiffswrack', lives: 'Er wohnt im Schiffswrack.' } },
   { id: 'tang', land: 'ie', card: { art: 'Langdrache', power: 'Versteckt sich im Seetang, bis ihn keiner sieht.', home: 'Tiefsee-Garten', lives: 'Er wohnt im Tiefsee-Garten.' } },
   { id: 'kristall', land: 'laute', card: { art: 'Kristalldrache', power: 'Seine Stacheln leuchten im Dunkeln.', home: 'Kristallhöhle', lives: 'Er wohnt in der Kristallhöhle.' } },

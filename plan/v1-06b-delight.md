@@ -14,6 +14,8 @@ All screen work goes through `/impeccable`. Dragons stay cool, not cute (DESIGN.
 - [ ] **Read the German card texts** in `src/content/dragons.ts` (12 dragons × kind, power, home) and the new lines in `src/strings.ts` (Part 6b block). Written by us; a German reader should check them. Changed texts need `npm run audio` again.
 - [ ] **Try it on the real iPad:** the flight at 60 fps, the finger never hiding the dragon, the card turn, the music level in the flight. (iPhone over Wi-Fi, 2026-11-16: parent played the grow → take-off → flight → egg flow, the replay and the cards: "all looks good". iPad and the installed, offline app still open.)
 
+**Merged with Part 15 (2026-11-16):** `main` gained two lands and two dragons (Auster, Strudel) while this part was built. Both got what the other twelve have: card texts, a flying picture, a wing-beat sheet and voice clips, so "12" below now means 14. `public/img` is 15 MB with both parts, at the Part 7 target: the next art needs a look at sizes first (the wing-beat sheets are 3.5 MB of it).
+
 ## Tasks
 
 ### Living dragon on Home

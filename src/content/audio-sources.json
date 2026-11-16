@@ -34,6 +34,11 @@
     "emmy",
     "knurps"
   ],
+  "Äpfel mit ä, weil es von Apfel kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "au": [
     "kermy",
     "hopsi",
@@ -94,11 +99,31 @@
     "emmy",
     "knurps"
   ],
+  "Bäume mit äu, weil es von Baum kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Beet": [
     "kermy",
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Bekommt das a zwei Punkte?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Bekommt das o zwei Punkte?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Bekommt das u zwei Punkte?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Bett": [
     "kermy",
@@ -129,6 +154,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Blätter mit ä, weil es von Blatt kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Blumen": [
     "kermy",
@@ -183,6 +213,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Dächer mit ä, weil es von Dach kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "das Auto": [
     "kermy",
@@ -463,7 +498,25 @@
     "emmy",
     "knurps"
   ],
+  "die Äpfel": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Bäume": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "Die Bäume sind grün.": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Blätter": [
     "kermy",
     "hopsi",
     "emmy",
@@ -475,7 +528,31 @@
     "emmy",
     "knurps"
   ],
+  "die Blumen": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Dächer": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "Die Eule schläft am Tag.": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Fische": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Füße": [
     "kermy",
     "hopsi",
     "emmy",
@@ -487,7 +564,25 @@
     "emmy",
     "knurps"
   ],
+  "die Gläser": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "die Hand": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Hände": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Häuser": [
     "kermy",
     "hopsi",
     "emmy",
@@ -499,7 +594,37 @@
     "emmy",
     "knurps"
   ],
+  "die Hunde": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Hüte": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "die Katze": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Katzen": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Kinder": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Körbe": [
     "kermy",
     "hopsi",
     "emmy",
@@ -523,6 +648,12 @@
     "emmy",
     "knurps"
   ],
+  "die Läuse": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "die Maus": [
     "kermy",
     "hopsi",
@@ -530,6 +661,12 @@
     "knurps"
   ],
   "Die Maus isst Käse.": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Mäuse": [
     "kermy",
     "hopsi",
     "emmy",
@@ -547,10 +684,22 @@
     "emmy",
     "knurps"
   ],
+  "die Räder": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "Die Ringe zeigen dir die Farbe.": [
     "knurps (cheerful)",
     "knurps (playful)",
     "knurps (warmly)"
+  ],
+  "die Töpfe": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
   ],
   "die Tür": [
     "kermy",
@@ -564,7 +713,19 @@
     "emmy",
     "knurps"
   ],
+  "die Vögel": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
   "die Wand": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Wände": [
     "kermy",
     "hopsi",
     "emmy",
@@ -575,6 +736,23 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "die Zähne": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "die Züge": [
+    "kermy",
+    "hopsi",
+    "emmy",
+    "knurps"
+  ],
+  "Dreht das Wasser zu einem wilden Strudel.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Du bist ein Drachenprofi!": [
     "knurps (cheerful)",
@@ -605,6 +783,11 @@
     "emmy",
     "knurps"
   ],
+  "Er wohnt auf der Austernbank.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Er wohnt auf der Sandbank.": [
     "knurps (cheerful)",
     "knurps (playful)",
@@ -626,6 +809,11 @@
     "knurps (warmly)"
   ],
   "Er wohnt im Schiffswrack.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Er wohnt im Strudel.": [
     "knurps (cheerful)",
     "knurps (playful)",
     "knurps (warmly)"
@@ -772,6 +960,11 @@
     "emmy",
     "knurps"
   ],
+  "Füße mit ü, weil es von Fuß kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Gänse": [
     "kermy",
     "hopsi",
@@ -807,6 +1000,11 @@
     "emmy",
     "knurps"
   ],
+  "Gläser mit ä, weil es von Glas kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Gleich hast du es!": [
     "knurps (cheerful)",
     "knurps (playful)",
@@ -834,11 +1032,21 @@
     "emmy",
     "knurps"
   ],
+  "Hammerdrache": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Hände": [
     "kermy",
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Hände mit ä, weil es von Hand kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Haus": [
     "kermy",
@@ -851,6 +1059,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Häuser mit äu, weil es von Haus kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Hör gut zu. Kurz oder lang?": [
     "knurps (cheerful)",
@@ -902,6 +1115,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Hüte mit ü, weil es von Hut kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Hütte": [
     "kermy",
@@ -1052,6 +1270,16 @@
     "emmy",
     "knurps"
   ],
+  "Körbe mit ö, weil es von Korb kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Krabbendrache": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Kristalldrache": [
     "knurps (cheerful)",
     "knurps (playful)",
@@ -1085,6 +1313,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Läuse mit äu, weil es von Laus kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Löffel": [
     "kermy",
@@ -1120,6 +1353,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Mäuse mit äu, weil es von Maus kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Mein Freund hat ein Boot.": [
     "kermy",
@@ -1284,6 +1522,11 @@
     "emmy",
     "knurps"
   ],
+  "Räder mit ä, weil es von Rad kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Radiergummi": [
     "kermy",
     "hopsi",
@@ -1318,6 +1561,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Sag die Mehrzahl laut. Hörst du ä, ö, ü oder äu?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Schaf": [
     "kermy",
@@ -1360,6 +1608,11 @@
     "knurps (warmly)"
   ],
   "Schreib das Wort.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Schreib die Einzahl.": [
     "knurps (cheerful)",
     "knurps (playful)",
     "knurps (warmly)"
@@ -1408,6 +1661,11 @@
     "knurps (warmly)"
   ],
   "Seine Laterne leuchtet am dunklen Meeresgrund.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Seine Scheren knacken jede Muschel.": [
     "knurps (cheerful)",
     "knurps (playful)",
     "knurps (warmly)"
@@ -1532,7 +1790,17 @@
     "knurps (playful)",
     "knurps (warmly)"
   ],
+  "Tipp: Aus ä wird a.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Tipp: Aus au wird äu.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Tipp: Aus äu wird au.": [
     "knurps (cheerful)",
     "knurps (playful)",
     "knurps (warmly)"
@@ -1542,7 +1810,17 @@
     "knurps (playful)",
     "knurps (warmly)"
   ],
+  "Tipp: Aus ö wird o.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Tipp: Aus u wird ü.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
+  "Tipp: Aus ü wird u.": [
     "knurps (cheerful)",
     "knurps (playful)",
     "knurps (warmly)"
@@ -1597,6 +1875,11 @@
     "knurps (playful)",
     "knurps (warmly)"
   ],
+  "Tipp: Einzahl heißt: nur eins. Wie heißt das Wort dann?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Tipp: ie ist immer lang.": [
     "knurps (cheerful)",
     "knurps (playful)",
@@ -1637,6 +1920,11 @@
     "knurps (playful)",
     "knurps (warmly)"
   ],
+  "Tipp: Wird aus a, o, u, au ein ä, ö, ü, äu?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Tipp: Zwei gleiche Selbstlaute sind lang.": [
     "knurps (cheerful)",
     "knurps (playful)",
@@ -1664,6 +1952,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Töpfe mit ö, weil es von Topf kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Türen": [
     "kermy",
@@ -1722,11 +2015,21 @@
     "emmy",
     "knurps"
   ],
+  "Vögel mit ö, weil es von Vogel kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Wände": [
     "kermy",
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Wände mit ä, weil es von Wand kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Was ist das für ein Laut?": [
     "knurps (cheerful)",
@@ -1765,6 +2068,11 @@
     "emmy",
     "knurps"
   ],
+  "Wird aus au ein äu?": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
+  ],
   "Wölfe": [
     "kermy",
     "hopsi",
@@ -1788,6 +2096,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Zähne mit ä, weil es von Zahn kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Zaun": [
     "kermy",
@@ -1835,6 +2148,11 @@
     "hopsi",
     "emmy",
     "knurps"
+  ],
+  "Züge mit ü, weil es von Zug kommt.": [
+    "knurps (cheerful)",
+    "knurps (playful)",
+    "knurps (warmly)"
   ],
   "Zwei Köpfe sehen doppelt so viel.": [
     "knurps (cheerful)",

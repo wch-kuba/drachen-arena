@@ -34,10 +34,19 @@ export function submit(a: Attempt, item: Item, typed: string): Attempt {
     ...a,
     last: v,
     wrongs,
-    hint: Math.min(3, wrongs) as HintLevel,
+    hint: Math.min(3, a.hint + 1) as HintLevel,
     lastWrong: normalize(typed),
-    mistakes: item.type === 'mehrzahl' ? [...a.mistakes, pluralMistake(typed, item.answer)] : a.mistakes,
+    mistakes: item.type === 'mehrzahl' || item.type === 'umlaut' ? [...a.mistakes, pluralMistake(typed, item.answer)] : a.mistakes,
   }
+}
+
+/**
+ * A wrong decision before the typing (Austernbank: the pearls). Counts as a wrong try for the
+ * crystals and the box, but leaves the typing hints alone: the decision has its own help.
+ */
+export function miss(a: Attempt): Attempt {
+  if (a.done) return a
+  return { ...a, wrongs: a.wrongs + 1, mistakes: [...a.mistakes, 'umlaut'] }
 }
 
 /** Right on the first try, no hint seen. Only this moves an item up a box. */
@@ -59,7 +68,8 @@ export function revealCount(item: Item): number {
   const len = [...normalize(item.answer)].length
   if (item.type === 'ie') return len > 1 ? 1 : 0
   if (item.type === 'luecke') return len > 1 ? 1 : 0
-  if (item.type !== 'mehrzahl') return 0
+  if (item.type === 'einzahl') return len > 2 ? 1 : 0
+  if (item.type !== 'mehrzahl' && item.type !== 'umlaut') return 0
   const answer = [...normalize(item.answer)]
   const cap = Math.floor(answer.length / 2)
   if (cap === 0) return 0

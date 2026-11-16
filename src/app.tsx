@@ -25,6 +25,8 @@ const SCREENS = {
   home: 'Grotte',
   laute: 'Laute',
   mehrzahl: 'Mehrzahl',
+  umlaut: 'Austernbank',
+  einzahl: 'Strudel',
   luecke: 'Fehlende Buchstaben',
   kurzlang: 'Kurz oder lang',
   ie: 'i oder ie?',
@@ -192,7 +194,7 @@ const DEMO: Profile = {
     { id: 'b', kind: 'wrack', name: 'Funkel', hatchedAt: 0, stage: 'grown' },
     { id: 'c', kind: 'tang', name: 'Blubb', hatchedAt: 0, stage: 'young' },
   ],
-  unlockedWorlds: ['mehrzahl', 'luecke', 'ie', 'laute', 'kurzlang'],
+  unlockedWorlds: ['mehrzahl', 'umlaut', 'einzahl', 'luecke', 'ie', 'laute', 'kurzlang'],
 }
 
 /** The demo after Blubb is grown too: the next egg fills. */
@@ -228,6 +230,8 @@ function render(s: Screen) {
       return <HomeScreen />
     case 'laute':
     case 'mehrzahl':
+    case 'umlaut':
+    case 'einzahl':
     case 'luecke':
     case 'kurzlang':
     case 'ie':

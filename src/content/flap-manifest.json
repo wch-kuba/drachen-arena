@@ -7,6 +7,22 @@
     "rows": 2,
     "ms": 1125
   },
+  "auster": {
+    "src": "img/flap/auster.webp",
+    "w": 340,
+    "h": 324,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1417
+  },
+  "strudel": {
+    "src": "img/flap/strudel.webp",
+    "w": 340,
+    "h": 168,
+    "cols": 12,
+    "rows": 2,
+    "ms": 2042
+  },
   "wrack": {
     "src": "img/flap/wrack.webp",
     "w": 340,

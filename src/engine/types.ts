@@ -2,7 +2,7 @@
 
 import type { Stage } from './rewards.ts'
 
-export type ExerciseType = 'laute' | 'mehrzahl' | 'luecke' | 'kurzlang' | 'ie'
+export type ExerciseType = 'laute' | 'mehrzahl' | 'umlaut' | 'einzahl' | 'luecke' | 'kurzlang' | 'ie'
 
 /** One question. Seed items ship with the app; parent items are added in v2. */
 export interface Item {
@@ -16,6 +16,8 @@ export interface Item {
   image?: string
   /** Rule hint, e.g. "Aus u wird oft ü." Falls back to the type default. */
   hint?: string
+  /** Strudel (einzahl): the singular's article, shown before the answer cells. */
+  article?: 'der' | 'die' | 'das'
   /** Kurz oder lang: index of the target vowel in `prompt`. Default: the first vowel. */
   at?: number
   /** E.g. ["umlaut-plural"]. */

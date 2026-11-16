@@ -1,7 +1,7 @@
 // A round of up to 10 items. Pure state; the game hook saves after every finished item,
 // so leaving mid-round never loses crystals already earned.
 
-import { crystalsFor, firstTry, startAttempt, submit, type Attempt } from './attempt.ts'
+import { crystalsFor, firstTry, miss as missAttempt, startAttempt, submit, type Attempt } from './attempt.ts'
 import type { Item, Mistake } from './types.ts'
 
 export interface Result {
@@ -40,6 +40,9 @@ export function answer(r: Round, typed: string): { round: Round; finished?: Resu
   }
   return { round: { ...r, attempt, results: [...r.results, finished] }, finished }
 }
+
+/** A wrong decision before the typing (see attempt.ts › miss). */
+export const miss = (r: Round): Round => ({ ...r, attempt: missAttempt(r.attempt) })
 
 /** Move on after a finished item. */
 export function next(r: Round): Round {

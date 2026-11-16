@@ -79,7 +79,7 @@ describe('egg', () => {
       p = hatch(p, `D${n}`, n)
       p = { ...p, dragons: p.dragons.map((x) => ({ ...x, stage: 'grown' as const })) }
     }
-    expect(DRAGONS.slice(0, 5).map((d) => d.land)).toEqual(UNLOCK_ORDER)
+    expect(DRAGONS.slice(0, UNLOCK_ORDER.length).map((d) => d.land)).toEqual(UNLOCK_ORDER)
   })
 })
 
@@ -95,10 +95,10 @@ describe('feeding', () => {
     let p = endRound({ ...withDragon('hatchling'), goalCrystals: STEP_COST - ROUND_BONUS }, 'mehrzahl')
     expect(p.dragons[0].stage).toBe('young')
     expect(p.goalCrystals).toBe(0)
-    expect(p.unlockedWorlds).toEqual(['mehrzahl', 'luecke', 'ie'])
+    expect(p.unlockedWorlds).toEqual(['mehrzahl', 'luecke', 'umlaut'])
     p = endRound({ ...seeGrowth(p), goalCrystals: 2 * STEP_COST }, 'mehrzahl')
     expect(p.dragons[0].stage).toBe('grown')
-    expect(p.unlockedWorlds.at(-1)).toBe('laute')
+    expect(p.unlockedWorlds.at(-1)).toBe('einzahl')
     // One step per round; the rest carries into the next egg.
     expect(p.pendingHatch).toBeUndefined()
     expect(p.goalCrystals).toBe(STEP_COST + ROUND_BONUS)
@@ -112,7 +112,7 @@ describe('feeding', () => {
     }
   })
 
-  it('opens all open lands early in the second dragon', () => {
+  it('opens all open lands while the second dragon grows', () => {
     let p = emptyProfile()
     let rounds = 0
     while (nextLand(p) && rounds < 50) {
@@ -123,7 +123,7 @@ describe('feeding', () => {
     }
     expect(p.unlockedWorlds).toEqual(UNLOCK_ORDER.filter((l) => !BLOCKED.has(l)))
     expect(p.dragons.length).toBeLessThanOrEqual(2)
-    expect(rounds).toBeLessThanOrEqual(12)
+    expect(rounds).toBeLessThanOrEqual(16)
   })
 
   it('keeps blocked lands closed, even when already open', () => {
@@ -147,7 +147,7 @@ describe('hatch', () => {
     let p = endRound({ ...emptyProfile(), goalCrystals: STEP_COST }, 'mehrzahl')
     p = hatch(p, ' Funkel ', 1)
     expect(p.dragons).toEqual([{ id: 'd1', kind: DRAGONS[0].id, name: 'Funkel', hatchedAt: 1, stage: 'hatchling' }])
-    expect(p.unlockedWorlds).toEqual(['mehrzahl', 'luecke'])
+    expect(p.unlockedWorlds).toEqual(['mehrzahl', 'umlaut'])
     expect(p.pendingHatch).toBeUndefined()
   })
 })
@@ -155,13 +155,13 @@ describe('hatch', () => {
 describe('growth moment', () => {
   it('waits to be shown and takes no further step meanwhile', () => {
     let p = endRound({ ...withDragon('hatchling'), goalCrystals: STEP_COST }, 'mehrzahl')
-    expect(p.pendingGrowth).toEqual({ id: 'd', land: 'ie' })
+    expect(p.pendingGrowth).toEqual({ id: 'd', land: 'umlaut' })
     expect(stageBefore(p.dragons[0].stage)).toBe('hatchling')
     p = endRound({ ...p, goalCrystals: 5 * STEP_COST }, 'mehrzahl')
     expect(p.dragons[0].stage).toBe('young')
     p = endRound(seeGrowth(p), 'mehrzahl')
     expect(p.dragons[0].stage).toBe('grown')
-    expect(p.pendingGrowth).toEqual({ id: 'd', land: 'laute' })
+    expect(p.pendingGrowth).toEqual({ id: 'd', land: 'einzahl' })
   })
 })
 

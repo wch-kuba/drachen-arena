@@ -3,11 +3,11 @@
 // iOS only lets audio start inside a tap, so the context is created and resumed on the
 // first touch or key. Effects are on by default; the atmosphere (music + water) is off by default.
 
-export type Sfx = 'right' | 'gem' | 'key' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land' | 'wake' | 'roar'
+export type Sfx = 'right' | 'gem' | 'key' | 'hint' | 'round' | 'wobble' | 'hatch' | 'land' | 'wake' | 'roar' | 'wings'
 type Loop = 'music' | 'grotto'
 
 // The music loop (~25 MB decoded) loads only when the atmosphere is first wanted.
-const ALL: Sfx[] = ['right', 'gem', 'key', 'hint', 'round', 'wobble', 'hatch', 'land', 'wake', 'roar']
+const ALL: Sfx[] = ['right', 'gem', 'key', 'hint', 'round', 'wobble', 'hatch', 'land', 'wake', 'roar', 'wings']
 const FILE: Partial<Record<Sfx | Loop, string>> = { key: 'key.wav' }
 /** Sounds repeated in quick runs get a small random pitch, so typing doesn't sound mechanical. */
 const VARY: Partial<Record<Sfx, number>> = { key: 0.06, wake: 0.05, roar: 0.04 }
@@ -18,6 +18,8 @@ let on = true
 let wantAtmo = false
 /** Screens that want the atmosphere right now (Home, the round reward). */
 let scenes = 0
+/** Screens that play the music whatever the Musik switch says (the dragon flight). */
+let films = 0
 let atmo: { gain: GainNode; stop: () => void } | undefined
 let leaveTimer: ReturnType<typeof setTimeout> | undefined
 let ducked = false
@@ -103,6 +105,21 @@ export function atmosphereHere() {
   }
 }
 
+/**
+ * The dragon flight: the theme plays at full level even when the Musik switch is off (the Töne
+ * switch still mutes it). It is the one film moment of the game. Returns the cleanup.
+ */
+export function musicHere() {
+  films++
+  clearTimeout(leaveTimer)
+  syncAmbient()
+  return () => {
+    films--
+    clearTimeout(leaveTimer)
+    leaveTimer = setTimeout(syncAmbient, 250)
+  }
+}
+
 /** Music level, its level under the voice, and the quiet water underneath. */
 const LEVEL = 1
 const DUCKED = 0.3
@@ -125,7 +142,7 @@ function ramp(g: GainNode, to: number, seconds: number) {
 }
 
 function syncAmbient() {
-  const should = on && wantAtmo && scenes > 0 && !!ctx
+  const should = on && ((wantAtmo && scenes > 0) || films > 0) && !!ctx
   if (!should) {
     atmo?.stop()
     atmo = undefined

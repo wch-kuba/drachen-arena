@@ -5,7 +5,8 @@ import { useContext, useEffect, useRef, useState } from 'preact/hooks'
 import { initVoice } from './audio.ts'
 import { initSfx, setAmbient, setSound } from './sfx.ts'
 import { record } from './leitner.ts'
-import { addCrystals, endRound, hatch, seeGrowth, takeStep } from './rewards.ts'
+import { addCrystals, endRound, FAVORITE_BOX, hatch, learnWord, seeGrowth, takeStep } from './rewards.ts'
+import { favoriteWord } from './words.ts'
 import type { Result } from './round.ts'
 import { load, requestPersist, saveProfile, saveProgress, type Data } from './storage.ts'
 import type { ExerciseType, Item, Profile } from './types.ts'
@@ -59,7 +60,10 @@ export function GameProvider({ seed, children }: { seed: Item[]; children: Compo
   const finishItem = (r: Result) => {
     const d = latest.current!
     const progress = record(d.progress[r.id], r.firstTry, Date.now(), r.lastWrong, r.mistakes)
-    const profile = addCrystals(d.profile, r.crystals)
+    // A word that just became firmly known is the fed dragon's favorite word (its card shows it).
+    const item = progress.box === FAVORITE_BOX && r.firstTry ? d.items.find((i) => i.id === r.id) : undefined
+    const word = item && favoriteWord(item)
+    const profile = addCrystals(word ? learnWord(d.profile, word) : d.profile, r.crystals)
     latest.current = { ...d, progress: { ...d.progress, [r.id]: progress }, profile }
     setData(latest.current)
     void saveProgress(r.id, progress)

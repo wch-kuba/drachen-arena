@@ -88,6 +88,15 @@ export function wordOf(item: Item): string {
   return item.prompt
 }
 
+/** The word an item teaches, for a dragon's card: the plural, the filled-in word, the ie word.
+ *  Sound and vowel-length items teach a rule, not one word. */
+export function favoriteWord(item: Item): string | undefined {
+  if (item.type === 'mehrzahl') return item.answer
+  if (item.type === 'luecke') return wordOf(item)
+  if (item.type === 'ie') return item.answer
+  return undefined
+}
+
 /** "der Hut" → "Hut". */
 export const withoutArticle = (s: string) => normalize(s).replace(/^(der|die|das)\s+/i, '')
 

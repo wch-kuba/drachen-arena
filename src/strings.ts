@@ -98,6 +98,24 @@ export const T = {
   sounds: 'Töne',
   music: 'Musik',
   noDragons: 'Noch kein Drache. Spiel Runden, dann schlüpft dein Ei!',
+  // Living dragons (Part 6b)
+  /** A round with every item right on the first try. Same crystals, a bigger show. */
+  perfect: 'Alles beim ersten Mal! Wie ein echter Drachenmeister!',
+  /** Home, while the fed dragon is young: its last step ends in the flight to the next egg. */
+  fliesOff: (n: number, name: string) => `Noch ${n} ${n === 1 ? 'Kristall' : 'Kristalle'}, dann fliegt ${name} los!`,
+  takeOff: 'Losfliegen!',
+  /** Shown and read at the start of a flight. */
+  flyHint: 'Zieh mit dem Finger. Dein Drache folgt dir.',
+  foundEgg: (name: string) => `${name} hat ein Ei gefunden!`,
+  foundEggSay: 'Dein Drache hat ein Ei gefunden!',
+  landed: 'Gut geflogen!',
+  fly: 'Fliegen!',
+  toDragons: 'Zu deinen Drachen',
+  /** Dragon cards in the collection. */
+  showCard: (name: string) => `Karte von ${name} ansehen`,
+  flipCard: 'Karte umdrehen',
+  card: { art: 'Art', power: 'Kraft', home: 'Zuhause', size: 'Größe', word: 'Lieblingswort' },
+  cardSize: { hatchling: 'Klein wie eine Katze', young: 'Groß wie ein Pferd', grown: 'Groß wie ein Haus' },
 } as const
 
 /** Praise for a right answer. Rotates, never the same line twice in a row. */

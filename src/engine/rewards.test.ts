@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest'
 import { DRAGONS } from '../content/dragons.ts'
 import { emptyProfile } from './storage.ts'
 import {
+  fillLevel,
+  goalFill,
+  learnWord,
   ROUND_BONUS,
   STEP_COST,
   UNLOCK_ORDER,
@@ -185,5 +188,35 @@ describe('round left early', () => {
     expect(stepDue(addCrystals(emptyProfile(), STEP_COST - 1))).toBe(false)
     const dragons = DRAGONS.map((d, i) => ({ id: `d${i}`, kind: d.id, name: d.id, hatchedAt: 0, stage: 'grown' as const }))
     expect(stepDue({ ...emptyProfile(), dragons, goalCrystals: STEP_COST })).toBe(false)
+  })
+})
+
+describe('living dragons (Part 6b): looks only, no rule', () => {
+  const fed = (stage: 'hatchling' | 'young' | 'grown', word?: string): Profile => ({
+    ...emptyProfile(),
+    goalCrystals: 40,
+    crystals: 140,
+    dragons: [{ id: 'a', kind: 'perle', name: 'Perla', hatchedAt: 0, stage, ...(word ? { word } : {}) }],
+  })
+
+  it('gives the fed dragon its first firmly known word, and keeps it', () => {
+    const p = learnWord(fed('hatchling'), 'Hüte')
+    expect(p.dragons[0].word).toBe('Hüte')
+    expect(learnWord(p, 'Körbe').dragons[0].word).toBe('Hüte')
+  })
+
+  it('leaves crystals, goal and lands alone, and skips a grown dragon or an egg', () => {
+    const before = fed('young')
+    const { dragons: _d, ...rest } = learnWord(before, 'Hüte')
+    const { dragons: _b, ...was } = before
+    expect(rest).toEqual(was)
+    expect(learnWord(fed('grown'), 'Hüte')).toEqual(fed('grown'))
+    expect(learnWord(emptyProfile(), 'Hüte')).toEqual(emptyProfile())
+  })
+
+  it('shows how close the goal is in three steps', () => {
+    expect([0, 0.49, 0.5, 0.74, 0.75, 0.89, 0.9, 1].map(fillLevel)).toEqual([0, 0, 1, 1, 2, 2, 3, 3])
+    expect(goalFill(fed('young'))).toBe(0.4)
+    expect(goalFill({ ...fed('young'), goalCrystals: 130 })).toBe(1)
   })
 })

@@ -744,6 +744,186 @@
     "prompt": "d7066c93211c",
     "made": "2026-11-04"
   },
+  "img/flap/auster.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/echo.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/koralle.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/kristall.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/lagune.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/muschel.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/perle.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/schatz.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/schaum.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/strudel.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/tang.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/tiefsee.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/welle.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flap/wrack.webp": {
+    "model": "gemini-omni-1.2-flash",
+    "prompt": "scripts/gen-flap.ts",
+    "made": "2026-11-16"
+  },
+  "img/flight/fish.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "e31f798a1d05",
+    "made": "2026-11-16"
+  },
+  "img/flight/jelly.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "69edd2fed39d",
+    "made": "2026-11-16"
+  },
+  "img/flight/kelp.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "e66ae5a9c9b4",
+    "made": "2026-11-16"
+  },
+  "img/flight/ledge.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "938789b6c70e",
+    "made": "2026-11-16"
+  },
+  "img/flight/pillar.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "45f5f56146cc",
+    "made": "2026-11-16"
+  },
+  "img/flight/rocks.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "32913beb24ec",
+    "made": "2026-11-16"
+  },
+  "img/flight/stalactites.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "385c773ecd3b",
+    "made": "2026-11-16"
+  },
+  "img/flight/wreck.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "63431aac4567",
+    "made": "2026-11-16"
+  },
+  "img/fly/auster.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/echo.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/koralle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/kristall.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/lagune.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/muschel.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/perle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/schatz.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/schaum.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/strudel.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/tang.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/tiefsee.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/welle.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
+  "img/fly/wrack.webp": {
+    "model": "gpt-image-1.5",
+    "prompt": "cd1c8d23fce2",
+    "made": "2026-11-16"
+  },
   "img/land/einzahl.webp": {
     "model": "gpt-image-1.5",
     "prompt": "085d4a1defcb",

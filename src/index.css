@@ -2756,6 +2756,746 @@ b.hl {
   text-shadow: none;
 }
 
+/* ---------- Living dragons (Part 6b) ---------- */
+
+/* An egg that is getting close shows cracks, drawn over its picture on the same square canvas. */
+/* Zero specificity: eggs that are placed absolutely (grow, flight, card) stay that way. */
+:where(.egg-pic) {
+  position: relative;
+}
+
+.egg-pic > svg.egg-cracks-over {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* From 90 % the dragon's light shines out through the cracks. */
+.egg-light {
+  filter: drop-shadow(0 0 2px rgb(255 231 181 / 0.9));
+}
+
+/* Almost full: the egg twitches now and then. Only an egg may ask for attention like this. */
+.egg-eager {
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+  animation: egg-twitch 5.5s var(--ease-out) infinite;
+}
+
+@keyframes egg-twitch {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0);
+  }
+  90% {
+    transform: rotate(-4deg);
+  }
+  94% {
+    transform: rotate(3deg);
+  }
+  97% {
+    transform: rotate(-1deg);
+  }
+}
+
+/* A dragon that is almost full glows gold from below, like the hoard under it. */
+[data-full] .dragon-body[data-mood='sleeping'],
+.reward-fed[data-full] .dragon-pic {
+  filter: drop-shadow(0 8px 16px rgb(247 200 110 / 0.42));
+}
+
+/* A perfect round: coins and gems rain past the whole screen, the goal on the pile does a loop. */
+.perfect-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.perfect-rain span {
+  position: absolute;
+  top: 0;
+  aspect-ratio: 1;
+  animation: rain-fall 1700ms cubic-bezier(0.5, 0, 0.75, 0) both;
+}
+
+.perfect-rain svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rain-fall {
+  from {
+    transform: translateY(-12dvh) rotate(0);
+  }
+  85% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(104dvh) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+.reward-perfect {
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-wrap: balance;
+  animation: rise 520ms var(--ease-settle) 500ms both;
+}
+
+/* The loop turns around the middle of the dragon as it is drawn (a baby is the lower half). */
+.reward[data-perfect] :is(.reward-fed, .reward-egg) {
+  transform-origin: 50% calc(100% - var(--s, 1) * 50%);
+  animation: loop-the-loop 1500ms 450ms both;
+}
+
+@keyframes loop-the-loop {
+  0% {
+    transform: translateY(0) rotate(0) scale(1, 1);
+    animation-timing-function: var(--ease-out);
+  }
+  12% {
+    transform: translateY(4%) rotate(0) scale(1.06, 0.9);
+    animation-timing-function: var(--ease-out);
+  }
+  48% {
+    transform: translateY(-32%) rotate(-180deg) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0);
+  }
+  84% {
+    transform: translateY(3%) rotate(-360deg) scale(1.07, 0.9);
+    animation-timing-function: var(--ease-settle);
+  }
+  100% {
+    transform: translateY(0) rotate(-360deg) scale(1, 1);
+  }
+}
+
+/* Dragon cards. A hatched dragon's niche is a button; its card is held up over the niches. */
+button.niche {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button.niche .niche-arch {
+  transition: transform 120ms var(--ease-out);
+}
+
+button.niche:active .niche-arch {
+  transform: scale(0.97);
+}
+
+.card-view {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: 1rem;
+  padding: 4.75rem 1.25rem 1.25rem;
+}
+
+.card-shade {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgb(4 28 34 / 0.88);
+  animation: card-dim 260ms var(--ease-out) both;
+}
+
+@keyframes card-dim {
+  from {
+    opacity: 0;
+  }
+}
+
+.card-close {
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  z-index: 1;
+}
+
+/* The card is as big as the room allows, always 5 : 7. */
+.card-room {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  container-type: size;
+  perspective: 60rem;
+  pointer-events: none;
+}
+
+.card {
+  width: min(100cqi, 25rem, 100cqh * 5 / 7);
+  aspect-ratio: 5 / 7;
+  container-type: inline-size;
+  pointer-events: auto;
+  animation: rise 420ms var(--ease-settle) both;
+}
+
+.card-turn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 560ms var(--ease-settle);
+}
+
+.card[data-back] .card-turn {
+  transform: rotateY(180deg);
+}
+
+/* Sea-glass with a minted gold rim, like the coin button: a thing worth collecting. */
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  padding: 6cqi;
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--radius-plaque);
+  background: var(--glass);
+  color: var(--ink);
+  font: inherit;
+  font-size: 5.3cqi;
+  box-shadow:
+    inset 0 0 0 3px var(--gold-300),
+    inset 0 0 0 6px var(--gold-600),
+    0 10px 24px rgb(0 0 0 / 0.5);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card-front {
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: 0.2em;
+  text-align: center;
+}
+
+.card-window {
+  position: relative;
+  min-height: 0;
+  margin-bottom: 0.5em;
+  border: var(--outline) solid var(--ink);
+  border-radius: 999px 999px 18px 18px;
+  background: var(--rock-3);
+  box-shadow: inset 0 10px 18px rgb(0 0 0 / 0.45);
+  overflow: hidden;
+}
+
+.card-window .dragon-pic {
+  position: absolute;
+  inset: 8% 5% 3%;
+  width: 90%;
+  height: 89%;
+  object-fit: contain;
+  object-position: 50% 100%;
+}
+
+.card-name {
+  font-size: 1.6em;
+  font-weight: 700;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.card-stage {
+  color: var(--ink-soft);
+}
+
+.card-back {
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.9em;
+  text-align: left;
+  transform: rotateY(180deg);
+}
+
+/* The faces also swap as the card passes edge-on, so the turn never depends on the browser
+   hiding a back face (WebKit does not always). */
+.card-face {
+  transition: visibility 0s 150ms;
+}
+
+.card-back,
+.card[data-back] .card-front {
+  visibility: hidden;
+}
+
+.card[data-back] .card-back {
+  visibility: visible;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+.card-facts {
+  display: grid;
+  align-content: start;
+  gap: 0.7em;
+  margin: 0;
+}
+
+.card-facts dt {
+  font-size: 0.82em;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.card-facts dd {
+  margin: 0;
+  font-size: 1.08em;
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+/* The egg it came from, as the card's seal. */
+.card-egg {
+  position: absolute;
+  right: 5cqi;
+  bottom: 4cqi;
+  width: 17cqi;
+}
+
+.card-act {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  width: min(100%, 25rem);
+}
+
+.card-flip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-flip svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* The Drachenflug. Every length is in --u, 1 % of the screen height (set by Flight.tsx), so the
+   grotto is the same on a phone and on an iPad. Layers move at their own depth; pieces sit on them. */
+.flight {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  container-type: size;
+  --u: 1cqh;
+  background: var(--rock-0);
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* The take-off clip fills the screen. It is never hidden (no opacity 0): WebKit refuses to
+   start a clip by itself while it cannot be seen. A dark veil lifts off it instead. */
+.flight-dive video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flight-dive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--rock-0);
+  pointer-events: none;
+  transition: opacity 260ms var(--ease-out);
+}
+
+.flight-dive[data-shown]::after {
+  opacity: 0;
+}
+
+.flight-layer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  will-change: transform;
+}
+
+.flight-far {
+  width: max-content;
+}
+
+/* Wide enough for the screen plus its whole drift (52 u); a wide screen zooms in from the floor. */
+.flight-far img {
+  display: block;
+  width: max(calc(var(--u) * 150), 100cqw + var(--u) * 52);
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+
+.flight-glows span {
+  position: absolute;
+  bottom: 0;
+  width: calc(var(--u) * 70);
+  height: calc(var(--u) * 48);
+  background: radial-gradient(50% 100% at 50% 100%, rgb(247 200 110 / 0.2), rgb(247 200 110 / 0));
+}
+
+.flight-piece {
+  position: absolute;
+  width: auto;
+  max-width: none;
+}
+
+.flight-piece[data-drawn] {
+  fill: var(--rock-2);
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.flight-piece[data-drawn] path {
+  vector-effect: non-scaling-stroke;
+}
+
+.flight-piece[data-drawn][data-piece='kelp'] {
+  fill: var(--tq-700);
+}
+
+/* What rushes past in front of the dragon is a dark shape against the glow. */
+.flight-near .flight-piece {
+  filter: brightness(0.3);
+}
+
+.flight-near .flight-piece[data-drawn] {
+  fill: var(--rock-0);
+  filter: none;
+}
+
+.flight-jelly {
+  position: absolute;
+  aspect-ratio: 3 / 4;
+  translate: 0 -50%;
+  opacity: 0.75;
+  animation: jelly-bob 3.6s ease-in-out infinite alternate;
+  transition:
+    opacity 300ms var(--ease-out),
+    filter 300ms var(--ease-out),
+    scale 420ms var(--ease-settle);
+}
+
+.flight-jelly :is(img, svg) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.flight-jelly .jelly-bell {
+  fill: var(--tq-500);
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  transition: fill 300ms var(--ease-out);
+}
+
+.flight-jelly .jelly-arms {
+  fill: none;
+  stroke: var(--tq-300);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* The dragon passed: the jellyfish lights up and stays lit. */
+.flight-jelly[data-lit] {
+  opacity: 1;
+  scale: 1.18;
+  filter: drop-shadow(0 calc(var(--u) * 0.6) calc(var(--u) * 2) rgb(63 211 198 / 0.85));
+}
+
+.flight-jelly[data-lit] .jelly-bell {
+  fill: var(--tq-100);
+}
+
+@keyframes jelly-bob {
+  from {
+    transform: translateY(calc(var(--u) * -1.6));
+  }
+  to {
+    transform: translateY(calc(var(--u) * 1.6));
+  }
+}
+
+.flight-ledge {
+  position: absolute;
+  left: calc(var(--u) * var(--ledge-x, 0));
+  bottom: 18%;
+  width: min(calc(var(--u) * 40), 50cqw);
+  translate: -50% 0;
+}
+
+.flight-ledge > :is(img, svg) {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.flight-ledge > .flight-foot {
+  position: absolute;
+  left: 8%;
+  top: 62%;
+  width: 84%;
+  filter: brightness(0.7);
+}
+
+.flight-ledge .ledge-rock {
+  fill: var(--rock-3);
+  stroke: var(--ink);
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+
+.flight-ledge .ledge-gold {
+  fill: var(--gold-500);
+  stroke: var(--ink);
+  stroke-width: 5;
+}
+
+.flight-egg {
+  position: absolute;
+  left: 50%;
+  bottom: 37%;
+  width: 24%;
+  translate: -50% 0;
+  filter: drop-shadow(0 calc(var(--u) * 0.8) calc(var(--u) * 2.4) rgb(247 200 110 / 0.6));
+}
+
+.flight-bubbles span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 2px solid var(--tq-100);
+  border-radius: 50%;
+  background: rgb(180 240 231 / 0.14);
+  opacity: 0;
+}
+
+.flight-dragon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: min(calc(var(--u) * 40), 50cqw);
+  aspect-ratio: 2 / 1;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* The beat of the wings carries the whole body up and down a little. */
+.flight-beat {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  animation: wing-beat 620ms ease-in-out infinite alternate;
+}
+
+@keyframes wing-beat {
+  from {
+    transform: translateY(-4%) scaleY(1.03);
+  }
+  to {
+    transform: translateY(4%) scaleY(0.96);
+  }
+}
+
+.flight-fly,
+.flight-stand {
+  position: absolute;
+  transition: opacity 160ms var(--ease-out);
+}
+
+.flight-fly {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* A wing beat as a sheet of frames: the window shows one frame. The picture steps along a row
+   while its holder steps down the rows, so the beat runs through every frame in order. */
+.flap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+/* Out of the flow, so the sheet's own height can never stretch the window (WebKit let it:
+   both rows showed, one dragon above the other). */
+.flap > span {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: calc(var(--rows) * 100%);
+  animation: flap-rows var(--beat) steps(var(--rows)) infinite;
+}
+
+.flap img {
+  display: block;
+  width: calc(var(--cols) * 100%);
+  max-width: none;
+  height: 100%;
+  animation: flap-cols calc(var(--beat) / var(--rows)) steps(var(--cols)) infinite;
+}
+
+@keyframes flap-rows {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes flap-cols {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* The strip fits the dragon's box by its height or its width, centered, like a picture would. */
+.flight-fly.flap {
+  inset: 50% auto auto 50%;
+  /* A frame is as wide as the dragon is long, whatever its wings do above and below: sized by
+     its width, every dragon is as long as its box, and tall wing sweeps may reach out of it. */
+  position: absolute;
+  width: 110%;
+  height: auto;
+  translate: -50% -50%;
+}
+
+/* A dragon with a real wing beat rides it far less than a still picture has to. */
+.flight-beat:has(.flap) {
+  animation-duration: 1200ms;
+  animation-name: wing-ride;
+}
+
+@keyframes wing-ride {
+  from {
+    transform: translateY(-2%);
+  }
+  to {
+    transform: translateY(2%);
+  }
+}
+
+/* Standing pictures look left; in the flight every dragon looks where it flies. */
+.flight-fly[data-standing] {
+  transform: scaleX(-1);
+}
+
+.flight-stand {
+  left: 50%;
+  bottom: 0;
+  width: 78%;
+  height: auto;
+  translate: -50% 0;
+  transform: scaleX(-1);
+  opacity: 0;
+}
+
+.flight[data-phase='landed'] .flight-fly {
+  opacity: 0;
+}
+
+.flight[data-phase='landed'] .flight-stand {
+  opacity: 1;
+}
+
+.flight[data-phase='landed'] .flight-beat {
+  animation: flight-land 560ms var(--ease-settle) both;
+}
+
+@keyframes flight-land {
+  from {
+    transform: scale(1.07, 0.88);
+  }
+}
+
+.flight-close {
+  position: absolute;
+  top: calc(1rem + var(--safe-top));
+  left: 1rem;
+}
+
+.flight-hint {
+  position: absolute;
+  left: 50%;
+  bottom: calc(1.5rem + var(--safe-bottom));
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  padding: 0.45rem 0.5rem 0.45rem 1rem;
+  font-weight: 700;
+  transition: opacity 500ms var(--ease-out);
+}
+
+.flight-hint[data-off] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flight-hint .speak {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.flight-end {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: center;
+  padding: calc(2rem + var(--safe-top)) 1.25rem calc(1.25rem + var(--safe-bottom));
+  text-align: center;
+  pointer-events: none;
+  animation: rise 520ms var(--ease-settle) 200ms both;
+}
+
+.flight-end h1 {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: var(--gold-300);
+  text-wrap: balance;
+  text-shadow: 0 1px 2px rgb(4 28 34 / 0.85), 0 0 12px rgb(4 28 34 / 0.7);
+}
+
+.flight-end .btn-gold {
+  grid-row: 3;
+  width: min(100%, 26rem);
+  pointer-events: auto;
+}
+
 /* ---------- Short screens (last, so they win over the component rules) ---------- */
 
 /* Short phones (iPhone SE and every phone with a hint pane open): spacing gives way last. */

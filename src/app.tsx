@@ -3,11 +3,12 @@ import { UpdatePrompt } from './UpdatePrompt.tsx'
 import { LANDS, type LandId } from './lands.ts'
 import { SEED } from './content/seed.ts'
 import { GameProvider, useGame } from './engine/game.tsx'
-import { eggKind, goalLeft, goalOf, isUnlocked, nextLand, STAGES, stepDue, UNLOCK_ORDER } from './engine/rewards.ts'
+import { eggKind, goalFill, goalLeft, goalOf, isUnlocked, nextLand, pickDragon, STAGES, stepDue, UNLOCK_ORDER } from './engine/rewards.ts'
 import { atmosphereHere } from './engine/sfx.ts'
 import { emptyProfile } from './engine/storage.ts'
-import type { Profile } from './engine/types.ts'
+import type { Dragon, Profile } from './engine/types.ts'
 import { Collection } from './screens/Collection.tsx'
+import { Flight } from './screens/Flight.tsx'
 import { Grow } from './screens/Grow.tsx'
 import { Hatch } from './screens/Hatch.tsx'
 import { Home } from './screens/Home.tsx'
@@ -41,6 +42,12 @@ const SCREENS = {
   'grotte-drache': 'Grotte, Drache wird gefüttert (Demo)',
   'grotte-ei': 'Grotte, großer Drache mit Ei (Demo)',
   'drachen-demo': 'Drachen (Demo)',
+  'belohnung-perfekt': 'Belohnung, alles beim ersten Mal',
+  'belohnung-ei-90': 'Belohnung, Ei fast voll',
+  'grotte-ei-90': 'Grotte, Ei fast voll (Demo)',
+  karte: 'Drachenkarte (Demo)',
+  flug: 'Drachenflug zum Ei',
+  'flug-wieder': 'Drachenflug von der Karte',
 } as const
 type Screen = keyof typeof SCREENS
 
@@ -114,6 +121,7 @@ function HomeScreen() {
       name={p.childName}
       crystals={p.crystals}
       on={on}
+      goalFill={goalFill(p)}
       isOpen={(l) => isUnlocked(p, l)}
       next={nextLand(p)}
       nextHint={hint}
@@ -137,7 +145,9 @@ function homeGoal(p: Profile): { on: OnHoard; hint: string; step: string } {
   if ('dragon' in goal) {
     const d = goal.dragon
     const next = STAGES[STAGES.indexOf(d.stage) + 1]
-    return { on: { dragon: d }, hint: T.nextGrow(d.name), step: T.growsInto(left, d.name, T.stageInText[next]) }
+    // Its last step ends in the flight to the next egg, when there is one left to find.
+    const flies = next === 'grown' && !!pickDragon(p)
+    return { on: { dragon: d }, hint: T.nextGrow(d.name), step: flies ? T.fliesOff(left, d.name) : T.growsInto(left, d.name, T.stageInText[next]) }
   }
   if ('egg' in goal) return { on: { dragon: newest, egg: goal.egg }, hint: T.nextEgg, step: T.eggLeft(left) }
   // 'done' always has a newest dragon: every dragon is found and grown.
@@ -155,7 +165,22 @@ function LandScreen({ land }: { land: LandId }) {
 
 function CollectionScreen() {
   const { profile } = useGame().data
-  return <Collection profile={profile} onBack={() => go('')} />
+  // A grown dragon's card can fly it again; landing brings its card back.
+  const [flying, setFlying] = useState<Dragon>()
+  const [card, setCard] = useState<string>()
+  if (flying) return <Flight kind={flying.kind} name={flying.name} onDone={() => setFlying(undefined)} />
+  return (
+    <Collection
+      key={card}
+      profile={profile}
+      card={card}
+      onBack={() => go('')}
+      onFly={(d) => {
+        setCard(d.id)
+        setFlying(d)
+      }}
+    />
+  )
 }
 
 const DEMO: Profile = {
@@ -175,8 +200,8 @@ const DEMO: Profile = {
 /** The demo after Blubb is grown too: the next egg fills. */
 const DEMO_EGG: Profile = { ...DEMO, dragons: DEMO.dragons.map((d) => ({ ...d, stage: 'grown' })) }
 
-const demoReward = (goal: RewardGoal, filled: number, ready = false) => (
-  <Reward score={9} total={10} crystals={26} bonus={10} goal={goal} filled={filled} of={100} ready={ready} onAgain={noop} onHome={noop} onReady={noop} />
+const demoReward = (goal: RewardGoal, filled: number, ready = false, perfect = false) => (
+  <Reward perfect={perfect} score={perfect ? 10 : 9} total={10} crystals={26} bonus={10} goal={goal} filled={filled} of={100} ready={ready} onAgain={noop} onHome={noop} onReady={noop} />
 )
 
 const demoHome = (p: Profile) => (
@@ -184,6 +209,7 @@ const demoHome = (p: Profile) => (
     name={p.childName}
     crystals={p.crystals}
     on={homeGoal(p).on}
+    goalFill={goalFill(p)}
     isOpen={(l) => isUnlocked({ ...p, unlockedWorlds: ['mehrzahl', 'luecke'] }, l)}
     next="ie"
     nextHint={homeGoal(p).hint}
@@ -233,7 +259,19 @@ function render(s: Screen) {
     case 'grotte-ei':
       return demoHome(DEMO_EGG)
     case 'drachen-demo':
-      return <Collection profile={DEMO} onBack={noop} />
+      return <Collection profile={DEMO} onBack={noop} onFly={noop} />
+    case 'belohnung-perfekt':
+      return demoReward({ dragon: { kind: 'wrack', name: 'Funkel', stage: 'young' } }, 60, false, true)
+    case 'belohnung-ei-90':
+      return demoReward({ egg: 'tang' }, 93)
+    case 'grotte-ei-90':
+      return demoHome({ ...DEMO_EGG, goalCrystals: 93 })
+    case 'karte':
+      return <Collection profile={{ ...DEMO, dragons: DEMO.dragons.map((d) => (d.id === 'a' ? { ...d, word: 'Hüte' } : d)) }} card="a" onBack={noop} onFly={noop} />
+    case 'flug':
+      return <Flight key={s} kind="wrack" name="Funkel" egg="tang" onDone={noop} />
+    case 'flug-wieder':
+      return <Flight key={s} kind="perle" name="Perla" onDone={noop} />
   }
 }
 

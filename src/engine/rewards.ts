@@ -113,3 +113,22 @@ export const seeGrowth = (p: Profile): Profile => ({ ...p, pendingGrowth: undefi
 
 /** The stage a dragon had before its last growth step. */
 export const stageBefore = (s: Stage): Stage => STAGES[Math.max(0, STAGES.indexOf(s) - 1)]
+
+/** A word counts as firmly known from this Leitner box on (right on the first try twice in a row). */
+export const FAVORITE_BOX = 3
+
+/**
+ * The dragon being fed gets a favorite word for its card: the first word that reaches
+ * FAVORITE_BOX while it is fed. Display only; crystals, goals and lands are untouched.
+ */
+export function learnWord(p: Profile, word: string): Profile {
+  const d = growing(p)
+  if (!d || d.word || !word) return p
+  return { ...p, dragons: p.dragons.map((x) => (x.id === d.id ? { ...x, word } : x)) }
+}
+
+/** How full the goal is, 0..1. */
+export const goalFill = (p: Profile) => Math.min(1, p.goalCrystals / STEP_COST)
+
+/** How close the goal looks: 0 below half, then 1 / 2 / 3 from 50 / 75 / 90 % (egg cracks, a full dragon's glow). */
+export const fillLevel = (fill: number): 0 | 1 | 2 | 3 => (fill >= 0.9 ? 3 : fill >= 0.75 ? 2 : fill >= 0.5 ? 1 : 0)

@@ -1,0 +1,114 @@
+{
+  "perle": {
+    "src": "img/flap/perle.webp",
+    "w": 340,
+    "h": 246,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1125
+  },
+  "auster": {
+    "src": "img/flap/auster.webp",
+    "w": 340,
+    "h": 324,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1417
+  },
+  "strudel": {
+    "src": "img/flap/strudel.webp",
+    "w": 340,
+    "h": 168,
+    "cols": 12,
+    "rows": 2,
+    "ms": 2042
+  },
+  "wrack": {
+    "src": "img/flap/wrack.webp",
+    "w": 340,
+    "h": 164,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1083
+  },
+  "tang": {
+    "src": "img/flap/tang.webp",
+    "w": 340,
+    "h": 130,
+    "cols": 12,
+    "rows": 2,
+    "ms": 2125
+  },
+  "kristall": {
+    "src": "img/flap/kristall.webp",
+    "w": 340,
+    "h": 299,
+    "cols": 12,
+    "rows": 2,
+    "ms": 2167
+  },
+  "echo": {
+    "src": "img/flap/echo.webp",
+    "w": 340,
+    "h": 242,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1417
+  },
+  "muschel": {
+    "src": "img/flap/muschel.webp",
+    "w": 340,
+    "h": 139,
+    "cols": 12,
+    "rows": 1,
+    "ms": 708
+  },
+  "welle": {
+    "src": "img/flap/welle.webp",
+    "w": 340,
+    "h": 137,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1792
+  },
+  "koralle": {
+    "src": "img/flap/koralle.webp",
+    "w": 340,
+    "h": 270,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1458
+  },
+  "tiefsee": {
+    "src": "img/flap/tiefsee.webp",
+    "w": 340,
+    "h": 308,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1458
+  },
+  "schaum": {
+    "src": "img/flap/schaum.webp",
+    "w": 340,
+    "h": 252,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1542
+  },
+  "schatz": {
+    "src": "img/flap/schatz.webp",
+    "w": 340,
+    "h": 289,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1542
+  },
+  "lagune": {
+    "src": "img/flap/lagune.webp",
+    "w": 340,
+    "h": 282,
+    "cols": 12,
+    "rows": 2,
+    "ms": 1250
+  }
+}

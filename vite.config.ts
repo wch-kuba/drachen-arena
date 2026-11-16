@@ -35,7 +35,7 @@ export default defineConfig({
       },
       workbox: {
         // Precache everything so the app runs fully offline after first load.
-        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,webp,woff2,mp3,wav,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,webp,woff2,mp3,wav,mp4,json}'],
         navigateFallback: '/index.html',
         cleanupOutdatedCaches: true,
       },

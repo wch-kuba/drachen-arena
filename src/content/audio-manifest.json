@@ -33,6 +33,11 @@
       "audio/bb0ea53c1161.mp3",
       "audio/0438ecf37415.mp3"
     ],
+    "Alles beim ersten Mal! Wie ein echter Drachenmeister!": [
+      "audio/c4eaac812102.mp3",
+      "audio/17bd71781a95.mp3",
+      "audio/4240a2dddc31.mp3"
+    ],
     "Am Abend leuchten die Sterne.": [
       "audio/a6fd75e125e9.mp3",
       "audio/ef13129cfca1.mp3",
@@ -284,6 +289,11 @@
       "audio/8322d40630fb.mp3",
       "audio/c8df4090019d.mp3",
       "audio/f20bf3d0d575.mp3"
+    ],
+    "Dein Drache hat ein Ei gefunden!": [
+      "audio/346f0b58021b.mp3",
+      "audio/babb048fe554.mp3",
+      "audio/e5f5af857361.mp3"
     ],
     "Dein Drache ist gewachsen!": [
       "audio/9a3e5560ca11.mp3",
@@ -611,6 +621,66 @@
       "audio/50491c6f65d6.mp3",
       "audio/07aa6d5b88a2.mp3"
     ],
+    "Er wohnt auf der Sandbank.": [
+      "audio/9ecf82379855.mp3",
+      "audio/ceac81dcb12a.mp3",
+      "audio/775a7e7bd799.mp3"
+    ],
+    "Er wohnt im Korallenwald.": [
+      "audio/8dff4095cda4.mp3",
+      "audio/86882a401b36.mp3",
+      "audio/72e65b910996.mp3"
+    ],
+    "Er wohnt im offenen Meer.": [
+      "audio/160ea1750d83.mp3",
+      "audio/2ddd3f4f8431.mp3",
+      "audio/0d1cc949dffd.mp3"
+    ],
+    "Er wohnt im Perlenriff.": [
+      "audio/75b671145da2.mp3",
+      "audio/16c518902ea0.mp3",
+      "audio/7b0fe80c3f24.mp3"
+    ],
+    "Er wohnt im Schiffswrack.": [
+      "audio/daf66e83225c.mp3",
+      "audio/f8b1fd0deef3.mp3",
+      "audio/a2411f9803c3.mp3"
+    ],
+    "Er wohnt im Tiefsee-Garten.": [
+      "audio/bddecc507034.mp3",
+      "audio/5ff6127b90f9.mp3",
+      "audio/d9ad475e0e5d.mp3"
+    ],
+    "Er wohnt in der Echo-Grotte.": [
+      "audio/aeb2641dc75d.mp3",
+      "audio/d3ef0b8b4140.mp3",
+      "audio/8836d8f44530.mp3"
+    ],
+    "Er wohnt in der Goldhöhle.": [
+      "audio/3893b2093edd.mp3",
+      "audio/d01df3b1eb10.mp3",
+      "audio/b04c81a0859f.mp3"
+    ],
+    "Er wohnt in der Kristallhöhle.": [
+      "audio/8f88320aa1e7.mp3",
+      "audio/b6af52a51d0d.mp3",
+      "audio/036f42e1a2b6.mp3"
+    ],
+    "Er wohnt in der Lagune.": [
+      "audio/d335d5532b81.mp3",
+      "audio/6e3a2a3410f8.mp3",
+      "audio/02c3385eea05.mp3"
+    ],
+    "Er wohnt in der Tiefsee.": [
+      "audio/805e59ebd414.mp3",
+      "audio/9e92ef5b237c.mp3",
+      "audio/44cd4ec0e945.mp3"
+    ],
+    "Er wohnt über den Wellen.": [
+      "audio/bec2202786d8.mp3",
+      "audio/39f6c2ee628e.mp3",
+      "audio/760c677ec62f.mp3"
+    ],
     "eu": [
       "audio/b77fb0e9cd89.mp3",
       "audio/d61e49f60910.mp3",
@@ -632,11 +702,21 @@
       "audio/d2a013434e78.mp3",
       "audio/7da02e9d1e08.mp3"
     ],
+    "Federdrache": [
+      "audio/06e3e20aa47e.mp3",
+      "audio/7029ccfe18ee.mp3",
+      "audio/7528b3c63d3e.mp3"
+    ],
     "Feuer": [
       "audio/2bf11585ce81.mp3",
       "audio/ff48448cf384.mp3",
       "audio/3be7ae127951.mp3",
       "audio/4a24ba2d7e55.mp3"
+    ],
+    "Findet jede Perle im Meer.": [
+      "audio/c379a3c40183.mp3",
+      "audio/3b1c943620ed.mp3",
+      "audio/3425d4fe0481.mp3"
     ],
     "Finger": [
       "audio/5cbd88eb3f0e.mp3",
@@ -668,11 +748,21 @@
       "audio/e8d887063cb0.mp3",
       "audio/3540bd376f3d.mp3"
     ],
+    "Fliegt leise wie Schaum über das Wasser.": [
+      "audio/6434f714d7a4.mp3",
+      "audio/63b2052032ae.mp3",
+      "audio/4367e9ec6089.mp3"
+    ],
     "Flügel": [
       "audio/bf2caec0e571.mp3",
       "audio/aff258f7cc74.mp3",
       "audio/dc36e35361cf.mp3",
       "audio/1e5cdbf72449.mp3"
+    ],
+    "Flügelschlange": [
+      "audio/def53f7cbb98.mp3",
+      "audio/d53a278841b5.mp3",
+      "audio/ec9d5afd27ea.mp3"
     ],
     "Freund": [
       "audio/6fe8c5e6e292.mp3",
@@ -738,6 +828,16 @@
       "audio/507bbc0e0907.mp3",
       "audio/12fa2693d1a6.mp3"
     ],
+    "Gleitet durch das Wasser wie ein Rochen.": [
+      "audio/db707de47c0b.mp3",
+      "audio/d3567cada828.mp3",
+      "audio/47679d0a2b6f.mp3"
+    ],
+    "Gut geflogen!": [
+      "audio/2d9a328220af.mp3",
+      "audio/3b2d78840b15.mp3",
+      "audio/039f75e1281c.mp3"
+    ],
     "Haar": [
       "audio/09969731c3f8.mp3",
       "audio/c2e61741bd02.mp3",
@@ -777,6 +877,11 @@
       "audio/29ef8ce96439.mp3",
       "audio/311b960e8763.mp3",
       "audio/b8cf04110935.mp3"
+    ],
+    "Hört einen Fisch aus hundert Metern.": [
+      "audio/b27f40b3f15a.mp3",
+      "audio/f39baf8fd95b.mp3",
+      "audio/114c9d048193.mp3"
     ],
     "Hose": [
       "audio/f6f5f753d063.mp3",
@@ -963,6 +1068,11 @@
       "audio/b5f2a3bfa7cf.mp3",
       "audio/c701c8f44822.mp3"
     ],
+    "Kristalldrache": [
+      "audio/eb5fcb526ba3.mp3",
+      "audio/7a2352876f60.mp3",
+      "audio/2632f77752f5.mp3"
+    ],
     "Küche": [
       "audio/7f0cbb54b712.mp3",
       "audio/f76d1a27f719.mp3",
@@ -980,6 +1090,11 @@
       "audio/31a6f8dafc7c.mp3",
       "audio/e0a80fe8587a.mp3",
       "audio/90343311aa21.mp3"
+    ],
+    "Langdrache": [
+      "audio/2b0b5f5a50fb.mp3",
+      "audio/98b0fbdb50d5.mp3",
+      "audio/f5758cf5018f.mp3"
     ],
     "Läuse": [
       "audio/48edc1b5e2ee.mp3",
@@ -1010,6 +1125,11 @@
       "audio/93a9ba14e34f.mp3",
       "audio/cd75c689416c.mp3",
       "audio/84efa8038e47.mp3"
+    ],
+    "Mantadrache": [
+      "audio/f8b49770c8ae.mp3",
+      "audio/435eba9ef3e7.mp3",
+      "audio/1d743d4a10be.mp3"
     ],
     "Mäuse": [
       "audio/97cdbc05ae83.mp3",
@@ -1135,11 +1255,21 @@
       "audio/06dbcda24e31.mp3",
       "audio/f211805f5aef.mp3"
     ],
+    "Panzerdrache": [
+      "audio/875707d0bb4b.mp3",
+      "audio/02da046c227f.mp3",
+      "audio/99672cd8d501.mp3"
+    ],
     "Papier": [
       "audio/6a2154aadf0f.mp3",
       "audio/4b31cdb2c9a2.mp3",
       "audio/8d95a07c76c6.mp3",
       "audio/705f1c24b11d.mp3"
+    ],
+    "Perlendrache": [
+      "audio/6b2aa20a849d.mp3",
+      "audio/005f2cc5725e.mp3",
+      "audio/1f52d79e5243.mp3"
     ],
     "Pferde": [
       "audio/56f5755e6e47.mp3",
@@ -1229,11 +1359,21 @@
       "audio/67bbc2c3be9a.mp3",
       "audio/20a822ffa598.mp3"
     ],
+    "Schatzdrache": [
+      "audio/712a491903da.mp3",
+      "audio/ed80576d5ace.mp3",
+      "audio/ee109f17a1ae.mp3"
+    ],
     "Schiff": [
       "audio/2cdc2c38bb2a.mp3",
       "audio/a7a892066cd5.mp3",
       "audio/64fe0e1311b7.mp3",
       "audio/13a61fce78c3.mp3"
+    ],
+    "Schildkrötendrache": [
+      "audio/ed1767c49c2a.mp3",
+      "audio/c703e7757cc7.mp3",
+      "audio/23432310facf.mp3"
     ],
     "Schreib das Wort.": [
       "audio/7d5180cab0b7.mp3",
@@ -1257,11 +1397,41 @@
       "audio/3328f77b0670.mp3",
       "audio/ffd9f19f9baa.mp3"
     ],
+    "Schwimmt schneller als jedes Schiff.": [
+      "audio/679b4f9af030.mp3",
+      "audio/8018e1145477.mp3",
+      "audio/b28c151bc4ca.mp3"
+    ],
+    "Seeschlange": [
+      "audio/c84290fb06de.mp3",
+      "audio/266289f619e0.mp3",
+      "audio/abc6a6e9c1e6.mp3"
+    ],
     "Seife": [
       "audio/460cd46c133a.mp3",
       "audio/3f8b6c468d12.mp3",
       "audio/262ca03093eb.mp3",
       "audio/78279171a88b.mp3"
+    ],
+    "Sein Muschelpanzer ist hart wie Stein.": [
+      "audio/430a56fd5fda.mp3",
+      "audio/cda657cd4197.mp3",
+      "audio/ef29e79b4640.mp3"
+    ],
+    "Sein Panzer hält jeden Sturm aus.": [
+      "audio/d08b7662c9c4.mp3",
+      "audio/e458f4ea814d.mp3",
+      "audio/ff03f3fa8299.mp3"
+    ],
+    "Seine Laterne leuchtet am dunklen Meeresgrund.": [
+      "audio/05d4984d66d3.mp3",
+      "audio/41f28f23c375.mp3",
+      "audio/d32b19cf15a0.mp3"
+    ],
+    "Seine Stacheln leuchten im Dunkeln.": [
+      "audio/26b4a74c08c4.mp3",
+      "audio/628bf5b63417.mp3",
+      "audio/7169f54b4bc6.mp3"
     ],
     "Sieb": [
       "audio/afd2ffe20463.mp3",
@@ -1346,6 +1516,11 @@
       "audio/4bbc8289a75c.mp3",
       "audio/9211f475ffc2.mp3",
       "audio/0a61073d8c5e.mp3"
+    ],
+    "Tiefseedrache": [
+      "audio/c49d31f29d0d.mp3",
+      "audio/7ca3218981ce.mp3",
+      "audio/65f55ea69128.mp3"
     ],
     "Tier": [
       "audio/ed76ad903e21.mp3",
@@ -1536,6 +1711,11 @@
       "audio/3227f9ec273b.mp3",
       "audio/37281c6bb681.mp3"
     ],
+    "Versteckt sich im Seetang, bis ihn keiner sieht.": [
+      "audio/41425b6cf239.mp3",
+      "audio/a4b03e830d19.mp3",
+      "audio/0426bdabbb23.mp3"
+    ],
     "Versuch es noch einmal.": [
       "audio/5d00d6060792.mp3",
       "audio/b8cb8df54c06.mp3",
@@ -1546,6 +1726,11 @@
       "audio/b29d15b6611d.mp3",
       "audio/5fed3f4405f4.mp3",
       "audio/768395110585.mp3"
+    ],
+    "Vier Flügel tragen ihn und all sein Gold.": [
+      "audio/164e3515553b.mp3",
+      "audio/89be9e72591b.mp3",
+      "audio/7b718f913ff9.mp3"
     ],
     "Vögel": [
       "audio/61257f9d3de7.mp3",
@@ -1638,6 +1823,11 @@
       "audio/a9387f54b6fe.mp3",
       "audio/693ae5d0a626.mp3"
     ],
+    "Zieh mit dem Finger. Dein Drache folgt dir.": [
+      "audio/a622fc1f7561.mp3",
+      "audio/7a76fcb47826.mp3",
+      "audio/db5880cc9d8a.mp3"
+    ],
     "Zimmer": [
       "audio/4f390e13a65c.mp3",
       "audio/5ac69f27eb47.mp3",
@@ -1661,6 +1851,16 @@
       "audio/653edeeebe94.mp3",
       "audio/7ac9ff494548.mp3",
       "audio/fa032aa13d96.mp3"
+    ],
+    "Zwei Köpfe sehen doppelt so viel.": [
+      "audio/8e23c390fca4.mp3",
+      "audio/786834f145f2.mp3",
+      "audio/9d7c2d175642.mp3"
+    ],
+    "Zweikopfdrache": [
+      "audio/ce18bd84fcbb.mp3",
+      "audio/04e8df27290f.mp3",
+      "audio/6d3eb533de04.mp3"
     ],
     "Zwiebel": [
       "audio/9c61c42f509b.mp3",

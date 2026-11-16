@@ -4,6 +4,7 @@
 import { normalize } from '../engine/check.ts'
 import type { Item } from '../engine/types.ts'
 import { isSentence, umlautChange, wordOf } from '../engine/words.ts'
+import { DRAGONS } from './dragons.ts'
 import { ASK, ASK_GROUP, ASK_SATZ, DEFAULT_HINT, T, GENTLE, PRAISE } from '../strings.ts'
 
 /** Clip lookup key: same text → same clip, regardless of stray spaces or Unicode form. */
@@ -32,6 +33,12 @@ export function ruleOf(item: Item): string {
   return change ? T.umlautRule(change.from, change.to) : DEFAULT_HINT[item.type]
 }
 
+/** What the speaker on a dragon's card reads: its kind, its power, its home. */
+export function cardSay(kind: string): string[] {
+  const c = DRAGONS.find((d) => d.id === kind)?.card
+  return c ? [c.art, c.power, c.lives] : []
+}
+
 /**
  * Every spoken text, by who says it. The narrator (one voice) reads instructions, tips and
  * feedback; words, plurals, sounds and sentences come in several voices, picked at random
@@ -50,6 +57,11 @@ export function spokenRoles(items: Item[]): { narrator: string[]; words: string[
     T.fedSay,
     T.tapDragonSay,
     T.grewSay,
+    T.perfect,
+    T.flyHint,
+    T.foundEggSay,
+    T.landed,
+    ...DRAGONS.flatMap((d) => cardSay(d.id)),
     T.almostNoun,
     T.almostCase,
     T.hintStart,

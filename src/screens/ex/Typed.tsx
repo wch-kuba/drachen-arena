@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'preact/hooks'
-import { askOf, askParts, ruleOf } from '../../content/speech.ts'
+import { askOf, askParts, becauseLine, ruleOf } from '../../content/speech.ts'
 import { revealCount } from '../../engine/attempt.ts'
 import { speak } from '../../engine/audio.ts'
-import { gapParts, indefinite, umlautChange, withoutArticle, wordOf } from '../../engine/words.ts'
+import { play } from '../../engine/sfx.ts'
+import { becauseOf, gapParts, indefinite, singularChange, umlautChange, withoutArticle, wordOf } from '../../engine/words.ts'
 import { T } from '../../strings.ts'
 import { Keyboard } from '../../ui/Keyboard.tsx'
 import { Speak } from '../../ui/Speak.tsx'
 import { hasPicture, WordPicture } from '../../ui/WordPicture.tsx'
 import { Feedback, HintFeedback, NextButton, RightFeedback, type Play } from '../Exercise.tsx'
 
-// The typed exercises: Einzahl und Mehrzahl (2), Fehlende Buchstaben (3), Wörter mit ie (5).
+// The typed exercises: Einzahl und Mehrzahl (2), Fehlende Buchstaben (3), Wörter mit ie (5),
+// the typing step of Austernbank and the singular of Strudel (Part 15).
 // The child builds the answer in letter cells on the custom keyboard. Feedback: right,
 // almost (capitals), graded hints after wrong tries, copy step at the end.
 
@@ -21,6 +23,8 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
   // Nouns start with a capital; a gap inside a word starts small.
   const startUpper = gap ? before === '' && isUpper(item.answer[0]) : isUpper(item.answer[0])
   const word = wordOf(item)
+  const plural = item.type === 'mehrzahl' || item.type === 'umlaut'
+  const single = item.type === 'einzahl'
   // Wörter mit ie without a picture yet (Part 7): the spoken word carries the task.
   const listenFirst = item.type === 'ie' && !hasPicture(item.image)
 
@@ -86,7 +90,8 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
   })
 
   // Mehrzahl: the vowel that changes, highlighted in the rule hint and in the singular.
-  const change = item.type === 'mehrzahl' && !item.hint ? umlautChange(item.prompt, item.answer) : undefined
+  // Strudel: the same, backwards (ä → a), in the plural.
+  const change = item.hint ? undefined : plural ? umlautChange(item.prompt, item.answer) : single ? singularChange(item) : undefined
   const rule = change ? (
     <>
       Tipp: Aus <b class="hl">{change.from}</b> wird <b class="hl">{change.to}</b>.
@@ -97,7 +102,9 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
   const ruleSay = [T.hintRule(ruleOf(item))]
 
   let feedback = null
-  if (right) feedback = <RightFeedback />
+  const because = single && right ? becauseOf(item) : undefined
+  if (because) feedback = <BecauseFeedback item={item} />
+  else if (right) feedback = <RightFeedback />
   else if (showVerdict && verdict.kind === 'almost')
     feedback = <Feedback tone="almost">{verdict.reason === 'noun-case' ? T.almostNoun : T.almostCase}</Feedback>
   else if (a.hint === 1)
@@ -116,7 +123,10 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
   else if (a.hint === 3) feedback = <Feedback tone="almost">{T.hintShow}</Feedback>
 
   const singular = withoutArticle(item.prompt)
-  const hl = change && a.hint >= 1 ? change : undefined
+  // Strudel: the singular's article stands before the cells; only the noun is typed.
+  const lead = single ? item.article : undefined
+  // Austernbank: the pearls already decided the vowel, so it is marked from the start.
+  const hl = change && (a.hint >= 1 || (item.type === 'umlaut' && change)) ? change : undefined
 
   return (
     <>
@@ -126,8 +136,36 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
             <Speak text={askParts(item)} />
             {askOf(item)}
           </div>
-          {listenFirst ? <Speak big text={[word]} label={T.listen} /> : <WordPicture image={item.image} label={item.type === 'mehrzahl' ? word : T.picture} />}
-          {item.type === 'mehrzahl' && (
+          {listenFirst ? <Speak big text={[word]} label={T.listen} /> : <WordPicture image={item.image} label={plural || single ? word : T.picture} />}
+          {single && (
+            <p class="ex-word strudel-word" data-right={right ? '' : undefined}>
+              <span class="nw">
+                <small>viele</small>{' '}
+                {because ? (
+                  <>
+                    {[...because.plural].slice(0, change!.at).join('')}
+                    <mark class="hl">{[...because.plural].slice(change!.at, change!.at + change!.from.length).join('')}</mark>
+                    {[...because.plural].slice(change!.at + change!.from.length).join('')}
+                  </>
+                ) : hl ? (
+                  <>
+                    {[...singular].slice(0, hl.at).join('')}
+                    <mark class="hl">{[...singular].slice(hl.at, hl.at + hl.from.length).join('')}</mark>
+                    {[...singular].slice(hl.at + hl.from.length).join('')}
+                  </>
+                ) : (
+                  singular
+                )}
+              </span>{' '}
+              <small>– {item.article === 'die' ? 'eine' : 'ein'} …</small>
+            </p>
+          )}
+          {item.type === 'umlaut' && change && (
+            <p class="ex-change" aria-hidden="true">
+              <b class="hl">{change.from}</b> → <b class="hl">{change.to}</b>
+            </p>
+          )}
+          {plural && (
             <p class="ex-word">
               {/* "eine Hand" stays on one line; "– viele …" may wrap below it. */}
               <span class="nw">
@@ -157,10 +195,11 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
           data-gap={gap ? '' : undefined}
           data-state={right ? 'right' : nudge ? 'nudge' : undefined}
           // Cell units across the row: the cells, plus the given letters (each ~0.6 of a cell).
-          style={{ '--n': width + 0.6 * [...before, ...after].length }}
+          style={{ '--n': width + 0.6 * [...before, ...after].length + (lead ? 0.6 * (lead.length + 1) : 0) }}
           key={nudge}
           aria-live="polite"
         >
+          {lead && <span class="cell-fixed cell-article">{lead}</span>}
           {before && <span class="cell-fixed">{before}</span>}
           {cells.map((c) => (
             <span
@@ -190,5 +229,19 @@ export function Typed({ item, attempt: a, submit, next, anchor }: Play) {
         )}
       </div>
     </>
+  )
+}
+
+/** Strudel, right on an umlaut word: the link to the plural, "Wände mit ä, weil es von Wand kommt.", read aloud. */
+function BecauseFeedback({ item }: { item: Play['item'] }) {
+  const line = becauseLine(item)!
+  useEffect(() => {
+    play('right')
+    speak(line)
+  }, [])
+  return (
+    <Feedback tone="right" say={[line]}>
+      {line}
+    </Feedback>
   )
 }

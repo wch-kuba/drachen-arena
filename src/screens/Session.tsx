@@ -32,6 +32,7 @@ export function Session({ type, onExit }: { type: ExerciseType; onExit: () => vo
         filled={p.goalCrystals}
         of={STEP_COST}
         ready={!!(p.pendingHatch || p.pendingGrowth)}
+        perfect={isPerfect(done)}
         onHome={onExit}
         onReady={onExit}
         onAgain={() => {
@@ -57,6 +58,9 @@ export function Session({ type, onExit }: { type: ExerciseType; onExit: () => vo
     />
   )
 }
+
+/** A whole round with every item right on the first try. A handful of items is no round. */
+const isPerfect = (r: Round) => r.results.length >= 5 && r.results.length === r.items.length && roundFirstTries(r) === r.results.length
 
 /** The goal the summary shows. A dragon that just grew still shows its old size: Grow reveals it. */
 function rewardGoal(p: Profile): RewardGoal {

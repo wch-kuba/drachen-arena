@@ -3,10 +3,10 @@
 // public/img via images.ts) in the same style: thick dark-teal outline, light from below.
 
 import { useEffect, useRef, useState } from 'preact/hooks'
-import type { Stage } from '../engine/rewards.ts'
+import { fillLevel, type Stage } from '../engine/rewards.ts'
 import { play } from '../engine/sfx.ts'
 import { T } from '../strings.ts'
-import { dragonPic, eggPic, pic, type Pose } from './images.ts'
+import { dragonPic, eggPic, flapPic, flyPic, pic, type Pose } from './images.ts'
 
 const INK = 'var(--ink)'
 
@@ -31,6 +31,35 @@ export function Gem({ filled = true, class: cls }: { filled?: boolean; class?: s
         </>
       )}
     </svg>
+  )
+}
+
+/** A gold coin of the hoard, drawn: it only rains on a perfect round, where it must stay crisp. */
+export function Coin({ class: cls }: { class?: string }) {
+  return (
+    <svg class={cls} viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="17" fill="var(--gold-500)" stroke={INK} stroke-width="3" />
+      <circle cx="20" cy="20" r="11" fill="var(--gold-300)" stroke="var(--gold-600)" stroke-width="2.5" />
+      <path d="M13 15a9 9 0 0 1 8-5" fill="none" stroke="var(--gold-100)" stroke-width="3" stroke-linecap="round" />
+    </svg>
+  )
+}
+
+/**
+ * Cracks on an egg that is getting close (Part 6b): one from 50 % of its goal, more from 75 %,
+ * and from 90 % the dragon's light shines through them. Drawn on the egg's own square canvas
+ * (0..100), inked like the hatch's cut line. Same 100 crystals: the egg only shows them.
+ */
+const CRACKS = ['M52 21l-5 9 7 6-6 9', 'M54 36l8 4-2 8M47 30l-7 3', 'M48 45l5 8-7 6 4 7M60 48l6 6']
+
+export function EggCracks({ level }: { level: number }) {
+  if (level < 1) return null
+  const d = CRACKS.slice(0, level).join('')
+  return (
+    <g class="egg-cracks" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      {level >= 3 && <path class="egg-light" d={d} stroke="var(--gold-100)" stroke-width="5.5" />}
+      <path d={d} stroke={INK} stroke-width="2.4" />
+    </g>
   )
 }
 
@@ -86,7 +115,9 @@ let bubbleId = 0
  * `tappable` (Home): a tap wakes the dragon, which hops into its happy pose blowing bubbles, then
  * falls asleep again; more taps give more hops, every third a big one with a roar. A lone egg rocks.
  */
-export function HoardScene({ size = 0.6, on, tappable = false }: { size?: number; on: OnHoard; tappable?: boolean }) {
+export function HoardScene({ size = 0.6, on, tappable = false, fill = 0 }: { size?: number; on: OnHoard; tappable?: boolean; fill?: number }) {
+  // How close the goal is: the egg cracks, the fed dragon glows from below when it is almost full.
+  const near = fillLevel(fill)
   const pile = hoardPic(size)
   const pileH = (400 * pile.h) / pile.w
   // The dragon (with its own bit of gold) sinks into the pile, so the two read as one heap.
@@ -203,7 +234,7 @@ export function HoardScene({ size = 0.6, on, tappable = false }: { size?: number
     >
       <image href={pile.src} x="0" y={ABOVE} width="400" height={pileH} />
       {sleeper && d && (
-        <g class={mood === 'sleeping' ? 'dragon-breathe' : undefined}>
+        <g class={mood === 'sleeping' ? 'dragon-breathe' : undefined} data-full={near === 3 && !egg ? '' : undefined}>
           <g ref={body} class="dragon-body" data-mood={mood}>
             {tappable ? (
               // All three moods stand on one canvas and ground line; only one is shown.
@@ -227,7 +258,9 @@ export function HoardScene({ size = 0.6, on, tappable = false }: { size?: number
       )}
       {egg && (
         <g ref={eggEl} class="hoard-egg">
-          {both ? <Sized href={egg.src} cx={310} ground={ground + 10} size={84} /> : <Sized href={egg.src} cx={200} ground={ground + 6} size={150} />}
+          <g class={near === 3 ? 'egg-eager' : undefined}>
+            {both ? <Sized href={egg.src} cx={310} ground={ground + 10} size={84} cracks={near} /> : <Sized href={egg.src} cx={200} ground={ground + 6} size={150} cracks={near} />}
+          </g>
         </g>
       )}
       {bubbles.map((b) => (
@@ -278,8 +311,17 @@ export function GemPic({ class: cls }: { class?: string }) {
 }
 
 /** A square picture inside an SVG scene, standing on `ground`, centered on `cx`. */
-function Sized({ href, cx, ground, size }: { href: string; cx: number; ground: number; size: number }) {
-  return <image href={href} x={cx - size / 2} y={ground - size} width={size} height={size} preserveAspectRatio="xMidYMax meet" />
+function Sized({ href, cx, ground, size, cracks = 0 }: { href: string; cx: number; ground: number; size: number; cracks?: number }) {
+  const img = <image href={href} x={cx - size / 2} y={ground - size} width={size} height={size} preserveAspectRatio="xMidYMax meet" />
+  if (!cracks) return img
+  return (
+    <>
+      {img}
+      <svg x={cx - size / 2} y={ground - size} width={size} height={size} viewBox="0 0 100 100">
+        <EggCracks level={cracks} />
+      </svg>
+    </>
+  )
 }
 
 /** A dragon of a kind at its growth stage and mood. Every picture is bottom-aligned on the same
@@ -291,14 +333,39 @@ export function DragonPic({ kind, stage = 'grown', pose = 'idle', label, class: 
 }
 
 /** A dragon egg in its dragon's colors. A ready egg wobbles on its base. */
-export function EggPic({ kind, isNew = false, class: cls }: { kind: string; isNew?: boolean; class?: string }) {
+export function EggPic({ kind, isNew = false, fill = 0, class: cls }: { kind: string; isNew?: boolean; fill?: number; class?: string }) {
   const p = eggPic(kind)
   if (!p) return null
+  // A ready egg is cracked all over; a filling one shows how close it is.
+  const level = isNew ? 3 : fillLevel(fill)
   return (
-    <span class={['egg-pic', isNew && 'egg-wobble', cls].filter(Boolean).join(' ')}>
+    <span class={['egg-pic', isNew ? 'egg-wobble' : level === 3 && 'egg-eager', cls].filter(Boolean).join(' ')}>
       <img src={p.src} width={p.w} height={p.h} alt="Drachen-Ei" decoding="async" draggable={false} />
+      {level > 0 && (
+        <svg class="egg-cracks-over" viewBox="0 0 100 100" aria-hidden="true">
+          <EggCracks level={level} />
+        </svg>
+      )}
     </span>
   )
+}
+
+/** A grown dragon in flight, facing right (Part 6b): its wing beat as a sheet of frames, played
+ *  in steps. Without a sheet, its still flying picture; without that, the standing one turned right. */
+export function FlyPic({ kind, class: cls }: { kind: string; class?: string }) {
+  const f = flapPic(kind)
+  if (f)
+    return (
+      <span class={cls ? `flap ${cls}` : 'flap'} style={{ aspectRatio: `${f.w} / ${f.h}`, '--cols': f.cols, '--rows': f.rows, '--beat': `${f.ms}ms` }}>
+        <span>
+          <img src={f.src} width={f.w * f.cols} height={f.h * f.rows} alt="" draggable={false} />
+        </span>
+      </span>
+    )
+  const p = flyPic(kind)
+  const q = p ?? dragonPic(kind, 'grown', 'idle')
+  if (!q) return null
+  return <img class={cls} data-standing={p ? undefined : ''} src={q.src} width={q.w} height={q.h} alt="" draggable={false} />
 }
 
 /** An egg still to find: only its shape, carved into the rock. Never shows which dragon. */
@@ -376,6 +443,14 @@ export const IconClose = () => (
 export const IconBack = () => (
   <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
     <path d="M9 7l-5 5 5 5M4 12h11a5 5 0 0 1 5 5" />
+  </svg>
+)
+
+/** Turn a card over. */
+export const IconFlip = () => (
+  <svg viewBox="0 0 24 24" {...icon} aria-hidden="true">
+    <path d="M4 12a8 8 0 0 1 13.5-5.8L20 8.5M20 4v4.5h-4.5" />
+    <path d="M20 12a8 8 0 0 1-13.5 5.8L4 15.5M4 20v-4.5h4.5" />
   </svg>
 )
 

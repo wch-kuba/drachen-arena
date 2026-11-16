@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { DRAGONS } from '../content/dragons.ts'
 import { SEED } from '../content/seed.ts'
 import { LANDS } from '../lands.ts'
-import { hasPic } from './images.ts'
+import { flapPic, hasPic } from './images.ts'
 
 describe('art', () => {
   it('has every dragon at every stage and mood, with its egg and shell halves', () => {
@@ -15,6 +15,13 @@ describe('art', () => {
       `shell/${d.id}-bottom`,
     ]).filter((k) => !hasPic(k))
     expect(missing).toEqual([])
+  })
+
+  it('has every dragon in flight and every piece of the flight grotto (Part 6b)', () => {
+    const keys = [...DRAGONS.map((d) => `fly/${d.id}`), ...['stalactites', 'rocks', 'pillar', 'kelp', 'wreck', 'fish', 'jelly', 'ledge'].map((k) => `flight/${k}`)]
+    expect(keys.filter((k) => !hasPic(k))).toEqual([])
+    // Every dragon's wing beat: full rows of frames, so the steps land on whole frames.
+    expect(DRAGONS.filter((d) => !flapPic(d.id)?.rows).map((d) => d.id)).toEqual([])
   })
 
   it('has a picture for every seed word with an image key, and every land', () => {

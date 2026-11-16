@@ -7,6 +7,8 @@ interface Props {
   crystals: number
   /** The goal on the hoard: the dragon being fed, the egg, or the newest dragon with the egg. */
   on: OnHoard
+  /** How full the goal is, 0..1: the egg cracks, the fed dragon glows when it is close. */
+  goalFill?: number
   isOpen: (land: LandId) => boolean
   /** The land that opens with the next step, and what that step is ("Öffnet sich …"). */
   next?: LandId
@@ -22,7 +24,7 @@ interface Props {
   onAmbient: (on: boolean) => void
 }
 
-export function Home({ name, crystals, on, isOpen, next, nextHint, nextStep, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
+export function Home({ name, crystals, on, goalFill = 0, isOpen, next, nextHint, nextStep, onStart, onLand, onDragons, sound, ambient, onSound, onAmbient }: Props) {
   return (
     <div class="home grotto">
       <section class="home-stage">
@@ -45,7 +47,7 @@ export function Home({ name, crystals, on, isOpen, next, nextHint, nextStep, onS
         </header>
 
         <div class="hoard-scene">
-          <HoardScene size={Math.min(1, crystals / 1000)} on={on} tappable />
+          <HoardScene size={Math.min(1, crystals / 1000)} on={on} fill={goalFill} tappable />
         </div>
 
         <p class="home-caption">

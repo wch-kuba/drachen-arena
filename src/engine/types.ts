@@ -51,6 +51,9 @@ export interface Dragon {
   hatchedAt: number
   /** Grows one step per STEP_COST crystals fed while it is the newest dragon. Never shrinks. */
   stage: Stage
+  /** Its favorite word (shown on its card): the first word the child got firmly right while
+   *  feeding it. Display only, never part of a rule. */
+  word?: string
 }
 
 export interface Profile {

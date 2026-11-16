@@ -19,6 +19,8 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
   ~150–200 Klasse 2 words, reviewed by parent.
 - [x] **Part 6 – Rewards & worlds** → [plan/v1-06-rewards.md](plan/v1-06-rewards.md)
   Crystals, eggs, dragons, worlds, naming, greeting.
+- [ ] **Part 6b – Living dragons** → [plan/v1-06b-delight.md](plan/v1-06b-delight.md)
+  Tap-to-wake dragon, egg cracks as it fills, perfect-round show, dragon trading cards, ride the grown dragon to the next egg. No rule changes.
 - [ ] **Part 7 – Images** → [plan/v1-07-images.md](plan/v1-07-images.md)
   AI-generated word pictures, dragons (poses + growth), eggs, worlds, app icon, free library assets; art built into the screens, critique + polish.
 - [ ] **Part 8 – Test & release v1** → [plan/v1-08-release.md](plan/v1-08-release.md)

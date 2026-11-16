@@ -171,12 +171,14 @@ The child's own dragon sleeps on a treasure hoard in a turquoise sea grotto. Eve
 
 The look is a picture book, not an interface. Every screen stands in a painted grotto: dark sea-teal rock under a stalactite roof, darkest at the top, with the hoard's warm gold light rising from below. The only bright materials are amber gold coins and faceted turquoise gems. Anything the child reads or answers on sits on pale sea-glass plaques with dark-teal ink. Every drawn thing has a thick dark-teal outline. Density is low and everything is large: one task per screen, huge letters, thumb-sized targets. The type scales with the device.
 
-The five lands, one per exercise, are grotto chambers strung along one dotted gold path below the hoard:
+The seven lands, one per exercise, are grotto chambers strung along one dotted gold path below the hoard:
 
 | Land | Exercise | Mouth color |
 |---|---|---|
 | Kristallhöhle | Selbstlaute, Zwielaute, Umlaute | tq-300 |
 | Perlenriff | Einzahl und Mehrzahl | gold-300 |
+| Austernbank | a, o, u oder ä, ö, ü? (pearl decision, then the plural) | tq-300 |
+| Strudel | Von vielen zu einem (plural → singular) | gold-300 |
 | Schiffswrack | Fehlende Buchstaben | tq-500 |
 | Echo-Grotte | Kurz oder lang? | gold-500 |
 | Tiefsee-Garten | i oder ie? | tq-100 |
@@ -317,9 +319,11 @@ Legend tiles and the kurz/lang buttons share one state set. Pressed: down 2px, s
 - **Kurz oder lang mark:** before the answer, a soft "?" sits under the target vowel (tq-700). After the right answer the Klett mark rises in under it: an ink dot for kurz, an ink bar as wide as the vowel for lang.
 - **Listen instead of a picture:** while a Wörter-mit-ie item has no picture, a big round speaker (5.4rem, 4.4rem on phones) takes the picture's place and the word is read on open.
 - **Hint panes** carry a small round speaker at their end, so every hint can be heard.
+- **Pearl decision (Austernbank):** the singular's vowel stands as a foam tile in the word (3px ink outline, 12px corners). Two answer options in the kurz/lang button shape: the vowel letter with its two dots drawn as **pearls** (white with a cool tq-100 sheen, 2px ink outline, lit from the upper left) labelled "Zwei Punkte", and the plain vowel labelled "Bleibt so". A right "Zwei Punkte" sends both pearls on a weighted arc (760ms, the gem-flight curve, 70ms apart) onto the vowel tile, which then turns gold-300 with a gold-600 ring and the cell pop, now showing ä/ö/ü/äu; "Bleibt so" rings the tile gold. Then the typed plural takes over with the changed vowel already marked. A wrong choice follows the shared option states; the pearls of the last option left glint gold. Reduced motion: no flight, the tile changes in place.
+- **Strudel word:** the plural on the task plaque ("viele Wände – eine …") spins in from a soft swirl when the task opens (820ms ease-settle, from blur 6px, -14°, 1.35×). The singular's article stands before the cells in foam-soft at normal weight; only the noun is typed. A right umlaut word marks the changed vowel gold in the plural and says "Wände mit ä, weil es von Wand kommt." in the gold pane, read aloud.
 
 ### Navigation
-- **Lands path:** the five painted cave entrances (6rem, the chamber visible inside) alternate left and right along one dotted gold-300 path. Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next names the next step: "Öffnet sich mit dem nächsten Ei" while an egg fills, "Öffnet sich, wenn Funkel wächst" while a dragon is fed. Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
+- **Lands path:** the painted cave entrances (seven) (6rem, the chamber visible inside) alternate left and right along one dotted gold-300 path, one S-bend per land (drawn from the number of lands). Each mouth has its name (Title type) and its description (Body type, foam-soft) on a rock-2 backing, so the path runs behind the labels. Locked lands have a rock-3 arch with a lock and say "Noch verschlossen"; the one that opens next names the next step: "Öffnet sich mit dem nächsten Ei" while an egg fills, "Öffnet sich, wenn Funkel wächst" while a dragon is fed. Under the hoard caption, a quiet text action "Deine Drachen" leads to the collection. Pressed: the mouth scales to 0.96.
 - **Exercise bar:** a close button plus a track of 10 gem slots. Earned gems are faceted turquoise; empty slots are rock-colored outlines.
 
 ### Collection niches
@@ -365,7 +369,7 @@ Two kinds of art share one look (dark-teal ink outline, light from below):
 - **Hatch:** egg, then the two shell halves, then the baby (idle while naming, happy when greeted).
 - **Lands:** each land's painted cave entrance, darkened behind a lock while closed.
 
-**Which egg:** the egg always shows the dragon that will hatch from it (`eggKind` in rewards.ts). Eggs hatch in roster order (the five land dragons first, in land order), so this is the same whatever land is played; a test guards it.
+**Which egg:** the egg always shows the dragon that will hatch from it (`eggKind` in rewards.ts). Eggs hatch in roster order (the seven land dragons first, in land order), so this is the same whatever land is played; a test guards it.
 
 **Image style prompt (Part 7, reuse verbatim for every AI image):**
 

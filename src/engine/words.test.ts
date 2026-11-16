@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { revealCount, startAttempt, submit } from './attempt.ts'
 import { record } from './leitner.ts'
 import type { Item } from './types.ts'
-import { gapParts, indefinite, isSentence, lauteCode, lautOf, pluralMistake, targetVowel, umlautChange, units, wordOf } from './words.ts'
+import { becauseOf, gapParts, indefinite, isSentence, lauteCode, lautOf, pearlVowel, pluralMistake, singularChange, targetVowel, umlautChange, units, withDots, wordOf } from './words.ts'
 
 const item = (type: Item['type'], prompt: string, answer: string): Item => ({
   id: prompt,
@@ -80,5 +80,25 @@ describe('words', () => {
     expect(revealCount(item('luecke', 'Z_ge', 'ie'))).toBe(1)
     expect(revealCount(item('luecke', 'M_tze', 'ü'))).toBe(0)
     expect(revealCount(item('kurzlang', 'Schaf', 'lang'))).toBe(0)
+  })
+})
+
+describe('plural grottos (Part 15)', () => {
+  const item = (type: 'umlaut' | 'einzahl', prompt: string, answer: string) =>
+    ({ id: 'x', type, prompt, answer, source: 'seed', active: true }) as const
+
+  it('finds the vowel the pearls decide on', () => {
+    expect(pearlVowel(item('umlaut', 'der Hut', 'Hüte'))).toEqual({ from: 'u', to: 'ü', at: 1 })
+    expect(pearlVowel(item('umlaut', 'die Laus', 'Läuse'))).toEqual({ from: 'au', to: 'äu', at: 1 })
+    expect(pearlVowel(item('umlaut', 'der Hund', 'Hunde'))).toEqual({ from: 'u', at: 1 })
+    expect(pearlVowel(item('umlaut', 'das Auto', 'Autos'))).toEqual({ from: 'au', at: 0 })
+    expect(withDots('au')).toBe('äu')
+  })
+
+  it('links a plural back to its singular', () => {
+    const wand = { ...item('einzahl', 'die Wände', 'Wand'), article: 'die' as const }
+    expect(singularChange(wand)).toEqual({ from: 'ä', to: 'a', at: 1 })
+    expect(becauseOf(wand)).toEqual({ plural: 'Wände', umlaut: 'ä', singular: 'Wand' })
+    expect(becauseOf(item('einzahl', 'die Hunde', 'Hund'))).toBeUndefined()
   })
 })

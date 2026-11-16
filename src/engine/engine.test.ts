@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { TEST_ITEMS } from '../content/test-items.ts'
-import { crystalsFor, revealCount, startAttempt, submit } from './attempt.ts'
+import { crystalsFor, firstTry, miss, revealCount, startAttempt, submit } from './attempt.ts'
 import { check } from './check.ts'
 import { BOX_INTERVAL, MAX_BOX1, pickRound, record } from './leitner.ts'
 import { answer, next, roundCrystals, startRound } from './round.ts'
@@ -176,5 +176,35 @@ describe('spoken texts', async () => {
     expect(words).toContain('Mütze')
     expect(words).toContain('ei')
     expect(words.some((w) => narrator.includes(w))).toBe(false)
+  })
+})
+
+describe('pearl decision (Part 15)', () => {
+  it('counts a wrong decision for the crystals but not for the typing hints', () => {
+    let a = miss(startAttempt())
+    expect(a.hint).toBe(0)
+    expect(a.mistakes).toEqual(['umlaut'])
+    a = submit(a, { id: 'x', type: 'umlaut', prompt: 'der Hut', answer: 'Hüte', source: 'seed', active: true }, 'Hüte')
+    expect(a.done).toBe(true)
+    expect(crystalsFor(a)).toBe(2)
+    expect(firstTry(a)).toBe(false)
+  })
+})
+
+describe('fresh rounds in the plural lands', () => {
+  // The decision must matter from the first round: some words keep their vowel.
+  it('mixes plain plurals in, with the school-test misses still first', async () => {
+    const { SEED } = await import('../content/seed.ts')
+    for (const type of ['mehrzahl', 'umlaut', 'einzahl'] as const) {
+      for (let seed = 1; seed <= 20; seed++) {
+        let r = seed
+        const rand = () => ((r = (r * 9301 + 49297) % 233280) / 233280)
+        const round = pickRound(SEED, {}, type, 0, 10, rand)
+        const plain = round.filter((i) => !i.tags?.includes('umlaut-plural') && !i.tags?.includes('missed-on-test'))
+        const missed = round.filter((i) => i.tags?.includes('missed-on-test'))
+        expect(plain.length, `${type} seed ${seed}`).toBeGreaterThanOrEqual(3)
+        expect(missed.length, `${type} seed ${seed}`).toBe(4)
+      }
+    }
   })
 })

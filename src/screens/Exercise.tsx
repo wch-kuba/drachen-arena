@@ -2,13 +2,14 @@ import type { ComponentChildren, JSX } from 'preact'
 import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks'
 import { play } from '../engine/sfx.ts'
 import type { Attempt } from '../engine/attempt.ts'
-import { answer, current, isOver, next, startRound, type Result, type Round } from '../engine/round.ts'
+import { answer, current, isOver, miss, next, startRound, type Result, type Round } from '../engine/round.ts'
 import type { Item } from '../engine/types.ts'
 import { isSentence } from '../engine/words.ts'
 import { GENTLE, PRAISE, pick, T } from '../strings.ts'
 import { Gem, GemPic, IconClose, IconLight } from '../ui/art.tsx'
 import { Speak } from '../ui/Speak.tsx'
 import { LautChoice, ShortLong } from './ex/Choice.tsx'
+import { Pearls } from './ex/Pearls.tsx'
 import { Sentence } from './ex/Sentence.tsx'
 import { Typed } from './ex/Typed.tsx'
 
@@ -24,6 +25,8 @@ export interface Play {
   /** Check an answer (typed word, chosen option or encoded coloring). Returns the new attempt. */
   submit: (given: string) => Attempt
   next: () => void
+  /** A wrong decision before the typing (Austernbank): a wrong try without an answer. */
+  miss: () => void
   /** Put this on the answer element: the gem starts its flight there. */
   anchor: (el: HTMLElement | null) => void
 }
@@ -34,6 +37,8 @@ function viewFor(item: Item): (p: Play) => JSX.Element {
       return isSentence(item) ? Sentence : LautChoice
     case 'kurzlang':
       return ShortLong
+    case 'umlaut':
+      return Pearls
     default:
       return Typed
   }
@@ -135,6 +140,7 @@ export function RoundPlayer({ items, onItemDone, onRoundDone, onExit }: Props) {
         attempt={round.attempt}
         submit={submit}
         next={goNext}
+        miss={() => setRound((r) => miss(r))}
         anchor={anchor}
       />
 

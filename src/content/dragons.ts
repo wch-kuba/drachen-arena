@@ -13,6 +13,8 @@ export interface DragonKind {
 
 export const DRAGONS: DragonKind[] = [
   { id: 'perle', land: 'mehrzahl' },
+  { id: 'auster', land: 'umlaut' },
+  { id: 'strudel', land: 'einzahl' },
   { id: 'wrack', land: 'luecke' },
   { id: 'tang', land: 'ie' },
   { id: 'kristall', land: 'laute' },

@@ -64,10 +64,12 @@ export function pickRound(
   const due = seen.filter((i) => isDue(p(i), now)).sort((a, b) => p(a).box - p(b).box || overdue(b) - overdue(a))
   const box1 = due.filter((i) => p(i).box === 1)
   const reviews = due.filter((i) => p(i).box > 1)
-  const fresh = shuffle(
-    pool.filter((i) => !isSeen(progress[i.id])),
-    rand,
-  ).sort((a, b) => priority(b) - priority(a))
+  const fresh = mixFresh(
+    shuffle(
+      pool.filter((i) => !isSeen(progress[i.id])),
+      rand,
+    ).sort((a, b) => priority(b) - priority(a)),
+  )
   const resting = seen.filter((i) => !isDue(p(i), now)).sort(oldestFirst)
 
   const picked = new Set<Item>()
@@ -86,6 +88,23 @@ export function pickRound(
   take(resting)
   take(box1) // a small pool may still need the rest of box 1
   return shuffle([...picked], rand)
+}
+
+/**
+ * New items, tagged mistakes first, but never only those: after every two prioritized items one
+ * plain item follows while there are any. Otherwise the first rounds of a plural land would be
+ * all umlaut plurals and "no vowel change" would never be the right answer (found 2026-11-16).
+ */
+function mixFresh(sorted: Item[]): Item[] {
+  const tagged = sorted.filter((i) => priority(i) > 0)
+  const plain = sorted.filter((i) => priority(i) === 0)
+  const out: Item[] = []
+  while (tagged.length || plain.length) {
+    out.push(...tagged.splice(0, 2))
+    out.push(...plain.splice(0, 1))
+    if (!tagged.length) out.push(...plain.splice(0))
+  }
+  return out
 }
 
 function shuffle<T>(xs: T[], rand: () => number): T[] {

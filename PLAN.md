@@ -24,6 +24,11 @@ Product facts live in [PRODUCT.md](PRODUCT.md).
 - [ ] **Part 8 – Test & release v1** → [plan/v1-08-release.md](plan/v1-08-release.md)
   Tested on the real iPad and iPhone, kid plays first session.
 
+## v1.1 – More grottos
+
+- [ ] **Part 15 – Two plural grottos** → [plan/v1-15-plural-grottos.md](plan/v1-15-plural-grottos.md)
+  Austernbank (does the vowel get dots?) and Strudel (plural → singular), each with its own dragon.
+
 ## v2 – Parent panel
 
 - [ ] **Part 9 – Parent mode & settings** → [plan/v2-09-parent-mode.md](plan/v2-09-parent-mode.md)

@@ -45,6 +45,11 @@
       "audio/eb862fd85903.mp3",
       "audio/797d7c418d87.mp3"
     ],
+    "Äpfel mit ä, weil es von Apfel kommt.": [
+      "audio/77aa7d3d878a.mp3",
+      "audio/e432229cc478.mp3",
+      "audio/21d651ce9e57.mp3"
+    ],
     "au": [
       "audio/35ffbbffd135.mp3",
       "audio/fd766a1fdbde.mp3",
@@ -105,11 +110,31 @@
       "audio/f6675d064205.mp3",
       "audio/168e6da592fd.mp3"
     ],
+    "Bäume mit äu, weil es von Baum kommt.": [
+      "audio/f8dfbc97a41f.mp3",
+      "audio/77e033c3e2d7.mp3",
+      "audio/2f92b210dc61.mp3"
+    ],
     "Beet": [
       "audio/f63943890d81.mp3",
       "audio/0fa89efab2d0.mp3",
       "audio/c31a13bc938c.mp3",
       "audio/b04a04c4b44d.mp3"
+    ],
+    "Bekommt das a zwei Punkte?": [
+      "audio/f056f0bd408e.mp3",
+      "audio/3f9f56105cdc.mp3",
+      "audio/919f57274f71.mp3"
+    ],
+    "Bekommt das o zwei Punkte?": [
+      "audio/964810174567.mp3",
+      "audio/5b91bb984ce5.mp3",
+      "audio/1dbd5f194c13.mp3"
+    ],
+    "Bekommt das u zwei Punkte?": [
+      "audio/05715fca778f.mp3",
+      "audio/58b69398b20c.mp3",
+      "audio/c53a789fceaf.mp3"
     ],
     "Bett": [
       "audio/1a676e39369d.mp3",
@@ -140,6 +165,11 @@
       "audio/c43a7cfee61f.mp3",
       "audio/4b84709f2b77.mp3",
       "audio/4329412c5d49.mp3"
+    ],
+    "Blätter mit ä, weil es von Blatt kommt.": [
+      "audio/5d76ece24003.mp3",
+      "audio/c671bb49905c.mp3",
+      "audio/4d81fcae74e4.mp3"
     ],
     "Blumen": [
       "audio/fcc9d1bf5c4c.mp3",
@@ -194,6 +224,11 @@
       "audio/655d19831229.mp3",
       "audio/4a0ef0ddfaf7.mp3",
       "audio/d62161c147be.mp3"
+    ],
+    "Dächer mit ä, weil es von Dach kommt.": [
+      "audio/1a48cf07c7e1.mp3",
+      "audio/ae91c8d85e52.mp3",
+      "audio/49de75b3402c.mp3"
     ],
     "das Auto": [
       "audio/1516a6913455.mp3",
@@ -469,11 +504,29 @@
       "audio/705019319f83.mp3",
       "audio/9370cf2e25e2.mp3"
     ],
+    "die Äpfel": [
+      "audio/634b9f5523bd.mp3",
+      "audio/0c226b54216c.mp3",
+      "audio/98b05c2441a7.mp3",
+      "audio/0bf3193401c7.mp3"
+    ],
+    "die Bäume": [
+      "audio/a3e8dbf1bb7c.mp3",
+      "audio/c11560d08163.mp3",
+      "audio/cf65afbd0deb.mp3",
+      "audio/1d67d4cebb97.mp3"
+    ],
     "Die Bäume sind grün.": [
       "audio/a993bc29c466.mp3",
       "audio/7a0cb9d1f891.mp3",
       "audio/5481fa2eb70a.mp3",
       "audio/e66fd1878d3c.mp3"
+    ],
+    "die Blätter": [
+      "audio/d3f05f423af1.mp3",
+      "audio/1610df173135.mp3",
+      "audio/f96418d14831.mp3",
+      "audio/02dc5fe3b5f3.mp3"
     ],
     "die Blume": [
       "audio/6cff95c301c8.mp3",
@@ -481,11 +534,35 @@
       "audio/94581313fa28.mp3",
       "audio/a03cd389fcba.mp3"
     ],
+    "die Blumen": [
+      "audio/505b65ca202d.mp3",
+      "audio/149a28b767e0.mp3",
+      "audio/a648721e0ee8.mp3",
+      "audio/cd876e6271b7.mp3"
+    ],
+    "die Dächer": [
+      "audio/d40e948a5695.mp3",
+      "audio/1085a0cc9e39.mp3",
+      "audio/419e6340d754.mp3",
+      "audio/2ecb7667cd60.mp3"
+    ],
     "Die Eule schläft am Tag.": [
       "audio/ebb63fbed849.mp3",
       "audio/797e4198a0ba.mp3",
       "audio/dcbd1efe3c27.mp3",
       "audio/375b18439374.mp3"
+    ],
+    "die Fische": [
+      "audio/08916cf6ea42.mp3",
+      "audio/62f2a5c9346c.mp3",
+      "audio/4da3d32ae18e.mp3",
+      "audio/4bd0a35ddd79.mp3"
+    ],
+    "die Füße": [
+      "audio/2ec73579a122.mp3",
+      "audio/5df22e65cf7d.mp3",
+      "audio/35907e55cbd6.mp3",
+      "audio/bcd95c040f12.mp3"
     ],
     "die Gans": [
       "audio/a19831879b62.mp3",
@@ -493,11 +570,29 @@
       "audio/fe912b327a16.mp3",
       "audio/0e1a625c5cd4.mp3"
     ],
+    "die Gläser": [
+      "audio/fc2fc68ef58d.mp3",
+      "audio/cab4e1afd1c3.mp3",
+      "audio/6519af4bbb56.mp3",
+      "audio/8f28b3cd3152.mp3"
+    ],
     "die Hand": [
       "audio/a9efa0161040.mp3",
       "audio/bb0baa66f83f.mp3",
       "audio/7f3824c626ea.mp3",
       "audio/6edeadbe3a8c.mp3"
+    ],
+    "die Hände": [
+      "audio/21502e99c7cc.mp3",
+      "audio/87d6ab4fd484.mp3",
+      "audio/66fcc2c2a146.mp3",
+      "audio/22bb51f1b2f1.mp3"
+    ],
+    "die Häuser": [
+      "audio/e61d5b376bd5.mp3",
+      "audio/51e9258266d2.mp3",
+      "audio/26f207fdd0ca.mp3",
+      "audio/044d26da2f62.mp3"
     ],
     "die Hose": [
       "audio/128d8cbdb43f.mp3",
@@ -505,11 +600,41 @@
       "audio/8ac65aad0c7a.mp3",
       "audio/120dfd1f9671.mp3"
     ],
+    "die Hunde": [
+      "audio/9174e8274684.mp3",
+      "audio/24f4561093c5.mp3",
+      "audio/ec6b0a01c22a.mp3",
+      "audio/c33dcd85b0eb.mp3"
+    ],
+    "die Hüte": [
+      "audio/1b8e501a4bea.mp3",
+      "audio/ff4a158269ee.mp3",
+      "audio/947db1dbc0da.mp3",
+      "audio/978a2d65a57f.mp3"
+    ],
     "die Katze": [
       "audio/915090189c32.mp3",
       "audio/7c26a048de0d.mp3",
       "audio/2a1a38b231f9.mp3",
       "audio/8703690fc07c.mp3"
+    ],
+    "die Katzen": [
+      "audio/62f56dc355bc.mp3",
+      "audio/af1f3ae4e49f.mp3",
+      "audio/51dce70e4cd0.mp3",
+      "audio/c43baae6527c.mp3"
+    ],
+    "die Kinder": [
+      "audio/e82d1807b872.mp3",
+      "audio/9819593b40db.mp3",
+      "audio/5167f5feabc6.mp3",
+      "audio/91397cc5c23f.mp3"
+    ],
+    "die Körbe": [
+      "audio/df53ecf6e810.mp3",
+      "audio/23efccbc6d4b.mp3",
+      "audio/72595beae23a.mp3",
+      "audio/f6463bf526fc.mp3"
     ],
     "die Kuh": [
       "audio/4901e686c991.mp3",
@@ -529,6 +654,12 @@
       "audio/ea6d3bb509de.mp3",
       "audio/ce919b5d0676.mp3"
     ],
+    "die Läuse": [
+      "audio/692e69c61677.mp3",
+      "audio/2d2dd58c6583.mp3",
+      "audio/d1ed66f82535.mp3",
+      "audio/3ec563569077.mp3"
+    ],
     "die Maus": [
       "audio/1d66a9f7b606.mp3",
       "audio/71c816f23d3b.mp3",
@@ -540,6 +671,12 @@
       "audio/9889f4cfe6a3.mp3",
       "audio/9c93765fcab9.mp3",
       "audio/3e07c4244a8d.mp3"
+    ],
+    "die Mäuse": [
+      "audio/a11922c80c6e.mp3",
+      "audio/ef9b009bf4a4.mp3",
+      "audio/504a9ec4d287.mp3",
+      "audio/dc5308e4a924.mp3"
     ],
     "Die Möwe fliegt über das Meer.": [
       "audio/8d00f699d6e5.mp3",
@@ -553,10 +690,22 @@
       "audio/2a17c16e954b.mp3",
       "audio/5a8c33fe9236.mp3"
     ],
+    "die Räder": [
+      "audio/ec9188cd1fa1.mp3",
+      "audio/60115d7547db.mp3",
+      "audio/3ecf8825f40b.mp3",
+      "audio/8e5caead585c.mp3"
+    ],
     "Die Ringe zeigen dir die Farbe.": [
       "audio/f75e90e5d18a.mp3",
       "audio/e2f3424252b5.mp3",
       "audio/19bdfa0810f7.mp3"
+    ],
+    "die Töpfe": [
+      "audio/cf8ecc938054.mp3",
+      "audio/c4d3325579f5.mp3",
+      "audio/923cb9827111.mp3",
+      "audio/1d41bb3c9a9f.mp3"
     ],
     "die Tür": [
       "audio/c9497d488ab8.mp3",
@@ -570,17 +719,41 @@
       "audio/28d91198a613.mp3",
       "audio/af8dd12f7e4b.mp3"
     ],
+    "die Vögel": [
+      "audio/9b25fc1dc41a.mp3",
+      "audio/fb891189d07d.mp3",
+      "audio/fa2687179b63.mp3",
+      "audio/0a26c20f43f8.mp3"
+    ],
     "die Wand": [
       "audio/2605a2abeb00.mp3",
       "audio/e283fa9c2206.mp3",
       "audio/050827a2ba02.mp3",
       "audio/66182540bb6d.mp3"
     ],
+    "die Wände": [
+      "audio/4f30322c3de3.mp3",
+      "audio/bd2d87319ae7.mp3",
+      "audio/d885d9dc29e3.mp3",
+      "audio/5f057e1c674d.mp3"
+    ],
     "die Wurst": [
       "audio/e5963eac8449.mp3",
       "audio/7a998827f69f.mp3",
       "audio/3ee69f542e97.mp3",
       "audio/2c8475eb4dfc.mp3"
+    ],
+    "die Zähne": [
+      "audio/c88113c30ac9.mp3",
+      "audio/87e591a713a2.mp3",
+      "audio/b0ede5690a52.mp3",
+      "audio/7dbb64b882d5.mp3"
+    ],
+    "die Züge": [
+      "audio/58cd0cf4b714.mp3",
+      "audio/abc64b8b6fc1.mp3",
+      "audio/75e35b78c691.mp3",
+      "audio/a39b9c657960.mp3"
     ],
     "Du bist ein Drachenprofi!": [
       "audio/3674f9a90585.mp3",
@@ -698,6 +871,11 @@
       "audio/67f2038f94b6.mp3",
       "audio/a8c0e65bd20e.mp3"
     ],
+    "Füße mit ü, weil es von Fuß kommt.": [
+      "audio/35a64b50089a.mp3",
+      "audio/940d9fd0f5ac.mp3",
+      "audio/739994e1b16c.mp3"
+    ],
     "Gänse": [
       "audio/66a1a78af440.mp3",
       "audio/37bac09293ed.mp3",
@@ -733,6 +911,11 @@
       "audio/ea08874678f8.mp3",
       "audio/9373ec72d8ee.mp3"
     ],
+    "Gläser mit ä, weil es von Glas kommt.": [
+      "audio/97839c979b3d.mp3",
+      "audio/0aa537870522.mp3",
+      "audio/9bfcf1b1bb5b.mp3"
+    ],
     "Gleich hast du es!": [
       "audio/c3d8b3778bde.mp3",
       "audio/507bbc0e0907.mp3",
@@ -756,6 +939,11 @@
       "audio/aaffc1fea080.mp3",
       "audio/7bdb9ebc9306.mp3"
     ],
+    "Hände mit ä, weil es von Hand kommt.": [
+      "audio/0667c1bb9316.mp3",
+      "audio/1158910aaf9c.mp3",
+      "audio/f8f86fd178d6.mp3"
+    ],
     "Haus": [
       "audio/542b5a6417b7.mp3",
       "audio/ff99696354af.mp3",
@@ -767,6 +955,11 @@
       "audio/0cd9795215eb.mp3",
       "audio/2bf7726c3ec2.mp3",
       "audio/0b9919e63149.mp3"
+    ],
+    "Häuser mit äu, weil es von Haus kommt.": [
+      "audio/93cfbacaa794.mp3",
+      "audio/71110f45e7b1.mp3",
+      "audio/f280aa18499a.mp3"
     ],
     "Hör gut zu. Kurz oder lang?": [
       "audio/d8b8bbbd664a.mp3",
@@ -813,6 +1006,11 @@
       "audio/48770336984a.mp3",
       "audio/46a1ed2788cb.mp3",
       "audio/d41431ddbcfb.mp3"
+    ],
+    "Hüte mit ü, weil es von Hut kommt.": [
+      "audio/4ff1c9f69c4c.mp3",
+      "audio/0caa1b62576e.mp3",
+      "audio/2b38cec27134.mp3"
     ],
     "Hütte": [
       "audio/592c7107d8aa.mp3",
@@ -963,6 +1161,11 @@
       "audio/b5f2a3bfa7cf.mp3",
       "audio/c701c8f44822.mp3"
     ],
+    "Körbe mit ö, weil es von Korb kommt.": [
+      "audio/d43ec300c4b5.mp3",
+      "audio/9a9157075bce.mp3",
+      "audio/584bb0876448.mp3"
+    ],
     "Küche": [
       "audio/7f0cbb54b712.mp3",
       "audio/f76d1a27f719.mp3",
@@ -986,6 +1189,11 @@
       "audio/ee95788d7f67.mp3",
       "audio/409428a103f1.mp3",
       "audio/f29256101688.mp3"
+    ],
+    "Läuse mit äu, weil es von Laus kommt.": [
+      "audio/677b40b04403.mp3",
+      "audio/d548ca0f6b38.mp3",
+      "audio/38962e5e3591.mp3"
     ],
     "Löffel": [
       "audio/40776db52499.mp3",
@@ -1016,6 +1224,11 @@
       "audio/5268c192bddb.mp3",
       "audio/1960e379f2f3.mp3",
       "audio/091a32e36072.mp3"
+    ],
+    "Mäuse mit äu, weil es von Maus kommt.": [
+      "audio/875df9d78fba.mp3",
+      "audio/11d9a41b74ba.mp3",
+      "audio/1121170fafdb.mp3"
     ],
     "Mein Freund hat ein Boot.": [
       "audio/b54a48781a3e.mp3",
@@ -1170,6 +1383,11 @@
       "audio/c0e422a4b3bb.mp3",
       "audio/fcc42f121b42.mp3"
     ],
+    "Räder mit ä, weil es von Rad kommt.": [
+      "audio/c6d0346106d1.mp3",
+      "audio/02bb39bc027e.mp3",
+      "audio/5b1b8da9ae15.mp3"
+    ],
     "Radiergummi": [
       "audio/9afea80e9b4b.mp3",
       "audio/ea3819e7da88.mp3",
@@ -1205,6 +1423,11 @@
       "audio/db9303bc7ff6.mp3",
       "audio/a629331164a5.mp3"
     ],
+    "Sag die Mehrzahl laut. Hörst du ä, ö, ü oder äu?": [
+      "audio/06e41d92fc8b.mp3",
+      "audio/60c41b2d706d.mp3",
+      "audio/e59a59926e00.mp3"
+    ],
     "Schaf": [
       "audio/b37444a8f526.mp3",
       "audio/e570ee9b32e1.mp3",
@@ -1239,6 +1462,11 @@
       "audio/7d5180cab0b7.mp3",
       "audio/f27bc25f9a61.mp3",
       "audio/77ce45cb3bde.mp3"
+    ],
+    "Schreib die Einzahl.": [
+      "audio/384eeda44010.mp3",
+      "audio/b5fe1d60813b.mp3",
+      "audio/c6b1e15e325e.mp3"
     ],
     "Schreib die Mehrzahl.": [
       "audio/125797f18eba.mp3",
@@ -1373,20 +1601,40 @@
       "audio/5ca821a9f354.mp3",
       "audio/6f3bca02ef10.mp3"
     ],
+    "Tipp: Aus ä wird a.": [
+      "audio/5f521730ad8f.mp3",
+      "audio/51c2d657033c.mp3",
+      "audio/c3d093c64c15.mp3"
+    ],
     "Tipp: Aus au wird äu.": [
       "audio/2eadfc6e1a3f.mp3",
       "audio/69f802738756.mp3",
       "audio/58bfda8bfc14.mp3"
+    ],
+    "Tipp: Aus äu wird au.": [
+      "audio/57302974dcf4.mp3",
+      "audio/554643a64ca3.mp3",
+      "audio/5326859fee8b.mp3"
     ],
     "Tipp: Aus o wird ö.": [
       "audio/3d8f9d8bf811.mp3",
       "audio/0d584440c755.mp3",
       "audio/9198ee58e105.mp3"
     ],
+    "Tipp: Aus ö wird o.": [
+      "audio/6af7986658e0.mp3",
+      "audio/d0c24dcce185.mp3",
+      "audio/c496832a542b.mp3"
+    ],
     "Tipp: Aus u wird ü.": [
       "audio/ca5a71c595de.mp3",
       "audio/0d931dc6b858.mp3",
       "audio/26d262612a3b.mp3"
+    ],
+    "Tipp: Aus ü wird u.": [
+      "audio/1083b362f03f.mp3",
+      "audio/10109e72d6ae.mp3",
+      "audio/b691960c410e.mp3"
     ],
     "Tipp: Brötchen kommt von Brot: Aus o wird ö.": [
       "audio/14d3a7f232db.mp3",
@@ -1438,6 +1686,11 @@
       "audio/f17fe753e4fb.mp3",
       "audio/be8c612adbff.mp3"
     ],
+    "Tipp: Einzahl heißt: nur eins. Wie heißt das Wort dann?": [
+      "audio/4f60d5f56196.mp3",
+      "audio/59ff7650889e.mp3",
+      "audio/e128762b75ad.mp3"
+    ],
     "Tipp: ie ist immer lang.": [
       "audio/77d507ae6486.mp3",
       "audio/14fba87de40f.mp3",
@@ -1478,6 +1731,11 @@
       "audio/b6d507b7749e.mp3",
       "audio/f4a8d907891b.mp3"
     ],
+    "Tipp: Wird aus a, o, u, au ein ä, ö, ü, äu?": [
+      "audio/aa9d0701ec46.mp3",
+      "audio/ae5a16102954.mp3",
+      "audio/4af4567b792d.mp3"
+    ],
     "Tipp: Zwei gleiche Selbstlaute sind lang.": [
       "audio/6d0a57f69d75.mp3",
       "audio/cb5c6db903cb.mp3",
@@ -1505,6 +1763,11 @@
       "audio/42cb1a8ba5e7.mp3",
       "audio/d710b9a23a27.mp3",
       "audio/c7b5529f7dfc.mp3"
+    ],
+    "Töpfe mit ö, weil es von Topf kommt.": [
+      "audio/776623100b10.mp3",
+      "audio/27c605bc4ac2.mp3",
+      "audio/24938dd91f63.mp3"
     ],
     "Türen": [
       "audio/ccb70d910a7f.mp3",
@@ -1553,11 +1816,21 @@
       "audio/9e618067d813.mp3",
       "audio/b099c5899284.mp3"
     ],
+    "Vögel mit ö, weil es von Vogel kommt.": [
+      "audio/bef5fcee7235.mp3",
+      "audio/492dfc5e5570.mp3",
+      "audio/e6992d73aac4.mp3"
+    ],
     "Wände": [
       "audio/04521a70ac93.mp3",
       "audio/ca39de74c84b.mp3",
       "audio/70b6ce800b03.mp3",
       "audio/cf22d0db8af9.mp3"
+    ],
+    "Wände mit ä, weil es von Wand kommt.": [
+      "audio/84166989163b.mp3",
+      "audio/de0c2cc9e7af.mp3",
+      "audio/0a46351bb596.mp3"
     ],
     "Was ist das für ein Laut?": [
       "audio/186c9444e6c6.mp3",
@@ -1596,6 +1869,11 @@
       "audio/cca9af0b80fb.mp3",
       "audio/b72dbd9cde7e.mp3"
     ],
+    "Wird aus au ein äu?": [
+      "audio/85bf577c9a4d.mp3",
+      "audio/efcf55038936.mp3",
+      "audio/33afdb0f97d1.mp3"
+    ],
     "Wölfe": [
       "audio/0b709f73a893.mp3",
       "audio/425ee55c3f3a.mp3",
@@ -1619,6 +1897,11 @@
       "audio/f706f15fe7a3.mp3",
       "audio/3a848aaf1593.mp3",
       "audio/76ba88e333d2.mp3"
+    ],
+    "Zähne mit ä, weil es von Zahn kommt.": [
+      "audio/51a46b409f46.mp3",
+      "audio/7443a8ed0c0c.mp3",
+      "audio/69064c7d08ac.mp3"
     ],
     "Zaun": [
       "audio/9d7bc47a4c1c.mp3",
@@ -1661,6 +1944,11 @@
       "audio/653edeeebe94.mp3",
       "audio/7ac9ff494548.mp3",
       "audio/fa032aa13d96.mp3"
+    ],
+    "Züge mit ü, weil es von Zug kommt.": [
+      "audio/6ff954127e07.mp3",
+      "audio/cc4ab118866c.mp3",
+      "audio/1b4cd6c75f6d.mp3"
     ],
     "Zwiebel": [
       "audio/9c61c42f509b.mp3",

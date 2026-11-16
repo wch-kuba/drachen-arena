@@ -5,6 +5,9 @@ import {
   ROUND_BONUS,
   STEP_COST,
   UNLOCK_ORDER,
+  BLOCKED,
+  isUnlocked,
+  nextLand,
   addCrystals,
   eggKind,
   endRound,
@@ -106,17 +109,24 @@ describe('feeding', () => {
     }
   })
 
-  it('opens all five lands early in the second dragon', () => {
+  it('opens all open lands early in the second dragon', () => {
     let p = emptyProfile()
     let rounds = 0
-    while (p.unlockedWorlds.length < UNLOCK_ORDER.length) {
+    while (nextLand(p) && rounds < 50) {
       p = play(p, 3)
       rounds++
       if (p.pendingHatch) p = hatch(p, 'X', rounds)
       p = seeGrowth(p)
     }
-    expect(p.dragons).toHaveLength(2)
+    expect(p.unlockedWorlds).toEqual(UNLOCK_ORDER.filter((l) => !BLOCKED.has(l)))
+    expect(p.dragons.length).toBeLessThanOrEqual(2)
     expect(rounds).toBeLessThanOrEqual(12)
+  })
+
+  it('keeps blocked lands closed, even when already open', () => {
+    const p = { ...emptyProfile(), unlockedWorlds: [...UNLOCK_ORDER] }
+    for (const l of BLOCKED) expect(isUnlocked(p, l)).toBe(false)
+    expect(nextLand(p)).toBeUndefined()
   })
 
   it('keeps the crystals when every dragon is found and grown', () => {

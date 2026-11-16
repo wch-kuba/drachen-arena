@@ -17,6 +17,9 @@ export const ROUND_BONUS = 10
 /** Mehrzahl first: umlaut plurals are the child's biggest gap. One more land per step. */
 export const UNLOCK_ORDER: ExerciseType[] = ['mehrzahl', 'luecke', 'ie', 'laute', 'kurzlang']
 
+/** Lands closed for now, whatever the profile says (Echo-Grotte: content not ready yet). */
+export const BLOCKED: ReadonlySet<ExerciseType> = new Set(['kurzlang'])
+
 export const STAGES = ['hatchling', 'young', 'grown'] as const
 export type Stage = (typeof STAGES)[number]
 
@@ -53,7 +56,7 @@ export function goalOf(p: Profile): Goal {
 
 /** The next land to open, if any. */
 export const nextLand = (p: Profile): ExerciseType | undefined =>
-  UNLOCK_ORDER.find((l) => !p.unlockedWorlds.includes(l))
+  UNLOCK_ORDER.find((l) => !p.unlockedWorlds.includes(l) && !BLOCKED.has(l))
 
 const openNext = (p: Profile): Profile => {
   const open = nextLand(p)
@@ -100,7 +103,7 @@ export function hatch(p: Profile, name: string, now: number): Profile {
   return openNext({ ...p, pendingHatch: undefined, dragons: [...p.dragons, dragon] })
 }
 
-export const isUnlocked = (p: Profile, land: ExerciseType) => p.unlockedWorlds.includes(land)
+export const isUnlocked = (p: Profile, land: ExerciseType) => !BLOCKED.has(land) && p.unlockedWorlds.includes(land)
 
 /** Crystals still needed for the current goal (0 when it is full). */
 export const goalLeft = (p: Profile) => Math.max(0, STEP_COST - p.goalCrystals)

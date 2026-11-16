@@ -20,6 +20,7 @@ Not picked: ie rhyme pairs (the i/ie land covers it), short/long sorting columns
 - [x] Two new dragons, `auster` and `strudel`, the land dragons of the new lands, placed after `perle` in the roster (14 dragons). Cool, not cute.
 - [x] Attempt: `miss()` counts a wrong decision (pearl step) as a wrong try without raising the typing hint; crystals stay per word (3 only if both steps were right first time).
 - [x] Seed: ~24 Austernbank words (≈ 2/3 umlaut plurals, ≈ 1/3 no change, only a/o/u/au vowels, no ä/ö/ü traps), ~22 Strudel words (mostly umlaut plurals, a few plain). Our own picks, reusing Mehrzahl nouns.
+- [x] **Fix: fresh rounds were all umlaut** (found 2026-11-16). New items went in by priority, so the first two rounds of Austernbank (and Mehrzahl) had no word that keeps its vowel. `pickRound` now follows every two tagged items with one plain one; test-misses still come first. Test runs the real seed for all three plural lands.
 
 ### Screens (via `/impeccable`)
 - [x] **Austernbank step 1, pearls:** the singular's vowel stands as a tile in the word; two options: the vowel with its two dots drawn as pearls ("Zwei Punkte") and the plain vowel ("Bleibt so"). The pearls arc onto the vowel with weight and it turns into ä/ö/ü/äu in gold; "Bleibt so" rings the vowel gold. Wrong: nudge + hint, and the other (right) option gets the gold ring at once (two options).

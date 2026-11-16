@@ -190,3 +190,21 @@ describe('pearl decision (Part 15)', () => {
     expect(firstTry(a)).toBe(false)
   })
 })
+
+describe('fresh rounds in the plural lands', () => {
+  // The decision must matter from the first round: some words keep their vowel.
+  it('mixes plain plurals in, with the school-test misses still first', async () => {
+    const { SEED } = await import('../content/seed.ts')
+    for (const type of ['mehrzahl', 'umlaut', 'einzahl'] as const) {
+      for (let seed = 1; seed <= 20; seed++) {
+        let r = seed
+        const rand = () => ((r = (r * 9301 + 49297) % 233280) / 233280)
+        const round = pickRound(SEED, {}, type, 0, 10, rand)
+        const plain = round.filter((i) => !i.tags?.includes('umlaut-plural') && !i.tags?.includes('missed-on-test'))
+        const missed = round.filter((i) => i.tags?.includes('missed-on-test'))
+        expect(plain.length, `${type} seed ${seed}`).toBeGreaterThanOrEqual(3)
+        expect(missed.length, `${type} seed ${seed}`).toBe(4)
+      }
+    }
+  })
+})
